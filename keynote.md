@@ -1,4 +1,8 @@
- 
+---
+title: Keynote
+speaker: Paolo Perrotta
+---
+
 eurucamp 2014  Keynote speaker: Paolo “Nusco" Perrotta 
 Friday,  August 1st Welcome 
 

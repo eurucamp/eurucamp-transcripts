@@ -1,3 +1,7 @@
+---
+title: Refactoring Ruby with Monads (or, Monads: The Good Parts)
+speaker: Tom Stuart
+---
 >> MC: Last year we have a speaker from from Berlin and probably know him. He's a computer scientist and programmer, and he lives in London. He's working in consulting and is a trainer that helps companies improve their approach to software developing. And he's an organizer of a Ruby conference and part of the London Ruby User Group. 
 
 Tom is responsible for a theoretic part of the conference and he will tell you more about Ruby Monads, so please meet Tom. (Applause)   
