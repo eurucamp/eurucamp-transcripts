@@ -1,3 +1,7 @@
+---
+title: Panel discussion
+speaker: va
+---
 # Panel discussion
 
 Welcome to Saturday evening panel discussion on the lawn.
