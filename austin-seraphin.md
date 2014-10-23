@@ -1,6 +1,6 @@
 ---
 title: RubyMotion and Accessibility
-speaker: Austin Serafin
+speaker: Austin Seraphin
 ---
 >> Welcome! RubyMotion and Accessibility.
 >> Hello again, I hope you enjoyed the activities and workshops that we had. Let's continue and I would like to introduce our next speaker, Austin came to us from Philadelphia yeah, he started programming at the age of 7. He has a accessibility freelance company and uses Ruby potion, he enjoys cooking and meditation, most recently he lopped an amazing technique and developed an maiding technique and started to publish. He will talk about accessibility matters and how the iPhone revolutioned the life of the blind. He'll tell more about RubyMotion. So please, meet Austin Seraphin.
