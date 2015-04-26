@@ -2,20 +2,417 @@
 title: Internet of Dusty Things
 speaker: Daniel Bovensiepen
 ---
->> We want to invite the next speaker.
->> Okay, so, Daniel ‑‑ is our next speaker, and for the last several years he lived mostly in Beijing. And he was busy by designing the highly reliable system for metros for more than 20 countries all around the world. And today he will talk about his own project related to analyzing and even reducing air pollution. So meet Daniel. (Applause)
->> Daniel Bovensiepen:  Thanks a lot. Does what work?  Great. Hello everyone, I want to talk today dust.  I know it's not the best pitch, but let's start with that. So, first of all let me introduce myself, as was said, I'm coming from Beijing, building Metros for a living, I'm a ‑‑ and I'm loving 3 D printer, today's talk is not about these things, instead I want to talk about the future, to be more precise about future of my son. As all kid thing at the moment is still quite new, I noticed that kids need some kind of care, giving them regular food, giving them a little bit of bath, a little bit of love apparently helps from time to time. Not this kind of care I'm talking about. I'm talking about taking care of kids in way nobody would think about here in Europe would think about it because it's not a problem. In China you have to take care of your kid, which is universal, and that's the so called airpocalypse, what is that?  It's the worth possible weather you can have in terms of smog. And I was actually originally wanting to show you some pictures about bike drivers driving through streets and you can hardly see five meters, but, I think showing you that picture doesn't really show you how bad it really is, so instead I want to talk with you about numbers, or more precise I want to talk with you about the air quality index, which is an index created by the WHO, and, actually if China people have this this index all the time on their phone, before they leave their apartment they look on their phone and check, well, to day is actually a bad day because the pollution is really bad, they don't care if it's raining or not, they care about pollution, so if it's bad maybe I don't leave today N Europe you have something like quality index of 20‑30, this air quality index is collating to particle matter in the air. So, people are measuring the concentration if micro gram for specific particle size and the higher the concentration gets the higher the index gets, and we assume here that a lot of particle in the air is considered bad. So, I will tell you in Berlin, if you is a smoggy day, really smoggy day, you have an air quality of 50 ‑‑ five‑zero, the W H O says if you have an air quality index of 150 you should not leave your apartment anymore, it's quite unhealthy.  What would you think that the weather is sometimes really bad in Beijing, what would be the air quality index.  I tell you the air quality index is defined 1‑500, can anyone make a qualitied guess what a bad day looks like China?
->> 800 ‑‑
->> 800 sounds quite bad, you already got the point, I think. The problem here is actually the air quality index in China is breaking the index, so, and this is really how bad it is in China, so ten years ago, when think standardized these air quality index, scientists could not imagine that there would ever be a residential area that has so much pollution, this is how bad it is. We know that it's really bad about air pollution, what can we do?  And the longest time or last 7 years I smut made fun about air pollution, seriously most of the science fiction movies are polluted, if you look at blade runner, the future has to be polluted, so living in Beijing feels like somehow I'm living in the future, it tastes like I'm living in the future, and indeed you can taste the air on bad days in Beijing. We're collecting some kind of masks, but last year, things changed for me, or better things for my girl changed she became pregnant and some kind of transformation happened to me, transformation which I would call moving from ignorant nerd, to becoming an hysterical parent. And what hysterical parents do in China, they're buying air purifiers, so these huge machines which are really expensive, you pay something 500‑to 6000 ‑‑ you can pay as much as you want for them, there's no limit to the top. And what these machines do, so they say, is they take bad air (Laughing) and they transform it to good air, and their data sheets is always a little bit unclear what they're doing, sencially they try to advertise that they do magic, they cofancy things, but if you open these machines, you actually don't see a lot of stuff inside. Actually these air purifiers are more sophisticated fans, nothing more. They have filters, which are standardized, most air filter purr if Ier companies are not producing their own filters, buying these so‑called HEPA filterers, and then they create an air flow, and I was thinking, well, I can build that by myself even with two left hands, so I had a look around in my apartment and I found some things, I found ‑‑ from my girl and I bought filter and stick them together and just put it in the corner and let it run. And it made me somehow feel better, but, then, other parents came, other parents who have actually paid 50 0, 600 and they looked at it and say, that doesn't work, and I don't know how it is about you, when I build something I'm always proud, which is probably not the best thing to be, I'm kind of annoyed if someone tells me what build doesn't work, so what I did at this point, I deconstructed the air purifier and actually showed them the filter, and if they're not left the apartment because they saw it's too disgusting, I actually claimed, well, this thing would be in the air if the purr if Ier would not run, so there is some kind of effect, and most of the time it was actually kind of convincing to the other parents, but more often I actually try to convince someone else about that, the less convincing it became to me, because the truth is, I actually don't really know if this device works, I know there's some dust have been collect in the the filter, but, maybe my kid is going in the night and putting some crap on, I don't know if this is really coming out of the air. So, here my journey starts, I needed to know more about the air in my apartment. And, to get an understanding you usually count particles. You get a particle counter, and they're essentially working with two elements, they have a light source and they have a light senator. And what they assume is that when the light is distorted that there's a particle flying buy, so you see there's a serial port on this device, I bought one of them, it's actually quite straightforward reading out the data, if you work with a serial port there's nothing to think about I. I'm actually adding a time stamp in front of it to what is plotted data then I make some experiments, shortly explain, I created a graph over 24 hours, the X is the time the Y axis is the particle count. As you see on the left side there's a small red area at about 5000 to 100 particles, then I turned the purr if Ier off. What would happen ... well, anybody want to guess something.
->> Went down?  I turned the purr if Ier off! I don't know I hope my construction actually improves the air. When I turned the machine off, the values get crazily up.  I thought it would go slowly up, medley when the air flow of the purifier stopped, the whole apartment was filled up, and after twelve hours I moved from something like a particle count of 500 to 30000 so considering that we say, okay, less particles are better, this is worse. So, at 2:00 my wife was pushing me a little bit and said, if it's so bad, maybe you should turn it on again, our kid is still in the apartment. So I turned it on again, the assumption would be that it improves the situation, the question is of course, how fast. And what I see, was actually that as soon as the air flow proceeds again and pushes the air through the filter, the particle count gets down quite fast and actually came to the same level as it was before. So, I could somehow say, there is an effect of my purifier, and here don't get me wrong, I'm not claiming that the beginning and the end is a level of particle count which is healthy, because that's up to some scientists and they are doing studies where they say different things, especially the lobbyist from the cooling industry have some didn't ideas what particle count is healthy or not, but I'm saying that I definitely can improve the air in my apartment with this and commercial ones cannot do it better than that. But there's one problem with this device, I paid four thousand RB which is approximately 430 Euro, it's ‑‑ as a geek, I just buy something like that for fun, but a normal person would not want to do that. And actually my budget was limited and I wanted to map my whole apartment, so I needed more devices, so, instead I searched a little bit and I found actually the core part of the device from a Japanese company and what it is is essentially only the core element of the left particle sensor, so the light source and the light sensor, the problem here is ‑‑ let's start with the positive thing, it cost only 100 RB so instead of something like had 30 Euro, we're paying something like 12 require owe row, the problem is you cannot just connect it to the notebook because there are PVM signals and you not capture that easily with your notebook without additional equipment. Last year I ported to an ARM 3 giving there's to porporating on the devise, I had full access to all the ports, I could connect particle sensor to that board and then ‑‑ with the device.  I could in would not be small non‑technical problem, that was the Japanese company who wrote me that mail for question I had.  I asked them, I bought one of your particle sensors, could you Mel how they work, I mean I didn't want to know how they are constructed I just wanted to know how do I adjust the particle size and measuring, so do I measure particle with 2.5‑microns or one microns this is what they wrote to me, usually we don't disclose information how we use our device, which is kind of crappy. Then that was kind of a dead end, but over my life I learned that every dead end is always an opportunity to find a much better way. And I searched again and I found ‑‑ I would think from a Korean company a device that looked somehow similar, I'm not say hog copied here who. This device not only cost 29 RB, which is something like 4 Euro, but it also had an awesome sales pitch, so I was in the night looking on their web site and I was reading reading reading, my Chinese is really horrible, so I only see Chinese, this is really interesting, this is really interesting, and I proceed ‑‑ suddenly a table was formed and even with my crappy Chinese I can tell you one thing my guess was on the left column I see values of ‑‑ and on the right, on the right column I actually see information about particle size, so qualified guess from me would be if I use a resisser on the control port I can actually adjust the particle size and then actually back to the assumption that this device is copied these values are not only working for the 29 sensor but also for the more expensive one. So, actually the copy is so good copy the same values are now fitting here. So now that we have all the data together, I just connect it all.  I connected to my power supply.  I have a regulator on it. Sorry it's a little bit crappy at my place, I connect to Osciloscope to get what kind of data do I get. The senator usually gives you high voltage around five Watt, from time to time you get a low pulse, and what you actually see here are the particles flying by, they're increase in intensity from the device, really what you see here are the particles being flying by by the sensor and being noticed. And the functionality is that you just collect the time of this low pulse occupancy and then you can collate that to the concentration in the air. And doing that is actually somehow straightforward, so what is interesting from programming point of view is to detect high flanks and low flankses, first of all the blow flanks and then the high flanks and what I do here is I measure the time when does it start, the flow flank and when does it end, and then I made validation, because I ignore the noise, that everything is less than ten million seconds or higher milliseconds is considered as noise and then I actually can start reading maningful data out, but how meaningful are actually the data. Before I draw the graph below I want that you remember that the upper device costs more than 400 Euro and the lower device costs approximately 4 Euro. So there is a difference from one hundred, so keep that in mind. How good can that be, possibly. And there is actually a lot of noise, but the important thing is there's definitely a trend, so, if the particle count is low, the trend is that the data are low. If the particle count is high, the trend is that the particle count is high. So, I'm not really caring about the exact particle size, that's a nice thing and I can still apply some noise reduction on this data, but it's a good starting point, I can definitely sense is my apartment actually at moment crappy or is it actually kind of clean. So now that we have the knowledge, we can actually measure our apartment. We can actually do one thing, we can optimize our air purifier, because it looks still kind of crappy, and by knowing the pollution in our apartment I can make a change to the purifier and actually more or less unit test does it work?  Does itism prove because I have the data. Does it improve the air faster or shower. So, the first thing is, this. So, I'm not sure what you think about this kind of dust, I see here a big, big, big issue.  I see here a problem that the filter is actually not really used, by the way this is the filter after three months. So something like 20‑30 percent of the filter is not used because the fan is just blowing air against the machine, so it actually creates a pattern, you can put some paper in front of it and make nice art out of that, but the sense would be that we use one hundred percent of the filter, does anybody have an idea how we cold possibly do that?  Any suggestion?
->> Change air flow ‑‑
->> No, we're still pushing the air, if we make it smaller ‑‑ well, of course if you is a huge fan then you ‑‑ of course your pattern of the fan and air flow is bigger than purr if Ier then of course you can use all of it, but you also blow beside the filter, which is actually not kind of good, of course if we are assuming that I could put one meter fan in my apartment, then I could use up the whole ‑‑ it's an idea, I didn't think about that one, maybe my wife would complain about this one meter fan in the apartment. So, I was actually thinking we just invert the air flow, instead of pushing the air through filter we actually create a sunks, so we actually suck the air, we create another pressure behind the filter, and we are doing that by building a chamber and we are sucking out the air of that chamber, by that we're creating another pressure behind the whole filter and air is sucked in, so it's equally being used. For that we needed to add some additional fans, so four in this example, and this improvement actually created one new obstacle, because where would you actually put such an air purr if Ier?  I actually noticed that my kid most of the time sleeps, so the kid is in the bed, so the purr if Ier should be in the bedroom. But, I have four filters there running and this is actually kind of noisy when you make your kid to sleep the one single thing you don't want to do is to weight up again. So of we could not think about lowering the voltage, so the fans are running slower but then we actually decrees the functionality because the less air flow we have in the room, the less particle we actually suck out. So, I was thinking, and I was actually remembering that everything is already in place because before we already had the ability to measure the air so, why not actually take that information and regulate the fans based on the air pollution. And this is how it would look abstract, so we have, from the sensor in low pulse, and low pulse from experience is between zero to ten percent, low pulse occupancy. And when you consider that zero percent means the air is good and ten percent means the air is really crappy, everything between, it's not linear, but it's good enough and moving between these two values, so why not just take these values and map them on signals for the fans, because in this way, we are just not giving a constant voltage buse but actually pulses, in this way we can actually regulate the speed of the fan. In Ruby that's actually really straightforward, so we just used the code from before that we are calculating the ratio of these low pulses, you may remember the low flank and high flank ‑‑ together and then calculate the ratio and then we are mapping that on an 8 Bit ‑‑ if the pollution is low then it's not working, that was then the results, this machine, that we put into the bedroom, and it actually turns out that after the air is cleaned out the first time and the machine is rubbing on a low level, the pollution actually doesn't increase that much anymore, so most of the time the machine is running really quite, and that's great. So, now we could say, we are finished, we have this device, all problems are solved, but what are we doing when we don't have any problems?
->> Create problems.
->> Yes. And I love to create problems by ‑‑ I have this called Feartuitis, putting more feature into the device, there is this thing of the get of thing, everything has to be connected to the internet, why not connect also my air purr if I tore the get. Let's think about later why, but let's do this firstment I have some experience ‑‑ ‑‑ a chip use in the most of your network routers, or these cheap plastic routers are using this, and the great thing is, it's rally cheep, it has why if I, it has ether net and full Lynn exsaw ‑‑ Linux this device has 4‑megabyte of flash, so there's a little bit of space to play with. It's a different architecture, a Mips architecture and compiling M Ruby is simple because the build system is really nice, after JRuby talk I might want to make some advertisement for M Ruby too. If you have a strange device, I promise you M Ruby will probably work on it. Point being I don't want to just port M Ruby to this specific device, instead, I looked at the most awesome Linux distribution out there. If you don't know, it's called openWRT, it's the Linux ‑‑ when it comes to embedded devices, it runs everywhere, you can put it on Frisco, all imaginable network router devices, what I did was I ported M Ruby into an open WRT package and now in the open WRT package system, you can actually click M Ruby and you can configure it. You might not know but it's very nicely configurable, so all these over head features you have in other implementations like Eva or string opt them in or out. This is what you can do over openWRT here. Now we have actually put M Ruby on this device and the awesome thing is now we can rayous the Ruby Code from the arm controller on to this device too because it's just Ruby Code, it's not like C code where we are to recross‑compiling now all over again. But, then, as said before if you don't have problems, we create one, feature wish list. Increed ‑‑ we we were thinking what can we put into an air purifier, so we were thinking, there are these internet of things web site, so let's just push all the pollution data into the cloud and with that we can actually compare my home to your home and I can claim my home is much more dirty I have much higher peeks here and here. Or we can have time scheduler, this is one of the useful features here, we can tell the user when they have to change the filter. Actually it is quite surprising but non‑no commercial purifier can tell you, that it has a timer, you activate them, it counts down for six months, then they say change your filter, they don't care if you had ther on at all. We can sense ‑‑ pure fier on at all, we can sense the air, we now have a closed loop, we can clean and measure, and if it doesn't clean anymore, then we can tell, actually the person, your filter is probably not working anymore. But, as features grow and grow and grow, memory, actually shrink and splining and splining, maybe you remember we only had 4‑megabyte of memory inside of this little machine, so we had to think about how do we make space for that, as we taught about these features, they were absolutely necessary for our air purifier. So we shrink code and maybe an advertisement for M Ruby, so you can actually compile M Ruby down to less than one hundred kilo bytes, I wanted to have some sockets, so we increased to one hundred fifty, but it's still small. So we looked at other things that are on open MRT, web server, it's 15‑kilo byte, which is kind of small, but I think we can page it smaller. How much Ruby Code you to write to actually implement Git and post HTTP 1 compliant, just a guess. Not too little because I needed 4‑kilo byte to implement that, I reimpresented the red brick into a smaller version for M Ruby. You can look at the URL, the next thing was crazy I saw W get and as we wanted to have software upgrade because everyone wants to software upgrade their air purifier, I had to compile Wgit for the machine, even without SSL, it's broken, we don't want to use it anymore, it's 160‑kilo byte, that's insane, what does it do?  Initializes a connection to a web server, it can also support other protocols, 160 kill bow byte that's a lot, with M Ruby it's 2 or three line of code, less than one kilo byte to connect to web serve and download into some corner of our file system. So here we also saved quite a lot. Then we wanted to push the pollution data into our cloud. And due to reason that we didn't want anyone cheating with air pollution data making it too good or bad, we signed it inside of the machine, based on shark 256, implementation is actually kind of big it contains also the whole chart ‑‑ I actually needed 44‑kilo bath to implement the whole algorithm.  I love GnuPlot, it's hopeless site wise to put it on such a small device. We outsourced plotting into the browser. And, I'm not a real web guy, but I found on‑line the ‑‑ script line, which is something like 20‑kilo bite, which was actually quite nice HTML 5 compliant charts, okay, we have shrinked everything so we could fit it into our new design, air purr if Ier which we can ‑‑ it's up load intoed the cloud and it's also Graf, really useful functionalities, and you would think after having all this device all in my home, I'm actually really calm now, I have no problem at all about particles, but actually I see particles everywhere. (Laughing) no matter where I go I go to work, I wonder man, that's a real big room, and I don't see any air condition which filters, I don't see any air purr if Iers, oh, my God it has to be crappy here, so so many other things, what we did was we built a portable counting device (Laughing) (Applause) I have a it here in someone wants to look later. It was only use case ‑‑ because I love it so much, we just now push in all the electronics and what you can now do you can just measure everywhere. When I flu from Beijing to Frankfurt I had a seat next to me enough room I put the device there and measured the whole time, how p particles are inside of an airplane, it's not a bad because of the air‑conditioning, but it's nice to know that it's not too bad. So, to sumach, we have now build a little bit more than one hundred devices mainly for some kindergartens, a friend of my kid goes to, and my kid will go too, so it made since to somehow start there, the demand is growing and growing, we're thinking the next batch has to be not a hundred but a thousand, because the demand is really big, with all of these kind of success ‑‑ hobby project I forget the most important point, that was actually that the very first purifier I've built, this crappy one was already good enough and all the experience over the last couple of months made me now also to not able not only trust the device but to know that the device is working. And this is actually not making my kid sleep better, but makes me sleep much better. Thank you very much (Applause)
->> We have time for one question ... of
->> Wait, wait ...
->> Before you leave one question. Did you encounter with any problems with airport security with traveling with ‑‑ I was using Nim instead of Alysium ‑‑ actually I was afraid about that, because I mean, this one you won't get on a plane, this water thing because this is dangerous, but, I mean, this one, how dangerous can that be?  (Laughing) no, no. The security just let me through.  I actually had more ‑‑ I was a little bit for afraid about the battery pack, but I used Nim and apparently some security expert says that no, there's no way you can bring Nim to be exploded, which is kind of true, no, it was actually no problem at all, they looked a little bit strange at it.
->> One question, have you done any research into the efficacy of the Hepa filter compact compared to the level of pollution that is now present this Beijing ‑‑
->> Would you repeat
-have you done any research into the efficacy of the HEPA filter packs you're using, if they were stand addized at the same time as the quality index they may not be good enough.
->> That's actually a big thing, there are HEPA filter, they are standardized, they have this 9999 now percent of particles below one microns which they filter out guaranteed. If you want to build a cheeper device, I mean, I built a HEPA that cost maybe tenure rows, if you want to buy a cheaper filter you have to be careful because the cheaper ones actually not filtering out that well. There's a big ‑‑ not big, but there is kind of a grass root community in Beijing which does do it yourself air purr if Ier, a little bit similar to what I've built and they actually were copied, how can you copy an open source project, but they were copied by a Chinese company and they're selling the do it yourself air purifier, and there are cheaper filters, you can measure that they are worse. So, not only need longer to reduce the particles but they also will never reach really low point because the specific particles will still go through. Interestingly what I notice is the longer you use a filter the better it becomes. There is a peek peak at one point, there is a point the functionality goes down, but in the beginning it works worse than in the middle because there stick to the filter which makes it somehow easier to stick other particles to it. (Applauds)
+
+We want to invite the next speaker. Okay, so, Daniel - is our next
+speaker, and for the last several years he lived mostly in
+Beijing. And he was busy by designing the highly reliable system for
+metros for more than 20 countries all around the world. And today he
+will talk about his own project related to analyzing and even reducing
+air pollution. So meet Daniel. (Applause)
+
+Daniel Bovensiepen: Thanks a lot. Does what work?  Great. Hello
+everyone, I want to talk today dust. I know it's not the best pitch,
+but let's start with that. So, first of all let me introduce myself,
+as was said, I'm coming from Beijing, building Metros for a living,
+I'm a - and I'm loving 3 D printer, today's talk is not about these
+things, instead I want to talk about the future, to be more precise
+about future of my son. As all kid thing at the moment is still quite
+new, I noticed that kids need some kind of care, giving them regular
+food, giving them a little bit of bath, a little bit of love
+apparently helps from time to time. Not this kind of care I'm talking
+about. I'm talking about taking care of kids in way nobody would think
+about here in Europe would think about it because it's not a
+problem. In China you have to take care of your kid, which is
+universal, and that's the so called airpocalypse, what is that?  It's
+the worth possible weather you can have in terms of smog. And I was
+actually originally wanting to show you some pictures about bike
+drivers driving through streets and you can hardly see five meters,
+but, I think showing you that picture doesn't really show you how bad
+it really is, so instead I want to talk with you about numbers, or
+more precise I want to talk with you about the air quality index,
+which is an index created by the WHO, and, actually in China people
+have this index all the time on their phone, before they leave their
+apartment they look on their phone and check, well, to day is actually
+a bad day because the pollution is really bad, they don't care if it's
+raining or not, they care about pollution, so if it's bad maybe I
+don't leave today N Europe you have something like quality index of
+20-30, this air quality index is collating to particle matter in the
+air. So, people are measuring the concentration if micro gram for
+specific particle size and the higher the concentration gets the
+higher the index gets, and we assume here that a lot of particle in
+the air is considered bad. So, I will tell you in Berlin, if you is a
+smoggy day, really smoggy day, you have an air quality of 50 -
+five-zero, the W H O says if you have an air quality index of 150 you
+should not leave your apartment anymore, it's quite unhealthy.  What
+would you think that the weather is sometimes really bad in Beijing,
+what would be the air quality index.  I tell you the air quality index
+is defined 1-500, can anyone make a qualified guess what a bad day
+looks like China?
+
+800
+
+800 sounds quite bad, you already got the point, I think. The problem
+here is actually the air quality index in China is breaking the index,
+so, and this is really how bad it is in China, so ten years ago, when
+think standardized these air quality index, scientists could not
+imagine that there would ever be a residential area that has so much
+pollution, this is how bad it is. We know that it's really bad about
+air pollution, what can we do?  And the longest time or last 7 years I
+smut made fun about air pollution, seriously most of the science
+fiction movies are polluted, if you look at blade runner, the future
+has to be polluted, so living in Beijing feels like somehow I'm living
+in the future, it tastes like I'm living in the future, and indeed you
+can taste the air on bad days in Beijing. We're collecting some kind
+of masks, but last year, things changed for me, or better things for
+my girl changed she became pregnant and some kind of transformation
+happened to me, transformation which I would call moving from ignorant
+nerd, to becoming an hysterical parent. And what hysterical parents do
+in China, they're buying air purifiers, so these huge machines which
+are really expensive, you pay something 500-to 6000 - you can pay as
+much as you want for them, there's no limit to the top. And what these
+machines do, so they say, is they take bad air (Laughing) and they
+transform it to good air, and their data sheets is always a little bit
+unclear what they're doing, basically they try to advertise that they
+do magic, they do fancy things, but if you open these machines, you
+actually don't see a lot of stuff inside. Actually these air purifiers
+are more sophisticated fans, nothing more. They have filters, which
+are standardized, most air filter purifier companies are not
+producing their own filters, buying these so-called HEPA filterers,
+and then they create an air flow, and I was thinking, well, I can
+build that by myself even with two left hands, so I had a look around
+in my apartment and I found some things, I found - from my girl and I
+bought filter and stick them together and just put it in the corner
+and let it run. And it made me somehow feel better, but, then, other
+parents came, other parents who have actually paid 50 0, 600 and they
+looked at it and say, that doesn't work, and I don't know how it is
+about you, when I build something I'm always proud, which is probably
+not the best thing to be, I'm kind of annoyed if someone tells me what
+build doesn't work, so what I did at this point, I deconstructed the
+air purifier and actually showed them the filter, and if they're not
+left the apartment because they saw it's too disgusting, I actually
+claimed, well, this thing would be in the air if the purifier would
+not run, so there is some kind of effect, and most of the time it was
+actually kind of convincing to the other parents, but more often I
+actually try to convince someone else about that, the less convincing
+it became to me, because the truth is, I actually don't really know if
+this device works, I know there's some dust have been collect in the
+filter, but, maybe my kid is going in the night and putting some
+crap on, I don't know if this is really coming out of the air. So,
+here my journey starts, I needed to know more about the air in my
+apartment. And, to get an understanding you usually count
+particles. You get a particle counter, and they're essentially working
+with two elements, they have a light source and they have a light
+senator. And what they assume is that when the light is distorted that
+there's a particle flying buy, so you see there's a serial port on
+this device, I bought one of them, it's actually quite straightforward
+reading out the data, if you work with a serial port there's nothing
+to think about I. I'm actually adding a time stamp in front of it to
+what is plotted data then I make some experiments, shortly explain, I
+created a graph over 24 hours, the X is the time the Y axis is the
+particle count. As you see on the left side there's a small red area
+at about 5000 to 100 particles, then I turned the purifier
+off. What would happen ... well, anybody want to guess something.
+
+Went down?  I turned the purifier off! I don't know I hope my
+construction actually improves the air. When I turned the machine off,
+the values get crazily up.  I thought it would go slowly up, medley
+when the air flow of the purifier stopped, the whole apartment was
+filled up, and after twelve hours I moved from something like a
+particle count of 500 to 30000 so considering that we say, okay, less
+particles are better, this is worse. So, at 2:00 my wife was pushing
+me a little bit and said, if it's so bad, maybe you should turn it on
+again, our kid is still in the apartment. So I turned it on again, the
+assumption would be that it improves the situation, the question is of
+course, how fast. And what I see, was actually that as soon as the air
+flow proceeds again and pushes the air through the filter, the
+particle count gets down quite fast and actually came to the same
+level as it was before. So, I could somehow say, there is an effect of
+my purifier, and here don't get me wrong, I'm not claiming that the
+beginning and the end is a level of particle count which is healthy,
+because that's up to some scientists and they are doing studies where
+they say different things, especially the lobbyist from the cooling
+industry have some didn't ideas what particle count is healthy or not,
+but I'm saying that I definitely can improve the air in my apartment
+with this and commercial ones cannot do it better than that. But
+there's one problem with this device, I paid four thousand RB which is
+approximately 430 Euro, it's - as a geek, I just buy something like
+that for fun, but a normal person would not want to do that. And
+actually my budget was limited and I wanted to map my whole apartment,
+so I needed more devices, so, instead I searched a little bit and I
+found actually the core part of the device from a Japanese company and
+what it is essentially only the core element of the left particle
+sensor, so the light source and the light sensor, the problem here
+is - let's start with the positive thing, it cost only 100 RB so
+instead of something like had 30 Euro, we're paying something like 12
+require owe row, the problem is you cannot just connect it to the
+notebook because there are PVM signals and you not capture that easily
+with your notebook without additional equipment. Last year I ported to
+an ARM 3 giving there's to porporating on the devise, I had full
+access to all the ports, I could connect particle sensor to that board
+and then - with the device.  I could in would not be small
+non-technical problem, that was the Japanese company who wrote me that
+mail for question I had.  I asked them, I bought one of your particle
+sensors, could you Mel how they work, I mean I didn't want to know how
+they are constructed I just wanted to know how do I adjust the
+particle size and measuring, so do I measure particle with 2.5-microns
+or one microns this is what they wrote to me, usually we don't
+disclose information how we use our device, which is kind of
+crappy. Then that was kind of a dead end, but over my life I learned
+that every dead end is always an opportunity to find a much better
+way. And I searched again and I found - I would think from a Korean
+company a device that looked somehow similar, I'm not say hog copied
+here who. This device not only cost 29 RB, which is something like 4
+Euro, but it also had an awesome sales pitch, so I was in the night
+looking on their web site and I was reading reading reading, my
+Chinese is really horrible, so I only see Chinese, this is really
+interesting, this is really interesting, and I proceed - suddenly a
+table was formed and even with my crappy Chinese I can tell you one
+thing my guess was on the left column I see values of - and on the
+right, on the right column I actually see information about particle
+size, so qualified guess from me would be if I use a resisser on the
+control port I can actually adjust the particle size and then actually
+back to the assumption that this device is copied these values are not
+only working for the 29 sensor but also for the more expensive
+one. So, actually the copy is so good copy the same values are now
+fitting here. So now that we have all the data together, I just
+connect it all.  I connected to my power supply.  I have a regulator
+on it. Sorry it's a little bit crappy at my place, I connect to
+Oscilloscope to get what kind of data do I get. The senator usually
+gives you high voltage around five Watt, from time to time you get a
+low pulse, and what you actually see here are the particles flying by,
+they're increase in intensity from the device, really what you see
+here are the particles being flying by the sensor and being
+noticed. And the functionality is that you just collect the time of
+this low pulse occupancy and then you can collate that to the
+concentration in the air. And doing that is actually somehow
+straightforward, so what is interesting from programming point of view
+is to detect high flanks and low flanks, first of all the blow
+flanks and then the high flanks and what I do here is I measure the
+time when does it start, the flow flank and when does it end, and then
+I made validation, because I ignore the noise, that everything is less
+than ten million seconds or higher milliseconds is considered as noise
+and then I actually can start reading meaningful data out, but how
+meaningful are actually the data. Before I draw the graph below I want
+that you remember that the upper device costs more than 400 Euro and
+the lower device costs approximately 4 Euro. So there is a difference
+from one hundred, so keep that in mind. How good can that be,
+possibly. And there is actually a lot of noise, but the important
+thing is there's definitely a trend, so, if the particle count is low,
+the trend is that the data are low. If the particle count is high, the
+trend is that the particle count is high. So, I'm not really caring
+about the exact particle size, that's a nice thing and I can still
+apply some noise reduction on this data, but it's a good starting
+point, I can definitely sense is my apartment actually at moment
+crappy or is it actually kind of clean. So now that we have the
+knowledge, we can actually measure our apartment. We can actually do
+one thing, we can optimize our air purifier, because it looks still
+kind of crappy, and by knowing the pollution in our apartment I can
+make a change to the purifier and actually more or less unit test does
+it work?  Does itism prove because I have the data. Does it improve
+the air faster or shower. So, the first thing is, this. So, I'm not
+sure what you think about this kind of dust, I see here a big, big,
+big issue.  I see here a problem that the filter is actually not
+really used, by the way this is the filter after three months. So
+something like 20-30 percent of the filter is not used because the fan
+is just blowing air against the machine, so it actually creates a
+pattern, you can put some paper in front of it and make nice art out
+of that, but the sense would be that we use one hundred percent of the
+filter, does anybody have an idea how we cold possibly do that?  Any
+suggestion?
+
+
+Change air flow - No, we're still pushing the air, if we make it
+smaller - well, of course if you is a huge fan then you - of course
+your pattern of the fan and air flow is bigger than purifier then
+of course you can use all of it, but you also blow beside the filter,
+which is actually not kind of good, of course if we are assuming that
+I could put one meter fan in my apartment, then I could use up the
+whole - it's an idea, I didn't think about that one, maybe my wife
+would complain about this one meter fan in the apartment. So, I was
+actually thinking we just invert the air flow, instead of pushing the
+air through filter we actually create a sunks, so we actually suck the
+air, we create another pressure behind the filter, and we are doing
+that by building a chamber and we are sucking out the air of that
+chamber, by that we're creating another pressure behind the whole
+filter and air is sucked in, so it's equally being used. For that we
+needed to add some additional fans, so four in this example, and this
+improvement actually created one new obstacle, because where would you
+actually put such an air purifier?  I actually noticed that my kid
+most of the time sleeps, so the kid is in the bed, so the purifier
+should be in the bedroom. But, I have four filters there running and
+this is actually kind of noisy when you make your kid to sleep the one
+single thing you don't want to do is to weight up again. So of we
+could not think about lowering the voltage, so the fans are running
+slower but then we actually decrees the functionality because the less
+air flow we have in the room, the less particle we actually suck
+out. So, I was thinking, and I was actually remembering that
+everything is already in place because before we already had the
+ability to measure the air so, why not actually take that information
+and regulate the fans based on the air pollution. And this is how it
+would look abstract, so we have, from the sensor in low pulse, and low
+pulse from experience is between zero to ten percent, low pulse
+occupancy. And when you consider that zero percent means the air is
+good and ten percent means the air is really crappy, everything
+between, it's not linear, but it's good enough and moving between
+these two values, so why not just take these values and map them on
+signals for the fans, because in this way, we are just not giving a
+constant voltage buse but actually pulses, in this way we can actually
+regulate the speed of the fan. In Ruby that's actually really
+straightforward, so we just used the code from before that we are
+calculating the ratio of these low pulses, you may remember the low
+flank and high flank - together and then calculate the ratio and then
+we are mapping that on an 8 Bit - if the pollution is low then it's
+not working, that was then the results, this machine, that we put into
+the bedroom, and it actually turns out that after the air is cleaned
+out the first time and the machine is rubbing on a low level, the
+pollution actually doesn't increase that much anymore, so most of the
+time the machine is running really quite, and that's great. So, now we
+could say, we are finished, we have this device, all problems are
+solved, but what are we doing when we don't have any problems?
+
+Create problems.  Yes. And I love to create problems by - I have this
+called Feartuitis, putting more feature into the device, there is this
+thing of the get of thing, everything has to be connected to the
+internet, why not connect also my air purr if I tore the get. Let's
+think about later why, but let's do this firstment I have some
+experience - - a chip use in the most of your network routers, or
+these cheap plastic routers are using this, and the great thing is,
+it's rally cheep, it has why if I, it has ether net and full Lynn
+exsaw - Linux this device has 4-megabyte of flash, so there's a little
+bit of space to play with. It's a different architecture, a Mips
+architecture and compiling M Ruby is simple because the build system
+is really nice, after JRuby talk I might want to make some
+advertisement for M Ruby too. If you have a strange device, I promise
+you M Ruby will probably work on it. Point being I don't want to just
+port M Ruby to this specific device, instead, I looked at the most
+awesome Linux distribution out there. If you don't know, it's called
+openWRT, it's the Linux - when it comes to embedded devices, it runs
+everywhere, you can put it on Frisco, all imaginable network router
+devices, what I did was I ported M Ruby into an open WRT package and
+now in the open WRT package system, you can actually click M Ruby and
+you can configure it. You might not know but it's very nicely
+configurable, so all these over head features you have in other
+implementations like Eva or string opt them in or out. This is what
+you can do over openWRT here. Now we have actually put M Ruby on this
+device and the awesome thing is now we can rayous the Ruby Code from
+the arm controller on to this device too because it's just Ruby Code,
+it's not like C code where we are to recross-compiling now all over
+again. But, then, as said before if you don't have problems, we create
+one, feature wish list. Increed - we we were thinking what can we put
+into an air purifier, so we were thinking, there are these internet of
+things web site, so let's just push all the pollution data into the
+cloud and with that we can actually compare my home to your home and I
+can claim my home is much more dirty I have much higher peeks here and
+here. Or we can have time scheduler, this is one of the useful
+features here, we can tell the user when they have to change the
+filter. Actually it is quite surprising but non-no commercial purifier
+can tell you, that it has a timer, you activate them, it counts down
+for six months, then they say change your filter, they don't care if
+you had ther on at all. We can sense - purifier on at all, we can
+sense the air, we now have a closed loop, we can clean and measure,
+and if it doesn't clean anymore, then we can tell, actually the
+person, your filter is probably not working anymore. But, as features
+grow and grow and grow, memory, actually shrink and splining and
+splining, maybe you remember we only had 4-megabyte of memory inside
+of this little machine, so we had to think about how do we make space
+for that, as we taught about these features, they were absolutely
+necessary for our air purifier. So we shrink code and maybe an
+advertisement for M Ruby, so you can actually compile M Ruby down to
+less than one hundred kilo bytes, I wanted to have some sockets, so we
+increased to one hundred fifty, but it's still small. So we looked at
+other things that are on open MRT, web server, it's 15-kilo byte,
+which is kind of small, but I think we can page it smaller. How much
+Ruby Code you to write to actually implement Git and post HTTP 1
+compliant, just a guess. Not too little because I needed 4-kilo byte
+to implement that, I reimpresented the red brick into a smaller
+version for M Ruby. You can look at the URL, the next thing was crazy
+I saw W get and as we wanted to have software upgrade because everyone
+wants to software upgrade their air purifier, I had to compile Wgit
+for the machine, even without SSL, it's broken, we don't want to use
+it anymore, it's 160-kilo byte, that's insane, what does it do?
+Initializes a connection to a web server, it can also support other
+protocols, 160 kill bow byte that's a lot, with M Ruby it's 2 or three
+line of code, less than one kilo byte to connect to web serve and
+download into some corner of our file system. So here we also saved
+quite a lot. Then we wanted to push the pollution data into our
+cloud. And due to reason that we didn't want anyone cheating with air
+pollution data making it too good or bad, we signed it inside of the
+machine, based on shark 256, implementation is actually kind of big it
+contains also the whole chart - I actually needed 44-kilo bath to
+implement the whole algorithm.  I love GnuPlot, it's hopeless site
+wise to put it on such a small device. We outsourced plotting into the
+browser. And, I'm not a real web guy, but I found on-line the - script
+line, which is something like 20-kilo bite, which was actually quite
+nice HTML 5 compliant charts, okay, we have shrinked everything so we
+could fit it into our new design, air purr if Ier which we can - it's
+up load intoed the cloud and it's also Graf, really useful
+functionalities, and you would think after having all this device all
+in my home, I'm actually really calm now, I have no problem at all
+about particles, but actually I see particles everywhere. (Laughing)
+no matter where I go I go to work, I wonder man, that's a real big
+room, and I don't see any air condition which filters, I don't see any
+air purr if Iers, oh, my God it has to be crappy here, so so many
+other things, what we did was we built a portable counting device
+(Laughing) (Applause) I have a it here in someone wants to look
+later. It was only use case - because I love it so much, we just now
+push in all the electronics and what you can now do you can just
+measure everywhere. When I flu from Beijing to Frankfurt I had a seat
+next to me enough room I put the device there and measured the whole
+time, how p particles are inside of an airplane, it's not a bad
+because of the air-conditioning, but it's nice to know that it's not
+too bad. So, to sumach, we have now build a little bit more than one
+hundred devices mainly for some kindergartens, a friend of my kid goes
+to, and my kid will go too, so it made since to somehow start there,
+the demand is growing and growing, we're thinking the next batch has
+to be not a hundred but a thousand, because the demand is really big,
+with all of these kind of success - hobby project I forget the most
+important point, that was actually that the very first purifier I've
+built, this crappy one was already good enough and all the experience
+over the last couple of months made me now also to not able not only
+trust the device but to know that the device is working. And this is
+actually not making my kid sleep better, but makes me sleep much
+better. Thank you very much (Applause)
+
+We have time for one question ... Wait, wait ...
+
+Before you leave one question. Did you encounter with any problems
+with airport security with traveling with - I was using Nim instead of
+Alysium - actually I was afraid about that, because I mean, this one
+you won't get on a plane, this water thing because this is dangerous,
+but, I mean, this one, how dangerous can that be?  (Laughing) no,
+no. The security just let me through.  I actually had more - I was a
+little bit for afraid about the battery pack, but I used Nim and
+apparently some security expert says that no, there's no way you can
+bring Nim to be exploded, which is kind of true, no, it was actually
+no problem at all, they looked a little bit strange at it.
+
+
+One question, have you done any research into the efficacy of the Hepa
+filter compact compared to the level of pollution that is now present
+this Beijing -
+
+Would you repeat
+
+Have you done any research into the efficacy of the HEPA filter packs
+you're using, if they were stand addized at the same time as the
+quality index they may not be good enough.
+
+That's actually a big thing, there are HEPA filter, they are
+standardized, they have this 9999 now percent of particles below one
+microns which they filter out guaranteed. If you want to build a
+cheeper device, I mean, I built a HEPA that cost maybe tenure rows, if
+you want to buy a cheaper filter you have to be careful because the
+cheaper ones actually not filtering out that well. There's a big- not
+big, but there is kind of a grass root community in Beijing which does
+do it yourself air purr if Ier, a little bit similar to what I've
+built and they actually were copied, how can you copy an open source
+project, but they were copied by a Chinese company and they're selling
+the do it yourself air purifier, and there are cheaper filters, you
+can measure that they are worse. So, not only need longer to reduce
+the particles but they also will never reach really low point because
+the specific particles will still go through. Interestingly what I
+notice is the longer you use a filter the better it becomes. There is
+a peek peak at one point, there is a point the functionality goes
+down, but in the beginning it works worse than in the middle because
+there stick to the filter which makes it somehow easier to stick other
+particles to it. (Applauds)
