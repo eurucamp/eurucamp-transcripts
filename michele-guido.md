@@ -3,7 +3,7 @@ speaker: Michele Guido
 title: It Takes a Village to Make a Programmer
 ---
 
->> I want to introduce Michelle. She's a former English teacher and she moved from New York to Berlin more than a year ago. She'll share a story about how she passed through the English institute - from English teacher to a web developer, from zero to fully employed person, so meet her (Applause).
+>> I want to introduce Michele. She's a former English teacher and she moved from New York to Berlin more than a year ago. She'll share a story about how she passed through the English institute - from English teacher to a web developer, from zero to fully employed person, so meet her (Applause).
 
 >> Hi, everyone, my name is Michele with one "L," if you want find me on Twitter. I'd really appreciate it. It's one of my life's goals to be famous on Twitter. I'll tweet out my slides later, if you're interest in the that. So this is my talk: it takes a village to make a programmer.  And as I was introduced, it's going to be a talk in two parts, the first part will be my story, and the second part will be suggestions for you for how you can help out in your own village.
 
