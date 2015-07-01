@@ -2,7 +2,7 @@
 title: Keynote
 speaker: Paolo Perrotta
 transcript: |
-  Paolo\: So, hello! Good evening. Welcome in Potsdam! So, today it’s
+  Paolo: So, hello! Good evening. Welcome in Potsdam! So, today it’s
   Friday. What does that mean? Can you guess? Party! What do you all
   like doing? Besides coding?  Drinking. Hugging. Yes, so, we're going
   to do a big group picture, so please stand up and hug your neighbour
@@ -12,7 +12,7 @@ transcript: |
   people who made this a financially viable event, and Florian will
   introduce our wonderful sponsors.
 
-  Florian\: Hi, so I have this sheet of paper instead of slides
+  Florian: Hi, so I have this sheet of paper instead of slides
   today. Our sponsors are Fyber, who are going to sponsor the party
   tonight. (Applause) Peter is going to tell you a little bit about that
   in a minute. Asquera, a company I don't really know… it’s mine!
@@ -29,7 +29,7 @@ transcript: |
   of cash or sending speakers or being otherwise supportive; so we have
   Bullet Proof, Sound Cloud, Birth Cloud, Scef…
 
-  Peter\: When I mentioned to my marketing team that there was an
+  Peter: When I mentioned to my marketing team that there was an
   opportunity to sponsor something, they said, ‘Oh! Great! Do it, do it,
   do it!’.
 
@@ -59,13 +59,13 @@ transcript: |
   forward to meeting some of you. I wish us a very cool event today,
   tomorrow, and on Sunday, thanks!
 
-  Alex\: There is an app you can download to view the captions, and we'll
+  Alex: There is an app you can download to view the captions, and we'll
   be viewing the Captions in the lecture halls. You should see it on
   Twitter or by e-mail, so, if you have if I questions, please come see
   one of us.
 
   Live stream… we also have a live stream this year, so you can watch
-  the sessions in the Lecture Hall 1 live at http\://live.eurucamp.org
+  the sessions in the Lecture Hall 1 live at http://live.eurucamp.org
   Regarding artwork; there is artwork there (points) and there
   (points). And I think one other place… there (points)! Please don't
   sit on the art work. As this beautiful little guide will explain, we
@@ -106,21 +106,21 @@ transcript: |
   We are run by Ruby Berlin, EV, and Florian is on the committee, I
   wanted to say just one thing about them.
 
-  Florian\: I would like the say two words about them, Dajana is also in
+  Florian: I would like the say two words about them, Dajana is also in
   the non-profit, thank you, raise some applause for her. We're a
   non-profit organisation that helps spread Ruby in Germany, but also in
   Europe, so we're trying to grow a few projects and our most important
   project is actually Rails Girls Berlin, about which Ute will give a
   few words (Applause).
 
-  Ute\: Yeah, wow, so many people! I'm a Rails Girls Berlin organizer
+  Ute: Yeah, wow, so many people! I'm a Rails Girls Berlin organizer
   since 2012, this was today our third workshop during eurucamp and we
   are very, very happy to bring new people to this awesome community. I
   like eurucamp very much! We are the most active chapter worldwide, we
   had 18 workshops with over 640 attendees and we have in Berlin 120
   coaches. I thank you all for supporting us, thank you! (Applause).
 
-  Alex\: We're waiting for the thousandth attendee, maybe next year
+  Alex: We're waiting for the thousandth attendee, maybe next year
   that'll be a realistic goal.
 
   A few notes on what's happening tonight. So the plan is after this
@@ -150,7 +150,7 @@ transcript: |
   They'll be our MC -- they will be our MC's for next two days (Whooooo
   !) So you get a little bit of a taste of Ukraine.
 
-  Natalia\: Sure. Thanks Alex and Florian! Hi there, thanks for inviting
+  Natalia: Sure. Thanks Alex and Florian! Hi there, thanks for inviting
   us, it's exciting to be here. It's really a pity that we weren't able
   to say hi to all of you in Keiv this year, hope you'll have an
   opportunity to do it really soon. And that's great that we have such a
@@ -166,12 +166,12 @@ transcript: |
   interaction, and if you have a chance to come closer to the stage,
   please come closer.  Thanks. Paolo?  (Applause).
 
-  Paolo “Nusco" Perrotta\: Hello! Thank you, Mom! (Laughing) okay, I have
+  Paolo “Nusco" Perrotta: Hello! Thank you, Mom! (Laughing) okay, I have
   good news And bad news, can you hear me?
 
-  Audience\: Yeah!!
+  Audience: Yeah!!
 
-  Paolo\: Okay, that's the good news!! Now... Seriously, the good news is
+  Paolo: Okay, that's the good news!! Now... Seriously, the good news is
   that I have a presentation that is extremely visual, there are lots of
   pretty pictures and I'm not going to require your attention with
   complicated concepts and just listening to me speaking. So I really
@@ -180,9 +180,9 @@ transcript: |
   broken, so, actually I can't show you a single slide and you're stuck
   with me speaking on this stage for the next half an hour or so.
 
-  Audience\: (Whooo!) Applause
+  Audience: (Whooo!) Applause
 
-  Paolo\: And I love it to death when Florian came to me and told me, he
+  Paolo: And I love it to death when Florian came to me and told me, he
   gave me this piece of news, he was like -- man, take it easy, it's
   okay, I can still deliver the keynote even without pictures, who cares
   if I make a fool of myself, it's just a few hundred people, right
@@ -204,14 +204,14 @@ transcript: |
   there who's probably delusional (Laughing) this little dude, what's
   your name, son, who, me, it —
 
-  Ben\: It’s Ben.
+  Ben: It’s Ben.
 
-  Paolo\: No, Ben, I wasn't talking to you, I was talking to this other
+  Paolo: No, Ben, I wasn't talking to you, I was talking to this other
   guy, here.
 
-  Constantine\: Constantine.
+  Constantine: Constantine.
 
-  Paolo\: This is interesting, because what makes a good developer,
+  Paolo: This is interesting, because what makes a good developer,
   really, what makes a get developer, we have seen people who have these
   high opinion of themselves if particular Ben and Constantine has also,
   and, it's a bit arbitrary, right.  I mean, let's call a good developer
@@ -229,7 +229,7 @@ transcript: |
 
   Of course! Yeah, you're biased.
 
-  Paolo\: Okay, somebody who's not kind of in a close --
+  Paolo: Okay, somebody who's not kind of in a close --
   in close friendship with either, can you tell by looking at them who's
   the best developer here?  Who's good?
 
@@ -315,19 +315,19 @@ transcript: |
 
   What do you do in your job that is simple?
 
-  Audience\: Debugging.
+  Audience: Debugging.
 
-  Paolo\: Come on, who us be doing a few things that are simple.
+  Paolo: Come on, who us be doing a few things that are simple.
 
-  Audience\: Reboot.
+  Audience: Reboot.
 
-  Paolo\: Reboot. What else?
+  Paolo: Reboot. What else?
 
-  Audience\: Coffee break.
+  Audience: Coffee break.
 
-  Audience\: Staging files.
+  Audience: Staging files.
 
-  Paolo\: What happens is that usually the simple stuff, you don't know
+  Paolo: What happens is that usually the simple stuff, you don't know
   this notice much because you automate a lot of it. That's what
   happens. After all we're pushing births and births are light. If you
   were pushing breaks then automating would be much harder. What happens
@@ -357,7 +357,7 @@ transcript: |
   yourself if you take the time to really study the problem. This is
   what, in complexity theory is known as compliant. Complicated, no,
   serious. (Laughing) complicated. Oh, you are amazed by my drawing
-  skills\: That's nice, thank you. That's why I'm here, I don't know
+  skills: That's nice, thank you. That's why I'm here, I don't know
   squat about software. (Laughing) so come collated means that cause and
   effect still have a well-defined relationship. You can still know that
   relationship in advance, but you need to analyze, you need to study or
@@ -377,14 +377,14 @@ transcript: |
   that doesn't count.
 
   Customer support.
-  Paolo\: Customer support… I'll hold it for a while, I'm not sure it
+  Paolo: Customer support… I'll hold it for a while, I'm not sure it
   qualifies, but dependency solution definitely does.
-  Audience\: Naming things.
-  Paolo\: We’re on the verge here, yeah, yeah, kind of. But, again, we
+  Audience: Naming things.
+  Paolo: We’re on the verge here, yeah, yeah, kind of. But, again, we
   talk about it later.
-  Audience\: Separating things
-  Audience\: Refactoring.
-  Paolo\: Refactoring is not complicated. Separating things and even
+  Audience: Separating things
+  Audience: Refactoring.
+  Paolo: Refactoring is not complicated. Separating things and even
   naming things is not complicated. Complicated means you can sit down
   and do it all in your head and after you've done it in your head you
   can predict the future. I can't do that with refactoring, I don't know
@@ -399,16 +399,16 @@ transcript: |
   you know 747 now you know I can't draw plane.  I don't know how it
   flies, frankly.  I know why things fly kind of, I don't know why a 747
   -- you criticizing my picture?!
-  Constantin\: A 747 has two layers.
-  Paolo\: Okay, smart ass because you think you can give a better keynote
+  Constantin: A 747 has two layers.
+  Paolo: Okay, smart ass because you think you can give a better keynote
   that I can, now you step up and draw a 747 in front of all these nice
   ladies and gentlemen.
-  Audience\: (Applause)
-  Paolo\: I try not to spoil it for you. Come on, come on. We don't have all night.
-  Konstantin\: (draws) (laughing).
-  Paolo\: Okay, good, good. Okay.
-  Audience\: (Applause).
-  Paolo\:  I think mine is better.
+  Audience: (Applause)
+  Paolo: I try not to spoil it for you. Come on, come on. We don't have all night.
+  Konstantin: (draws) (laughing).
+  Paolo: Okay, good, good. Okay.
+  Audience: (Applause).
+  Paolo:  I think mine is better.
   Well, the idea of a 747 is there that there are a lot of moving
   pieces. I don't know how they fit together, but give me five or ten
   years or enough money to hire somebody that knows, and I can tell you
@@ -439,32 +439,32 @@ transcript: |
   you. But you disability know it when you started. This is the
   interesting part. What do you do in your job that is complex?
 
-  Audience\: Automating.
+  Audience: Automating.
 
-  Audience\: Optimising
+  Audience: Optimising
 
-  Audience\: Analytics
+  Audience: Analytics
 
-  Audience\: Creating a new product.
+  Audience: Creating a new product.
 
-  Paulo\: I heard somebody there; these are all true. Employ production
+  Paulo: I heard somebody there; these are all true. Employ production
   (I think is what he said) (Laughing) Smart asses. (Laughing) So, this
   is the point, sorry I'm using my useless slides as guidelines; this is
   the point, right, the interesting stuff that you do, the really
   interesting stuff tends to be complex, not complicated; and far from
   simple. This is the interesting stuff that you do.
 
-  Now, I would ask you\: What's the typical complex system apart from
+  Now, I would ask you: What's the typical complex system apart from
   coding, apart from software? What's “the" complex system you can think
   of?
 
-  Audience\: Humans
+  Audience: Humans
 
-  Audience\: Relationships
+  Audience: Relationships
 
-  Audience\: Society
+  Audience: Society
 
-  Paolo\: People, yeah! So interacting with people sucks, doesn't it? Do
+  Paolo: People, yeah! So interacting with people sucks, doesn't it? Do
   you ever meet that developer that says ‘Oh, I can code whatever you
   want, just don't make me talk to the customer’? (Laughing) Proximate
   cause it's complex. (Applause) and the example of a complex system is
@@ -577,5 +577,5 @@ transcript: |
   hand. Okay. Okay. The other guys didn't learn squat today (Laughing) I
   hope you liked the pictures, thank you. (Applause) Enjoy the party.
 
-  Alex\: Thank you to Paolo, please find someone with a pink shirt and
+  Alex: Thank you to Paolo, please find someone with a pink shirt and
   they will direct you to the party. (Applause)"
