@@ -1,0 +1,892 @@
+---
+title: Building a scalable messaging fabric with JRuby and Storm”
+speaker: Ian Smith and R. Tyler Croy
+transcript: |
+  >> Our next speakers are Jan and tiler,
+  they've been working on asin crow nows
+  misaging at Lookout, they've been trying to
+  make it work with active, Reddis and they
+  are now going to explain what solution they
+  found with Storm.
+
+  (Presentation by Ian  Smith and R. Tyler Croy)
+
+  >> All right, are you guys ready for this,
+  I know everyone's so excited for the last
+  major talk. What we've been doing at
+  Lookout recently is building out asin
+  concurrent resolution nows message process
+  on top of Storm and JRuby. Before I get too
+  far into that, explain who we are, not sure
+  how many of you have met in person before,
+  I maim is R. Tyler Croy, I've been a Ruby
+  developer for about three and half years, I
+  join Lookout and became a Ruby developer,
+  before that I was a Python developer, so
+  it's close enough. But most of my
+  professional background has been building
+  these sorts of large scale back end web
+  services. And I'm submit, I've been Ruby
+  developer for two years, prior the that I
+  was spending time in academia, which is a
+  very sort of different environment. (Ian
+  Smith)
+  >> R. Tyler Croy:  Lookout as a company has
+  existed for about five years, unlike a lot
+  of company in the bay area where we're
+  from, Lookout started as a mobile
+  development shop, we started with No Nokia,
+  Blackberry, a big giant Rails application,
+  as we've we 506 had to make the inverse
+  transition like Facebook and Google they
+  knew how to build back end web services but
+  not mobile apps, we had to go the other way
+  around, start building out more and more
+  services that talk to one another to power
+  our back end computing. So just by quick
+  show of hands who here besides Colin
+  actually know what Storm is. Four or five
+  people. Before I get too deep into
+  explaining what Storm is, the sort version
+  is it's a scalable message processing and
+  transformation framework. But, it's very,
+  very different from some of the things that
+  you might already be pa milia with, I'll
+  describe these as sort of old way of doing
+  message processing in a back end
+  environment, usually consists of, you know,
+  sidekick or rescues or ticking a message
+  and defer that work off to a Daemon
+  process, the usual process is a case that
+  hits a network API like I need send an
+  e-mail, instead of doing that in my web
+  application, I'll send it to a queue,
+  something will read off the queue, and the
+  mail server so I don't block a web request.
+  A lot of the things that Rubyists are very
+  familiar with using are based on Reddis,
+  side quick, rescue or talking to readies
+  directly. We've deployed a number of these
+  red Is based solution in Lookout, there's
+  some inherent problem in them (Redis) from
+  a development standpoint you have to know
+  on the producer side who your consumers are
+  going to be, so the producer of a message
+  needs to know which queue it needs to put
+  the message in, who's going to receive it,
+  make sure it gets done, from an operational
+  standpoint, Redis a very hard to scale, it
+  doesn't handle fault tolerance well,
+  sentinel -- helped solve some of the
+  problems that a traditional Redis serve has
+  had, when you talk about 20-30 back end web
+  applications like we are at Lookout, having
+  one or two or maybe even ten single Redis
+  instances handling proxy mess annals around
+  your architecture is not going to work very
+  well over the long term.  after we got used
+  to dealing with Redis we looked at more"
+  ënterprise"message queues, not sure what
+  enterprise mess means, it's activeMQ,
+  rabbitMQ, hornetQ, -- we actually ended up
+  evaluating these to move from Redis to
+  something new and ended up going to
+  activeMQ, we need activeMQ for it's
+  persistence and reliable message delivery,
+  there's some useful features under active
+  MQ and how it delivers messages we found
+  very useful. Unfortunately active MQ is
+  also not so great for our uses. The
+  persistence layers solved by one of two
+  kinds of services underneath, using level
+  DB, something that's sort of home grown
+  inside of the activeMQ project, or JBDC
+  back end to have more clustered support.
+  So, we used that, and we used MSQL, if
+  you've ever tried to scale that you know
+  how well it clusters. It doesn't really
+  cluster, what you is to do is implement
+  application-based charting to get the scale
+  ability that you might need. For us, at
+  Lookout this meant that we would need to
+  run multiple active MQ brokers with -- my
+  SQL databases underneath and we weren't
+  going tov a cohesive messaging fabric
+  powering all of our back end services, this
+  was also not the best solution. With all
+  these sort of traditional old style
+  messaging servers there's also this sort of
+  traditional worker model that pretty much
+  everyone seems to implement the same. And
+  it's extremely come collated. It's in a
+  loop, do some work, and then do some more
+  work and do some more work, blah, blah,
+  blah, and this is how, there's a lot of
+  gems and a lot of other libraries for JMS
+  or Java or for rabbit MQs, messaging
+  protocol that allow you to implement simple
+  Daemons that follow this structure, the
+  problem is once you start deploying four
+  processes or four hundred processes across
+  multiple different code bases you're doing
+  a lot of workload management yourself. In
+  the case of sending an e-mail, I may have
+  one application that only sends an e-mail
+  every second, I may have another
+  application that sends ten thousand e-mails
+  every second, the workload for these things
+  has got to be managed by someone and if
+  you're follow ago traditional Daemon model
+  like this, that someone is going to be you
+  you have to determine which number of
+  processes and which number of threads
+  you're going to be running to consume
+  things. When we first started down this
+  road, we didn't really understand what we
+  needed, we were a rail shop and like most
+  rail shops we had the one Rails, and in
+  having the one Rails you don't really have
+  a good sense of what messaging requirements
+  you might have for 20 Rails applications or
+  50 Rails applications or not just Rails
+  applications but other things as well. As
+  we implemented rescue and side quick and
+  activeMQ for various different things we
+  got a much better definition of what we
+  needed. I'm happy to be giving the first
+  part of this talk because I get to talk
+  about how we screwed things up over the
+  past couple years then Ian gets to talk
+  about how we are doing things better. But
+  it took us a lot of time, trial and error
+  to get to where we really felt like we
+  understood what we needed to buildout this
+  service oriented infrastructure around
+  mission aging. The requirements are petty
+  simple in hindsight, of course. We needed
+  reliable message delivery between services,
+  I'm going to send an e-mail if that's a
+  Ms. Word reset e-mail for example that
+  thing better be delivered to the customer,
+  it's incredibly important that mess annals
+  that go in do get processed, acknowledged
+  and the work gets carried out. We also
+  needed one to many message delivery, and
+  this is where the Redis based message
+  processing tools don't work as well for our
+  use cases, is an application like, you
+  know, web application that's just handling
+  some, you know, user can relate shouldn't
+  know about all the analytic tools feeding
+  off these messages, needed reliabledliry of
+  one message to multiple different kind of
+  consumers, we also needed something to be
+  sellable.  I look at one of the big
+  discussions we're having now internally is
+  how we're going to change applications to
+  run in multiple data centers, we're at that
+  growth curve as a company to having one
+  location in AWS simply isn't enough
+  anymore, we need something that unlike
+  Redis or activeMQ with SQL underneath can
+  scale with us as we grow out of a single
+  site. And this ledtous a tool called Kafka,
+  cluster messaging service developed by
+  linkedIn, it matched up directly with what
+  we need at Lookout in this current phase of
+  the company. It's cluster we know we can
+  scale it in a pretty linear path, we
+  haven't deployed it to multiple regions
+  yet, but I have read stories on the
+  internet that people have done that
+  successfully so I have some hope there. It
+  also supports this cob September of
+  consumer groups -- concept of consumer
+  groups allows you to distinguish between
+  different kinds of Ellen Konig supers so
+  one mail message, one consumer might be the
+  e-mail service, one might be the analytic
+  service, and the other might be the data
+  warehousing service, and Kafka will make
+  sure that each of the different consumer
+  groups receives a copy of the mess and and
+  it's own reliable message work flow on top
+  of that. So, that's Kafka, I know we didn't
+  say we were going to talk about Kafka, but
+  I think to understand why Storm is
+  available to a company like Lookout and why
+  it's available for building out this
+  messaging infrastructure you have to
+  understand the evolution of the actual
+  messaging underneath it. So, Storm
+  introduces a lot of concepts that
+  developers might not be familiar W. I know
+  before I discovered Storm I never thought
+  about messaging this way. All data, at a by
+  sick level in Storm is a tube. That's the
+  fundamental way that data is passed around
+  the different components, a simple data
+  type in Java, nothing special, just
+  immutable data you'd be passing through.
+  The way that information is going to be
+  getting into Storm is through this concept
+  of a spout. And spout just handles taking a
+  feed of die that and sending it along in
+  tubes to the next thing. In our case this
+  might be using the Kafka spouse, which is
+  now built in in 0.92 or using a pub sub
+  spout from Redis orism me meanting some
+  spout that generates random data, some
+  block of code that's going to pass in a
+  stream of Tubals to the next thing. In most
+  cases that next thing is going to be a
+  bolt. A bolt is where work is actually done
+  in Storm, this is just a little bit of code
+  that's going to receive a Tubal, doing some
+  work, acknowledging it or admitting that
+  Tubal for something else to do work with
+  it. And wrapping all of this up is the
+  Storm's topology, this is the most
+  compelling concept that Storm brings to the
+  whole messaging discussion, instead of
+  thinking about I send you a message, you do
+  something, and you send someone else a
+  message, we can describe how messages are
+  going to interact and be changed and past
+  along from spouts to different bolts with a
+  Storm toepology.  I think it's also
+  important to describe what a Storm cluster
+  is, unlike Redis where you might run it on
+  your laptop, Storm doesn't really work like
+  that, it's a cluster, pretty much by
+  default with a couple different components
+  that are involved. One 06 the primary
+  despend densies is zookeeper, configuration
+  management tool for run time configuration
+  usually, Storm uses this to do some
+  internal bookkeeping but also node
+  discovery and coordination. Kafka uses zoo
+  keeper for this, so we ended up having to
+  deploy one dependency that sort of covers
+  both. There's this concept of Nimbus nodes,
+  basically the nodes in your crust their are
+  in charge of determining where work is
+  being done. And, where that work gets done
+  is naturally on the worker nodes. The
+  worker nodes simply are machines that are
+  running some Java code that's going to be
+  processing the various Storm toepologies.
+  But on that worker node, work can be broken
+  down to three different buckets, it's
+  important if you're going to be developing
+  a Storm propology that you understand that
+  these buckets exist (Topology) there's the
+  notion of a worker process which contains
+  everything, inside that is an executor,
+  which is mostly analogous to a thread and
+  within the thread is the concept of task, a
+  task is what's going to do the work of the
+  spout or a bolt, because this is a
+  clustered application, your spout A that is
+  in one topology may run on a different
+  worker node than your bolt "","I guess,
+  which might run on a different worker node
+  or they could both run on the same worker
+  node in different threads or they could
+  both run on the same worker node in the
+  same executor just as two different tasks,
+  but the way this work is executed and
+  managed by Storm is going to be defined and
+  managed by these concrete tasks which you
+  don't really have much guarantee will run
+  on the same machine, let alone the same
+  thread. So, I hope that helps explain,
+  maybe, hopefully, what or why Storm really
+  exists. It's really a sort of a very
+  different way of thinking about message
+  processing, and if you get to the space
+  where you're thinking about how 20
+  different services are going to be
+  interacting and processing messages between
+  them, I think you should definitely check
+  it out. When you Saturday to get into this
+  sort of message fabric notion where you
+  have all these services tying together,
+  you've got the start to think about what
+  messages really look like, the messages
+  become your API, instead of defining a rest
+  API or instead of defining some ajack end
+  point or soap API, you're defining thing in
+  mess ands that are going to pass between
+  these different topologies. Lots of people
+  will chose different ways of defining these
+  for different reasons, I'll sort of explain
+  what we're doing at Lookout and why, but
+  this is not just sort of a golden rule, do
+  whatever you want within Storm and Kafka,
+  in our case not everything is going to be a
+  Ruby. There's no way that we can just, you
+  know, marshal dump objects into Kafka and
+  then pick them back up in Storm and do
+  something with them. So we originally
+  looked at JSON, the problem with JSON is
+  the consistency and validity of the
+  messages you're passing around becomes
+  incredibly important. We went down the road
+  of look at JSON we were impresenting
+  validation code here, there, and doing a
+  lot of extra work to make sure our messages
+  were correct between the different parts
+  of the system. A few options exist for
+  doing this, thrift created by Facebook is a pretty
+  common one, so are protocol buffers,
+  developed by Google, A Avro, and you could
+  also grown your own, I don't recommend
+  doing that.  I think protocol buffers and
+  thrift are the two best options in define
+  languages agnostic fashion. We'll define
+  the message in the protocol buffer
+  language, we'll generate a Java jar and a
+  Ruby gem out of that and our Android
+  clients will consume the Java jar and
+  require by web services will consume Ruby
+  gem and everyone's speaking the same
+  language when they're talking with the
+  message infrastructure. So, like I
+  mentioned there's code running on our
+  mobile devices, there's also code running
+  on web applications, there's code running
+  back, somewhere on the Hadoop cluster, and
+  with messages floating around we have to
+  sort of tie them together. And make sure
+  that everyone can talk and get into the
+  messaging fabric. To help cover this, we
+  implement add simple little city entrap
+  called Metron, the most interesting
+  messages we want to consume are coming from
+  a device, there's no way in hell you would
+  ever want a mobile device floating around
+  talking to Kafka or active MQ or anything
+  else on the internet we implement add
+  simple restful gateway that can do
+  authentication wrapped messages coming off
+  of device, when we wrap messages coming off
+  a device we might have day tax channel but
+  we need some other data about where this
+  token came from, we do some of that
+  original wrapping in Metron to say here's
+  what the server side knows about this
+  message along with the message provide by
+  the client side then we emit all of that
+  into Kafka for processing in Storm. With
+  Metron getting those messages in, we can
+  start to Storm topologies together to sort
+  of define an end product experience. So,
+  instead of building like one Rails
+  application where you just have objects
+  interacting within one another, we oar
+  using different services that communicate
+  over, you know, RPC calls between them and
+  Storm behavior to define a sort of scalable
+  product behaviors that are split up on the
+  actual domain of concern that any
+  particular part of that might be. So, take
+  for example, detection events coming off of
+  a device, a device might find a piece of
+  mall ware and say I found this piece of
+  mall ware here's something interesting
+  about it and it came off of this device.
+  Blah, blah, blah, on our side, the back
+  end, we might take that message, unwrap it,
+  might go to the data warehouse, might go to
+  security team as well, we'll use a Storm
+  topology to decide we need to create some
+  end-user facing functionality in this web
+  application that someone sees and these RPC
+  calls and the Storm topologies working
+  together means you is an overall product
+  experience handling partially from an asin
+  concurrent resolution newsstand point but
+  also from more the asynchronous application
+  side. When you start putting all of this
+  information, or functionality into the
+  Storm topology it starts to look a lot like
+  an application, I mean application by sort
+  of the traditional Ruby  developer -- model,
+  controllers, you have Storm and you have
+  this code being executed on all the
+  different parts of the cluster, there's
+  this question of who actually owns the data
+  at this point, if you're data is being
+  accessed by five or six different things,
+  who owns it?  One route you could go, which
+  we did not go is having topology talk
+  directly to a data store, to have your
+  Storm know how to talk to my SQL or
+  Cassandra, the reason we didn't go down
+  this route then ever node in your Storm
+  cluster has to know about every data store
+  that a poppology might need to work with.
+  If you're in an environment where you've
+  got three or four different topologies
+  submitted by three or four different teams
+  on the same Storm cluster that means
+  everyone's topology might need to have
+  access to everyone's data Storm. So what we
+  ended up building out was just a fairly
+  straightforward model of any time we need
+  to touch or persist data we're going to
+  call the service that owns that, the
+  service that owns detection events, we
+  would have the Storm topology that needs to
+  process that information, talk to that over
+  future or an RPC call wrap in the a future,
+  do it's bit of work, get it's response and
+  chug along on the perspective that keeps it
+  relatively straightforward and only
+  focusing on the message problem. 6 so
+  that's a lot.  I tried to get through that
+  quicker because I think Ian's part is much
+  more interesting, but that's why we've
+  ended up at Storm and Kafka, and some of
+  the design decisions that sort of went into
+  building out these Storm topologies inside
+  a larger service oriented architecture at
+  Lookout.
+  >> Ian Smith:  All right, cool. So, it
+  turns out there's very simple way to get
+  out of using JVM languages and you can just
+  pass things into a show boat, you run a
+  script, you pass things out that have been
+  Json realized and it all works fine, we
+  near a JVM language, there's this nice red
+  Storm DSL that's been built up around Storm
+  and provides you a bunch of different faces
+  to interact with Storm itself. Instead of
+  having this show-based work around we have
+  direct access to everything in Storm, we
+  have direct access to all of our existing
+  Ruby stuff. And so we have a much happier
+  environment to work if. And so, what does
+  that look like?  Well, you have a bolt, you
+  have your unit of work that just defines an
+  unreceive handler, what do I receive when I
+  receive a to bolt and you can put pretty
+  much anything you want in
+  then you wire up a spout up at the top to
+  one or more bolts, and then you've got
+  below that you've got some con fig and
+  that's pretty much an entire topology
+  there. That's all there is to getting this
+  off the ground. So how do we end up
+  designing what a topology looks like, how
+  do we end up planning this process out . I
+  had a conversation over lunch with somebody
+  who said, well, I've read a little bit
+  about Storm, sounds complicated, soundinges
+  like you have this entire large topology of
+  all the messages in your system, tied
+  together and deployed all if one piece,
+  turns out you don't need or want do that.
+  You can have individual and independent
+  topologies running under the same cluster,
+  so, in an example here, we mite have, you
+  know, one particular type of message being
+  consumed by one service that cares about
+  it. Runnele running it through a
+  deserializer, running through the meta
+  data, is this an object we care about, we
+  call to an RPC, is this an object we care
+  about, is this from a particular user
+  related our particular cob consumer or
+  user. We process the message and so on,
+  that's a single topology, it's relatively
+  straightforward and that means that on one
+  team we have one topology that's handling a
+  particular services concerns or particular
+  type of messages concerns and another team
+  can have their own topologies interacting
+  with the same message bus, the same stream
+  of events without interfering with each
+  other and without having to coordinate
+  deploys across teams. So one thing that
+  we've found useful in devalue lopping our
+  topologies is saying, what actually -- what
+  code generated this particular topology, so
+  we through a commit hash into the name of
+  the topology, we have a very clear mapping
+  when we go to look at Storm of here's a
+  particular artifact that's running
+  particular task or service, where did that
+  come from?  Well, we can go back and look
+  up what was the commit that lead to that.
+  We hook it up to a Kafka spouse, there's a
+  little bit of config, relatively simple, we
+  hook up our bolts and do configuration.
+  It's a relatively straightforward process.
+  So, and again, going back to this idea of
+  what a bolt looks like, and, of course, we
+  have shared behaviors between teams or
+  between topologies, right, in this
+  particular case, we have -- in this
+  particular case we have a bolt that says is
+  this an object I care about?  Is there meta
+  data that says this object is going to be
+  relevant to my service and I should
+  continue processing it vs dropping it. This
+  code can all be shared across teams, we set
+  up our initializer, we set up the on
+  receive handler and behavior and then we
+  can further sub class that behavior and
+  specialize it based on the particular needs
+  of the particular topology that we're
+  developing. So what are the things that we
+  have learned and the problems we have run
+  to rolling this out, this has been sort
+  of -- our first time with this particular
+  platform and this particular approach, like
+  tiler said to handling messages and
+  services. One is to make sure that your
+  messages don't get mangled, it sounds
+  fairly obvious, but, one of the problems we
+  run into with protocol buffers is that they
+  are binary so passing around strings
+  occasionally run into string encoding
+  problems. Throw in as much logging as you
+  want, it's not going to hurt. And in
+  particular, see if you can isolate
+  different parts of your topology. It's very
+  useful, for instance, you can replace your
+  Kafka spout with a spout that just outputs
+  the same message every time, you run that
+  up locally now you have a much more
+  controlled environment to look at what's
+  going in or out of a system. Or you have a
+  particular bolt in your topology that's
+  causing problems, you can ignore the bolts
+  before and after it, just say there is a
+  message being processed there and look at
+  the particular bolt that you care about
+  using factorying data.Ed so, it turns out
+  there's a number of different ways to
+  address Tuple, there's this nice hash
+  mechanism you see at the top, you can pull
+  another a value from a Tupl using a method,
+  and it turns out, again, because we're
+  dealing with binary data, because we're
+  getting bioarray from JRuby we need to turn
+  it into a Ruby-based string. Around make
+  sure that it turns into an array of bytes
+  and not simply a Java string with
+  particular encoding. The DSL doesn't sub
+  class directly, the DSL is very focused on
+  using blocks as a mechanism. For defining
+  behavior, it turns out this doesn't work so
+  well when you want to have a sort of a
+  generic class and sub class further for
+  your particular instance. So, the DSL does
+  allow you to specify methods as handlers,
+  instead of blocks, and I encourage people
+  to look into that. I have some examples
+  coming up. So here we have -- here we have
+  sort of the default approach. You have the
+  unreceived method, call it is block, the
+  block outputs the Tupl evalyou into a log
+  but you also write that as an instance
+  method on your generic class, now you have
+  this sort of generic implementation you can
+  sub class that. With some custom logging
+  behavior, particular topology might have a
+  different logging behavior, might have
+  different behavior with a Tuple that it
+  receives, one thing we've done with this,
+  we had a generic Deseyrellization bolt, and
+  you make your, you make your particular
+  instance of a dieselizer bolt --
+  desterilizing -- know wait's de-serializing
+  so we can share our generic de-sterilizing
+  and handling code across teams, we have one
+  implementation of that and then everyone
+  has their own sub class of that code. Make
+  sure you act post-Emit so the Storm world
+  is largely based around saying I receive
+  add Tuple, now what do I do with it, do I
+  acknowledge it, mark as process, do I fail
+  it?  It's -- one of the initial  problems
+  that we ran into was understanding that
+  when I Emit message that acts it, i turns out
+  it doesn't, from a given Tuple, you may
+  have a single Tupl, multiple further
+  messages you have to manually act after you
+  Emit. One topic is one topic. This sounds
+  fairly straightforward, and it is, but when
+  you're dealing with this sort of message
+  processing system, you want to make sure
+  that you've got a clear separation of
+  messages. Adolescent all of your messages
+  into one topic and have to figure out
+  later, okay, what do I do to process this
+  message, you want a relatively clear
+  separation of, okay, message is coming from
+  a device that carry a particular type of
+  data go into this topic, message coming
+  from this service carrying another type of
+  data go into this topic that helps you
+  understand as you're moving forward you
+  have an isolation of concern, you is an
+  isolation of deployment and so on. Shared
+  behavior, I talked briefly about shared
+  behavior -- go ... of so, I talked a little
+  bit about generic bolts, but we also have
+  the ability to share behavior across all of
+  our bolts within an ecosystem. Lookout
+  we're using century to cap hour our
+  exceptions, that's something that's built
+  in if you're using -- but not so much if
+  you're using Storm. Instead of juicing
+  default red Storm, we have one that does
+  all of our error and exception capturing
+  for us. And likewise we have custom
+  logging. Storm is quite verbose with it's
+  logging, Kafka is quite verbose with it's
+  logging, it can be useful to have
+  application and topology specific logging
+  set ups so that you have your verbose --
+  did I get a message, dod I process it, did
+  I act it you have your application specific
+  message, which is at a higher level of what
+  did I just do right now at a different
+  place and you can keep those somewhat
+  separate.
+  >> I put this slide in there if you want me
+  to take it.
+  >> Ian:  No ... test with a cluster, it
+  turns out -- so you can run a tomorrow
+  topology locally, and this is fantastic,
+  it's much better than doing your
+  development on another machine that may or
+  may not be up at any particular moment.
+  But, the problem is, usually with
+  acolous -- you're dealing with a local
+  instance that has one node, you're missing
+  out on some of the speciallization, you
+  mersessing out on some of the message
+  passing behavior. The sooner you get into a
+  production like environment the sooner you
+  can get into an environment that's actually
+  a cluster with multiple nodes, the happier
+  you're going to be, the fewer surprises
+  you're going to have later on. Submit in
+  inactive mode this is deployment related
+  bit. Currently there's no, there's no God
+  way with Storm 2 to say here's my old
+  topology, here's a new version of topology,
+  take care of making the switch. There is a
+  proposed Storm swap command that will
+  handle that, it's been proposed and in the
+  works for about two years. So the current
+  behavior, the current, I believe, intended
+  best practice is you up load your new
+  topology jar, you deactivate the old one,
+  turn off Kafka, but let it continue
+  processing, so in messages that it has
+  already accepted from the queue continue to
+  go through the system. Now you can activate
+  the spouts on your new topology so you
+  only, at any given time you only have one
+  topology pulling off of your cue. But you
+  can leave the old one possessing until it's
+  done cycling and then remove  it from your
+  cluster. Design holistic system, I know
+  tiler has some things to say on this. I'm
+  going to expand, I mentioned earlier I
+  talked to someone at lunch who had been
+  concerned with that with Storm you have a
+  single topology that contains everything
+  and very complex and you have all these
+  deployment concerns associated with it. But
+  really the question to ask, the question to
+  ask when you're approaching the design of
+  topology what perspective am I taking here?
+  You might be taking the perspective of the
+  consumer, this is a particular service that
+  cares about a different messages doing
+  different things, the speculative of the
+  producer, here is a particular message that
+  is produced, what are all the things I need
+  to do to successfully handle that message.
+  You might take any of these particular
+  perspectives and that's going to influence
+  the design of your topology and that's
+  going to influence the larmier architecture
+  of the system. In waytion that may be
+  useful for your particular use case.
+  >> Tiler:  Going back to some of the
+  original problems we had early on with
+  using red it or active MQ base stuff if you
+  come out of the Storm topology, if you come
+  out of message processing, and you just
+  consider what the entirety of the
+  application should be doing, things will
+  fall into place a lot easier. The way we
+  had originally treated message handling was
+  pretty much deferred method implication, if
+  you're trying to think about a service
+  oriented architecture is not incredibly
+  useful. At the very least, at a white
+  board, or a flowchart document, just, sort
+  of think about how all of these different
+  pieces that fit together between your
+  messaging fabric and your web applications
+  and data stores how they all come together
+  and what their contracts are between them,
+  then it's a lot easier to stitch these
+  pieces together to build a much more, I
+  would say, saner infrastructure. And that
+  is one of the things I think it took us
+  quite a while to learn and quite a while to
+  really consider when we started building
+  out new systems was all of the edges and
+  all of the different moving parts. Since
+  that's my last slide, if there's one thing
+  you take away from this talk, think about
+  that. Can we answer any questions you might
+  have about Storm or ... (Applause)
+  >> How did you approach from switching from
+  activeMQ to Storm?  Because if you -- was
+  it hard to be adopted and did you have any
+  challenges with that?
+  >> R. Tyler Croy:  Www.of the benefits is
+  that Ian and I work on the same team and
+  last year we were involved in deploying
+  active MQ, it was hurting us the most we
+  had the most incentive to get the hell off
+  of it. Because of the abstract model that
+  Storm provides we have a couple of
+  topologies that were being developed that
+  deprecate the old worker processes and have
+  one Kafka spout and one JMS spout and so we
+  have inputs from active MQ and Kafka at the
+  same time into one topology, that way we
+  can keep, we don't have to change producers
+  for some amount of time to know about Kafka
+  as we move off of active MQ, we can move
+  all that functionality into Storm topology
+  earlier on so we don't have to worry about
+  all the worker processes that are running
+  around.
+  >> So, like forgive if this is aquaria
+  simple question. You were saying how you
+  abstract away all your data stores behind
+  an RPC layer and that kind of thing, so you
+  kind of just do like a mass redeploy of all
+  your topologies when you change -- like,
+  breaking it each time -- like, if you
+  change the structure I guess, do you treat
+  it like a simple ... API or does it kind of
+  blow up --
+  >> Ian:  So this is -- this is again, we're
+  shifting away from that mono littic
+  approach to architecture, shifting towards
+  service based approach. Part of what that
+  makes easier is the ability to say, okay,
+  our API is going to change, so what is the
+  process that we need the go through to make
+  that happen?  You know, okay, so the
+  receiving service here has an RPC if it
+  gets called we may now have to have a
+  version RPC that takes the old call and the
+  new call, and then once that's in place,
+  once that's ready to go we can swap out our
+  topology and suddenly the topology is no
+  longer hitting the old API, hitting a new
+  API, that's one approach you can take.
+  Another approach you can take, you know,
+  hopefully your -- hopefully broad strokes
+  of API are consistent and don't have to
+  change, and you're changing minor details,
+  one thing we're doing is we're using protoe
+  Buff based RPCs in some sense we're able to
+  pass an entire object from our topology out
+  to service that consumes it. So, in that
+  case, perhaps the particulars of that
+  object need to change, but there's
+  versioning involved and we get that to some
+  extent for free.
+  >> Tiler:  The one point I would add on top
+  of that, in some of our use cases like
+  sending an e-mail we might have an
+  asynchronous call that might get made for
+  one e-mail, if I need to send up a thousand
+  e-mails I might queue up messages to them
+  sent. Hitting these RPC calls and by
+  thinking about both the application and the
+  topology as one sort of cohesive system, it
+  helps clarify and make, I would say, much
+  more scene our API design in general
+  because instead of thinking about, oh, I
+  just need this one consumer needs to hit
+  the one RPC and that's it. We're thinking
+  about how do we generalize for both our
+  Storm use cases and our other more
+  synchronous use cases as we build out these
+  different services.
+  >> Can you give us like a little bit more
+  insights into what applications you are
+  building or how your platform looks or what
+  type of load do you V I get the big picture
+  of the architecture but what problem do you
+  guys actually solve.
+  >> So, this is where like my uncertainty on
+  what I can share vs what I shouldn't share
+  about how Lookout works, I already
+  mentioned detection events, we oar now
+  around 220 people, we have what are three
+  big organizations within engineering,
+  there's sort of security, search and
+  analysis, on one side of the house and we
+  have our consumer application and the group
+  that woe work in is enterprise, and
+  detection data, these detection events are
+  very interesting to all three and so is
+  other sort of client device telemetry, with
+  the active MQ system, we're looking at
+  something like anywhere from two three
+  thousand messages per second coming through
+  active MQ, but what we're doing within
+  active MQ, because we have sort of three
+  different buckets of consumers that need
+  these messages, activeMQ is turning around
+  and amplify that to have 8-10,000 messages
+  that it's feeding to all these different
+  consumers, so we have sort of real-time
+  telemetry coming from devices that's
+  driving some of the behavior that's in our
+  upcoming not yet leased can't tell much
+  more about it enterprise products but also
+  some of our back end data warehousing and
+  search and analysis as well. And this is
+  one of the things that I this we're
+  somewhat fortunate to have this problem.
+  Because one of the sort of driving
+  motivations of how we've structured our
+  security platform as we strive to be as
+  real-time as possible. So the sooner we can
+  get events in and process them and
+  determine whether they're useful, whether
+  we should drive other emergent behaviors
+  off of those vents, better for business
+  over all. When we started to look at Kafka
+  and Storm, it was late last year. We had
+  two or three other teams within the company
+  begging for someone to deploy it because
+  they didn't have the time, but everyone was
+  in agreement that Storm and Kafka were
+  really going to help drive the needle
+  forward for a lot of teams across the
+  organization. They all want this sort of
+  shared event streams of data.
+  >> Last question ... no, okay. Thank you
+  guys (Applause) so let's meet each other
+  here in fifteen minutes. We'll then see if
+  we have any lightening talks
