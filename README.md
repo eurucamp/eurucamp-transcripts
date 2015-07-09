@@ -1,7 +1,7 @@
 eurucamp-transcripts
 ====================
 
-Transcripts from eurucamp 2014 - sponsored by Asquera
+Transcripts from eurucamp 2014 - sponsored by [Asquera](http://asquera.org). Every transcription in this repository will be available as a talk recording on [media.eurucamp.org](http://media.eurucamp.org).
 
 ### Talk format
 
@@ -16,22 +16,6 @@ speaker: Tom Stuart
 ```
 
 Optionally, there can also be a `teaser`.
-
-### Edited talks
-
-- Keynote
-- Saturday lawn
-
-### Conversion
-
-Requirements:
-- kramdown (`gem install kramdown`)
-
-Convert with Ruby script:
-
-```bash
-$ ruby script/convert.rb
-```
 
 License
 =======
