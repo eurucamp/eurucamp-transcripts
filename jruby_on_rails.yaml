@@ -2,21 +2,175 @@
 title: JRuby on Rails (knacks)
 speaker: Karol Bucek
 transcript: |
-  >> Alex:  So who here is using JRuby with Rails?  So, I imagine you used the active record JDBC adaptor, most likely, welt, Karol currently maintains the support ‑‑
+  >> Alex:  So who here is using JRuby with Rails?  So, I imagine you used the ActiveRecord JDBC adapter, most likely, well, Karol currently maintains the support ‑‑
   >> Yes, and I need an adapter.
   >> Sorry for that. (Presentation by Karol Bucek)
-  >> Linux laptops are the bane of any organizer's existence. But it worked, awesome, Karol also according to the biographies which he wrote or he sent us ‑‑ oh he didn't write it, he calls himself the "janitor" clean up APIs while maintaining existing backward compatibility. Which is pretty awesome. Backward compatibility is hard. Any way, I will let you kick off with JRuby on Rails Knacks.
+  >> Linux laptops are the bane of any organizer's existence. But it worked,
+  awesome, Karol also according to the biographies which he wrote or he sent
+  us ‑‑ oh he didn't write it, he calls himself the "janitor" clean up APIs while
+  maintaining existing backward compatibility. Which is pretty awesome. Backward compatibility is hard.
+  Anyway, I will let you kick off with JRuby on Rails Knacks.
   >> Is this working?  (Applause)
-  >> Buck:  Yeah, yeah, I've been stuck with a couple of projects that are pretty, you know, left behind, like JRuby ‑ Rack or Trinidad. But, I think they work awesomely. I also hack around active record JDB, which is mostly taking away all of my open source time. So, this talk is on‑line, there's going to be a couple of links just in case. Just use the down key or swipe. First thing first, so, what doesj stand for?  JRuby. Couple of hints it's not ‑‑ there's chocolate, what is it?  No one knows, seriously, these guys have been talking about it for quite a while now. It's just Ruby, right?  Anyone have a guess when was this picture taken?  Don't get yourself fooled by the CRT.
+  >> Buck:  Yeah, yeah, I've been stuck with a couple of projects that are pretty, you know,
+  left behind, like JRuby ‑ Rack or Trinidad. But, I think they work awesomely. I also hack around activeRecord JDBC,
+  which is mostly taking away all of my open source time. So, this talk is online, there's going
+  o be a couple of links just in case. Just use the down key or swipe. First thing first, so, what does J stand for? JRuby
+  Couple of hints it's not ‑‑ there's chocolate, what is it?
+  No one knows, seriously, these guys have been talking about it for quite a while now.
+  It's just Ruby, right?  Anyone have a guess when was this picture taken?  Don't get yourself fooled by the CRT.
   >> 2067
-  >> No, a little lower. It was a year ago, it was actually in Prague, and I missed it because I was not that much into JRuby yet, okay, so obviously no one wants to win chocolate. So, yeah, at that time, let's just ‑‑ let's just look at a retrospective, 1.1 was released, interestingly the IO was rewrite, just like it is now. (Laughter) and I watched the talk recently, I watched it in 2009, and now I watched it again and what was surprising to me is how terrifying Java was.  I mean, I didn't realize all of this, because I was pretty much a Java develop E. but seriously it was ‑‑ just watched the talk and there are people you know asking scaredly asking questions that they don't want to use JRuby because they don't want to write Java or do anything, have anything to do with Java. JRuby massively helped this transition, I believe. But, there's still leftovers and I'd like to encourage you guys to share your JRuby stories, because, seriously, it's the best thing since Brotchen, which is bred that does not need slicing because it's small enough. Okay, and now, let's get to the talk. So, first couple of simple things, so, often, when you're on Rails, you might be using some JRuby specific APIs, and, or you just, you foe, want to use some part of the Java.  I recommend keep it always compatible with this MRI thing that no one heard. Just, at least make sure it's loadable, I've been involved with a couple of deployments, some pretty, pretty old, and, you know, this thing wrapping up things behind, Ruby APIs will definitely help yourself, so, for example, if you had a use case, there are two ways you can get to it, if you have an MRI and a serial port which uses a native C extension, you would obviously, probably try out and you of course want to use it with JRuby, you would try out to mimic the API, but the other way around is also important, so for example if I was already on a JRuby App and I wanted to get access to the serial port by mimicking the simple, really simple API, there's like create a port, read/write, I can help the project quite a lot. Next topic, do not start threads, I mean seriously, unless you absolutely must.  I mean this also for gems, starting an occasional demon thread, I mean the one that loops like forever, is fine, but I should point out it also has consequences, for example, if you're trying to do zero down time redeploys these threads are an issue, and the thing is that Ruby people usually don't write their threads in a way that they expect them to stop. Those that loop, so that's an issue, it's a simple fix, but, it's an issue. So the most important thing is to not start any thread during request. It will really hurt your server. If you really must, then just, for God sake use a thread spool, there's an excellent talk coming up on concurring JRuby, they have Kay I have stuff available for you, one of which is a thread pool.Ful if there's a third party gem that does a thread.new you need to deal with it. One way to deal with it, if you adopt want to start monkey patching is to just quickly try out running JRuby with a thread pool so all thread declarations will actually end up not starting a new native thread, but threads are going to be re‑used. Let's look at a sample, this is actually a code in Rails that is executed on during requests. This is during live request, there's a new line, obviously, in this case, it's a must because, you know, we want to handle the request asynchronously, we want to keep the state on the server. But, still, in are better ways around it and the one way around it, which Rails could have done is to wrap it up in a middle ware, so, the thing with servers, is if you try to do asynchronous requesting, is the servers, it's best to tell them that the request is going to be asynchronous, a lot of the servers won't handle, actually JRuby Rec doesn't handle ‑‑ so most of the servers won't handle code like this, this thing with rack is unfortunate because there's no official rack support for Async.call backs. We'll have to live with it for a while, I'm thinking about trying to use the unofficial, unofficial of asset call back that is available, some is not compatible with it. Trying to submit a pool request ‑‑ and in JRuby ‑ Rack, under Java, servers have support for asynchronous request, and they do it with thread pools, so that's the scalable way to do this, so we can then, you know, somehow, get it in. Okay, we have a break. So, since you guys don't know a lot, so, what is actually the federal state we're in, except for the Germanssh obviously (Laughing) nobody, seriously.
-  >> Okay, you can have an Orange. This is the best chocolate in the world! We're in bran donburg, which is one of the 16 federal state in Germany. We're actually ‑‑ Berlin is the capital, but not capital of any state, any federal state. Potsdam is the capital of Brandenburg. Just a couple of interesting thing for Germany, they're famous for their beer and bread, there are like 300 types of bred, use your pointing finger when in the bakery, but never order a beer with a pointing finger, use your thumb, if it's confusing, just order two, unless you're ready to face the consequences. Okay, now we get to some more interesting stuff. So, rail logger, this is a thing that is well‑known but still a lot of people get smashed by it, so I thought, I bring it up. So, it's not thread safe, it might raise its level and you won't see log entries, you will usually run into this on the production, I mean it's a pain in the ass to be using log entries under production, it's especially true on JRuby, I have folks that reproduce it on MRI as well, it's caused by the silencer thing, owned by default on production, the code is pretty obvious, this is the code from 4‑point ‑‑ whatever. So, yeah, there's the level is instance state of the logger, and then when two threads come in, one will change the lever, the other one comes in, executing the sigh lens method and then it sees the old logger level as the one that's already raised and then, you know, you end up with a logger with the level error forever. So thing is actually pretty old, I've run into it in 2‑point days, which is like years ago, it's been courted, discussed, there's been pool requests, but interestingly, they decide to not include any, and depreKated it on 3.2 ‑‑ Deprecated ‑‑ just to reintroduce it for 4.0. So, yeah. Things happen:  The thing to fix it is pretty simple, so you just disable the silencer, but used to be pretty simple, but now with the 4.0, it's actually on the standard logger, and also on the active ‑‑ logger. There's actually a link where there's a G S that works for all Rails versions. Just put it in an initializer. So, yes, gems might create custom loggers you need to be aware to make sure to put in ‑‑ to make sure that now you need to disable the silencer on every logger class that includes the logger silencer model. And there's more things that are in the Rails API that are really crazy for con currency, like silence stream. They claim that it's not used in production with Rails, but it's still in the API and there might be just a gem that you don't expect and use it and it will do crazy stuff, obviously, under multi‑training. So, when ever you see a silence, something block, just think twice. now to miff favorite topic, active record pooling. So let's talk about the connection pool, it was forcibly introduce, and by "forcibly" I mean you cannot avoid it since 2.2 in Rails, in 2008‑Yay‑every since there's been some issues. So, for example on 2.3 the connection under certain circumstances, for example, when you use the active record session store, might leak a connection between two threads. Kind of dangerous. In 3.2 it received a lot of attention. It ended up, I would say, too synchronized I've actually seen an App using this under a high load like 200 threads. And for a couple of seconds the threads, you know, all the sin crow anytion logic and the release not being prioritized for a couple of seconds the pool just switched over and the application did nothing, so, you know, this is the 3.2 pool. The dark one, is the dark one here?  Anyone know the dark one?  He seems to have no name. So he started putting in improvements like using the thread save Cache, which is concurrent collection that does not use logging. And for 4.0 it seems that the pool is doing pretty fine now. So, it was an appreciated step to put it in, it was really a needed step, especially for JRuby deployment, but it took really a long time to smooth out. So, often the pool is the main bottleneck for your App, I mean if you're using a database. First thing to do is to test your server under load
-  are servers that will do a bit crazier threading like Puma, a couple of months back, so you might be surprised. So the first thing, before blaming active record pool is to check your server, if it's ‑‑ if high load comes in and ‑‑ it can handle them fine in a prepredictable way. Then set it high, Rails used to advise a one to one relationship, they actually wanted to remove the check out time out, so that if you set it to like 100 and the 101 request comes in, it would immediately throw a ‑‑ an error. This is not necessary to do, and a very good hack to start with, when optimizing under high load is to remove the middle wear, what this middle wear does, this is actually, it's Go method. As you can see on the first line of the method, it does active record base connection, which will cause the connection from the pool to be checked out and reserve and it will be reserved for the thread. So by removing this middleware, if you have, if you have requests that run from the Cache and don't touch the database, you will not use a connection, and you can actually, you know, you don't need of ‑‑ you don't need to put the pool that high.  I mean you can handle more requests concurrently than the pool is said. So this is the first thing I would do. There are cases where you want to go a little further because the pool is quite simple so using external pools is an option then you obviously might have duplicate configuration because you specified a pool size twice and some other options such as the check out time out, this is very common with active record JDBC where we allow ‑‑ where we allow for a configuration to look up a data source which manages connections. And usually this ‑‑ the data sources provided by servers are already pooled for you. You can configure them. Also, it does not allow for any fine grade parameter tuning like most of the pools do. And there's also a case an interesting case of scaling connections when you actually have a limit, so for example by Hyrako, so now I would like to active record Bogacs, it's read Bogacs ‑‑ anywhere have a clue where in which country that small country might be. It's not a neighboring country of Germany, it's foreign ‑‑
+  >> No, a little lower. It was a year ago, it was actually in Prague, and I missed it,
+  because I was not that much into JRuby yet, okay, so obviously no one wants to win chocolate.
+  So, yeah, at that time, let's just ‑‑ let's just look at a retrospective, 1.1 was released, interestingly the IO was rewrite,
+  just like it is now. (Laughter) and I watched the talk recently, I watched it in 2009,
+  and now I watched it again and what was surprising to me is how terrifying Java was.
+  I mean, I didn't realize all of this, because I was pretty much a Java develop E. but seriously it was ‑‑
+  just watched the talk and there are people you know asking scaredly asking questions
+  that they don't want to use JRuby because they don't want to write Java or do anything,
+  have anything to do with Java. JRuby massively helped this transition, I believe.
+  But, there's still leftovers and I'd like to encourage you guys to share your JRuby stories,
+  because, seriously, it's the best thing since Brotchen,
+  which is bred that does not need slicing because it's small enough. Okay, and now, let's get to the talk.
+  So, first couple of simple things, so, often, when you're on Rails, you might be using some JRuby specific APIs,
+  and, or you just, you foe, want to use some part of the Java.
+  I recommend keep it always compatible with this MRI thing that no one heard.
+  Just, at least make sure it's loadable, I've been involved with a couple of deployments,
+  some pretty, pretty old, and, you know, this thing wrapping up things behind,
+  Ruby APIs will definitely help yourself. So, for example, if you had a use case,
+  there are two ways you can get to it, if you have an MRI and a serial port which uses a native C extension,
+  you would obviously, probably try out and you of course want to use it with JRuby,
+  you would try out to mimic the API, but the other way around is also important, so
+  for example if I was already on a JRuby app and I wanted to get access to the serial port by mimicking the simple,
+  really simple API, there's like create a port, read/write, I can help the project quite a lot.
+  Next topic, do not start threads, I mean seriously, unless you absolutely must.
+  I mean this also for gems, starting an occasional daemon thread, I mean the one that loops like forever,
+  is fine, but I should point out it also has consequences, for example, if you're trying to do zero downtime redeploys these threads
+  are an issue, and the thing is that Ruby people usually don't write their threads in a way that they expect them to stop.
+  Those that loop, so that's an issue, it's a simple fix, but, it's an issue.
+  So the most important thing is to not start any thread during request.
+  It will really hurt your server. If you really must, then just, for God sake use a thread pool,
+  there's an excellent talk coming up on concurring JRuby,
+  they have Kay I have stuff available for you, one of which is a thread pool.
+  Ful if there's a third party gem that does a Thread.new you need to deal with it.
+  One way to deal with it, if you adopt want to start monkey patching is to just quickly
+  try out running JRuby with a thread pool so all thread declarations will actually end up not
+  starting a new native thread, but threads are going to be re‑used.
+  Let's look at a sample, this is actually a code in Rails that is executed on during requests.
+  This is during live request, there's a new line, obviously, in this case, it's a must because, you know,
+  we want to handle the request asynchronously, we want to keep the state on the server.
+  But, still, in are better ways around it and the one way around it, which Rails could have done is to wrap it up in a middleware,
+  so, the thing with servers, is if you try to do asynchronous requesting, is the servers,
+  it's best to tell them that the request is going to be asynchronous,
+  a lot of the servers won't handle, actually JRuby Rec doesn't handle ‑‑
+  so most of the servers won't handle code like this, this thing with Rack is unfortunate because there's no official rack support for Async.call backs.
+  We'll have to live with it for a while, I'm thinking about trying to use the unofficial,
+  unofficial of asset callback that is available, some is not compatible with it.
+  Trying to submit a pull request ‑‑ and in JRuby ‑ Rack, under Java, servers have support for asynchronous request,
+  and they do it with thread pools, so that's the scalable way to do this, so we can then,
+  you know, somehow, get it in. Okay, we have a break. So, since you guys don't know a lot,
+  so, what is actually the federal state we're in, except for the germans obviously (Laughing) nobody, seriously.
+
+  >> Okay, you can have an Orange. This is the best chocolate in the world! We're in Brandenburg,
+  which is one of the 16 federal states in Germany. We're actually ‑‑ Berlin is the capital,
+  but not capital of any state, any federal state. Potsdam is the capital of Brandenburg.
+  Just a couple of interesting things for Germany, they're famous for their beer and bread,
+  there are like 300 types of bread, use your pointing finger when in the bakery, but never order a beer with a pointing finger,
+  use your thumb, if it's confusing, just order two, unless you're ready to face the consequences.
+  Okay, now we get to some more interesting stuff. So, Rails logger, this is a thing that is well‑known but
+  still a lot of people get smashed by it, so I thought, I bring it up. So, it's not thread safe,
+  it might raise its level and you won't see log entries, you will usually run into this on the production,
+  I mean it's a pain in the ass to be using log entries under production, it's especially true on JRuby,
+  I have folks that reproduce it on MRI as well, it's caused by the silencer thing, owned by default on production,
+  the code is pretty obvious, this is the code from four point ‑‑ whatever. So, yeah, there's the level is instance state of the logger,
+  and then when two threads come in, one will change the level, the other one comes in, executing the silence method and then it sees the
+  old logger level as the one that's already raised and then, you know, you end up with a logger with the level error forever.
+  So thing is actually pretty old, I've run into it in two point days, which is like years ago, it's been courted,
+  discussed, there's been pull requests, but interestingly, they decide to not include any,
+  and deprecated it on 3.2 ‑‑ Deprecated ‑‑ just to reintroduce it for 4.0. So, yeah. Things happen:
+  The thing to fix it is pretty simple, so you just disable the silencer, but used to be pretty simple,
+  but now with the 4.0, it's actually on the standard logger, and also on the active ‑‑ logger.
+  There's actually a link where there's a G S that works for all Rails versions.
+  Just put it in an initializer. So, yes, gems might create custom loggers you need to be aware to make sure to put in ‑‑
+  to make sure that now you need to disable the silencer on every logger class that includes the logger silencer model.
+  And there's more things that are in the Rails API that are really crazy for concurrency, like silence stream.
+  They claim that it's not used in production with Rails, but it's still in the API and there might be just a gem that you
+  don't expect and use it and it will do crazy stuff, obviously, under multithreading.
+  So, when ever you see a silence, something block, just think twice. now to miff favorite topic,
+  ActiveRecord pooling. So let's talk about the connection pool, it was forcibly introduced, and by "forcibly"
+  I mean you cannot avoid it since 2.2 in Rails, in 2008‑Yay‑every since there's been some issues.
+  So, for example on 2.3 the connection under certain circumstances, for example, when you use the ActiveRecord session store,
+  might leak a connection between two threads. Kind of dangerous. In 3.2 it received a lot of attention.
+  It ended up, I would say, too synchronized I've actually seen an App using this under a high load like 200 threads.
+  And for a couple of seconds the threads, you know, all the synchronous logic and the release not being prioritized
+  for a couple of seconds the pool just switched over and the application did nothing, so, you know, this is the 3.2 pool.
+  The dark one, is the dark one here? Anyone know the dark one? He seems to have no name. So he started putting in improvements
+  like using the threadsafe Cache, which is concurrent collection that does not use logging. And for 4.0 it seems that the pool is doing pretty fine now.
+  So, it was an appreciated step to put it in, it was really a needed step, especially for JRuby deployment, but
+  it took really a long time to smooth out. So, often the pool is the main bottleneck for your App, I mean if you're using a database.
+  First thing to do is to test your server under load are servers that will do a bit crazier threading like Puma, a couple of months back,
+  so you might be surprised. So the first thing, before blaming ActiveRecord pool is to check your server, if it's ‑‑ if high load comes
+  in and ‑‑ it can handle them fine in a prepredictable way. Then set it high, Rails used to advise a one to one relationship,
+  they actually wanted to remove the check out time out, so that if you set it to like 100 and the 101 request comes in, it would immediately
+  throw a ‑‑ an error. This is not necessary to do, and a very good hack to start with, when optimizing under high load is to remove the middleware,
+  what this middleware does, this is actually, it's Go method. As you can see on the first line of the method, it does ActiveRecord base connection,
+  which will cause the connection from the pool to be checked out and reserve and it will be reserved for the thread.
+  So by removing this middleware, if you have, if you have requests that run from the Cache and don't touch the database,
+  you will not use a connection, and you can actually, you know, you don't need of ‑‑ you don't need to put the pool that high.
+  I mean you can handle more requests concurrently than the pool is said. So this is the first thing I would do.
+  There are cases where you want to go a little further because the pool is quite simple so using external pools is an option then you
+  obviously might have duplicate configuration because you specified a pool size twice and some other options such as the check out time out,
+  this is very common with ActiveRecord JDBC where we allow ‑‑ where we allow for a configuration to look up a data source which manages connections.
+  And usually this ‑‑ the data sources provided by servers are already pooled for you.
+  You can configure them. Also, it does not allow for any fine grained parameter tuning like most of the pools do.
+  And there's also a case an interesting case of scaling connections when you actually have a limit, so for example by Heroku,
+  so now I would like to ActiveRecord Bogacs, it's read Bogacs ‑‑ anywhere have a clue where in which country that small country might be.
+  It's not a neighboring country of Germany, it's foreign ‑‑
   >> Hungary?
-  >> Who was that?  Oh, nice. Yeah, so, Hungary is famous for having a lot of these spa things that are open, public spa things that are open throughout the year. And Bogacs is a small village and there's nothing in it, except for a lot of pools (Chuckles) so, this Bogacs thing is an experiment of mine that I wanted to do for quite a while, it's a bit early stage, but some of the things I have, I kept in my pocket for quite a long time and Ier they worked previously. But, obviously, if you don't know what consequences there are, don't use it. So the first thing that's in Bogacs is a false pool, so it's a pool, it's the same API record pool, but that does not pool. So, of ignore pool:  Size, if there's no pool:  Size setting, if there is one, it will ignore it, so no settings like that. It only manages the mapping from thread to connection, but it does not limit the connections that are checkout, and it's expected that you configure an underlying connection pool, just like you often might do with active record. So, in this case, with the false pool, the built‑in pool won't stand in your way, and it's also interesting to test out some standard available Java pools, against the active record pool. Because now, you know, we can just use a false pool, and compare the results how they perform.  I did very, very little testing for now. And ‑‑ I was thinking maybe, pushing it with active record JDBC, but for now we don't have the blessing for Rails, it requires you to ‑‑ we need to patch a short method to change the pool class used by Rails, I've opened airfoll pool request where in Rails but they seem to not be interested in do that for us. It's Ruby, you can patch it. The other pool is the default pool, this is actually something that will put me out of business because I've hunted down con currency issues on Rails such as 2.3, 3.2. And what I usually did is back board the pool or change a bit in the existing pool in the existing pool's implementation, so this default pool is the pool from active record 4, and it has some useful updates. It will work for all of previous version, I forgot to mention that. We can do some more stuff with it, for example, a commenting for a pool that you might want an initial size, so when your App is called, you know, a requests hit in, you might want to have your connections pre‑Cached, so you don't have to create them. In the future, having a default pool which we can put in old apps as well might fix the issue with the thread current object ID which under JRuby's threat based fibers will change and then under fiber you end up using a different connection than checking out a new connection. The craziest thing is the shareable pool, this is something that came out of necessity on Her ‑‑ share between threads, this is manage you don't want in the pool, except, except for if you know the driver you're using, and you only execute read‑only SQL, this has been only tested under post ‑‑ under JRuby because their driver is thread safe on a statement level, so we can, we can actually reuse them. And, but this pool will not, you know, it will act as a nor mall pool, but if there's a big load, and you have these shared connections methods, which take a Blog and then in the block you're expected to only execute redo SQ ‑‑ read ‑ only SQL, so under high load a connection might get shared, but it's preferred not to share for those Blogs. A potential use case would be for example if you run on Huriku and your Cache are called and an initial hit comes in, you want to probably, you know, handle as much as possible. There's more on this how to use it, how to configure this on the projects read me. Okay, I'll just quickly wrap it up, so, we talked about, you know, keeping the platform specifics on the Ruby Code, certainly should not start threads, this is general for web development, but somehow it still needs to be emphasized for Rubyist. Double check your logger, obviously, if you want your logs to be predictable, understand your con currency requirements and con fight your your pool accordingly, now you have some of the crazy options I presented, and, let me know if there are any issues, Danke.  Schon, Guten Apitit. And have fun JRuby. (Applauds) I forgot to mention, if you feel like asking me about anything, JRuby, active record, JDBC, Trinidad, there's a couple of more recently, I've been somehow rewriting JRuby open SSL to do zero down time deploys, so feel free ask, any time or ask now, I'm not sure how much time we have.
+  >> Who was that?  Oh, nice. Yeah, so, Hungary is famous for having a lot of these spa things that are open,
+  public spa things that are open throughout the year. And Bogacs is a small village and there's nothing in it,
+  except for a lot of pools (Chuckles) so, this Bogacs thing is an experiment of mine that I wanted to do for quite a while,
+  it's a bit early stage, but some of the things I have, I kept in my pocket for quite a long time and Ier they worked previously.
+  But, obviously, if you don't know what consequences there are, don't use it. So the first thing that's in Bogacs is a false pool,
+  so it's a pool, it's the same API record pool, but that does not pool. So, of ignore pool: Size, if there's no pool:
+  Size setting, if there is one, it will ignore it, so no settings like that. It only manages the mapping from thread to connection,
+  but it does not limit the connections that are checkout, and it's expected that you configure an underlying connection pool,
+  just like you often might do with ActiveRecord. So, in this case, with the false pool, the built‑in pool won't stand in your way,
+  and it's also interesting to test out some standard available Java pools, against the ActiveRecord pool.
+  Because now, you know, we can just use a false pool, and compare the results how they perform.
+  I did very, very little testing for now. And ‑‑ I was thinking maybe, pushing it with ActiveRecord JDBC,
+  but for now we don't have the blessing for Rails, it requires you to ‑‑ we need to patch a short method to change the pool class
+  used by Rails, I've opened a pull request where in Rails but they seem to not be interested in do that for us.
+  It's Ruby, you can patch it. The other pool is the default pool, this is actually something that will put me out of
+  business because I've hunted down concurrency issues on Rails such as 2.3, 3.2.
+  And what I usually did is backport the pool or change a bit in the existing pool in the existing pool's implementation,
+  so this default pool is the pool from ActiveRecord 4, and it has some useful updates.
+  It will work for all of previous version, I forgot to mention that. We can do some more stuff with it,
+  for example, a commenting for a pool that you might want an initial size, so when your App is called, you know,
+  a requests hit in, you might want to have your connections pre‑cached, so you don't have to create them.
+  In the future, having a default pool which we can put in old apps as well might fix the issue with the thread current object ID
+  which under JRuby's threat based fibers will change and then under fiber you end up using a different connection than checking out a new connection.
+  The craziest thing is the shareable pool, this is something that came out of necessity on Her ‑‑ share between threads,
+  this is manage you don't want in the pool, except, except for if you know the driver you're using,
+  and you only execute read‑only SQL, this has been only tested under post ‑‑ under JRuby because their driver is thread safe on a statement level,
+  so we can, we can actually reuse them. And, but this pool will not, you know, it will act as a normal pool, but if there's a big load,
+  and you have these shared connections methods, which take a block and then in the block you're expected to only execute redo SQL ‑‑ read ‑
+  only SQL, so under high load a connection might get shared, but it's preferred not to share for those blocks.
+  A potential use case would be for example if you run on Heroku and your Cache are called and an initial hit comes in,
+  you want to probably, you know, handle as much as possible. There's more on this how to use it,
+  how to configure this on the projects read me.
+  Okay, I'll just quickly wrap it up, so, we talked about, you know, keeping the platform specifics on the Ruby Code,
+  certainly should not start threads, this is general for web development, but somehow it still needs to
+  be emphasized for Rubyists. Double check your logger, obviously, if you want your logs to be predictable,
+  understand your concurrency requirements and configure your pool accordingly, now you have some of the
+  crazy options I presented, and, let me know if there are any issues, Dankeschön, Guten Appetit. And have fun JRuby.
+  (Applauds) I forgot to mention, if you feel like asking me about anything, JRuby, ActiveRecord, JDBC, Trinidad,
+  there's a couple of more recently, I've been somehow rewriting JRuby OpenSSL to do zero downtime deploys,
+  so feel free ask, any time or ask now, I'm not sure how much time we have.
   >> We can have one question now, otherwise people can come see you on the lunch break. Anyone want to take that one question?
   >> There's chocolate for it (Laughing)
   >> Not really a question, can you go back to the slide URL ‑‑ no the ‑‑
   >> The slide URL. Of ‑‑ the rail URL.
   >> Okay, thinkty chocolate is yours, then. It's actually the best one, it's my favorite one.
-  >> Okay, it's lunchtime now, lunch is served directly out here. The lunch menu has been tweeted if you want to know what you're eating, please look on Twitter and follow the link there, please be back here at 2:00 p.m. for Petres talk on. Thank you very much (Applause)
+  >> Okay, it's lunchtime now, lunch is served directly out here. The lunch menu has been tweeted if
+  you want to know what you're eating, please look on Twitter and follow the link there,
+  please be back here at 2:00 p.m. for Peter's talk on. Thank you very much (Applause)
