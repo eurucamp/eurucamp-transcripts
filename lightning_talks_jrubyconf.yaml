@@ -1,0 +1,394 @@
+---
+title: Lightning talks
+speaker: Various
+transcript: |
+  >> Lighting talks --
+  >>
+  >> I think we'll start with the lightening
+  talkstion maybe we'll get some people to
+  come in. The first is about Al gentlemen
+  brick, who is that?  That's you.
+  (Algebric -- can you tell me your last name
+  again Petr Chalupa. Do you need to plug-in
+  your computer?
+  >> Okay.
+  >> Now you have  there ...
+  >> Yeah, but ...
+  >>  Okay, of so, I just wanted to quick
+  introduction of Algebric, I mention briefly
+  when somebody asked how to do messaging
+  between actors, so this is implementation
+  of algebraic types and better matching, so
+  basically also do the same thing as you can
+  do in Haskell, which is just a quick
+  example how you can build and define tree.
+  So, this is how does it look like in Rubic,
+  you have some DSL at the top that defines
+  the types, and underneath all the types are
+  just modules, you can also extend just a
+  module, you'll get the methods on all the
+  types, in this case you have tree which can
+  be empty leaf or node, and define a method
+  in the module you'll get it on the tree
+  values and the leaf and node. So, this is
+  something more about the definitions I
+  mentioned, it's just the module, there are
+  some fancy stuff that the Algebric type is
+  support children of the module class, but,
+  it's not -- let's not get into that. And,
+  sorry. So, at the top you have an example
+  of the type maybe which you can know from
+  SCLA, or something like that, basically
+  avoid checker reports and stuff like that,
+  so there is non-value or there is some
+  value. And this is example how the value
+  actually looks like, so you construct a
+  value of the type, maybe, just by
+  mentioning the constant none or use the sum
+  and the square brackets to create the value
+  of the some type. Also allows
+  you to build circular types, as you can see
+  the tree is being -- at the top it's passed
+  into the block and you can use it in the
+  node definition so you can define the left
+  and right side. Okay, will's go on. Also,
+  allows you to, if you have a lot of fields,
+  in the type, you can name them, so it makes
+  it much easier to see what actually each
+  field what they are, so there you can see
+  you have value left and right side of the
+  tree. Yeah, this is just -- you get the
+  value -- there is only one you have to use
+  the value method, obviously, if there are
+  more fields you can use the names, like,
+  it's in the last -- at the bottom, the
+  value and left. And if you use sort of
+  field with exclamation mark, method in the
+  DSL defining the type, you can also, you
+  also get value add left methods defined.
+  And as I mentioned you can accent the types
+  and you'll be propagated as it should be.
+  Okay, and, this library also implements
+  pattern matching on these types, so there
+  is a match helper who pass the value you
+  want to match against this case because we
+  are implementing the depth method on the
+  tree structure, we implement whether that
+  is -- (One minute) okay. So, you can make
+  sure against the values. And, there are
+  also -- the measures can be stacked up so
+  there is, you can see there is -- the Tilde
+  before any measure, the value matched
+  against that measure will be stored and
+  passed inside the block after the measure.
+  And here is an example of some more come
+  collated measures, also supports operations
+  and stuff like that.  I think this is very
+  useful if you have actors and stuff like
+  that you can define the protocol you would
+  like to use within your application and it
+  will error immediately when you try to --
+  initialize your value not some -- in some
+  much late another actor later, this helped
+  us when we were building, so that's all for
+  me. (Applause)
+  >> Hello.
+  >> You're going to take your own time --
+  >> To ...
+  >> Don't trust him, don't trust him. Okay,
+  give me a second. Okay.
+  >> Okay, hi, I'm Salis, and I didn't think
+  that it was a great idea to bring laptop to
+  a programming conference, so here I am. So,
+  JVM tuning for JRuby in JVM world we have
+  two opposite forces one is fast start up
+  time and the other is fast run time for a
+  long period. So, when you are trying to
+  optimize for running tests, for example,
+  what you want is to improve the start up
+  time. If you're using one of these old 32
+  beats JVMs, it's a good idea, to first the
+  client mode, but modern JVMs don't have
+  that anymore, they use something called
+  tired compilation, so you want to put that
+  flag and stop the compilation at level one,
+  remember, at level one, and also you can
+  disabled JRuby's just in time and also
+  disable in bulk dynamic for the AVM, what
+  is really interesting is optimizing for
+  running a service for a long time period.
+  So, the first thing that you want to do is
+  please read the JVM performance Wiki page,
+  have you done it yet?  Yeah?  Yeah! Because
+  it has really good advice, for example you
+  want to set your minimum heap size and mat
+  to the same size so you don't have the JVM
+  changing sides while your service is
+  running. Also, it's very good to experiment
+  with different types of Java garbage
+  collectors because 90 percent of JRuby
+  performance -- is garbage collector
+  turning, in our case the concurrent mark
+  and sweep collectors works very well. In
+  our case we use a small isolated instances
+  like an internal Hruico service in our
+  company, so we have different services of
+  different kinds running in the same
+  physical machine. One good advice is to
+  have a Heap size of about 70 percent of
+  your memory available. In our case, our
+  build-instances have only one gig gay byte
+  of memory so we assign 700 mega bytes for
+  the heap, also since we share time with
+  other running applications, we use the
+  incremental mode for the concurrent mark
+  and sweep collector. So we don't have these
+  stops in the middle for garbage collection,
+  especially when you share resources with a
+  lot of other stuff. Also, sometimes you
+  have a small memory leak, so you want to
+  enable for concurrent mark and sweep the
+  option to unload classes. There is a small
+  flag that you can enable, and it will run
+  better, at least it was for our case. But,
+  the most important thing is to measure
+  everything, so, one good option is to
+  enable, for example, if you use the typical
+  hot spot JVM, to enable the JMF beans to
+  export to your matrix system, your garbage
+  collection metric, so you can have a clear
+  view of all permanent generation space of
+  the event and all these crazy names they
+  put from the jaw van collection sums, so
+  also you can trace the time of the old
+  objects -- collection, sorry, vs the new
+  objections collections, and that's really
+  useful to dedetective if you is some leaks
+  or maybe you need to also tune the heap
+  space for new objects that can be done in a
+  separate way. So, read the JVM tuning
+  guide, ask these two guys over here, but,
+  when they leave Berlin, you can ask me too
+  (Laughing) I'm at . T -- Gonzales on
+  Twitter (Check -- Gano or Gonzales)
+  (Janogonzales)
+  >>  Tom, you go
+  first.
+  >> There can be no time limit on this talk.
+  Of I've only done it once ever, it was a
+  few years ago, and I was very drunk. And
+  actually I haven't worked on this project
+  in several years as well. So I department
+  entirely remember how it worked. (Laughing)
+  so, I'm here to talk about a project called
+  RPIiet. I'm here -- some people might know
+  me from JRuby. (Laughing) I started this
+  project Rpiet with Tipp gramming, which was
+  consuming alcohol and programming at the
+  same time, it lead me to this project
+  Rpiet. It's an esse terrific programming
+  language named after Piet Mandrien, looked
+  a lot cooler when young. Esse terrific
+  programming languages are meant to push
+  boundaries often to be funny or absurd.
+  (Esoric) and it's also a Funges which
+  usually takes advantage of coordinate
+  systems, it's a stack-based machine. It has
+  Conels, end by end pixels and upper right
+  there's one black Codels. You count Codels
+  for values. You have a direction pointer,
+  you start in the upper left hand corner
+  facing right. You have a Codel choser set
+  to left or set to right. For this example,
+  set to left, it just finds the most extreme
+  direction pointer upward fix sill which is
+  A, if I was right I would pick B, there's
+  hue if lightness, so there's six different
+  colors, light normal and dashing of each
+  one of those colorThird lightening talk. OfUse a simple table to
+  find out what sort of transactions, how
+  much the lightness value changes. And so,
+  if we were at step one, we would start in
+  the upper left hand corner, go to the upper
+  right hand corner, in a nor mall blue block
+  that's size nine and go to a dark blue
+  block. So we looked that up and that's
+  going to be doing a push operation, so then
+  we push the value nine on to the stack,
+  step two we go to the upper left hand
+  corner and we go into black, black and
+  edges are places that you can't traverse,
+  once that happens the first thing you do is
+  try the alternate the Codel chose freer
+  left to right or right to left. And if that
+  doesn't work you try to change the
+  direction pointer and if you can't do that
+  after 8 tries then the program's done
+  executing. And so here we couldn't go to
+  black so we switched the Codal choser to
+  right, went to the bottom and entered this
+  new thing.  I skipped ahead here to go to
+  the other strange lack of color, which is
+  white, white is just a no Op, so we pass
+  through and go to the next color.  I
+  actually installed this as a gem so you can
+  run it. So, if you run this program right
+  here, it's going to print out HI. 6 you
+  have to do lots and lots of debugging to
+  make this work (Laughing) here's a program
+  with a cow. But you can type in what you
+  want and he repeats it in a little bubble,
+  which is pretty damn clever. So, some
+  future I want to make a graphical debugger,
+  I did make one and it's completely broken
+  but Charles was kind enough to remind me
+  that I have a video of this on YouTube. So
+  ... so this is written another project I
+  worked on called JRuby F X, you can see the
+  green border going around, I believe I'm
+  doing FIB at any point you click on a spot,
+  it will stop and that's a break point and
+  then you can continue execution again. It's
+  pretty awesome. And since I'm taking as
+  much time as I want, I'm going to generate
+  executables directly and direct Java byte
+  code faster than C and the last thing I
+  want to do is make a mine craft Mod where
+  it will actually go and interpret the block
+  types as you move around on the ground.
+  Maybe make it 3 D too.
+  >> Charles:  That would be awesome:
+  >> Tom:  Thank you (Applause)
+  >> How many folks have played with visual
+  VM?  So this is about half the room that's
+  seen it before, but I'll show you a little
+  bit here, let's make this bigger. Visual VM
+  is a tool that she wants with open JDK,
+  it's part of open JDK open source and free.
+  It provides a way for you to visualize
+  what's happening inside of a given JVM
+  process, all sorts of different things you
+  can monitor. The command to start it is
+  this J visual VM here, and if you got a JDK
+  on your system, you have this J visual VM
+  command that should pop up a window like
+  this. Shows the local JVMs that are
+  running, allows you to monitor remote ones
+  as well and other stuff. Let's start up a
+  script here, this is a script that just
+  kind of brutalizes the GC creating lots of
+  objects, that's up and running, virile VM
+  detects it's up and running and knows a
+  little bit about JRuby and improve and --
+  with Tom's stuff as well. Double click it,
+  bring the application up, and make that
+  full screen. So the first tab here has just
+  some overview what the JVM started with,
+  you can see all the settings and flags and
+  what not, what version of JVM and so on,
+  the basic monitoring tab here, provides
+  kind of a high level view of what GC is
+  doing, how big the heap is, as it's going
+  up and down, how many classes and threads
+  you have running, you can see all the
+  thread Ms. The system and what they're
+  doing, if you ever looked at JRuby in a
+  process monitor, you'll see even if you
+  have only the main thread there's about
+  12-13 others, there's a few worker threads
+  that we start up too. You can attach
+  sampling profiler or instrumental profiler
+  to get some live results on what -- where
+  your performance is going, what methods are
+  taking the most amount of time of the the
+  coolest one is the plug-in you can install,
+  it's not there by default, coolest one out
+  there, it's the visual GC plug-in, which if
+  you crank this up, oh, it is cranked up,
+  did it stop running. Oh, I didn't -- there
+  we go, it completed the script. All right,
+  we'll start that one. And if go few to
+  visual GC tab it shows the JC working live.
+  You can see the heaps changing sizes, see
+  the amount of work that it's spending in
+  each of the different GC generation and
+  monitor how the JVM is spending it esteem
+  cleaning up all the garbage your
+  application is creating, if you don't see
+  nice saw tooths, and continues to climb
+  over time you is leaks, you can see getting
+  a ton of work in the old generation maybe
+  you're creating too many long live objects
+  or throwing away too much data. This is the
+  first line of monitoring your system,
+  seeing what it's dog, it's available for
+  free, run it and give it a shot, thanks
+  (Applause)
+  >> Fourth lightening talk --
+
+  >> thank you very much for attending today.
+  (Applause) we have a few people to that we
+  should express our gratitude to, first of
+  all HPI, which is the Hasso Plattner
+  Institut institute, Hasso Plattner Institut
+  is the guy behind SAP and he also has
+  helped fund this university here, which is
+  why there is such a nice campus.
+  Transcription -- thank you very much to
+  Kimberly and everyone that made
+  transcription possible today. Think you are
+  without doubt the unsung star here. You've
+  been working far more than the rest of us.
+  Thanks also to our technical crew, to the
+  people at the back, to Jan, to Robert and
+  to Andre, they have been responsible for
+  the live streaming, so, everyone -- so
+  people out there have been able to see you,
+  if you've been up on stage, thank you also
+  to Florian Plank for our web site, again
+  this year. And, of course, thank you to the
+  speaker, would the speakers please like to
+  stand up. Charles Tom, Tedxus Mark petter
+  Eric Ian Tyler Karol Christian, we had six
+  people here from the US, it's a great honor
+  to have people that made effort to come
+  across the Atlantic to be with us and for
+  giving up their time. What's next?  As you
+  see, as you can see we are fairly small
+  crowd, we do hope to run a JRuby conference
+  next year too, so, a fourth JRubyCONF in
+  the E U, we're still figuring it out,
+  please talk to me, Lucas, Charles or Tom if
+  you have ideas, if you have ideas how to
+  better evennial rise, this is an awesome
+  piece of technology and we really fled the
+  promote it and get it out there. (We really
+  need to promote it --) well not quite --
+  there is some other vent going on today, I
+  don't know what it is, oh, yeah. It's pink.
+  it Eurucamp, we continue tonight, at
+  7:30 p.m. there's the introduction, you'll
+  find it out on the grass space over here,
+  you'll see a lot of people congress gaiting
+  hopefully in about two hours from now. And
+  immediately followed by that -- followed --
+  knolling the introduction is the eurucamp
+  keynote with Paulo -- author of met
+  programming Ruby. And following that is our
+  party, which is down the road, there'll be
+  people to instruct you -- there'll also be
+  dinner at the party, be about 8:30 or 9:00
+  if you're hungry before that, you have free
+  time to kill. We don't -- this time for the
+  next two hours or so is not really
+  programmed, we have non-alcoholic drinks
+  here. And if you want something a little
+  harder then there is -- there is a bar and
+  a beer near station also at the hotel, but,
+  yeah, please don't go too far away, we hope
+  to see you again in two hours at eurucamp,
+  and once again, thank you very much
+  (Applause) (Conclude at 5:15 p.m.)
+  >> If you need instructions, the staff has
+  pink shirts, we don't, but the others have
+  pink shirts, so you can ask them.

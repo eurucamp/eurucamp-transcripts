@@ -1,0 +1,191 @@
+---
+title: RSense Knows Your Code
+speaker: Eric West
+transcript: |
+  >> So we'll start the next session. Next talk is by Eric West, it's
+  about RSense, he's been working on it last year for Google summer of
+  code, so, so he'll share a talk about RSense. (Applause)
+
+  >> Eric West: Hi, I'm Eric West, I'm a Ruby developer at
+  LonelyPlanet and former JRuby GSOC participant and current
+  maintainer of RSense. RSense is a type difference tool for Ruby, it
+  can read in source code and then give us information about the
+  objects and variables in that code, and, what this means is that you
+  can build tools on top of that to get the kind of awesome things
+  that other languages have and Ruby to this point has not had or
+  has not had working very well. Things like code completion, bug
+  detection, refactoring tools could be built on top of this, and, so,
+  my quest to RSense began because I really wanted Ruby co-completion
+  in Sublime text, I had been programming for about a year and there
+  were plug-ins that claim to provide this, but, they never worked so
+  good and, I've searched the internet and through the issues on their
+  GitHub and find tricks that would sort of get it working, but, never
+  got it working right, and, it didn't work with JRuby either, which
+  was something I was really interested in, at the time, and, so I
+  kept reading and reading about how this worked and how languages did
+  code completion and learned that it came from type inference and
+  everything said that this was basically impossible to do with Ruby.
+  I came across quotes like this one "meta-programming makes the type
+  inference problem equivalent to halting problem." And many of you
+  problem know the halting problem has been proven mathematically to
+  be impossible to solve. But I'm stubborn. So I kept looking and I
+  found this tool called RSense that claimed to be the most useful
+  development tool for Ruby. RSense was created by Tomohiro Matsuyama
+  he goes by MTYM on the internet. And unfortunately he had abandoned
+  it in 2010, that was the last commit to the project, there were open
+  issues and pool requests that he had just left untouched. So, I
+  started trying to see could it work, did it work now ... and it was
+  really difficult to get it installed right, it only worked on 1.8
+  syntax and using just really ancient version of JRuby to do the
+  parsing and juicing JRuby 1.3 or 1.4, and JRuby was almost to 1.7 at
+  the time I got interested in the this, so it was like a four or five
+  year back copy of JRuby, maybe even further that it was using for
+  this. So, I just thought, I'll just swap out the Jar file, and, bad
+  poker face -- if you can't read that, of course I knew that wouldn't
+  compile! No, I didn't (Laughing) so, I started poking at what would
+  it take to actually get this working and it turned out it was going
+  to be quite a bit of work, fortunately at that time, JRuby made an
+  announcement that they were going to be participate in the Google
+  Summer of Code program and they were looking for students to apply,
+  so I registered for a class with my local community college so I'd
+  be eligible and then applied to Google Summer of Code (Applause) and
+  the way this works they pay a scholarship for a student to work for
+  about a three month period on an open source project. And I was very
+  fortunate to get selected and have an excellent mentor, Tom, who
+  helped me fix over 800 errors and a hundred failing tests.
+  Unfortunately, after Google Summer of Code ended, had you searched
+  for RSense and tried to get going with now working copy you wouldn't
+  have found it. This was because there were some questions left that
+  needed answered. Basically, why hadn't RSense been more widely
+  adopted when he first put it out there. And, so, the real answers to
+  that, I think, were that people had a hard time installing it, and
+  it was written in Java, and so, for some Rubyists, for some reason,
+  Java is like poison and so we needed some stories to address
+  those. We needed a better installation process that was easier,
+  people should be able to just go gem install RSense and it should
+  just work, it also needed to be able to be interfaced with from Ruby
+  so that people could build tools on top of this and write in Ruby
+  easily.
+
+  So, about that time that Google summer of code ended, I started
+  looking for work to become a Ruby developer, and, couple months
+  later found that, so RSense had to become a weekend and part time
+  project for me, so it took almost a year from the time that I
+  started working with Google summer of code, but now, if you search,
+  you'll find the RSense gem as well as some gems that RSense
+  installs. You just gem install rsense, install the editor plug-in,
+  and it will work with either MRI or JRuby, the way that I make that
+  work is I use spoon which is based on POSIX spawn and JRuby jars
+  which installs a complete copy of JRuby inside of a gem, so, then I
+  run a server that communicates with the editor plug-in and with
+  RSense Core, which is a thin Ruby wrapper around the RSense
+  jar. This diagram shows how that works, so, you install it, you
+  start it, it spawns the process, starts the server, and then
+  communicates back and forth. So, RSense, the way the type inference
+  in RSense works it uses an algorithm called the Cartesian product
+  algorithm, not invented by him but named after him. It was first
+  implemented for the language self by Ole Agesen, and then there's a
+  paper describing a tool called Ecstatic, and, though I never been
+  told this directly, RSense was very much inspired by Ecstatic
+  because because many of the classes name in RSense come directly
+  from that literature. And RSense implements this first, reads in the
+  source code and parses it into an abstract syntax tree, which is
+  just the representation of code in a tree structure.
+
+  We have here some extremely simple Ruby Code, A equals 1. So, we
+  send that to JRuby parser as a string and get back an AST, that's
+  the string form of that, and then each of those nodes has methods
+  that you can call to get information about the nodes in the AST.
+  This is slightly more complicated, if true 1 else 2 and of course,
+  all Rubyists know that that would always evaluate to 1, but the
+  computer does not know that. So, you parse it into an AST, I like
+  the think of an AST as a bridge between a syntax and the
+  semantics. If we have our code that we looked at a moment ago, you
+  is an if node and it has three child nodes, the conditional, and
+  then the then body and the else body. JRuby-parser was a library
+  extracted from JRuby and it contains a lot of special methods that
+  make it really great for people trying to build IDEs or tooling with
+  it. RSense walks the AST and builds up a graph of nodes and uses
+  what I just learned was called an abstract interpreter, I actually
+  learned that very recently, I didn't have a name for that before
+  that. It's essentially a virtual Ruby that without executing the
+  code, determines things about each branch through the code kind of
+  like Ruby itself would do.  It takes known types and then propagates
+  those through the graph to the unknown variables and objects in the
+  graph. Here we've got some more pretty simple Ruby Code. And so X
+  equals 1 and we know that, and we know 1 is a number because it's a
+  literal, so we can go ahead and assign that type. We have Y set
+  equal to X, so we know that there's a relationship between those two
+  nodes, and we know that "hello" which X is later set to is a string
+  so that type will flow directly into X, the type from the number
+  will also flow into X and those types will flow into Y to be
+  resolved at a later point in time. RSense uses some stubbed out
+  methods of the built-in core libraries and standard library so that
+  it doesn't have to constantly evaluate those as well. This is --
+  what the stubbed-out methods look like, I have a close up here so
+  you can see, it doesn't fill in the entire method body, it just has
+  a stub that tells it what it needs to know. And this would be almost
+  enough except for that dynamic meta-programming feature, there's a
+  small subset of Ruby expressions that are pretty much impossible to
+  do type-inference on in this way. And back to that quote again. But,
+  fortunately RSense does have a solution for this too. It uses what
+  it calls the annotation resolver, and what these are is special
+  annotations in the comments that can state what the types a method
+  will take in return and give RSense that information. It's mostly
+  only necessary in those built-in stubs, but you could use it in
+  library code or in your code as well. The thing that I don't really
+  like about it is that he used a special -- when he first designed
+  RSense he used his own created type syntax. What I would like to do
+  is take that out and replace it with something that's very
+  conventional to Ruby which is YARD, a documentation system that a
+  lot of Ruby programs and libraries already use to document their
+  code and it has a way to annotate types in it, so what you could do
+  is set it up so that people could document their code, and by doing
+  that would get better tooling as well, so it would actually
+  encourage people to do better documentation. We have here a simple
+  module with a class in it, and that class has a single method,
+  simple method, which the RSense listed and was able to do code
+  completion on. That method yields any block past, whatever you pass
+  into it, I'm going to pass this here an array with a string in it
+  and number. And we'll set up a block and so the method will pass the
+  array back into the block, here is our first element on the block,
+  the string, and you'll see RSense properly gives us methods for
+  strings, now the second one is a fix Num, and ta da ... we get a
+  fix Num method.
+
+  So where does RSense stand today? There's an Atom plug-in, a sublime
+  text plug-in and a TextMate 2 plug-in, I have a friend working on an
+  E Mac plug-in and I'm looking for someone to work on a Vim plug-in
+  for me.  I had some offers, so hopefully that will pan out soon. It
+  works great for city entraps, gems and libraries, unfortunately it
+  doesn't work so great for Rails apps today, Rails and it's
+  dependencies are so big that when RSense reads it into the graph, it
+  just runs out of memory, so I put a cap on how many dependencies it
+  could read in, unfortunately, then it's not very accurate, so, I've
+  got a solution for that, and that is to do some Caching using some
+  kind of database or something like that, I just have not implemented
+  that yet. This is my to do list, Vim and Emacs Plug-Ins, caching the
+  type graph, switch to YARD, RSense can do find definition where in
+  type-inference but I haven't exposed those to the Ruby wrapper yet,
+  I have to do that, build bug detection and refactoring tools, this
+  is all places where the community could get involved and I would
+  love that.
+
+  My friend, who looked at my slides said, hey man, in might be going
+  on the internet, you've got to put a cat in there (Laughing)
+  (Applause)
+
+  >> Any questions? Jan?  He had a question before the
+  talk he told me he had a question.
+
+  >> Eric: Well, I'll be around all weekend. If anyone wants help
+  getting set up, it's pretty easy, I'd be happy to do that too.
+
+  >> Charles: Have you been able to gather any metrics on how accurate
+  it's determining those types?
+
+  >> Eric: I have not done anything scientifically, I have not seen it
+  mess up though I've seen it do pretty good. But that would be a good
+  place to explore some set some science up. Yep.
+
+  >> Anybody else?  No. Okay, thank you.  ((Applause))

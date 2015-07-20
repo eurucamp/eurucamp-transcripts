@@ -1,0 +1,418 @@
+---
+title: Ruby Style
+speaker: Mark Mendard
+transcript: |
+  >> So our next speaker is Mark Mendard. He is a Java and Groovy
+  developer and heard about Ruby and fell in love with Ruby, today
+  he'll be speaking about the interface between Java and Ruby and how
+  it could be made easier or maybe more preferable, I would say for
+  Ruby people.
+
+  >> Mark Mendard: Can everybody hear me, my name is Mark Mendard, I'm
+  from Enable Labs in upstate New York in the United States, here to
+  talk about Ruby style. And first thing that start out with some of
+  the basics, the principles on which I think you need to understand
+  the stuff about JRuby so you can understand how to start consuming
+  Java stuff in a Ruby-like way, so I call it the building blocks, and
+  the first one is snake case messages, so, in Java we're used to
+  doing our camel case stuff here, and this is your object in Java in
+  camel case and here we are in snake case in Ruby, stylistically this
+  starts making your code look like Ruby. The next thing is Java bean
+  to Ruby attribute conventions, so if you're used to the classic Java
+  bean and declare your attributes and betters and setters for them
+  that we're used to using in Ruby with attribute accessors, this
+  turns into your conversion to that you set some property bit, bit
+  comes being some.property against snake case equals Foo, that allows
+  you to use the Ruby style, we convert get some property to.some
+  property. And IS open Boolean becomes the question mark, Ruby gives
+  this to you straight out of the box, if you have this Java with
+  these conventions it's already to go today. The next thing JRuby
+  gives you is closure conversion, this is probably one of the biggest
+  building blocks to having a nice literate interface when you're
+  consuming something from Java. And what that is, e let's take for
+  example a J component here, a J component, part of the interface is
+  with we can add an action listener. An action listener is a single
+  method interface and has one method action performed. And so, in
+  Java, this is the classic way we would do this, where we create an
+  anonymous inner class and we implemented that action perform method,
+  but doing this in JRuby is very slick and really easy, we pass it a
+  block because JRuby does the help for us and turns that block in to
+  what is effectively an action listener that's seen in the Java run
+  time, wraps it up, I'm assuming you do a proxy or something in
+  there, and it does it all for you. Now what's definitely
+  interesting, this was such a good idea that certain people at Oracle
+  liked it enough with Java 8 Lambdas you can do the same thing, you
+  can also do this in Groovy, it's common to all three languages right
+  now. We're going to see more of this as we go through here.  The
+  other thing you get for free, pretty much is interface
+  implementation, and this one I've used quite a bit and it's rally
+  really powerful, because one of the things that's a real pain in
+  Java, if you say your class implements an interface, it has to
+  implement every single method on that interface, in JRuby
+  doesn't. So we have a simple interface here in Java of a person that
+  has a get name and a set name so if I want to implement that, in
+  Ruby, so that I can pass an object of that to some class in Java
+  that is going fro says on it, all I have to do is include that
+  interface and in this case, all I have to do is the attribute
+  accessor of the name and where they did the work where I could call
+  my attribute dot property and dot property equals they do it in the
+  opposite direction to Java so this will show up a get name and a set
+  name method on the Java side. And it's really slick.
+
+  So, now that those are the fundamentals that I build on for doing
+  this, let's look at actually consuming a Java library. And, I use
+  the classic example, and I think I probably lifted this from you
+  guys using a swing application, but what's interesting is there's a
+  lot of stuff in here, and the first thing I do, and I would
+  recommend this, if you're going to start consuming Java libraries is
+  name space those Java classes into a module. That keeps your name
+  space clean, it helps you from having a Java class the same name
+  clash at the root name space, the last thing you want to do is
+  import string and you just obliterated Ruby string class, you don't
+  want do that because your application is not going to behave
+  anywhere near the way you think it should. Name space your stuff,
+  that's what I've done here. And I'm going to call this sort of the
+  naive usage of the library, we're going to see some non-naive usages
+  as we go through here. So first thing I do is create a JFrame
+  calling dot new on it, and just like a good old Ruby object it has a
+  new method now, it's not language operator, it's a method, you could
+  override it if you wanted to, and this would be set default close
+  operation in Java, but it's just default close operation equal, here
+  I'm activating a constant in the J frame class, making a button,
+  here, I'm do that closure conversion, here's that add action
+  listener, I'm putting action on there puts hello from JRuby when I
+  click the button, then I add the button to the pane and set the size
+  and visibility. The open parens close in Java, but in Ruby, we do it
+  in Ruby style. That's like I say the that eve usage that I see for
+  this sort of stuff in JRuby. So, let's look at what I call some case
+  studies. And the first one I want to go through is setting up a
+  spring context and doing it programmatically instead of using XML,
+  anyone here ever dealt with spring before?  This is the Java Spring
+  framework, the huge thing that started out as a simple conversion
+  control container. So this is a really simple XML file for setting
+  up a spring context, and we're really only going to concentrate on
+  this part of it. So, that's the main part that we're going to look
+  at, and what this is doing, just for your folks that have not dealt
+  with spring before.
+
+  Spring is a way of declaring the objects in your system ahead of
+  time in what they depend upon to do their work so that you can
+  compose together a system through configuration instead of having to
+  hard code new objects in your system. Particularly we use this in
+  applications we have where we need to deliver divergent behavior
+  based upon the client, each client has their own spring set up. It's
+  the same objects under the hood unit will we start plugging in the
+  strategies for each client, but we configure it all through spring.
+  Let's step through this one here. We're defining four beans. Each
+  bean has a name, this one is called sample bean, this one is called
+  alternate bean, this one is called second bean and alternate second
+  bean. We'll go to the first one, the simple bean depends upon second
+  bean, that's plugged in by name. My alternate bean, this is the
+  interesting part, using the same class as the first one, they're
+  both an instance of sample bean but it's going to get an alternate
+  bean plugged into it. So that's where you can vary your strategy
+  through configuration. So, we're going to take that XML and convert
+  it into this Ruby Code. And, personally, I think this is a lot more
+  readable, all those pointy brackets are gone, a lot of the noise is
+  gone, the thing is I can do a lot of conventional stuff, the other
+  thing, an XML file is status unless you do preprocessing on it or
+  construct that XML through some kind of scripting library, like
+  Ruby, this way you can do neat Ruby Code and use the environment and
+  the whole imperative language you have available to you to determine
+  what the dependencies are at run time and then plug them in. In this
+  case I'm still doing them statically, but we go from that to
+  this. And it's basically the same thing. We've got the definition of
+  the sample bean, but I've been able to drop a lot of information and
+  say I'm going to use the class name. My second bean and the other
+  two, those are all the equivalent parts of the system here. And,
+  when you're starting to do this and you want to consume a Java
+  library, what I found was I had to learn a lot about spring to make
+  this work. I can tell you, I've been a user of spring since probably
+  2005, that's nine years of using spring and I learn stuff about
+  spring preparing if this talk because I had to actually get under
+  the hood. If you go out and Google, I want to testimony configure a
+  spring bean there's all kinds of stuff how do it in the XML times,
+  no one really knows how the library works. It comes down pretty
+  much, to these five thing, you have an application context, which
+  holds your bean definitions, you have a bean definition registry
+  through which you register bean definitions, you have a collection
+  of properties that a bean definition can have, one of those can be a
+  run time bean reference, and the run time bean reference holds a
+  reference to a bean definition, but the nice thing is, when you
+  write the library and you use it, you don't really have to know all
+  this stuff once you've written the library, we get the pain out of
+  the way, once. And so, I ended up with two things, a context builder
+  and a bean builder, and we're going to just quickly walk through
+  those. So, this is the first part of the bean – excuse me, the
+  context builder, what's interesting about this is that my entry
+  point to the framework is a single class. The generic application
+  context that is actually the only part of spring that this class
+  actually knows about. Is the only part of the API that I directly
+  have to reference because it's a dynamically typed language. So, in
+  here, I have a nice convenience method to newly one of these build
+  it then return an app context, I like a nice class method that does
+  that. Then my initializer started building that generic application
+  context and then I have that closure, that block that got past to
+  me, and I simply passed myself to that closure, now some people in
+  Ruby call the whole yield self thing, the problem when you yield
+  self is that you then taken over the self reference and you've lost
+  the context from which the closure was called so you can't get
+  access to the instance variables or the methods that might have
+  exist in the the previous context, and so, I used to pretty much
+  always yield self or do in an instance eval, I don't do that much
+  anymore, actually I yield self, I don't do instance eval, I do this
+  yield of self, I tell the app context I'm done, what's interesting
+  is that, that's pretty much the whole plumbing on getting a spring
+  context set up, do that and you're done, what's nice is that's
+  completely hidden away if us. And then, the main method of the DSL
+  is this one method bean. That's all it is, and it takes a hash for
+  the definition and a closure to set it up. And so, first I checked
+  just a few things and that is does the person actually pass me a
+  name, if they didn't, then I just assume the name from the
+  type. Where as in the XML, I always had to declare both. Now I can
+  use convention over configuration, if I don't pass a name, it's just
+  going to come up with a name based on the class name, if I didn't
+  give it a set up, I give it a nice empty closure because now my
+  process from there on out is always a name, a name, a type, a set up
+  closure even it's just empty. Then I go get a bean builder and build
+  it. And ask the registry to register it, and I'm done. This is just
+  some plumbing to get some names out of it.
+
+  There's an important thing here, if you're doing Java integration,
+  there's the method Java class that you can call on a Java class to
+  get the Java class, currently Tom and of Charlie we were talking
+  about this at lunchtime, that doesn't return a Java land class
+  object, it's a wrapper for it, you actually is to get Java land
+  class, you need the call to Java on that to actually get the Java
+  land class out of it, it's an important little thing you might run
+  up against, but you need to know that. So this is the bean builder,
+  that's the whole implementation of it. And, again, a nice little
+  helper method so I can do bean builder.build and just do that. And
+  then, got our initialized, going to walk through this, make sure my
+  slides say I'm walking through it, yes, we are. There's the helper
+  method, but the initialize, now, back in that domain model we had a
+  couple things to keep track of, that was the bean definition, our
+  property values, and here I just create those and you don't have to
+  worry about I anymore because it's just done by the DSL. So, under
+  the hood, it's all managed for you. And it does some plumbing,
+  again, it's that set up call and yield self into that block so you
+  can do the work that you need to do. Then this is what wires
+  together properties on the spring side, and basically, this is the
+  only other part of the whole spring API that I needed to touch was
+  the run time bean reference. And I have to tell you, I did have to
+  did a lot of searching to find Docs on this, lots of information how
+  the set up through XML, almost no information do programmatically,
+  frankly in the past this was a pain this Java, it actually isn't as
+  bad anymore, they've learned a lot from us. Next thing to do, now
+  that I have a spring context accept up, how do I access spring from
+  Ruby this is a quick little DSL, we use this in a fairly large
+  project that must have hundreds of spring beans in it, and we access
+  them from a Ruby Code, and we didn't have to re-write all that
+  stuff. The trick to this is having a spring context that implements
+  an application context aware and store a static reference to the
+  context and then we have a module called spring support, and in
+  there, I can just get a spring context and it just goes out to that
+  class and calls the better for that static reference, spring plugs
+  it in for you, now in my code I can just declare some spring
+  deopinion Dennis, and I can use that, just like any other object,
+  and that will get plugged in from my Java code automatically. And
+  it's really nice, if you have made an investment in a lot of Java
+  libraries and you're using spring, even if you're not using spring
+  but you have a Java library you use in your business, you could wire
+  this stuff into your Ruby using these methodologies and it's
+  transparent, which is the really nice thing, and you can do it very
+  declaratively. And that is an actual piece of code that we use. We
+  have our security manager, which is a legacy Java library and we
+  just plug it in and use it just like it's a Java, just like it's a
+  Ruby object, sorry, forget what language I'm in. And, the other
+  thing we do, with this, if you're going to start doing some of this,
+  sometimes you'll want your code to behave differently whether you're
+  running on JRuby your're running on MRI, so actually in the spring
+  support module, we check to see if the JRuby version is defined, if
+  it's in there, we set up all the JRuby stuff, if it's not, we do
+  something else, that way you can consume your library whether you're
+  on JRuby or MRI and you might have different behavior, maybe you
+  just turned off features if don't have JRuby defined if you're not
+  running in that context, and that works really good.  And then, this
+  is that whole implementation of that library. And, as you can see,
+  this is about 3, 6, 9, 10, 15, about 20 lines of code, and I can
+  tell you, this allowed us to consume thousands of lines of Java p,
+  transparently without having to make any configuration changes. And
+  that was a huge, huge, huge win for us. And then this is the big
+  one, again, a very simple DSL, this sits at the class level so I can
+  do class Foo and spring dependency and give it a name, and we just
+  define a method, that's the name of the dependency, an instance
+  variable and say go get the spring bean and it does it for us.
+
+  And so that is a very elegant way to do that. And this is the one I
+  have to say I queened of like the most, anywhere here ever worked
+  with I text or worked with, what's the Ruby PDF library?  Prawn.  I
+  haven't done a lot of prawn I've done a decent amount of I text,
+  it's painful to say the least. And, I did this first for wined good
+  Ruby in Boston last year, I wish I had driven it further back then,
+  I did for this talk to get a really good feel for it. So, we're
+  going to make a simple PDF that has two paragraphs, has a sentence
+  and what you can't see here is that's actually an HTTP link. And,
+  that's how you would do it in Java. I'm just going to let your eyes
+  bleed on that a little bit there's the naive port of it to Ruby,
+  basically just a line by line, change the sets to calls, snake case
+  it, just kind of use it in a very Java-ish kind of way. But,
+  wouldn't we like to do something like that.  Isn't that a lot more
+  pleasing to the eyes and also directly communicates the structure of
+  the document?
+
+  The other thing this does, which it isn't as apparent when you first
+  look at this, is it's moving towards a declarative style of
+  development. Everything on that screen is what I want done. And none
+  of the how. It's a complete separation from the two
+  responsibilities. Which is really interesting because the underlying
+  library you're going to use is I text, but it could just as easily
+  be prawn. I could swap it out for a render that renders HTML, it
+  really doesn't matter once you separate what you want do from how
+  you want it done. The other thing when you do that is as you improve
+  how something could be done or should be done or how you want it
+  done there's one place to go to to do it where as if you're doing
+  that or that, the how is scattered all over your application, which
+  is what you don't want. And so, just going to step through this
+  really quickly, let me check my time, here. Yes. So, again, name
+  space your classes, I made a module I text and I imported the
+  classes that I needed, and you're going to see two things in here, I
+  do document persistent equals true and paragraph persistent equals
+  true, that's necessary because I'm actually going to reopen those
+  classes again and add some methods in Ruby to those Java classes, so
+  that's something that you actually can do, is you can re-open a Java
+  class and enhance it. Now, it does have some performance issues, but
+  maybe Naiki is going to get rid of those maybe?  You really want do
+  this, don't pollute your name space. So, that's my document
+  class. And, it's pretty simple, the document class, right now, only
+  handles one thing that we can put in, and that's a paragraph. And
+  you notice I take a content, and give it a default value of Nil,
+  that's capturing the block that got passed to me, which could be
+  Nil, and that's fine, and basically say if I have content, make a
+  paragraph, set the spacing after it and add it to the document. If I
+  didn't get content, then, make a paragraph, set the spacing, call
+  the block and pass the paragraph in, and when it's all done, add it
+  to it. It's very different than when you're doing all that Java
+  code, new the paragraph, new this, new that, keep track of it,
+  because in the DSL it's all done for you, I guess that's no secret
+  at this point, this is really a talk about DSL development as much
+  as it is about consuming Java, because frankly Java APIs are really
+  not literate, they don't read well, what we want to get to is
+  reading well. And this is all it takes.  This is the paragraph
+  class, very simple, I can add text to it, or I can add a link.
+  There are more things in text that you can do, you just basically
+  add a method for each of the different types of content you want to
+  be able to put into a paragraph, and all of the implementation of it
+  is all hidden away. And so that's what you end up with, with those
+  simple libraries that you've got there. So, just walk through it.  I
+
+  I call my document create, tell it what I want to file name to be,
+  passing that document object. I'm putting a paragraph on it with
+  this content, I'm putting a paragraph on it, this one doesn't have
+  explicit content, it takes a block, now this is a paragraph object,
+  give the text, give it a link, give it more text, and when I end it,
+  all that management of the state what objects are substantiated what
+  exists at the moment, it's all taken care of, added to the
+  paragraph, and it's done. I know this is a JRuby conference, I
+  wanted to do this quick Coda, I've done a couple training sessions
+  recently in Java, and I actually can't program without Lambda's
+  anymore. And so I decided I told everybody leave your laptops at
+  home, we set up computers if the office, we put JDK 8 on them, well
+  because I can't program without Lambdas anymore, and I made
+  everybody use Lambdas, what's interesting is that I actually built
+  the context builder and the bean builder for the spring example in
+  Java also.
+
+  And, that's the Java version of the DSL, and that's the Ruby version
+  of the DSL. Java, Ruby. Java, Ruby. And what's actually interesting,
+  this code that you're looking at right here, is actually the Ruby
+  Code that's being consumed by the Java implementation of the domain
+  specific language. So, remember I talked about closure conversion?
+  Earlier. So, in the Java version is a consumer of a bean
+  builder. And it gets converted to that type. Although functional
+  interfaces that exist in the JDK now through closure conversion,
+  your blocks that you pass into Java code as people start to write
+  Java code that consumes Lambdas will just work. And that was pretty
+  incredible to me, and in all honesty, this version of the DSL was
+  actually slightly simpler than the one I implemented in Ruby
+  because with over loaded methods, I can actually have one that takes
+  a string, have one that takes a class, one that takes a string and a
+  class, one that takes a string, a class and a closure and I don't
+  have do that checking in my code. In Ruby you can only have one bean
+  method, in Java I can have as many bean methods that I need for
+  all the different signatures that I take, so in reality, this is my
+  opinion, actually more elegant. And that's the implementation of the
+  context builder in Java. And, frankly, a lot of it's noise and
+  that's the thing I don't really like about Java, but if we drop out
+  the noise, it actually gets down to that. And, that's the context
+  builder in Ruby. Just to give you an idea with the type inference of
+  Lambdas and the support of Lambdas in Java, as said to my staff
+  recently, this is not Java that I left six years ago, it's actually
+  quite different today. And then, this is the bean builder on the
+  left in Java, here, and there's the bean builder in Ruby. Just to
+  give you some idea that if you bring your Ruby idioms back to Java
+  today, you can write some pretty tight code. And code that is pretty
+  darn literate in the API usage of it I'll admit that still all
+  the type decoration stuff like that is still somewhat verbose, but
+  the actual DSL, as we saw, I think that's pretty clean. And the
+  other thing is if someone implements a DSL in Java that does it this
+  way, you can just use it in Ruby and it's going to look beautiful
+  so, I'm from Enable Labs, we have our training and triage, two days
+  on site, your place, come in, look at the painful application you
+  will see if there's way you can fix it up, then we do a day of
+  training based on that, also my small code workshop which we can do
+  on site at your place, two to four days of training and we also do
+  custom App development.
+
+  And these are, I always put this in here, this is my syntax
+  highlighting, I always go back to it and try to figure out, how did
+  I highlight all that stuff, I know someone who did it by hands once.
+  Excellent text tutorials if you're interested in that, and I'm
+  Mark Mendard, open for questions (Applause)
+
+  Actually ten seconds of questions. I couldn't have covered it all.
+
+  >> Tom: What's spring?
+
+  >> Charles: Given the DSLs and the way you're able to write this
+  code, when you do App development for someone else have you found
+  they're able to consume the Ruby Code pretty easily, is it easy for
+  them to jump in and make changes.
+
+  >> Mark Mendard: I would say yes. On my team we have a lot of Java
+  experience, that's where we came from, we used to be a Java shop,
+  but we are consuming stuff like this in Ruby a lot, and what I found
+  is that as long as you stay away from some of the educations on the
+  job integration to them it just looks like another Ruby object. It
+  really is pretty transparent now. You guys have done an awesome job
+  because we started this in '08 and it wasn't as transparent then,
+  it's a lot better today than it was, it's also faster.
+
+  >> Tom: How about the leakiness when an exception happens?
+
+  >> Mark Mendard: Yes, yes, absolutely. The stack traces (Laughing)
+  it's funny because I've gone through what pain in two Dynamic
+  Languages, both Groovy and Java, I have to say it's gotten better in
+  '08 the stack traces were gibberish. They were terrible, they're
+  better today. And, I guess we've gotten used to it. And we know
+  where to go now. And the other thing is that, I would say today it's
+  not happening as much as it did before, we're just better at it. It
+  does take some practice, we just don't throw them that much anymore.
+
+  >> Tom: I was wondering how many people get into regularly scripting
+  Java end up like doing a lot of rescue so they can actually share
+  that and drop back a Ruby exception.
+
+  >> Mark Mendard: We have occasionally done that. And it is
+  definitely more intelligible to catch, rescue the Java exception
+  than pass back to Ruby – at least you know where in your Ruby Code
+  where it came from westbound a few lines, you have some idea where
+  to go back to, it can be much better than just pass the Java one
+  along as a passenger and print it out too, that helps. Any other
+  questions? I'm around all weekend.
+
+  >> Thank you (Applause) so now is fifteen minute coffee break so
+  we'll see each other at 20, and on the right behind white board we
+  have another smaller white board for the lightening talks, we'll be
+  having, like say, top nine or ten of them, so you can write your
+  name and topic on the white board, thank you.

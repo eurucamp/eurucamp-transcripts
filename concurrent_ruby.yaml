@@ -1,0 +1,310 @@
+---
+title: Concurrent Ruby
+speaker: Petr Chalupa
+transcript: |
+  >> Our next speaker is Petr Chalupa. He's a Redhat employee who got
+  recently in the concurrent Ruby team, and he has been obsessed since
+  then Ruby concurrency, so he'll be sharing his joy and passion for
+  concurrency in Ruby and JRuby. So, yeah. (Applause)
+
+  >> Petr Chalupa: Thank you, hello everybody, explain Chalupa is a
+  Mexican dish, not me, that's why I made a conclusion. And it's
+  broken again. I'm sorry, it was working before. Sorry, the
+  presentation, just doesn't work. So, my name is Petr Chalupa, I work
+  with Redhat, my obsession is the concurrency this is the reason why
+  I started — this concurrent Ruby team and I started to contribute
+  there. So, what is it?  It's a Ruby gem it was started by Jerry
+  Antonio, now it has about fifteen contributors, and about five of
+  them are very active. Not the tool to solve, just the one problem --
+  it's tool set of low level and high level abstractions, so you can
+  pick up whatever you need for to solve your problem, so Ruby,
+  historically doesn't have good concurrent story because it was --
+  you can interpret only, you can interpret Ruby Code only one thread
+  at a time, but, since then we have JRuby, so it makes sense to start
+  building some tools. So, our objective is to fill the gap and we
+  also try together as many as possible in one place, and make them
+  share easily, so for example we don't have any dependencies and we
+  also very opinionated, so we don't try to force users to pick just
+  one solution for the concurrency, because there's many problems and
+  for each problem there is you can just pick up what works for
+  you. And, also, maybe to show other languages that we can do it
+  too. And, my hope today is that you find this interaction
+  interesting, and, you will remember -- look it up later and will
+  help you to solve concurrency problem. So, as I mentioned,
+  concurrent Ruby is a collection of low-level constructs, so we have
+  atomics, like atomic intergeneral Boolean, they match their atomic
+  to ours, and it's released in 0.7 release candidate 2, but it will
+  be fully released, I hope in 40 days. We also have synchronization
+  primitives like count down latch, event and condition. And we have
+  also thread local variables, which holds different values on
+  different threads, also have IVAR, which is presentation of some
+  value, which can be resolved in the future, we also have MVar which
+  allows you to put just one value in the reference and it's useful if
+  you want to transfer value from one thread to another because when
+  there is already value in it, it will block until it's freed and
+  then it will allow you to put the second value if it. And then we
+  also have delay, which is very useful, when it comes to safely,
+  some, lazy initialization -- the low level stuff will help if you're
+  building something on your own we also have high level obstructions,
+  async, actor, TVar, implementation of STM, timer task, future,
+  promise, promises, which is inspired by Java script, and if you know
+  Ingar, it's pretty much the same, we also have channel which is the
+  implementation of the go channels. And we also have Agents, as in
+  closure.
+
+  I will be talking about some of them because this presentation is
+  too short to go through all. So, let's look at some examples. So,
+  let me start with rectors, which is basically just thread pools, we
+  have a fixed thread pool, cached thread pool, immediate executor,
+  single thread executor, even though they handle threads differently,
+  they all share the same API, so you can always just post a block of
+  code and then it will be executed. And, we also have a local task
+  pool and global operation pool in the gem, which is always there for
+  you, and the difference is the first one is intended only for a
+  short running tasks and the non-blocking tasks, which is very
+  important, because then you can be sure that this thread pool will
+  always progress with the work -- it won't stay blocked on some Io or
+  something like that. And the other one is the global pressure pool
+  for IO and other blocking code. Then we have -- I don't know why it
+  keeps breaking. I'm sorry. Never happened before. Maybe ... Sorry
+  about that.
+
+  We also have reference to lazy evaluated memorized value, which is
+  very useful when you want to initialize something lazily, you can
+  use this -- it just doesn't work.  Messing with my presentation. So,
+  here when you want to create some global exit for database you can
+  pass the installation of your database here in this block and the
+  delay object will take care for you that if you initialize them only
+  once and any thread which will be trying to get the value out will
+  get the same object and will be initialized only once, so, that's
+  basically the safe replacement for equal operator, which is not
+  automatic, then we have async major which is very helpful when you
+  have, let's say just a web application, you want to start with some
+  background tasks, so, you can encode this module into any object and
+  when what it does, it allows you to call any method on the object
+  with async and the first one will be called asynchronously and the
+  second one synchronous calls, but the important thing about this is
+  that there will be always only one method executed at a time on this
+  object, so, you won't break your state of that object which is
+  including the Async module, you can still call the original methods,
+  you shouldn't do it because this is not synchronized against these
+  calls. So, you can do it inside these methods, some other – but
+  not – it's not a good idea.
+
+  So now let's look at the good stuff, so we have the actor
+  implementation, which is the part I did. And, it was inspired by
+  Erlang and Akka, so I think the main feature is that it's running on
+  a direct pool, so, it doesn't create thread for each actor, so it
+  allows you to easily spawn thousands of threads. Sorry, I forgot to
+  mention, how many of you know what Actor model, what it is? So,
+  about half. So just quickly, Actor model is a pattern you can look
+  at it as you have object oriented program, you have objects and
+  you're calling methods or sending -- at least in SmallTalk it's
+  looked at that way. Actor, basically, you send messages to actor by
+  default is Async, the actor will be handling the processing of the
+  messages for you, so it will go down it's normal course. So this
+  implementation also implements linking so you can monitor your actor
+  if they are terminated, post an error stuff like that. This is
+  hooked into some event broadcasting so you can also extend this. It
+  also supports supervising so, when actor fails, it will pause and
+  let it's supervisor know that will was an error and the supervisor
+  then decides what to do so it can terminate actor or reset it or
+  start it based on what needs to be done. We also have dead letter
+  routing, which allows it to collect all the messages that were lost
+  due to some actor termination and stuff like that. 
+
+  It's offed -- it also some chain of behaviors where each is
+  responsible, say one is for termination, second one is responsible
+  for supervising and stuff like that, so it's highly
+  customizable. And, it was latest implementation was -- early
+  candidate two, when I finish, come mennation it will be fully
+  release in the 0.7, so let's look at some example, this is, this is
+  simple actor, which is initialized with some value, understand only
+  one message,@which will increment the value by one and will fail on
+  other emeses age, it will pass through another behavior, which will
+  post to actor this is how you can spawn the actor, so you give it a
+  name, in this case we are saying the actor it should be supervised,
+  just from the beginning, and we pass one argument, which will
+  initialize the counter. We will get out reference because we always
+  want to keep the state of the actor hidden, so you are always
+  working with actors through this proxy class and because this actor
+  was create in the a main thread, it's parent will be root actor,
+  which is always there in this implementation. And there are two ways
+  how you can send messages through actor, the first one, the
+  preferred one is the asynchronous call, with it's areas, but you can
+  also ask which will return, which will return the result of the
+  message processing, so, this this case, it is four because it's one
+  which was passed initialization of the actor and we add messages, so
+  it's adapt to the 4. Send some bad message, the actor will be paused
+  and -- what to do, in this case root, when the root is stoat always
+  restart all it's failing -- restart all it's failing, so when you
+  send another @message it will start counting from one, it was the
+  first state it was initialized the first time. After that you should
+  terminate the actor which allows you actor to be garbage collected
+  later then you lose the reference from this variable.
+
+  We also have Clojure, let me start with the with the problem it
+  solves, this is a problem, you have two bank accounts and you need
+  to transfer the money safely from one account to another. But of
+  course, if there are two or three sections in different threads,
+  this will be saved because there are minus equal and plus equals
+  operators which are not safe. So we will try to fix it. We can
+  introduce one global lock for all the accounts, so only one France
+  for will be executed at a given time. If you are adding threads your
+  application, you can still always do only one transaction at a time,
+  so it won't scale. So what you can do is to at fine locking, you can
+  add lock to each account and then in a transaction, sorry, in the
+  transfer method, you lock both the logs of the accounts, transfer
+  the money and unlock the locks. Who thinks that this code is safe?
+  Of nobody, you are right. The problem is that if you have this of
+  two thread which is are trying to transfer the money in opposite
+  directions, let's say the first transfer will go only to this point,
+  it will lock, this account lock, and then the execution switches to
+  the second thread and that will start by locking the Bob account,
+  and that the point none of the transactions can continue and you
+  have dead lock. To fix this you have to introduce some total order
+  between the locks, so this is done here by atomic fix num, which is
+  assigning here a unique Id to each account so then you can, in your
+  transfer evidence many always sort the logs in the bank account and
+  you will avoid these problems. But, for this to work, you have to
+  do it for all your locks in your application, which may not be very
+  easy, and you always overlook something, and even didn't go into
+  things like that, for example, what would you do if this plus equal
+  operator, this operation would be more complicated than this, it
+  would fail, then you would have to have some compensation code for
+  the first operation removing, by removing the money from the first
+  account and stuff like that.
+
+  So, but, all these problems are basically solved transaction memory,
+  so, instead of bank account you just create references which then
+  can be used in a section which basically gives you the automatic
+  consistency -- as database transactions, but without the durability
+  of course because it's only in the memory. And, I think transaction
+  memory scales the best, so if you are throwing threads at it, you
+  will get the best performance increase. But on the other hand it has
+  the most overhead with having the transactions and stuff like
+  that. To be absolutely faster than correct implementation of some
+  fine looking – you will have a – I don't know 40 or something like
+  that. 
+
+  So let's look at concurrence and JRuby, so, this comparison this is
+  a benchmark for the actor implementation and it's sending 5000,
+  50,000 messages and this is number of actors used, and process – the
+  process time taken and the real-time is real how long it took. As
+  you can see, for now, it's -- the MRI is actually slightly faster in
+  how much does it take in the process time, but this is the nicely
+  shows where it makes sense to write on JRuby because the real-time
+  is much lower on JRuby because it can utilize -- course, this is
+  from my mission, I don't have many course, but if you ran on a serer
+  with a difference would be even bigger. We also have some native
+  implementations for C and of course for Java, so, we have some
+  latest implementation of atomic Boolean fixnum, count down latch,
+  thread lock Var, and use the Java pools, and it gives us 3.7 seed
+  up, but it really depends on your application, I tried several
+  benchmarks, it was difference between how many threads you is and
+  stuff like that, it's faster but ...  you have to try.
+
+  So, then let me briefly mention a few projects which are already
+  using it, the first one is Dynflow, a dynamic work flow engine
+  allows you to define processes or task, define in the a parallel,
+  our action and in the dependencies from the action are allowing it
+  it is also parallels. And the main reason why we built this is it
+  allows do you pause the task or the process at some point at some
+  error you can then go and inspect what was the problem, fix the
+  problem, and resume the task and finish it successfully. And also
+  support some actions of spending -- if there is some long carrying
+  task on other systems and stuff like this. System is used for
+  program called satellite 6, which is a complete life cycle
+  management for physical and virtual server, and it runs two projects
+  foreman and Katello, foreman is responsible for provisioning,
+  initial configuration of the machine, drift management and supports
+  many computer sources. VMWare, EC 2 and OpenStack and probably
+  more. And the second one is Katello, mainly using Dynflow, it's
+  composed from interoperability props. So, need to make sure that
+  everything went fine when we are modifying, and Katello is
+  responsible for having precise control over RPM, Puppet modules
+  which are seen by your hosts. And there is also a program which uses
+  Dynnflow to do easy open stack, fully automated open stack installer
+  which also has a high availability support. And max is using
+  concurrent Ruby in Aero express server, he's using it for managing
+  atom style controllers and using the new Actor model implementation
+  already to build interesting framework for trading application and
+  back end service content management system. So that's all from me. I
+  thank you for your attention, and before we dive into questions, let
+  me show you a few links, here are the links for the project, you can
+  always find me on Github, ERC bridge, if you like, and follow me on
+  Twitter if you are interested in any news from concurrency. So,
+  thank you for your attention, if you have if I questions, I will
+  gladly transfer them (Applause)
+
+  >> You mentioned atomic is in, but what about the thread save jam?
+
+  >> We've talked about it a little bit, but no immediately plans yet.
+
+  >> So it's not decided if it goes in or not 
+
+  >> It's not decided.
+
+  >> Okay, thanks.
+
+  >> So does the implementation of the Axiom model, does it use pattern
+  matching or regular messages
+
+  >> You can use case or whatever, it's mention in the the
+  documentation because the messages should be immutable by the Actor
+  model, so, you can use – sorry, not hammer, hamster, which is a gem
+  of immutable collections are you can use Aldebrtuis, another library
+  I wrote, basically stacks on steroids, it's stereotype stacks, also
+  implements better matching and algebraic types, so it's inspired
+  from Haskell, very useful – does it use fibers or threads?  
+
+  >> It always uses threads because we are trying to make this gem to
+  be usable on any implementation, we also have some optimizations,
+  but it always has to work on an MRI and everywhere, so, on JRuby,
+  for now, fibers are using threads, so that's not the most optimal
+  way, so we are just avoiding it.
+
+  >> Thanks I've used actors with celluloid before, I was wondering
+  if you were familiar with their implementation.  
+
+  >> I know celluloid, I thought about that, but for me, the
+  implantations was that even though they have quite a lot of
+  features, you cannot create many actors it's spawned by actors, if I
+  do some benchmark it will blow up so depends on the set up. But,
+  that was not -- wouldn't work for me.  
+
+  >> So you're supporting all Ruby platforms, Java already has lots of
+  already in-built primitives for concurrent five words like atomic
+  and thread pulls, how do you deal with that for like MRI?  You write
+  just Ruby Code you're using?  
+
+  >> Most of them are just Ruby Code, some of them are like atomics,
+  they are implemented in similar ways, it is inspired by atomic gem,
+  so it's just little changes here and there to create atomic Boolean
+  and fix -- in the seat, implemented more efficiently, but most of
+  the high level stuff don't have any optimizations at all, at least
+  for now, they are thinking and talking about it, but no time yet.
+  
+  >> If you're interest in the contributing, we are more than happy to
+  help you start.  As I mentioned you can find me on the channel and I
+  will answer any of your questions later, if you have more. Do we
+  have still time for questions or ...
+
+  >> Yeah, we can have a last question. If there is one.
+
+  >> So, what are the actors actually isolating? They're not
+     preferred?
+  
+  >> It comes that you have each actor is composed from more than one
+  object, a proxy class, the reference you saw in the example, then
+  there is a core that has a chain of behaviors, then there is a
+  context which is actually the only part which you are changing,
+  which was the other class, which was the child of the context. And
+  basically it just schedules to the thread pool and there are
+  mechanisms to ensure that only one message per actor is accessible
+  in a given time, so the state won't be broken. Basically that's how
+  it works.
+
+  >> Thanks.  
+
+  >> Thanks. (Applause)
