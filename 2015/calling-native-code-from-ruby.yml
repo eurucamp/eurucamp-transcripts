@@ -1,3 +1,8 @@
+---
+title: Calling native code from Ruby
+speaker: Boris Bügling
+---
+
 So Boris is active in iOS Open Source initiatives, today he DELETE 'll
 talk about fiddle, which is a lesser known feature, but apparently
 already available since MRI 1.9. So there we go, Boris.
