@@ -1,0 +1,343 @@
+There'll be one more break after Colin's talk. As he gets set up I'm
+going fun fact today, Colin's last name means surprising.  I ask him
+if it was a real name or a made up programmer name, it's his real last
+name. Yeah, he's from Morel and is a software engineer at elastic. So
+one of the people responsible for the delicious ice cream you had,
+hopefully at lunchtime. And he will be talking about JRuby file input
+out put using MMAP. Okay, this looks better. Yeah, I think we can
+prepare for a lot of benchmarks in your talk. Yeah.  I guess some of
+you might be interested in that or looking forward to it. Yeah so
+without further adieu.
+
+
+(Applause
+
+
+Colin Suprenant: Thank you, yes, so we had some code and benchmarks
+and code and benchmark and hopefully that's going to be useful for
+some of you. So I'm software engineer for lessic in the logstash team,
+it's written in JRuby entirely. And I have two colleagues here, guy
+and Peire. Who are working on my team. So, yeah, we're going to talk
+about fast IO or how to achieve efficient persistence using JRuby and
+Java. So this is work I've been doing to ‑‑ for the actual
+implementation of persistent Q, and I'm going to show you that a
+little bit later on. So if ‑‑ this ‑‑ if this is too boring, you can
+jump to the code right now. There's a Jrubyconf‑20 with all the code
+MMAP implementation and the queues implementation. Okay, so, first of
+all we're going to talk about using data or manipulating data in
+Ruby. Yeah. So, soon enough you're going to be asking yourself why is
+there no binary in Ruby or you know I wish there was a binary in
+Ruby. So in Ruby when you manipulate data everything is true using,
+you know, using strings, actually to hold the data. And there's two
+important things that you have to consider when doing that when, you
+know, manipulating data is the character set and encoding, which are
+strings and if you're calling out to Java, Java classes then you have
+to pay attention to the actual type conversion that occurs between
+Ruby, JRuby and Java. Now there's a very nice wick I can for that,
+that explains soft the pitfalls (wiki) and some of the things you can
+use to get more speed when doing that. So I urge you to actually look
+at that. If you ever want to play with you know crossing the world
+between Ruby and Java. Okay so first of all let's talk about
+encoding. I'm not go going through all the details for encoding, I'm
+going to talk a little bit about the Ruby side and the Java side. So
+these are some of the stuff that you may have seen for encoding, of
+course the first line, the encoding for the Ruby files so that the
+strings that you're going to find in your Ruby files are going to be
+encoded that this character set. There's classes and constants that
+you can use UTF 8, 8 bit ASCII. This is important to understand what
+ASCII 8 bit is, we're going to see ‑‑ secure cell quill in Java ‑‑ ‑‑
+this is actually transparent 8 bit character set, so it's equivalent
+to saying no encoding, right. And so most of these encoding methods
+are in the string chat so you have force encoding, encode, encoding,
+which is going to give what encoding the string is in right now. Is it
+a valid encoding and the actual byte size of a string. So it's
+important to note here that the only thing that does trance coding is
+the encode method. So forcing coding doesn't do any trance coding, so
+it's only a tag for the string to tell it in what encoding it is. So
+I'm going to show you some code that usinges that. So the equivalent
+in Java, so we have like the default character set in Java, and then
+there's some classes and constants again for the encoding, so you have
+the UTF‑8 then ISO 8859 ‑‑ 1 which is the 8 bit transparent
+encoding. You can set the transparent encoding using the
+file.encoding, you can get it as a property or if you're program JRuby
+you can use the enNV Java to see what the default coding is in
+Java. Okay, so let's show an example here if I define a string with
+acute access "E". Obviously this is a unicode U.TF 8 is going to be a
+2 byte encoding. If we ask the size it's a one character string. If we
+check the byte size then it's 2 bytes, if we force the encoding to
+ASCII and bit which is going to be transparent 8 bitten coding we get
+back that string, size is 2, byte size is 2. This is to show the
+different we between string length and the byte size for that same
+string. Okay. Now let's talk about object persistence. So this is why
+I'm obsessing with string, it's very important when we talk about
+persistence and IO, it's important to get the big picture about
+encoding and make sure that you actually understand that because you
+may end up having, you know, wrong encoding and problems with that. So
+thee the problem is that all Ruby IO uses string. So you don't have a
+choice, you have to go through strings. One of the problems that we
+have is that if you ‑‑ JRuby object if you want to do persistence
+cannot be ‑‑ it cannot implement the sterilizable interface in Java
+sellize ‑‑ using framework like Chrono to actually serialize within
+Java. This is because JRuby objects hold references to the Runtime and
+we cannot sterilize that.  I know there's been some work to actually
+be able to have sterilizable objects in JRuby (Seriali ‑‑) for a
+persistent object you need to serialize it somehows to a string
+because you want to write it. You can use marshal dump, that's the
+similar thing you're going to serialize the string oand so on. So
+you're stuck with strings. So yeah, we're going to play with strings
+and we're going to do some benchmarks with different strategies, all
+the code for example is going to use a string object. So I'm not going
+to talk about serialtion this is going to be your problem to chose
+whatever method you want to serialize. You can talk to guy, the other
+or maybe Satoshi Satoshi, see these guys, we're just going to deal
+with string objects ‑‑ string buffers, but, of course, in the real
+world you're going to have some serialtion costs to include into these
+benchmarks. Okay so what's the motivation here?  This is ‑‑ so I work
+on log stash and this is basically log stash, the log stash
+pipeline. It's just three horizontal slanderers and two horizontal
+sill lenders, that's about it ‑‑ three years of software engineering
+right there. These are the stages, input filter and output stage
+stages. And they are connected through size queues. We use size queues
+to actually propagate back pressure when the out puts are slowing
+down. So these size queues are going to fill up. The filters won't be
+able to push an event in there so the other sized queue is going to
+fill up and going to propagate the back pressure ‑‑ input stage. So
+the idea here is that these size queues are in memory queues, if
+there's a system cache, application crash, whatever, you're going to
+use all these in flight ‑‑ these are small ish queues but nonetheless
+this can cause a problem, right. So one of the ‑‑ one of the ways to
+solve that is to see can we ‑‑ can we persist those events in these
+queues, so there's many solutions to that problem. One of which is
+saying, okay we're going to do just a persistent queue implementation
+and that can be a drop‑in replacement to the in memory queue and be
+done with it. If it persists, if it crashes, when the application
+restarts it's read the persistent queue and then continue on with the
+events. So that leads us to trying to find out the best eyepopper cyst
+because log stash processes, you know, thousand, hundreds of thousands
+of ‑‑ per second so we need to be really fast in terms of
+persistence. So . Raw IO performance storing as many objects as
+possible. And oh, this is not the Satoshi Satoshi here in the picture
+(Laughing) okay, so, different strategies that we're going to
+explore. We're going to ‑‑ the base benchmark that we're going to use
+is plain Ruby file IO, after that we're going to see can we do better
+with MMAP, so memory mapping. I'm going to talk about that. We're
+going to have a Java class implementation. And we're going to test
+different strategies to talk to the Java class, implicit casting,
+explicit Ruby‑side casting, play with the character set a little bit,
+build a JRuby extension in Java and then have a pure Rubiment me
+mennation also. And check ‑‑ pure Ruby implementation also and check
+the performance results. All benchmarks are basically for write speed
+only. If we have time I'll come ‑‑ we'll see the actual queuing
+implementation which, you know reads and writes, but this basic
+benchmark are for write speed. We're going to use one, four and 16 K
+buffer signs, again, these are plain string buffers. And we're going
+to be writing N times two gigabit times. So, the N times depends on
+the ‑‑ the end times depend on the test.  I just want to make sure it
+takes long enough to get results that are in the few second range. So
+this has been run on my Bob ‑‑ my book here. It has a local SSD so of
+course there's a lot more IOPS than a spinning disk. Latest Java and
+latest JRuby 1.7.  I haven't run the test on 9 K yet. But I'll do
+that. Okay so standard Ruby file IO so if you want to go be the Repo
+and check the implementation, there's an implementation called bench
+passes me the write count. So this bench method is actually
+benchmarked what's happening in that block. I'm not counting the
+creation of the file, so it's just going to go on and write the buffer
+that's given to me, so it's going to be one K, 4 K and so on. So this
+is the first result that we get this is going to be our base result,
+so we see that we have, you know, between, you know, 6680 and
+900‑megabytes per second ‑‑ 680‑900‑megabytes per second. With
+standard file IO. Okay, so now, an alternative is to use memory
+mapping. So conventional file uses read and write system calls and
+that involves you know copy operation doing the fastest in pages,
+internal space and the memory area in user space. So there's always
+copy going on. But memory mapping IO uses, like, a virtual memory
+mapping from the user space, refer to the ‑‑ pages. With a memory map
+file, the entire file is going to be accessed using a byte buffer
+class. And a bite buffer is, you know that's it's a byte buffer, you
+actually manipulate the underlying file just as a byte array, and you
+put bytes and get bytes so you don't have anything like read lines or
+NL files anything like that, it's just a big byte array that you
+manipulate. Okay, some of the advantages of using memory mapping, so
+you see the file as plain memory like I said, as a byte
+buffer. There's no need to issue read or writes. If you access or you
+get bytes from that memory space there's going to be page faults in
+the OS that will bring the file data from this to these memory
+areas. So if you put bytes or modify the memory map space these pages
+are going to be marked as dirty and flushed to disk eventually. So the
+OS is going to be performing the caching and M.ing memory according to
+system loading and available memory. One of the important things is
+that the data is always page and line so there's never buffer copying
+that's required. So this is probably one of the biggest benefit. And
+also very, very large file.  I think it's up to 4 gigabyte can be
+mapped without consuming actual large amount of memory, right, because
+the data is pulled in as needed. Okay, a few notes. If the user
+process crashed the memory map file is actually intact. So because
+those bytes have been managed by the OS. In the pull the plug
+situation, well, just like a normal file you don't know exactly,
+unless you've been doing, you know a flush or have seen. The
+equivalent of that request MMAP is use of force, force is the
+equivalent of flushing and then doing a F sink. In these tests we're
+not doing that (Fsync) this is a strategy, have not done any flushing
+or Fsync in the follow up test, I'm not doing any force of flushing
+with memory map. And the performance of memory mapping is going to be
+relative to your file system type, the free memory you have in your
+system for doing the file system cache. And the read write Blog
+size. Normally, MMAPing should be much faster than streamingIO. This
+is what's to be expected. Okay. So first we're going to look at the
+simple Java implementation for memory mapping. Now I don't know if I
+can pull that in here. Hmm ... okay. So this is ‑‑ very simple ‑‑ in
+the construction here we see that we created a file. We get a channel,
+and then we call map, which establishes the MMAP to that channel. And
+then the methods here are really just wrapper against the byte buffer
+put and get. So it's very simple. We have different put here that
+we're going to use for the different benchmarks, we're going to look
+at that. Okay, here we go. So the first one ‑‑ so using the Java class
+we're going to use implicit casting with the default character
+set. That means we're going to pass our Ruby string to a Java method
+that accepts a Java string. So we can see it. We use out the put bytes
+buffer, buffer is a Ruby string and below this the actual Java methods
+which accepts a string, a Java string and it gets the bytes so data
+that gets bytes and we used the buffer which is the memory map buffer
+that's been defined and we do a put for those bytes, as simple as
+that. Okay, so, in this case using MMAPing we're actually slower than
+file IO. And by a good margin so this was a really ‑‑ what the hell is
+happening here. So why is it slower, it's supposed to be much
+faster. What's happening. So the first question was, okay, is there
+encoding, trance coding going on so let's see if we can, you know,
+specify explicit encoding here. Since our string here are defines
+simple ABCDF and then we do a force encoding as ASCII birth, our
+string, it's already 8 birth transparent. Okay, maybe that's trance
+coding going on. So instead of using the get bytes, which is going to
+use the default coding in Java, let's use the get byte which is going
+to be ISO 88 of 591, right so this is what we're going to do
+here. We're going to do a put byte with a character set and this is
+passed on to Java and explicit character set here to avoid any trance
+coding. And this is what we get so it's a little bit faster. So this
+is not the trance coding problem so what's happening. So, of course
+here we can look at type and version. Is this what's happening?  We
+see that, you know, we use the buffer, a Ruby buffer and we pass it to
+Java method that uses, that accepts a string. A Java string. So let's
+try and do explicit Rubyside casting instead of relying on the JRuby
+implicit type conversion. So you can see the upper part where we do
+the out the put bytes, we're going to do buffer two Java bytes. This
+is going to pass this a byte array. A Java byte array to that
+method. This is going to be use the put byte which accepts byte
+array. So instead of ‑‑ we do an explicit Ruby side type
+conversion. So what kind of performance do we get?  It's a little bit
+faster, especially with bigger blocks. So the 1 K block it's somewhat
+similar then 4 K and 16 K it's improving. So this is getting
+interesting right?  We can see a very big increase in the 16 K
+Blogs. And we're going to see if we can improve on that. So we're
+going to do ‑‑ we're going to try some explicit Java side casting,
+instead of doing it in two Java byte. We're going to do put Ruby
+string buffer and use and create a method that accepts a Ruby spring
+object. And then on that Ruby string, which is data, we're going to do
+a get byte list, so get byte list on the Ruby string class gets us a
+byte list class from which we can get the bytes. So there's two ways
+you can get the byte. You can save bytes by doing a copy or you can
+use unsave bytes which is going to give you a point or two to the
+actual underlying byte buffer for that string. So this is what we're
+going to do here. So, okay, so this is getting really interesting. We
+can see that we get up to 5 gigabyte per second with the 1 K block and
+7 gig per second for the 14, 16 K this is very, very good. So we see
+the cost of the implicit conversion in JRuby when crosse crossing the
+world is JRuby and Java is very expensive. And there's basically two
+ways to avoid that from the Ruby side or from the Java side so when
+you do it from the Java side of course you is to know a little bit
+more about the JRuby API in terms of, you know, especially Ruby
+string, I don't know if any of you have checked Ruby spring class
+implementation. It's probably one of the biggest class?  Yeah. It's
+just amazing. (Laughing) so I won't go into the details. So, now
+another implementation so instead of doing talking with a plain Java
+implementation, let's try to create a JRuby extension in Java and so
+our benchmark is pretty much the same, so we're going to put bytetion
+and buffer on our Ruby string. Below we can see a JRuby method defined
+in Java so there's some boilerplate code in there to check the
+arguments, but the arrow we can see we do a buffer put with the actual
+so we know that the Ruby object there is a Ruby string so we can do it
+approximately the same thing as use a byte list and use unsafe bytes
+to avoid the copying of the bytes and that's it. So performance for
+that is somewhat similar to our explicit Java that we have, but for,
+you know, a little bit faster for the 1 K block. We save a little bit
+more time here. And if we compare that to instead of using the unsafe
+bytes for me when you do persistence I think it's pretty safe to use
+unsafe bytes because this is usually the end of the story for the
+string, right. You're not going to my state the string after that,
+you're going to save it and persisting it. If for whatever reason you
+want to copy those bytes to get a safe string to persistence you can
+do that instead of using unsafe bytes you can use get bytes which does
+a copy. And the difference in performance is this: We see that it's
+pretty significant in terms of performance costs. Okay, so, the last
+implementation is simply a JRuby calling in to Java, directly, so it's
+a pure Ruby adaptation of the MMAP that we created in Java or a Laura
+Ruby extension. Basically, so the same put buffer, butt bytes buffer,
+and then below we can see the implementation so there's the
+construction so in Ruby we're calling the actual Java class to create
+the MMAP and then eventually we have the put bytes with data and then
+we do the same, you know, data to Java bytes and so on. So performance
+we get with that is, you know, pretty similar to the explicit Ruby
+performance. So not that good. Okay. So, of like I said the motivation
+for that was to actually implement persisting size queue so I'm going
+to take a few minutes ‑‑ I don't know how we are with time ‑‑ yeah,
+okay, so I'm going go through those slides. So this is a scree ma of
+the persistent queues implementation (Schema) there's a standard
+queue, just the same API as the thread queue and then there's a size
+queue which are blocking and thread‑safe implementation. So they rely
+on page handler, and the page queue implementation, so page queue is
+simply a non‑blocking, non‑thread safe page emme page queuing,
+creating the MMAP and storing the meta data and so on. So those can
+have different strategies, there's two. There's one called the page
+cache, cache is the last used pages because typically you have two
+active pages when you're doing queuing so in's going to be the tail
+page and the head page. The head page is where we push and these are
+append only pages that are created. There's the tail one where you
+actually put the items. There's a single page strategy in the size
+queue implementation typically the number of items, you know in the
+queue is small, so you can actually use the same page, memory map and
+then do a ring buffer in it. That avoids creating more and more pages
+which is ‑‑ MMAP. Typically when persisting data it's just append only
+pages and these pages you can define the size that you want, I'm
+doing, you know, we're going to see some more benchmarks, I'm using
+two gigabyte pages and there's meta data that's a MMAP file itself
+that key pointer to what is the tail page index and the tail page
+offset so where do we read in that page and the same for the head for
+doing the push on the queue. So just a word of warning if you play
+with this and a proof of code you should be careful. There's no
+serialtion involved. This has been done with Moderator: K string
+objects, 2g MMAP page size, 2 item page cache and for the test we
+pushed two million items per producer. Sometimes we have multiple
+producers, that's two million per producer. First the persistent size
+queue, it's a limited queue size for this implementation we do a dual
+queue implementation, push both the persistent and in‑memory queue. So
+we serialized persistent queue and push the original object in memory
+queue and when we pop we only have to do it from the in‑memory so it
+avoids Deseyreltion cost. So the persistent queue is only there if
+there's a crash ‑‑ the queuing ‑‑ meta data in that case. Okay so what
+do we get?  With Paige cache we get ‑‑ so we have one consumer, proe
+one two deucer, two consumer, one two deucer, and two consumer two
+producer thread to try different strategies, we pop and push in those
+queues, we get approximately 100‑Ish megabytes per second in terms of
+throughput in a size queue. Or, one hundred thousand ‑‑ you know, a
+hundred thousand and a hundred and fifty thousand transactions per
+second. So with a single page we get a little bit faster, especially
+in the one consumer and one producer. Okay. For the persistent queue
+implementation, so this is not a size queue, this is a standard queue
+that will grow indefinitely, if they're the consumer if they're not
+catching up and the push andment propagation is persistent we need to
+deserialize on push and pub. This is essentially just a thin thread
+safety wrapper around the H Q implementation. Okay. So for read and
+write we can see that we get a little bit faster ‑‑ okay, I'm almost
+done. And so for read and write operations so we have consumer and
+producer at the same time. If we do a write then read then we get a
+little bit more performance and if we do only write then we can get up
+to 500‑megabyte per second on only writes. So just a few notes do we
+really need dual queue implementation is it really faster.  I don't
+know I need to test that. The caching strategies is it optimal. Can we
+find better page size and cache size. How does that performance ‑‑ I
+haven't tested it of is there faster alternative to the current page
+and meta data algorithm that I'm using ‑‑ I don't know have to try
+it. And the code has to be reviewed in semis terms of resiliency, do
+we need to force, maybe at specific points. And the last thing, you
+know, the elephant in the room of course is the serialtion there's a
+huge cost associated with that. So, again, you can talk to guy or
+of ‑‑ about that. And thank you. That's about it (Applause)

@@ -1,0 +1,280 @@
+So, thank you all for ‑‑ coming back, I'm going to introduce you to our
+next speaker.  I met him earlier this week at my Ruby learning
+group. And he was fresh off the plane at that point, so he had a
+lot of patients and looking at him and speaking German to
+him. Yeah, we got to discuss his project ‑‑ Open Source project
+choose. And we got talking about his daughter Cors who ‑‑ Cora who
+is considered the youngest contributor to the project. She has a
+bright future ahead of her. So, yeah, I think we talked a lot about
+his amazing talk ‑‑ Ruby in 2014,if you haven't seen that yet, you
+should. You can look it up on YouTube. And involves capes,
+sorry. It's a great talk. Yeah, without further adieu, I think
+we're just about ready.  I didn't have any good JRuby jokes, I
+looked them up and there was zero results.  I don't even have any
+bad one, and that's my specialty as well.  Does anyone have any
+JRuby jokes?  Yeah, okay. Well, we're going to get our shoes back
+on. There you go.  It's almost like you know. Thanks, Jason, take
+it away (Applause) Jason: Hello everyone. So, as she said my name
+is Jason, I work for New Relic, until recently on the Ruby agent,
+which might have been solved if you ever used that product. But I'm
+here today to talk mostly about shoes. So what is shoes?  Shoes is
+a G UI library built in Ruby so you can write desktop applications
+and runs across platforms on Linux, Mac and Windows. This library
+was originally written called why ‑‑ those who have been in the
+Ruby community for a listening time may remember, even some of you
+haven't been may have heard of this guy. He's an eneggmatic
+character, did a lot ofier I can things and wrote a lot of
+interesting libraries and slews was the largest project he
+built. As many of you know (shoes) as many of you may have noticed
+why disappeared, he chose to take himself off of the internet, take
+all of his code away and left. And a lot of people probably thought
+at that point in time that would end, that shoes was done. He was
+gone, this is finished. It's not actually the case. That's part of
+what I'm here to talk to you about today is to show you where shoes
+is at, talk to you about the community that's built around it in
+his absence after that. And show you how it works and then peel
+back a little bit and show you the internals and a little bit how
+you can contribute, today shoes is written entirely if Ruby. If
+you're a Rubyist, you can access the stuff, you can contribute, you
+can give back. But one of the key things about Why part of his
+presence in the Ruby community he was a very weird character. If
+you look at his book it's like no other book I've ever seen, it's
+crazy and off the wall.  I thought it seems like I have to put
+something into this presentation that's a little weird. Okay. This
+is not my personality, entirely, I am not that sort of character,
+but it put me in mind of a situation that I had at university. So I
+have a friend, Mike Larson who in my software engineering class he
+came up with this concept that he called the learning chicken. And
+any time that he felt like the professor had made really good point
+he would balk like a chicken.  I kid you not, he actually did this.
+I don't know why this came to me, but I thought I would try to
+integrate it. At any point in this presentation when we hit a major
+conclusion, you learn something. (Chicken sounds) all right. So the
+learning chicken is available. If you feel like you've learned
+something, I'll bring it up a few times, feel free to call up, give
+me a chicken, and I will give you a chicken during this
+presentation. So, moving back to the topic at hand.  I think
+probably the best way demonstrate and let you know what shoes is
+about is to show you what shoes can do and what the code looks
+like. Let's do a couple of demos. A lot of the things that happens
+in shoes drive around games and fun little applications. So here we
+have a minesweeper clone, so let's see if we can click some
+things. Well! I suck at minesweeper, I probably should of practices
+that.  Give me a chicken (Chicken) other sorts of games, here's a
+snake game, I'm also really bad at this one (Laughing) give you
+some sort of idea how this will work. Not everything in shoes is
+not necessarily a game, here's a clock. There's a lot of basic
+drawing prismtives you can draw out of. Even further this
+presentation is being run on a little framework that Toby and I
+have worked on called wing tips. (Chicken) if you want to write
+your presentations in code but you don't want to write JavaScript
+because there's lots of things for doing that if you want to write
+in Ruby there's a presentation in shoes. Hopefully you can see the
+result and think it's awesome. The biggest application, the key
+point of why built shoe in the first place was a program called
+hackty hack. A kids code editor to help get children programming .
+this is the thing that I've done with my daughter Caroline, small
+plug for you to go check it out.  I have never live demoed code,
+but my five‑year‑old daughter has at a conference, it's a good way
+to do that. You should check it out if you want to learn more about
+programming with children and see some of what we built out of
+it. But, let's take a look at the ecosystem that developed after
+Why left. So the original shoes was written with native bindings
+and C, and it worked across all of these things, different people
+fragmented off there. We had a version called green shoes, a QT
+version, SWT, HTML versions of it. implemented DSL, a cough free
+script version, so many different versions of shoes. Sort of
+fractured off from here, and all of them too the DSL that Why had
+created and provided it with a different back end and flavor of how
+to implement that. So eventually after a lot of exper
+Minnesotaation,e the community came around and gathered to decide
+where to go as a project. That was the birth of shoes 4. The
+architecture behind shoes 4 takes that fragmentation into
+account. And one of the big pieces of it is that it built a
+separate DSL layer, which is the common things about how you
+express issues program, how you write the primitives, what things
+are supported and separated from the GUI back end that drives it
+with the expectation that different people would want different
+back ends. We had to chose one to start our implementation, that
+was built on JRuby. A lot of Rubyists, when hearing this go
+... isn't that a lot of Java?! Why would I want to do that?  But it
+has been a fantastic platform for what we're trying to
+accomplish. One of the JVM's great strength is cross platform
+nature. So SWT is a G U I library built in with the JVM, how do I
+draw this on windows so it looks right and how so it looks correct
+on a Mac or Linux. A lot of that is hidden behind this layer that
+this JVM provides for us. JVM with the shoes project to simply
+write Ruby on top of that and gain all of that cross platform
+support that we want. We want anybody one on any computer to be
+able to write a shoes program, and write things that they can
+interact with immediately. All right, so, that's a lot of talk and
+introduction of what shoes is. Let's take a look at the code for
+it. So, one of the most basic shoes program you can come up you say
+shoes App, do, and give it a block and that is your shoes
+program. It provides you with methods in the D.L where you can
+create different elements, we'll go through a bunch of what those
+are. Since this is a shoes App here we can run this code and that's
+what it looks like. Pretty impressive, I know, that seems like
+chicken material to me. But, seriously, if you've done G U I
+programming in a lot of other settings, it probably looked a lot
+more like this to get to a hello world.  I don't know about you
+which would you rather type or which of those would you want to sit
+down with a kid and try to get them to do something fun with their
+computer?  Well, I think answer is letty obvious. Obviously, just
+putting text on the screen is awesome, you might want some
+interaction we have buttons that you can do. Great. There's text
+editing. All the basics. Of hello. And these programs, I mean, look
+at that and it's just really clear. It's really concise, and it's
+easy for someone, even someone who is new to programming to
+understand what's going on and what these pieces are going to
+do. One of the big issues that you run into if you do any sort of G
+U I programming is layout as well.  I know I definitely struggled
+with, you know, building a window and positioning all the things
+and giving everything coordinates for exactly where it should
+be. You you can do it with shoes, but it also provides you these
+powerful abstractions that we call stacks and flows for being able
+to build a little bit more responsive layout for things, if we put
+a bunch of banners inside a tack, just a large piece of text, when
+we run the stack, it looks like this. So each element goes on to
+essentially a new line. It positions it below the prior
+element. With a flow, the elements will flow up until the point
+that we run out of space on the window, so if we resize, do you can
+see that it flows, you know, to the next line. So between those two
+things, which can be nested together you can build very complicated
+U Is without having to specify a lot of really detailed about what
+it's positioned. All right. So that's great but I don't know a kid
+that really wants to sit there and build a bunch of text boxes and
+buttons, it's fun for a little bit, but drawing pictures is really
+where it gets interesting for a lot of different programming
+interested people. Let's take a look. A rectangle, give the
+coordinates and width and some of the options, colors and strokes
+and different aspects of how to draw it. Now this is also a good
+point for me with beginning programmers or with children that these
+coordinates this is a really powerful way to talk about math. The
+positioning of where things are, the relative size of those
+elements, looking at it interactively and changing those numbers
+and watching how those things work is a great way to do basic
+arithmetic and make t tactile for them in a way that plain numbers
+aren'tful we have ovls, stars, arbitrary shapes. You probably don't
+recognize this, but this is (Chicken) the red portion of the
+chicken cone described as a shape. Goes together. And here is what
+Sarah alluded to, my daughters first Open Source contribution was
+this sample application we did together. And it looks like this. So
+you can see this is a really powerful thing to work with a kid to
+draw because what we did is we Satoshi down and said we want to
+draw a face. How would you draw that, what are the pieces, how can
+we decompos this problem into separate steps that we know how to do
+Mr. The programming language and then instruct the computer about
+how to do it. There's all sorts of other things, there's sound,
+animation, there's widgets that you can build to wrap things
+together. There's a lot of different pieces that shoes lets you do
+things. We're all Rubyist, we're all programmers, by and large, and
+one of the things that I loved about shoes is that you have access
+to the code and as a Rubyist you can get into this library and
+contribute another 67 stamp with what's going on. This is in large
+part thanks to an excellent gem from Dan Lucraft that wraps it
+right out of Java, it gives us a Rubyist way for creating G U
+I. The shoes project has a nice clean separation between the core
+parts of our DSL, the parts that would remain the same in shoes
+regardless of what G U I back end and the pieces provide that U I
+to draw it. So what we're going to do here is let's step through an
+example and we're going to trace it from the shoes application that
+we draw all the way down to where we interact with those primitives
+that SWT provides with us. You'll see the shape of how shoes
+program works and learn to find where those pieces are if you want
+to dig in and do something yourself. So here we have a progress
+bar, which is one of the primitives that's supported by shoes, we
+do an animation so it sets the fraction, so you can see it in demo
+here, fills on up, and then we're good to go. So that progress
+function that we have right there is implemented in a file called
+DSL.rb within shoes and we can see here that it has a shoes
+progress class and it's going to create an instance of this, shoes
+like most Ruby is very object oriented everything we represent here
+is going to have an object 's a sort of DSL level class for the
+project. Let's take a look at the project. Call U I L have some
+styling, it has some attribute readers. The G U I is the one that's
+the most important to us, that's where we stitch together the DSL
+layer, which is agnostic to how it's going to get drawn and the G U
+I is the object that represents how that's going to get to screen,
+that's our SWT object. Then we have style, with that defines the
+object. When we create one of these progress objects we do a little
+bit of set up, but this line in particular is the important one, so
+we talk to our configurations and then we ask generically to get
+the back end for this object. So that's where the magic happens of
+us being able to plug‑in a different G I and have this D S L
+interact with some other library. The DSL layer then provides
+little access sores for various things that we need to push
+through, when you change the fraction on it, from your shoes
+application, this is where it pushes that through and actually sets
+the value that it needs to over on the back end. So we've talked a
+lot about this back end object, what is it actually, you can see we
+have a different ‑‑ name space, progress, and then we're getting
+down to creating some of those real G U I primitives SWT provides a
+native tool bar we set that and you can see that the values that it
+takes a different, it goes from zero to a hundred rather than a
+float for the fractional value. When we set the fraction we
+actually need to do a bit of math, check whether the G U I elements
+exposed there are concerns with how we interact with that G U I
+library, we only deal with them here, the DSL layer, nice clean
+layer of shoes get to be unaware that all of these details are
+going on under the surface for it. So, one thank's very difficult
+in a lot of Gment I programming in my experience is testing, but
+shoes actually allows you pretty easily to test things because
+everything is represented as objects. So here we have a fairly
+standard RSpec implementation, our testing our DSL logic, so we
+check here that the communication between the DSL and the Gment I
+back end happens the way that we expect, when we set fraction we
+expect it's going to get forwarded on to that other object. By
+having those teased apart it gives us a really clean way to check
+that the DSL behaves the way we want to, and has the contract to
+the back end we want. Similarly the back end can get tested the
+same way, it's interactions with back end with it's actual
+implementation in the SWT library can be marked and stubbed and
+tested with all the good practices that we already use in Ruby.  I
+don't know about you being able to test G U I stuff, that's a
+chicken moment for me. It's awesome to be able to do that. All
+right, so that's a lot of how shoes works, all of the different
+elements that you see on the screen will be structured like
+that. Let's talk about actually getting involved. Shoes is a very
+special project to me, it's the first place where I really deeply
+got into an Open Source project. And here's kind of where it
+started, so at work I can just implement guard on one of our
+projects, I thought it was pretty cool, I looked at hackty hack
+with my daughter and started looking at the GitHub Repos that was
+behind it I noticed an issue and I thought oh, that seems like it's
+easy to do, maybe I'll get out there. Put that in got a lot of good
+feedback and people were very friendly and it kind of took off in
+for me. So shoes is a very open project for people to get involved
+with. We have a newcomer friendly tag on our issues and the people
+that are on the project are really eager to help people at any
+level get involved with it. There are things ‑‑ everything from
+write of samples to documentation, all the way up to some pretty
+gnarlly deep stuff, if you want to get involved, do you can do I so
+I hope you would consider, if you're wanting to get into Open
+Source and maybe you've been intimidated to find place or haven't
+found the right project, you know, you might give it a try. Thank
+you (Applause) one more chicken for the road.  We have five minutes
+for questions, if you want to take some. Yeah, questions.  I was
+wondering how many back ends shoes has ‑‑ So currently there is the
+one primary SWT based one. There is an experimental Atom using the
+Atom Shell and OPAL back in to one of the other contributors has
+made and there's a QT one as well. I wasn't actually aware of
+that. So, find out something new.  You mentioned that SWT comes
+with the JVM, but actually AWT and sweet comes with the JVM and ‑‑
+digital library I was wondering why did you opt to use third party
+library instead of sweet.  The question was why we opted to use
+SWT, which is actually a third party library rather than Swing,
+which is built in, and to be honest, I was not on the project when
+that decision was made, so I don't know quite what details went
+into that decision.  Tobi: SWT has the native language it looks
+like UNIX and OSX where Swing and AWT look kind of Javaish. At the
+time we reached out to JRuby community and people were friendly and
+helped us and at the end we reached the conclusion to go with SWT
+the native feel was important us.  There's a look and feel for
+Swing ‑‑ and using ‑‑ components as well. This is a common
+misconception, but ...  Does shoes support the more advance
+features of SWT like J face and RCP application?  So the question
+was whether shoes supports some of the more advanced features from
+SWT.  I don't think it does the particular things that you
+mentioned. But it certainly could. All requests are welcome. Any
+other questions?  All right, thank you. (Applause)

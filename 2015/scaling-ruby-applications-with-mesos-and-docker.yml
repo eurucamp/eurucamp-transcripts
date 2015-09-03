@@ -1,0 +1,323 @@
+
+
+We're on the final stretch of talks for today, and it's my pleasure to
+introduce our next speakers. We have rocky and Michal, you can call
+him Mike, if you're not up enation how to pronounce it correctly. It
+took me a while. They're going to talk about scalability. It's a topic
+that I don't know much about, so I'm really excited to hear about
+it. And, yeah, we have two lightening talk slots left, just by the
+way, you can have a chance to sign up for them in the next
+break. Yeah. So, you know, come up with something. It's not that
+scary. Standing in front of people. So, yeah, I'm going to let them
+take it away.  I did learn, I did ask rocky where his name comes from,
+I thought me might be named after something interesting, he said, no
+his parents are just really creative, and it's not a common name in
+India. So team work.
+
+
+(Applause)
+
+
+Of Rocky Jaiswal: So, yeah, I'm rocky, actually both me and mic work
+at crealytrics, which is an on‑line advertisement management ‑‑ add
+management software firm. So we deal with a lot of data. And most of
+this talk is basically coming from our experience so bear with me if I
+go over some details or minor details because we are short on time, so
+we'll try to cover as much as possible giving you a high level idea of
+how we move to ‑‑ so like most software start‑ups we started with
+simple static partitioning set up. We had some machines dedicated as
+web servers, some machines dedicated as application servers, then some
+data storage server, Redis, and yeah, that was set up that I think
+most of us are familiar with. We also had a similar staging and
+integration set whereupon we used to do our testing. This was all good
+until we had some real workload and then like most of us we had the
+scaling problem. And not only just to handle the workload, we also
+were trying to break up or mono littic application into small services
+we went to Ops and said, hey we need new servers, somewhere to deploy
+all the tree new services that we're building. Though everything was
+pretty optimized they were like, oh, new services, yeah, it might take
+some time. And this was something that we did not want because we
+wanted things to be like quickly available. We wanted them to be like
+liable ‑‑ if hard one one goes down, we do not want the entire service
+to go down. If you combine all these factors, it was quite hard to set
+up by one or two persons Ops team. So we looked at some other options
+like platform as a service and infrastructure as a service. We did
+some evaluation and for our set up, which we had around 50‑odd servers
+running on like simple ‑‑ like hosting provider, we me grated to
+Heroku or some other provider we found out that it could cost us twice
+or three times that much. Since we are dealing with a lot of
+analytical data we had a lot of data on postgres and that was quite
+costly. We had sometimes spikes, so sometimes we add more data, added
+more space or this space to our partition, that sort of filing was not
+available anywhere. We tried to look at other options, OpenStack,
+Cloud stack and frankly they were not easy to learn on our own. So we
+continued looking, okay, we thought, we could also have another
+option, we could buy like some really large machines like bear metal
+machines. But we found out, yeah, that way the hypervisor would take
+up a lot of resources and we are really not efficiently utilizing the
+machines that we are using. That we are buying. Which was already a
+problem, like, for example you have three machines running as
+webserverrers, three as application servers, with unicorn, puma and
+database servers as master follower replication, for example the
+application servers were really used in the middle of the day, there
+was not much usage during the night, so all that resource was being
+wasted the database also had a peak every now and then, but other than
+that it was not really used that much. The webservers were hardly
+taxed. So we had all this resource that was unused and at the same
+time we were paying so much cost for having these servers, so
+ultimately we decided to come up with a list of things that we want
+for our infrastructure, so as developers, we want ease of deployment,
+I think we all of us agree we want scalability, fault tolerance and as
+Ops we also want to have high utilization. So we were looking for a
+solution and we then stumbled upon Apache Mesos, which we found was
+actually quite suitable for our needs. And hence the stock here we'll
+give you a quick introduction and how it helped us. The key thing
+about mess so, if you want to remember one thing it is this, that it
+treats the entire cluster as a single resource. We know distributed
+systems are harder, trying to maintain tons of servers, as individual
+competence is very difficult, but what if you could treat all those
+servers, all that distributed system as just one single resource like
+your laptop, that makes your life really easy. And that's what Apache
+Mesos does. It takes all your servers and treats them as a single
+resource. If you have 8 servers with two CPO and two GB RAM each it
+will treat it as a single server with 16 CPUs and 16 GB RAM. That is
+good because we are good at working with single computers, right. How
+does Mesos work?  At the high level it has the concept of leaders and
+followers. So leader is server or bunch of servers that handle the
+requests then distributes the load to the follower nodes. It is
+recommended to have three leader, because if one leader goes down you
+still have your application available. Yeah, anything from five to
+five thousand follower nodes. And how the leader works is that it uses
+Apache Zookeeper, a distributed platform for maintaining a quorum. But
+if you don't want to go into that detail you adopt have to work with
+Apache Zookeeper. It is used by Mesos I believee internally for the
+leaders. If you have three servers that are configured for the
+leaders, it will use Sue keep tore have one of them as the actual
+leader. In case one goes down one of the other two will be elected as
+the leader. A lot of text, don't worry, I'll give you a quick intro,
+how does Mesos work. It's just the abstraction, your hardware, like I
+said, abstracts you away from the distributed nature of your computing
+resources and presents with one single resource. It doesn't do any
+work itself, it's done by frameworks that are running on top of Mesos
+and we look at this in a demo later on. The leader acts as the traffic
+director, so the speak between the work and the work distribution to
+the follower nodes. So the follower nodes tells the master that says,
+hey, I have these resources available. It publishes to the frameworks,
+it tells the master hey I want to do a certain task, and based on that
+the master distributes the task to the follower nodes. It's basically
+acting as a man in the middle and distributing work while handling
+requests that come from outside N simple terms. If you look into the
+detail there is' a lot of documentation on the internet if you want to
+go into the nitty‑gritty. You can create your own framework if you
+knoll the API, we'll not go into the details of that (Follow the API)
+if you combine this with daughter, you realize this has great
+potential because we can run our application in an isolated
+environment inside one of those follower nodes and let the mathser
+handle the load balancing or how the work is distributed between the
+nodes. But before we go into the details of this, I want to talk about
+Docker a bit because we realize not everyone might be familiar with it
+. But I guess can we have a show of hands who has worked with Docker,
+really, almost all of us. That's good.  I don't have to go into the
+details of Docker I'll show you the small App that we have. We all
+know Docker is great for reliable deployment, isolation, so it uses
+the containers to really isolate, which is really good for us because
+we have multiple services running on the same machine and we do not
+want that the services should know about the existence of the
+other. So, it gives you that isolation, you can build the image on
+your local development machine and ship it off without having to worry
+whether it will run on that server or not. So it's more light way as
+compared to the VM, I talked about we looked atVMs but the hypervisor
+took up a lot of resources which is not the case with Docker. It's
+Open Source, it's on GitHub, you can see the code, contribute to
+it. It has great traction right now so it just keeps on improving with
+every release. So we have a live demo and I hope it works. So let me
+just try to switch over. We have a very simple J ruby App here. It's a
+Sinatra App. This is the Docker file, but what the App does is really
+simple it's hello as a service, basically. So you pass message to
+service and it says hello back. And we already have secured 20 million
+funding for this so, please don't try to copy it. (Laughs) that was a
+joke by the way. (Laughing) any way, so, we have this Docker container
+defined for this. This is the Docker file. We use JRuby line K and the
+magic of Docker is that we don't have to install JRuby line K or any
+software on our servers, the Docker container takes care of that, and
+I have a user there, which is basically why ‑‑ it runs a puma sever on
+a certain port and that's how the Docker container is configured. So,
+I can do a Docker build for this and run the container, but since you
+all are familiar with Docker, I will not do everything I'll run the
+container, expose the port and hopefully this works. (Need to wait for
+puma to start up) and of course live demos are always a problem. Let's
+see if we can quickly see what's going on. Otherwise ... okay.
+
+
+Just needs a little bit more time.
+
+
+Seems to be working.
+
+
+Maybe your local IP changed ‑‑
+
+
+Oh the boot to Docker IP or something. It's actually back so we have
+to run boot to Docker to run the Docker container. But, yeah, it was
+working five minutes ago, honestly. (Laughing) but you get the idea,
+basically what I have to do here is I ask the ‑‑ where is my mouse?
+Yeah. So here is Sinatra App. JRuby and basically says hello JRuby
+back to me. So it's running as a Docker container without me having to
+install anything. That was our demo actually which did not work. But,
+let's just assumed it worked. So Docker solves the packaging and
+distribution packaging and provision. But does not solve
+scalability. Like what if my application is a real hit and I'm getting
+20,000 requests a second, one single container will not be able to
+handle it. If I really want to scale up the containers there's no easy
+way.  I don't want to run the Docker command on to individual servers
+by logging them inserting them one by one. That is something Docker
+does not address on it's own. We did talk about Mesos where we can
+address the scalability concern. We can combine dock with Mesos
+somehow and get this whole thing to work. Which brings us to next part
+of our presentation. And I'll gave the floor to Mike.
+
+
+Hello everyone. Let me switch over to a slide you may have seen
+before, this is something that rocky talked about before. What if we
+have that Mesos thing, I don't know huh many of you are actually
+familiar with. A nice show of hands, has anyone actually heard of it?
+No, a few hands, nice. So the idea here is that we have those nodes
+acting as a single computational device and we run Docker, if it
+works, on there. So we don't have to have anything installed on there
+except for a Docker process. And we are good to go. Actually rocky
+covered this pretty well, but let me do a little bit of refresher on
+the terminology here because we will ‑‑ I'll be showing you those
+frameworks, those schedulers and executors that run on top of
+Mesos. And those can be schedulers, think of them as crown task, so
+you need a nightly clean up of logs or something like that. You can
+use a scheduler to schedule those kinds of tasks and executors are the
+frameworks that actually run your long running application. We're
+talking web application servers or background processing, that kind of
+thing. This is an example of a scheduler. It's called Cronos, it has
+been developed by AirBnB, we will not be showing this, just in the
+interest of time. It's fairly simple, it gives you an API that you can
+post to and basically just run all of your recuring tasks. An
+interesting tidbit we decide to run all of our migrations as a Chronos
+task before we deployed to our execution layer. Which is nice because,
+I don't know being compliant with a 12 factor App, I don't know which
+factor it was, but, I think it's a nice way to go. For the Mesos
+execution layer we decided to use something called marathon. Marathon
+has been developed by Mesosphere. The terminology is getting a bit out
+of hand, I think for everybody here who isn't really familiar. So
+maybe we want to clear up what is Mesosphere, they're a commercial
+company that has their own product built on top of Mesos. They built
+something called DCOS, data center OS, and they actually sold this as
+a commercially backed Mesos backed implementation. If you have a large
+enterprise if you have thousands or maybe tens of thousands euros per
+month to give to these guys, you can. So that's one option, but the
+nice thing about these guy s is that they Open Sourced everything that
+they do, including the executor lay your, marathon, which is why we
+chose to use them. There are other executors, of course, but we chose
+because it felt like it's the most supported and it works the best. So
+maybe I can show you our little Docker application that wasn't working
+before. Ah, hello. Have JRuby. Okay, so this is our dock thing running
+on our machine. But, let me show you the Mesos. This is the Mesos
+dashboard which actually is set up on my Wimpy little machine with 4
+CPUs, I gave it 2.8 gigabytes of RAM. It basically shows that all 4
+CPUs are available, all of my RAM, nothing is being used, so we can
+start deploying to the cluster. We can also ‑‑ let performance show
+you. Here's a list of the registered frameworks that I was talking
+about earlier, so we have Chronos registered and marathon registered
+here. A list of slave notes, we will only have one slave note. Yeah,
+so this is my master that is also running as a slave basically a very
+simple set up to show you guys how this can actually work. So this is
+the underlying Mesos that provides that single computation interface
+and here is marathon the excuse layer. Here you can, actually, through
+this run E. you can deploy your applications if there are simple apps
+that aren't Docker containers you can actually use the UI. We won't
+really be using that, we will be, actually using the API that this
+thing provides and I don't know if I can ‑‑ can you see it or should I
+zoom in?  Zoom?  Okay, I guess this is better. So that marathon
+dashboard that you saw also exposes a API that we can use. We can
+deploy an application as simply as posting to a well defined API where
+we set the body as a JSON payload where we specify some variables that
+we want our application to have, for example we wanted to have CPUs 2,
+a certain number of RAM, we want to start off with just one instance
+and we will tell it to use a Docker container that we have
+conveniently published on a Docker hub before, so we won't be really
+doing that now, you can imagine doing that. You can have a private
+Repository, it doesn't really matter. You can set up marathon to do a
+simple health check of your application it's capable of doing an HTP
+request which will then show as green if it gives you back 200. So let
+me zoom out again. And let me ... send that post request ‑‑ this mouse
+is not really cooperate on this resolution. Here's the send button,
+let's send this request. And now, if we go back here, now you can see
+the application is deploying. And after a while it should turn
+green. We can also look at the underlying Mesos execution layer, which
+should now show that we are using 2 CPUs and using 512‑megabytes of
+RAM and it should say that the application is running, yes. So let's
+go back here. And it's healthy. So let's maybe have a look at where
+the application is running, it's running on this IP on this address.
+I have it conveniently in a tab here. And it's greeting me back with a
+convenient convenient name. Let's maybe show you how to scale this
+application. Let's say that I'm having a hard time keeping up with my
+request, I can scale it simply saying that I want ‑‑ we'll take two
+instances here so that I don't go over my limits, and after a few
+seconds of deploying I will have two instances. Which is very
+convenient and very Heroku‑like. Okay, so we have two things
+running. You may be asking yourself okay, how do I see what the
+application is doing?  How do I get into logs?  There is one solution
+that you can use, that is the Mesos dashboard itself. We can actually
+have a look at the standard out of those containers that we are
+running. Also the standard error. Which for some reason has the HTTP
+request, but I guess that's Sinatra for you. That is "A" solution. The
+real solution ‑‑ let me get back to my slides here. The real solution
+would be to ship your logs into in ELK stack. ELK is lestic search
+lock stash and Kibana. And the important thing to keep in mind here is
+that it needs to be logged into standard, so don't log to your log
+files or anything like that. Shipped out with of log STOUDT and use
+ELK to look at your logs really easily. So let me recap the benefits
+here because we already said most of them, but they are easy
+scalability, like you saw, you can just do a few clicks and I can have
+multiple instances to handle my load. Fault taller answers is a great
+thing with this kind of set up because you can have your servers going
+down Willy nilly, and the infrastructure will readies tribute the
+workload being done and you shouldn't really feel that your servers
+are going down due to hardware failure. Unless it's all of them but
+then you have a whole different kind of worms. You can also improve
+your utilization this way because you don't have statically
+provisioned boxes. You just have processes running on your
+infrastructure and you don't necessarily have to care about anything
+else. Yeah. These last two are very simple. But easy to scale down
+also is an important aspect because you can just take a node out if
+you are not using your infrastructure and, again, you don't
+necessarily have to care because it's very simply configured, there's
+nothing running in there, there's just Docker and that's it.  I would
+say that ‑‑ well at least Amo is interested in pitfall of any kind of
+technology that people are touting, so let me name a few. The most ‑‑
+the one that I think is going to bite you the most is the single
+extraction paradigm here is not perfect. What I'm talking about is if,
+for example, let's say you have five slave nodes and you're using
+almost all of the CPUs on all of the nodes, so you have only one CPU
+per node left, you will not be able to provision an application which
+you want to have ‑‑ which you want to have 2 CPUs. That is something
+that it's not really possible to distribute an application that wants
+two CPUs across boxes, like I said it's not perfect the abstraction
+but you should just keep this in mind and not have your boxes
+completely full. You can have them somewhat 80 percent full but not
+completely full otherwise you're going to run into issues. You also
+are on the cutting edge, you will encounter some bugs, but you are in
+good company, I will show you a slide a little bit later. You usually
+have good responses on mailing lists. And also worth pointing out is
+that the set up is not a simple traditional Rails set up with Puppet
+run. It is a little bit more involved, and I would recommend having a
+good operations engineer who helps you with this, but once you set up,
+you hardly have to do anything. So you invest once and you reap the
+benefits for the near‑term future. Like I mentioned, you are in good
+company this is a list of companies that we know of that use this in
+production. It is of, I think those are pretty big deployments.  I
+especially the Siri one and the Twitter one. Yeah usually you get good
+responses on mailing lists and if few bugs that we encountered were
+patched pretty quickly.  I would say it's not really a problem that
+you are on the bleeding edge. Okay, that about sums it up, here's our
+handles if you want to contact us or talk to us later. We want to do a
+special shout out to one of our operations engineers who pushed this
+in the company and who introduce us and helped us set this up. Yeah,
+we want to thank him again. And with that, I don't know if we have
+time for questions.

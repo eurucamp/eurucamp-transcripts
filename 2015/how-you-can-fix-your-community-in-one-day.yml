@@ -1,0 +1,344 @@
+Okay, so we're just prepping our last talk for today. And I know we've
+all been very organized getting back into the room on time, we're now
+back after Thilo's talk. We've learned a lot of exciting things that
+are happening in JRuby get a plan for it and for the cool tools that
+are coming out.  ‑‑ this talk is thee maltically different but
+extremely relevant to a topic in our industry which is not only making
+it a really inclusive welcoming place for newcomers, but making it the
+sort of place that people want to stay for. So, yeah, Anika is going
+to talk a little bit about that theme.
+
+
+Yeah, so Anika if you have not yet met her works at Travsti she was
+employee number 6. And she is running the Travis foundation. She's
+very involved with the Rails Girls Summer of Code, which me and Sarah
+are also very involved in. Which is a 3 month program to get women
+into Open Source. Started on July 1st and running till the end of
+September. And yeah, and it's generally just an activist for ‑‑ to get
+more diversity, not just Open Source, but into the world of tech.
+
+
+Sitting in the front row. Hiding. Hiding behind his Hoodie. Yeah, so
+with other actually really grateful for to Toby and Luka for giving
+us ‑‑ giving us the possibility to talk about this topic which is
+really close to our hearts. So, he's ‑‑ please give a huge round of
+applause Anika Lind thener which will give you a little magic trick to
+help your community one day (Applause).
+
+
+Thank you. A couple movants ago this picture became my favorite
+picture in the whole world and ‑‑ his Thomas ‑‑ two white programmers
+holding a sign that says the world will be better when IT becomes less
+boring than this. And they shared this picture on Twitter under the
+Hashtag donate because to animate people to donate ‑‑ to is support
+our crowd funding campaign N the next minutes I'm going to tell you
+why this picture is so wonderful. Why they are so right and how we can
+can make a community that actually looks like this. Into a community
+that looks that. Magic. Hi. I'm Anika. I'm really happy to be invited
+on this stage to talk to you and I'm going to share with you the magic
+trick on how to fix your community in one day. I'm going to talk to
+you about what diversity is. What use it is to us. Why we need it and
+how we can achieve it because diversity is achievable. And to
+understand what's going on we need to take a look at the field of
+technology and engineering in general to understand the issues and the
+problems and the roots of the problems that we are faced with in our
+communities. So our world is as diverse as some tech companies and
+conferences can only wish for. We are surrounded by different age
+groups and genders, cultural and religious backgrounds, ethnicity, job
+level, sexual preferences etc.. In this talk I'm mostly going focus on
+gender and I'm mostly going to talk about women since that's my
+expertise. But for a second let's actually look like what diversity
+would actually look like:. It's not one pink bubble and a lot of blue
+ones or the other way around, it's when you can see what the
+dominating group ‑‑ when you can't see what the dominating group is
+anymore because there isn't one. And not everyone belongs to just one
+category, but belongs to many. And did you know that only ten percent
+of the world's population are white and male, but most of the people
+creating the software which we use all over the world, every day are
+white and male so if we have non‑diverse teams developing software
+it's because of a social imbalance. We solve the problems that we
+see. And people from the same background in a team will come up with
+the same ideas and solution. On the other handy verse teams or teams
+with people from different backgrounds and experiences are more
+creative, innovative, and more productive than non‑diverse teams which
+has been shown by huge number of studies so this means that diversity
+is a key ingredient to building a strong community and a business that
+is built to last. And even financially it shows that companies that
+include many women in senior positions show better financial results
+than companies who include fewer, actually no women in senior
+positions. A diverse team can also capture a greater share of the
+consumer market because it has been proven that teams with people from
+different backgrounds can, of course, more effectively market to
+consumers from different back go gunneds. A good example for a diverse
+team is actually the closed captioning feature of YouTube video which
+was a huge win for Google and had a big impact on their consumer
+market. So the story is when the internet was invented it was awesome
+for deaf people because it was all in writing. And they could
+understand everything. But then videos kept turning up, which they
+couldn't understand anymore so they were left out. So the deafening
+near Ken Erhi insten released and pushed for the close captioning of
+YouTube videos. This little sign the CC sign that you can lick, you
+can turn on and off the subtitles or captioning for the videos. This
+feature had a hugh business impact beyond the community of the deaf
+and well beyond what was anticipated. So now people from all over the
+world can make their videos accessible for a super huge audience and
+users can understand videos that are not in their mother tongue,
+thanks to this feature. So the world including the deaf community can
+now connect even further, and Google has proved it's importance on the
+market once more. And at this point I had prepared an example for this
+talk, but spoiler alert it has now kind of a happy ending, I'm talking
+about Apples health kit included in the Apple watch. When they
+released Apple watch they said in the health kit you can monitor all
+the matrix that you're most interested in. Oh, well you can monitor
+everything up to your sodium intake, but just not your period,
+something that women have been tracking for centuries that is "the"
+health related issue women are concerned with every day. But, I'm
+happy to report only two weeks after I gave the talk in May, Apple
+announced with iOS 9 it will finally include a period tracker. So they
+do listen. Yeah, jokes aside, but I'm really happy they came to their
+senses, the Apple watch is still kind of bad, sad, great example for
+this because there's also the news that people with dark skin or
+tattoose toos on their wrist may have problems with the watch. The
+light sensors that the watch uses to monitor pulse etc. may not work
+correctly for these people, which is crazy.  I don't know, there's no
+other word for it . We can just hope that this actually gets a happy
+ending as well as the period tracker feature got. So it could have
+been a great product with even more satisfied customers from the
+beginning. And these fails happen because the teams that are
+developing the software are not diverse. And they're not diverse
+because of social injustice. Lena said diversity is the default. If
+it's not diverse, it's broken. So if a community is not diverse it's
+broken. Let me show you exactly what it means and introduce you to a
+programmer who quit her job after fifteen years of being a programmer
+Garann Means.  I didn't know how to move forward, things fell down
+over the years there was a lot I had to put up with in the culture of
+tech, it just didn't seem worth it anymore. So after 15 years of being
+a programmer she just quit, so what's happening?  The thing is she is
+not the only one. Women are leaving the industry. So let's look at
+this a little bit closer. If we look at the path people usually take
+in entering tech and we can imagine getting the kind of pipeline
+ideally people get in, get around, they enter university, study, get a
+job, get promoted etc.. But the study from last year found that half
+the women entering the field will at some point leave. 50 percent, so
+we have holes in our pipeline which means at this point we are filling
+a damaged pipeline which is super frustrating. So why does it leak?
+Why do people leave. They leave because of hostile work environment,
+they're feeling isolated, lack of career path for them. They're often
+overlooked in promotions and we have a lack of role models. The other
+thing is that we don't even have many women in the field of
+technology, so women hold of all the jobs all over the world they hold
+48 percent, so that's basically half of the jobs there are. So it's
+quite equal, but they only hold 20 percent of jobs in tech and in Open
+Source it's much worse. We only have 11 percent of women. So this is
+our problem. Out of the few women that are making it into tech, half
+of them are leaving. And one of the barriers that keeps women from
+entering the field easily or making it to the top is that the bar is
+set so much higher for women and minorities. Research has found in
+blind studies that women's work has to be 2.5 times as good as men's
+to be considered equal. So this is because of unconscious bias and
+stereotypes we have. So let's quickly talk about
+that. Stereotypes. We ‑‑ we love the idea that we can perceive
+something objectively by looking at it and seeing the truth. But our
+truth is actually shaped by biases and stereotypes. There's this
+Harvard experiment called implicit. It's a test on bias, which you can
+do on‑line, you can find the link with my slides on speaker deck. So
+this test they found that everybody, everybody has bias. For example
+70‑80 percent have bias against women in tech, even women in tech have
+these biases. Or they're preferring white to African American or
+preferring young people. But almost nobody reports those biases. This
+means everybody has them but nobody thinks they do. Stereotypes. We
+learn them through cultural messages, portrayal in the media, comments
+from friends and family. And my favorite story about this that I
+really liked driving a car.  I think two years ago I got into driving
+again,i had to relearn it, of course a little bit shower to react
+there was a situation with me and another car and whatever, I didn't
+move as fast as I could have, and then this other driver shouts at me
+this German thing, which is Frau ... which means in English women at
+the wheel monsters. And the fun thing about it was that the other
+driver was also a woman (Laughing) which is, I think twisted in so
+many ways, but it shows perfectly how engrained these stereotypes that
+we have. And it's really not easy to get rid of them. But we can do
+it. And one step is for example how we treat our kids. So this is my
+little brother and me, we are fixing a little table thing with
+screwdrivers and I think we're doing an awesome job (Laughing) and I
+can't stress enough how important we are as role models for our kids
+and what opportunities we give them. And we should let kids discover
+the world without constraining them to role specific behavior or
+treating them differently just because of their gender. They are
+natural adventurer, and we should let them live in our wonderful world
+without constraining them to these behaviors that actually changes
+every other century. We should let them be kids, not girls or either
+boys. So to summarize. A diverse team is not only a representation of
+our world and socially fair, it makes our team more productive, come
+up with more creative and innovative solutions, creates an atmosphere
+where everybody feels more welcome, people stay longer in their jobs
+financial result and greater market share in a wordy versety is
+awesome. And achievable. So, great, let's see what we can do to get
+it. So when we look at some Open Source projects I think we all will
+agree that we will see that some projects we have a commente meanting
+culture that is just unhealthy dismissive maintainers or hostile
+comments from users who are feeling entitled to bug faces or features
+.  Both sides have a problem. If we are dismisssive about the
+contributions we get especially from newcomers, we set the tone with
+that and create with that an unwelcoming exclusive culture around our
+project. Or if we ‑‑ asousers don't acknowledge that the ‑‑ as users
+that the maintainer does the project in his or her own free time and
+there's no big company behind this, this can result in draining all
+the fun and energy out of the maintainer who more often than not has
+to abandon the project because they're gist Freaking burned out. It
+starts with improving our community culture. Put a code of conduct on
+your side or your read me so everybody knows that abusive, racist,
+sexist drum comments are just not ‑‑ discriminating components are not
+welcome and there will be consequences. Bring it down to one sentence,
+I think it's about having empathy for each other. It's about learning
+how to give feedback and how to receive it, creating a good
+documentation around our project and treating others with respect and
+we have to remember that there's always a human being behind the
+code. And this all applies to our on‑line lives as well as our off
+line one, it's important to address diversity and inclusiveness each
+and every level of our work lives and daily lives. If it's for example
+at a work meeting or dinner with family or conference after party. And
+here are three steps that I think are important. And first one is
+always good to start with yourself.  I really recommend taking the
+Harvard test and educate yourself and accept that you do have
+bias. And make your bias your unconscious bias conscious. Which means
+that then you can counteract them. It also means to question
+traditional beliefs and always ask why are we doing it this way. This
+helps to dismantle hidden biases and procedures that may produce
+barriers for women. We can fix some leak in our broken pipeline by
+recognizing women's work. This means make sure women's voices are
+being heard and push them forward. Show that you believe in them and
+be a monitor for someone and share your expertise. There's a great
+example, The Euro camp guides, you should all just go there and sign
+up.  I think this is an awesome idea it means that you can sign up to
+be a mentor for a newcomer and answer all the questions a newcomer
+could have for a conference and show them around a little bit and make
+this whole being the first time at a tech conference thing a little
+bit easier and more inclusive. Just as a really great example. But as
+key as it is, of course for men to support women, it's important for
+women to do the same and to connect to others and reach out. Make
+yourself visible.  I can get off my couch more often and go to more
+user groups, meet ups, conferences.  I can actually make myself
+visible in attending. So we should try to be the role model we wished
+we had, and I'm not saying it's super easy. It is hard and sometimes
+it's really horrible. But, if others are supportive, it's much
+easier. And if you ‑‑ you should just take a friend if you don't want
+to go alone, that's what I always do. And support others if it's just
+with a tiny e‑mail saying hey I really love what you're doing, keep on
+doing what you're doing. Inviting her to give a talk. We can reach for
+the stars. But we need each other for that. We can't do it alone, we
+need support from family, colleagues friends, we can be each other's
+support. So let's all, people of all gender let's cause disruption and
+break stereotypes. And research shows that we perform worse if we hear
+that we're not good at what we do just before we do it. So we should
+stop telling women they can't do math and stop telling men that they
+can't take care of their kids. We have to break those stereotypes that
+are holding us back and words are powerful. We should use ours
+wisely. And to show you a case study that implemented all these
+things, I will show you how we've built Rails Girls Summer of
+Code. Who has heard about it?  Okay, let's just end this
+talk. Awesome. It's a three month scholarship program that enables
+women to work on Open Source project in every language, not just
+Ruby. And it started out as a kind of dream from Rails Girls coaches
+and organizers and they wanted to basically give rail girls students a
+perspective because after attending the beginning workshop and falling
+in love with programming the students are encouraged to start their
+own study groups and keep on learning. And now they could keep on
+learning towards this goal, this Summer of Code. And the Summer of
+Code took the whole Rails Girls movement to the next level in
+connecting all the good things that are happening in the Rails Girls
+community and keeping the momentum going in companies involved in Open
+Source. The concept is that always two students pair up, they will
+find local coaches, they will chose an Open Source project.  I think
+this year we had 36 projects from which the student could pick from
+and they will coordinate with a mentor and then apply for a
+scholarship which is full time three months and sponsored. And last
+year 162 women applied from all over the world and they came from all
+different backgrounds. We had big movie director, photographers, women
+that studies human computer interor worked in marketing, but they all
+shared the same summer, they were all coding on Open Source
+projects. And we are supported by wonderful companies such as GitHub
+and Travis CI who are partners together with them and all the other
+cool sponsors and many, many awesome human beings, remember this
+slide, they actually helped fund more money with this. And there are
+many amazing people out there who donated out of their own pocket and
+spread the word. In the last two years we could usually sponsor ten
+teams each year. And they said the third year, so 2015, it's going to
+be the hardest year, super super Einstringen to get the money, but
+this year, we raised even more money. One hundred and twenty thousand
+US dollars, which means that for the first time ever this year we
+could actually fund 16 teams which is super crazy awesome by the
+way. But in the program we not only have sponsor teams but also
+volunteering ones who didn't get a sponsor seat but said they wanted
+to contribute to Open Source no matter what and just kept on coding,
+which is super inspiring. And all in all in the last two years we had
+32 teams, so 20 sponsors, 14 volunteering that's 64 women in two years
+who worked on many different projects. For example these are some of
+the projects we've had in the last two years, three years, we've had
+speakerinen hoodie, deasor a, but my favorite one (Diaspora.  ) miff
+favorite one is speakerinnen. It addressing the issue of few women
+speaking at conferences, they can sign up, with their biology gray if
+I and the topics they can talk about. Organizers can find future
+speakers for their events. To a couple of people. It's still small
+project. But we already have over 700 women. So I think we could fill
+this room 7 times with women who are saying, here I'm here, I'm
+visible, I can talk about these things. And my favorite part is that
+this has been filmed by Rails Girl study group in Berlin. And, yes, I
+see you coach, there may be some other students here. So this group is
+meeting on Monday and because of that they called themselves Ruby
+Monday study group, which is you shorten it becomes Ruby monostas. Of
+the group was started in 2012 and the group kept on learning after the
+first Rails Girls workshop and they built speakerien while learning
+how to code. And two of them, two of the Monstas Ana and Kanya who
+work directing movies and working in injurialism they made it into the
+first edition of Rails Summer of Code. They spoke about their summer
+in Kiev. As many teams did all over the world. And with this they
+helped spread the word and the Sparke of ‑‑ code. They are now both
+working at Travis CI as developer, they submitted speakerinnen as one
+of the Open Source projects for this year, they are mentoring the
+students during the summer which is where their summer and their story
+took on speed. So this is such a dream story that I will never tire of
+telling it. It shows what Rails Girls and the Summer of Code actually
+made possible. Wait for it. It gets even better. When Carla came up to
+me one day, she was writing Blog post about Summer of Code, so that
+are the alumni doing right now, do you is any statistics, which we
+didn't, so we did go out and ask all the alumni from 2013 and 14 what
+they are doing now and we found this. Over 90 percent of our alumni
+are now working in tech. And 80 percent of them founded their own
+start‑ups even. Which is huge. And it shows even, even more how
+important initiatives like Rails ‑‑ Summer of Code are and what impact
+we're having. So they are two of the alumni that are now giving back
+to the program that changed their lives. And they are highly visible
+role models for others to follow south. So to summarize the Rails
+Girls Summer of Code we're introducing girls with different
+backgrounds ‑‑ introducing friendlinessaround communication and the
+culture of the projects and we're helping to fix the leaks in the
+pipeline by creating supportive environments for women and boosting
+their careers, we even get more women into the pipeline and help
+diversify Open Source projects and companies, for example like Travis
+CI all in all we created a hands on solution for the lack of women
+problem we have in tech communities. Motivate women to start or
+continue their careers in tech. So three years ago I joined a rails
+the girls workshop to learn about programming. And I was blown away
+because the workshop was buzzing with 70 enthusiastic women falling in
+love with Ruby on Rails and afterwards I started rails Girls Berlin
+with a friend and the community grew like crazy and started study
+groups and others followed in Berlin and all over the world. And now
+we have this international movement that is Rails Girls in the Summer
+of Code which is changing the future of Open Source. And it all ‑‑ it
+all comes down to one thing, the magic trick. The magic trick. Is
+you. Because initiatives like Rails Girlless Summer of Code is only
+possible because so many people are putting in hours of their lives
+and coaching, organizing, mentoring, supervising, and it needs people
+like you who are giving their time and also it shows what can happen
+when they do. So let's remove all the barriers for minorities in Open
+Source in tech. Let's build thriving communities put in our love and
+support to make some change because this is our community this is our
+responsibility. And the end it's really not because statistics and
+diversity as a selling factor, in the end we are talking about social
+justice. And building the world we want to live in, and we want our
+kids to live in. And the good news is that change is possible. And it
+only takes us one day. A couple of hours, a study group, a workshop, a
+change of mind and heart. One first step. And everybody can do
+it. We're all in this together. So let's not waste another second. And
+start with it today. Thank you (Applause).

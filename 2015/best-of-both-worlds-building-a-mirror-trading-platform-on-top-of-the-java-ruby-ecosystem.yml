@@ -1,0 +1,229 @@
+Thilo‑Alexander Ginkel: So, hello everyone. My talk today is about,
+well, building a mirror trading platform on top of the Java Ruby
+system I'll start with a few words about me I'm a freelance back end
+software engineer and currently I work for a client called united
+signals. And the project there is basically the foundation of this
+talk and I will come to details later.  I have been doing a lot of
+Java development throughout my professional career, but as fortunately
+switched to Ruby a couple of years ago. Which I don't want to go
+back. Yeah Q . So this talk is not about well, building yet another
+Rails application, but I'd like to talk about what I tend to call the
+dark side. So back end applications and which I enjoy most
+building. So, theoretically the title ‑‑
+
+
+Ahh L all right! (Laughter).
+
+
+So, let's say you read nit the title a mirror trading, what?  Miles an
+hour row trading platform, when I first joined that project I had no
+idea what that was all about, and well that's also miles an hour row
+trading probably on that picture. But, what this talk is about is
+actually ‑‑ well, doing financial transactions. So let's say you have
+a trader who has understood how the markets work or who's lucky
+trading stocks for example or foreign E. changes, currencies.  ‑‑
+foreign exchanges, currency. He has a clue about all that stuff and he
+knows how to make his balance on his bank account higher over time. On
+the other hand you have people, well, who have money, spare money that
+they would like to invest, but they have no clue how to do that. And
+now we've got this fancy little black box, the heir row trading
+software that can bring both of those worlds together. One guy or an
+algorithm or whatever that could be. That knows how to trade the
+markets and on the other hand people who would like to invest and who
+would like to tap into those trading decisions and apply them to their
+bank accounts. And so hopefully after all when they tap into those
+signals they their account balance also rise over time. All right, the
+first thought I had was when thinking about financial software, but, I
+need to add we're not talking about high frequency trading, which is
+totally another league, but it's still like latency is important and
+when we receive an order it's important to make sure that it receives
+all the clients in a timely fashion without any delay. So I also
+thought Hmmm Ruby performance, Hmmm may turn out try I can well
+fortunately it's JRuby as we will later see that works pretty well. So
+you may remember that magic box with a question mark on one of the
+prior slides, so what's actually in this magic box?  We have ‑‑ well,
+the broker that we would like to talk to to connect to which is
+managing the client's accounts and those accounts may not be only on a
+single program, but there are multiple brokers that we would like to
+talk to that just manage those accounts. We connect to those brokers
+via a given protocol which is kind of an industry standard but a
+little cumbersome to implement right which is call Fix, it's not very
+complex. In the wire format, but well, to get all the details right is
+tricky and you need to have many data models to get that
+right. Unfortunately there is an existing implementation in Java which
+is called quick fix J and we tap into that (Fortunately) and we tap
+into that implementation in order to avoid reinventing the wheel. And
+well, those boxes here, which we call connectors actually adapt the
+broker specific communication to what our core system which we'll
+later see on the stands. On the other side here we have the signal
+providers that supply us with signals that actually ‑‑ are manifested
+trading decision, buying a share, selling a share, trading a currency
+pair. And we also get those signals either via Fix or via arrest API
+that actually goes through a rail stack. Well, we need some component
+to bring that stuff together, which I'd like to call the core. This is
+a set of state machines that actually of ‑‑ yeah, transform the
+signals received into actions that we relay to the brokers on the
+right‑hand side of the diagram. So far we only have a set of isolated
+boxes here, but, we need some means of communicating with all those
+components. And we took the decision to use a rabbit MQ existence, so
+everything we have in place is message based, so state machines
+receive messages and advance the state based on that message
+content. And yeah this is for signals youe unidirectional messaging or
+bidirectional messaging for the rest. So far we haven't yet seen a
+database and ‑‑ but there is one we currently use mysql, the thing is
+that only the core writes to the database so we can ramp up the
+concurrency, the paraism of the system ‑‑ paraism of the system, much
+better, much more easily (paralaism) by means of the database but
+everything runs in here which order the database which makes
+parallelism condition currency much easier. One important aspect and I
+think that only ‑‑ that also shows how efficient JRuby works for us is
+receive a lot of market quotes. So via this Fix communication protocol
+we not just get the ‑‑ we not just send market orders and don't just
+get the result of those orders, but we receive plenty of quotes, which
+means just the price for a given share or a given currency pair. Each
+second so and for our experience that can amount to thousands of
+messages per second. It's not very viable to store that in a database,
+but instead we push this data to a Redis instance or more precisely to
+a Redis cluster. And given our current set up we process thousands of
+them each second. In plain JRuby. So I briefly touched that already,
+but, what actually made us chose JRuby for that task?  First and most
+importantly, I think, we love Ruby because it's so much more yeah,
+nicer to work with than if we would have built that thing in Java for
+example. That we actually picked JRuby was initially a little
+coincidence because ‑‑ well, we thought for interacting with the
+trading platforms should we build it on our own or should we use an
+existing solution to interface and there was this quick fix J library
+that provided us with all the basic communication mechanisms that we
+needed so we tapped into that one and then the decision to use JRuby
+was base basically set. Later on we also notice, well, Hmm ... if we
+use JRuby it's much easier to scale out the system in terms of
+utilizing all cores, all CPU cores that we have available. So that
+turned out to be an excellent decision in terms of paraism and
+performance too.  ‑‑ parallelism. Now running JRuby instance or a
+JRuby system is at least in our experience a little different than if
+you run MRI processes. We had a given Java background at that time we
+opted against using an App server but looked for other alternatives to
+make sure that the processes that we run, run in a robust fashion
+maybe one or another of you has already had the honor of seeing an out
+of memory error and if you have ‑‑ if you had that luck you also know
+that once such a thing happens you ‑‑ well, the virtual machine is in
+a state that you don't want to have so you need to take counter
+measures. And for those of you who haven't seen an out of memory so
+far, just a brief explanation Java virtual machine has a certain
+amount of memory that it has available for data and once this
+so‑called heap is filled up exceptions start to be raised and well,
+that can happen and at very inconvenient times. So ... in terms of
+robustness we have an active passive set up in place where we have
+multiple instances of a packet running at any point in time, only one
+is elected master using zookeeper that was mentioned two talks
+ago. And effectively when one instance crashes the other one takes
+over. But on a lower level we also would like to ensure virtual
+machine health on ‑‑ well per process level so virtual machine can
+also enter the state where it's busy gashage collecting but still
+alive. And ‑‑ gashe garbage collecting ‑‑ we found an Open Source
+component can effectively monitor for such situations. So this is a
+little Java library wrapper that can turn your Java process and as
+such also your JRuby process into a background demon and it will
+monitor the Java virtual machine for responsiveness or it will sort to
+say pink it in regular intervals and see if it's still responding or
+if it has become stuck for whatever reason. And it will also monitor
+standard error and standard out put for unexpected out put matching
+certain patterns. So that turned out to be a very efficient means to
+verify and to ensure that the process that runs our back end is
+actually in a healthy state and if that Tanuki service wrapper detects
+that something has gone wrong it will kill the process, first it will
+try to terminate it regularly, and when that also fails it will
+forcefully terminate it. Initially when we tried doing that
+integration it felt a little tricky because there was barely any
+documentation available, at least not for that special component. But
+eventually we figured it out the integration is well, you would say a
+little cryptic. But, once it's in place it works very reliably. So in
+the end this is ‑‑ well you don't need to understand all the details
+of that config file, it's just an excerpt but you can define virtual
+machine parameters on one hand and you may need to make sure that the
+class path is correctly in place, for example, so you need to put the
+JRuby.jar on the path, you need to increase the deck size from the
+defaults had ‑‑ stack size from the defaults, most importantly you
+need provide an entry point, which is JRuby.Maine. And that gets
+supplied with a Ruby script that boots up our back up service as a
+parameter. There's one other thing that we needed to implement, which
+is well we called it service wrapperringly because it's just a little
+tiny glue component that we use to guarantee, well coordinate regular
+shut down because otherwise the service wrapper would always
+forcefully terminate the virtual machine because the JRuby virtual
+machine, the JRuby instance inside the JVM wouldn't shut down in a
+coordinated fashion. So we also build a little Java class that whene
+when the service wrapper would like to terminate our code ‑‑ our back
+end just gets the global JRuby instance and then runs tier on it to
+make sure it shuts ‑‑ tear down to make sure it all gets shuts down ‑‑
+next topic I would like to talk about that you also get effectively
+for free when it comes to the JVM is JMX. Which is a monitoring
+infrastructure for Java processes. And effectively as soon as you run
+a JVM, whatever runs inside of it you get access to JMX matrix. The
+good thing about that is that maybe you have an existing monitoring
+infrastructure in your operations available and most monitoring
+solutions do have JMX bindings. So you can easily use that to tap into
+statistics about the virtual machine, how much heap is currently used,
+what's the CPU utilization, how's the garbage collector doing and so
+on. Furthermore there are also libraries that you can hook into JMX so
+that, for example the quick fix J communication that we're doing also
+exposes it's statistics and it's health date as JMX. If you don't want
+to set up a full blown monitoring infrastructure, which I could
+perfectly understand, you can also just have a peek into JMX
+monitoring if you bring up J console. And in's this list ‑‑ MBeans
+tab, and under that is actually a tree of the different information
+categories that are available. And below that you have all the matrix
+exposed. But some of those categories also offer operations for
+example for the broker connectivity. We have ‑‑ we also have the
+possibility to use that JMX interface to reconnect a broker or
+disconnect a broker or whatever. Well of, there's also more benefits
+that we had ‑‑ or that we have from using JRuby which aren't so
+closely back end related for our front end processes we use passenger
+with JRuby and again, it turns down to well, we get much more
+performance by utilizing parallelism because we can run fusion
+passenger in threaded mode and have fewer JVMs running because we're
+actually, well, our memory footprint is quite large, so we benefit a
+lot from being able to spawn few JVM processtion, but get our
+parallelism through multithreading inside of those processes. Well, we
+also had a couple of issues. Some of them are youe JRuby specific,
+some of them are not, some of them are already solved fortunately. We
+have a constant struggle with virtual machine start up times but we
+came up with a pragmatic solution that we have commands such as just
+running plain Rails migration for example but don't need JRuby. So we
+just use MRI for those and have well an elaborate set of ail yes, sirs
+for each task that we would like to run brings up to right Ruby
+interpreter (Alias) memory usage is also, we could improve on that,
+and well, debugging fortunately we tend to use Ruby mindful
+development, there was a bug where you couldn't inspect the attributes
+of objects, but fortunately I just noticed that it's solved in 1720 we
+vice‑president had time to up great to that version. It's very
+relieving to be able to inspect your processes state again. From time
+to time we hit bugs where JRuby just did things differently than C
+Ruby such as big integer arithmetics or divisions where C Ruby
+returned not a number and JRuby through a null pointer exception or
+whatever. In our experience the support by the JRuby was really great
+and those bugs were very quickly fixed in the past. Sometimes when you
+get one of those native stack traces you're also confronted with the
+fact that they are pretty lengthy and you have ‑‑ you need to decipher
+them to figure out what was really going on because you see well
+the ‑‑ all the AST that has been built as part of the back
+trace. Fork, I'm in the sure whether it has been implemented in your
+version, but 1.7 also doesn't come with a fork implementation so we
+need to fall back the zero before that. That's not Ruby relate ‑‑
+JRuby related, but we had a very ugly bug in the zookeeper master
+collection code where all of a sudden we had two masters. Which is not
+what you would like to have. But over all, coming to conclusion,
+JRuby ‑‑e really does scale for us. Contrary to what I would have
+expected prior to joining that project, really scales and is a very,
+very good choice for implementing a complex back end system. Mainly
+due to the fact that well we get the concise and elegant syntax of
+Ruby but we also get the complete Java ecosystem, meaning we can reuse
+what's already there, what has been built, don't need to reinvent the
+wheel. And we also get the JVM whether it and adjusted time
+complylationelation. We don't do high frequency trade ‑‑ I would like
+to remark don't be frightened by micro benchmark performance
+figures. In practice when you hit performance trouble it's because
+you're waiting for IO or whatever or your database. So it's of a
+factor of two in the Runtime isn't that important because well it ‑‑
+it's left behind by IO usually. Well ... so that would be my talk. Are
+there any questions?  (Applause).

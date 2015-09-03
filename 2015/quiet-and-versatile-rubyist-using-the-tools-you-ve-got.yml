@@ -1,0 +1,286 @@
+We're going to get started with the next talk. And
+Alex is going to talk to us about one of our most favorite themes
+as Rubyists and that is being opinionuated and being opinionated
+about things we just actually have to deal with in real life. We
+can't help it because clients have systems that use things that we
+don't like. It's not their fault, necessarily, legacy, all that
+sort of stuff. So, I'm going to let Alex take it away. Yeah, so
+let's warmly welcome him (Applause) Alex Coles: Okay,
+good. Constraints (Applause) This was all pre‑planned of course
+because I want to talk about technology constraints. So ... have
+you found yourself at work day dreaming about doing your own
+project, something where you get to pick the language, the stack,
+the feature set?  You want obe lib berated from the ‑‑ you want to
+be liberated from the to do list, the issue tracker from Jyra, you
+want to be liberated from the list that's been handed down to
+you. Hopefully this talk will be for you. Hello JRubyconf con a
+little bit about me, and Toby don't go too far away, Toby had a
+birthday two days ago. I was thinking (Applause) Toby has also
+taken over the JRuby cob this year, so I'm extremely grateful to
+him, I think he should come to the front and I think we should give
+him a Friday hug. Toby!  Very good (Applause) Thank you. Yes, so
+now really the boring parts. About me. This is where you can find
+me on Twitter, etc.. Where I live, Berlin, great city. Supposedly,
+no wonderful place. Work for a company as of two weeks ago called
+cue learning, we make study exam materials, check them out, if you
+decide to go back and study. Things I worked on in the past include
+paid Open Source work on a project called open project, hacked on
+things like data ‑‑ even patches to JRuby. Like many Rubyists I
+followed an unorthodox path in software development. Although I've
+been programming more than two decades, my background is actually
+in humanities and linguistics. Does that make me a good coder?  Who
+knows, I'm decent. I'm by far away not the best person in this
+room. Maybe I'm the worst, but ... you check my patches on
+GitHub. But I think the fact that we have various different
+backgrounds and you're here a lot at ‑‑ you'll hear a lot at injury
+camp about diversity, but the various backgrounds give us a lot of
+insight. Outlook helps us to be versatile. So, what brings me to do
+this talk?  This talk is pretty ‑‑ well it's unashamedly matter and
+philosophical there'll be a few lines of code, if you're feeling
+sewer Gary Reals shock after ice dream, ‑‑ sugar shock after ice
+cream, feel free to fall asleep. This is lightweight and fun. Just
+a little survey. What are the things we love to work with?  The
+fact is most of us Rubyists are petty strongly
+opinionuated. Dynamic Languages are probably, I would say are
+attracting some of the best developers right now, Andrew by is no
+exception. And good developers are supposedly characterized by
+making good choices. So we chose things that we like. We chose
+things ... yeah, whatever. Maybe not Go but everything else. Just
+had to throw that in. (Laughing) our taste also extends strongly to
+our environments. Our desk job. This is something we occupy for
+hours upon hours every day. Maybe 20 hours a day. So we're very
+opinionated with what we work with, yeah, some people even like to
+work with windows. But, choice, what about it?  Wasn't Rails really
+about the fact that we had hundreds of different Java frameworks
+out there then we have all of a sustainable development window
+nonCalloway of doing things. But Rails has become itself rather it
+is now something that is inflicted or (conical) suffers from too
+much choice. Just to do templating for example you have all these
+different options. So maybe we want to reintroduce
+constraints. Constraints don't exist in a vacuum. They are actually
+themselves a sub product. They occupy space between the developer
+and the final goal. Constraints is something that enter into the
+process. Something that provides obstacles. It's a little bit like
+you have constraints in your development process. If I can find my
+cursor, a little bit like Mario. Eats things along the way, over
+all goal you see it at some point, at the end. But you've got to
+navigate. But isn't that part of the fun, that's why we play games
+in the first place. Let's talk about freedom. Freedom as in freedom
+fries. No, freedom. There are really, you can think of there being
+two different frameworks for freedom. And the thinking here about
+these matters is long, it's ‑‑ it spans two thousand years of
+western civilization. But hopefully we can summarize freedom in two
+different ways. First of all, positive freedom. So here what is
+good we talk about the ‑‑ we use the word "good Commonwealths as
+kind of a goal, what is good is already clear, subject just follows
+naturally something that is good for everyone, the intermediate
+steps may well be known, as a consequence there are few choices,
+but the result of that might be the quality is good. Afterwards,
+happiness is achieved. Happiness is achieved when the subject
+grasps the good. When the subject gets to the goal. Through this we
+achieve quality. The problem with this though, the problems with
+this the developers are like is there ‑‑ becomes some sort of clerk
+checking off a list of tasks. In the end it's quite an idealistic
+position. Then we have negative freedom. Freedom here is defined as
+the lack of constraints. Happiness is where nothing opposes
+personal will. It's all about you.  I's all about what you can
+say. The developer gets the code working, but all choices look
+tempting this is the problem. And as a result, quality may well
+suffer. But on the positive side, what is nice about this is you
+get to use your own thought processes, nothing is prescribed for
+you. Think of a world maybe Angular.js compared with Ember J S,
+that's two good example, Angular nothing is laid down for you, you
+have a lot of freedom, negative freedom there, but you can also
+screw up badly. Demo ... I don't think we have sound. Damn it.  My
+hands are getting cold ‑‑ My goodness, get her out of there.
+Aahh.  ‑‑ Yeah (Laughing) Didn't quite go as well as Eck expected.
+I don't know if anyone actually heard that. But the dangers of
+positive freedom is someone else dictates to you what is good or
+not. The dangers of negative freedom on the other hand are perhaps
+even more ... even more compelling or even more numerous. In
+current times even when we're working with companies we developers
+often think of ourselves as freelancers, as free people able to
+change, of course, all of us, very privileged, able to change from
+one company, from one city to another, travel all around the
+world. From one branch to another. But companies and clients have
+quite different meetings than the one we're in right now. They
+spend a lot of money on some technologies. On pushing some
+platform. And that some person who's been at the company before you
+has said this technology is worthy,this technology is the right
+choice, and you come in and say, no, it's not, and that contradicts
+that point of view. So the solution in all of this, between
+positive freedom and negative freedom must be somewhere in the
+middle. Which we know is good. We have some founded position, every
+one of us prefers Ruby or perhaps JRuby. It's logics, semantics,
+its syntax maybe, but this should guide like a goal. So, a few more
+examples. Political events. Two examples one with one for each
+outcome, so political events our actual political world. Dictators
+stumbling, failing because peoples are asking for their rights. And
+I don't want to get too much into politics here, but let's read
+dictators that are not elected by democratic process, people like
+Momar Khadafi now maybe in the Ukraine are used to living in luxury
+environments and to have every desire fulfilled for them. So this
+is really the example of positive freedom. But, what really suffers
+here is quality. The second example comes from a short story by
+author C Clarke. He wrote in 1951 and the title is
+superiority. About a captured general telling a story from his
+prison cell who in giving the reasons why his side lost the war due
+to super your technology, and after the war was ended he decide to
+tell the true reason why his side was defeated. According to him,
+that reason is plain and simple, they got too caught up in in
+trying to develop superior technology. So they were all concerned
+about having the best thing out there, and they lost touch with the
+basics, so software, for a software analogy that would be losing
+your use case or forgetting about your use case. The opponents
+using the old technology, the Java developers out there were far
+more consistent in how they applied the technology but they ended
+up winning the war. So as I said the way the solution to all of
+this is somewhere ‑‑ is some sort of middle ground. We could also
+code in technologies just when they come out. Use the latest and
+the greatest, use the fad, use the trendy technology, but we first
+need to check if they're worthy. We first need apply some critical
+thinking to that process. The motive being less choices and better
+quality. And last, but not least, we need to check, we still need
+to get shit done.  I would like to spend the second half of my talk
+going into a particular example of where I've been ‑‑ I've
+encountered constraints and really the quite versatile Ruby learn
+to keep out of trouble. Before I go into the case study where I use
+JRuby I want to talk about freedom and start‑ups, so I've worked at
+a couple different start‑ups in Berlin, in many cases you have this
+negative freedom when it comes to software choices you can chose
+whatever technology stack you use. You can use whatever language
+you like, whatever stack you like. There are no real pre‑conceived
+ideas about technology. On the other hand, I guess you are
+confronted with other constraints. You might, for instance, in the
+high pressure environment have a VC breathing down your back. You
+might have limited budget and resources, which you might not have
+if you're working for a big company where they have a lot of
+corporate policies laid down about technology stack you use. There
+are things like pressure to do overtime in start‑ups. Washing
+machines, so this talk is a little bit recycled, it's like this
+washing machine here. But, I oa couple years ago you may have heard
+of this company, great German engineering company Bosch.  I did
+some work for them, this was in 2011, so please forgive the bahing
+that the case study is a little bit old.  I still think it's quite
+pertinent though. So the task, I was working at a Berlin‑based
+agency. Agency work is usually pretty dull, content CMS heavy kind
+of things. The company where I was working, our agency was tasked
+with building an internal social media site, celebrate 125 years of
+Bosch, and the site was really just a place for employees to share
+stories, experience, social media, nothing too exciting, but it was
+125 years of a very prolific company. And we wanted employees all
+around the world to ‑‑ many different countries ‑‑ to engage with
+us. All integrated with Twitter, fully internationalized, but from
+a technical standpoint nothing terribly interesting, I'm sure no
+one in this room here would get all that excited about the
+technical requirements. So throughout process was, well we were
+merging our agency, our agency was emerging as a Ruby shop at the
+time, we had to make some desingses about the technology stack,
+about the solution that we go for. Of course I think the prudent
+option would be to have an out of the box CMS that might involve
+like hacking the head out of druper type O 3 whatever. Type O 3 is
+meant to do these kind of content sites. We wanted to provide extra
+value, provide something a little bit unique. And just generally
+our team preferred finely crafted tools, which is of course why
+we're rubyists. So we through the sensible option out of the box
+CMS option out of the window and we decided to do our own
+thing. But there was some constraints involved, big corporations
+this thing was to be deployed at Bosch, big corporations had big IT
+policies, it had to be posted internally there was no Horoku no
+inge inia we had to have this hosted internally on Bosch servers
+and data centers. And there are also other middleware
+constraints. So in terms of stacks, what we were offered by them,
+the applications, the application server would support, PHP or a
+WIMP environment.  Net Java and even worse Paul of this was on
+windows (Laughing) and side tracking, a little bit, talking just.
+Net, not quite my cup of tee, I don't mind C sharp, but I never
+really bought into the whole platform. I M Ruby was cool, PHP,
+redeeming quality for me was Ubiquity. Okay, that's a bit tongue in
+check, ‑‑ PHP will be in the tool box, it's capable ‑‑ just ask
+Facebook, well, maybe not Facebook, but I would never chose to work
+with it. The language just has too many my takeses.  I don't like
+the syntax. Java enough said. Oh, really. So this all the to be a
+JRuby talk and I love the JVM. It's super platform for
+applications. So why don't we try to exploit the JVM. Well, as Joe
+would tell us, it's just this simple to deploy an application to
+JRuby. Well, perhaps having to change your active records. Make a
+few other changes but you can just pre‑compile your application and
+that just works. Unfortunately that wasn't the end of our problems,
+that wasn't the end of the constraints that we were faced with. So
+... when we took on the project we were told we would have free
+choice of application server. Unfortunately there was no
+choice. The choice for us was IBM web sphere. So, as said, we
+thought we would be allowed to use Jbos with all of it's wonderful
+integrations, unfortunately that wasn't possible. So, of course,
+when I was told this, I thought, oh, shit, what do I do. Went and
+Googled documentation. There was almost none. There was only one or
+two articles that malted which gladly share although they're ‑‑
+that mattered, which gladly share though it's probably out to
+date. Not ‑‑ it's not just web fear but you're using a completely
+different JDK, which in itself might not be problematic, but this
+was in 211 and there was regression between rube 1.56 and 1.60 and
+I think the CI sever was red for quite some time during that
+era. And we found that class generation so when we bundled up or
+when we built war files with Wabler we did wit an option to EOT,
+compile all of our Ruby and there were ‑‑ there are Java classes
+generated for each Ruby method. And to do this it creates ‑‑ it
+generates Java method names, unfortunately the mangling of method
+name was somehow mangled and there was ane a regression. J 9 of the
+IBM JDK didn't like our class method name, so couldn't actually get
+anything to run on the JK ‑‑ on the IBM JDK until we got a patch
+into rube itself. Fortunately it was a straightforward process to
+get the patch and fixed quickly by the JRuby dream. More
+constraint, apologize to the Oracle employees in the room.  I here
+refer to the Oracle database. The thing that Larry elson made his
+money with. And we faced a few other problems. We decided by the
+time I was ton data map project and kind of Evan Jacob list for
+that, I had also written the day map JDBC drivers (Evanjalist) so I
+was fairly fa nil yarr with JDBC but we had a few problems there,
+data mapper had problems with Oracle sells, primary key
+generation. And there are also problems with the way with class
+loading and the way that IBM application serve that creates proxy
+for JDBC drivers. Stuff that I never completely understood, but it
+
+didn't work out of the box and we actually had to, I believe we had to
+fork Oracles or use a ‑‑ our own JDBC driver to get this
+working. There were more constraints, one problem we had was serving
+user up loaded content. For some reason we weren't able to ‑‑ we had
+no control over the file, over IIS which was the Webapp ‑‑ sorry the
+webserver in front of this whole stack, so we weren't able to serve
+user up loaded content with the ‑‑ with IIS that was solved through
+rack static, so we let rack static do the heavy lifting there and it
+just turned out to be much, much easier. No file system access for us
+will cement ‑‑ we had no way via FTP, SFTP, SFH getting access to
+locks, so we would get a dump of logs every couple of days from
+someone at Bosch this is not ideal, if we had thought about this and
+had more resources then maybe we would write backlogs today that base
+and provide some user interface for that. But that was impossible at
+the time. So ... lessons learned. Don't do this. Just go with PHP
+(Laughing) no, this lesson taught me to be versatile.  I think I would
+go with more off the shelf solutions in the future. I am mainly using
+Rails. Mainly following the recommended path now or the standard path
+of C Ruby deployments of Rails and active record. But, I think, you
+have the opportunity to try out something on a project like this then
+go for it. High level conclusions for this talk. Versatility does not
+necessarily mean using JRuby, JRuby is something you should really
+consider. And let you get Ruby into a lot of companies where they
+wouldn't normally consider it. JVM is just a fantastic thing and
+you're going to hear ‑‑ many more and much better talks here for the
+rest of the day about why we should be using ‑‑ why we should be
+promoting JVM as platform. So embrace those constraints. If you're
+clever you can really get around a lot of things, so focus on the
+goals, focus on what I mentioned earlier, they used the word "the
+good" think of that as goals. Low level conclusions know you Ruby
+primitives, not just Rails, know standard Lib, but you should really
+have inSinatra, tilt, static I'm sure there are many more libraries
+that are worth learning. And that is it for me. If you have if I
+questions, I don't know if will is time for them. No, no times for
+questions but you can hit me up at the party tonight and ask away (
+applause) Quick question. My why if I just stopped working totally, is
+that the case for everyone?  Yes.  Okay, I'll try and see if we can
+get it fixed up.  Also the university access point dropped all. All ‑‑
+too bad I'll go try to fix it, I'll hand over to MC while Joe sets
+up. Thank you Toby.  As Alex also managers to make me blush on
+JRubyconf. Alex came up as euro cap as an overflow conference in 2011
+and organized eurucamp for the past four years so, please now warm
+applause for Alex. (Applause)

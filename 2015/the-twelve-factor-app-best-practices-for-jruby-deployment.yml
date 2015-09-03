@@ -1,0 +1,349 @@
+Yeah, we've still got a couple of talks ahead of us before the
+end. Joe here works at Heroku and he apparently sent in four proposals
+to JRuby this year.  I think we can give him the prize of a speaker
+who has sent in the higher number of proposals this year. You win that
+prize.  I had really brief chat with him yesterday, apparently he
+likes board games, I was trying to convince him to set up an
+activity ‑‑ maybe if anyone is up for that, you should talk to
+him. Yeah, he'll just be giving a quick introto the 12 factor act,
+best practices, so looking forward to hearing about it. Thank
+you. (Applause) Okay, quickly how many of you came to JRuby rube from
+Ruby, how many came to JRuby from Java. Those that came to rube rape
+from Ruby may have heard of 12 factor. Today I'm going to talk about
+how it specifically relates to JRuby I also go for code finger, I'm
+the JVM platform owner at Heroku. This is my fourth year speaking at
+Laura Ruby con. One more I get die monodian status. But every year I'm
+here, I basically speak about the same thing. Deployment, deployment,
+deployment, deployment, deployment (Laughing) it's kind of become my
+thing.  I just ‑‑ I love deployment, what can I say.  I love it so
+much that I wrote a book about deploying JRuby applications, but don't
+buy this book, I don't think you can, it's out of print because it is
+wrong now, there are lies in this book. (Laughing) but to be fair, I
+wrote the book or started writing it more than four years ago. About
+four years ago. Since that time JRuby has changed a little bit, really
+the ecosystem around JRuby the tooling virtuallization, the Cloud,
+they've changed as well. They've lead to different ways of deploying
+applications, so what I write about in the book, primarily is
+this. The traditional model for JVM deployment. You take your code,
+you package it up into a war file and you drap that war file into a
+running TomCat or JBOS container. And this model deployment was great,
+you know, fifteen years ago when we didn't have the Cloud and we
+didn't have virtuallization. When we're deploying our apps on to a
+piece of metal we needed that abstraction layer between the App around
+the underlying platform. Today modern deployment looks more like
+this. Take your code, package it up into a jar‑file and take that
+jar‑file and you can deploy it anywhere there's a JVM whether it the
+Cloud Docker container, Heroku, the only different ever difference
+between your application and underlying platform is the existence of a
+JVM, so truly portable application that you can move around.  I guess
+what I'm saying is make jar not war. (Laughing) Yeah, a JRuby joke.
+I've got more. War is hell. War files what are they good for,
+absolutely nothing. (Laughing) it's pathetic. Okay, so you don't have
+to deploy ‑‑ you can deploy your application and jar‑file, you say
+Gradle the morning, you can do it with Warbler, I maintain Warbler and
+I'm saying this. To be fair a lot of the work I've done with warbling
+is making it capable of making it running like an executable war file
+so it's more like a jar in that case. What does this mean to JRuby
+even if you're not deploying a jar‑file this still has
+application. The shift from war file to jar‑file ‑‑ we've also moved
+from an emphasis on application servers, big heavy containers that did
+a lot of work, we've moved to Microservices. We've moved from hot
+deployment, which was the goal for a long time to be able to deploy
+your application into one of these containers without ever restarting
+the virtual machine, but due to memory leeks and system crashes and
+system upgrades that just never really came to fruition. So instead
+today we focus on continuous deployment, the expectation that your
+application will be deployed multiple times a day maybe and that you
+will restart your application and you should be able to turn what
+around very quickly. Then of course ten years ago I was deploying my
+application to a box in the closet down the hall way, today most of us
+are deploying to the Cloud, to Amazon, to Heroku hopefully.  I know
+some of you R we host a lot of Ruby applications, like millions, I
+don't know if we're supposed to say, exactly. So we see a lot of
+applications and we see a lot of problems, we see a lot of solutions
+to those problems, we see a lot of things that work, and from these
+experiences we've dereeved a set of principles that we believe leads
+to better deployments, better applications and we've compiled that
+into a thing called the 12 factor App. It's an App with a methodology,
+a set of principles, best practices that we found lead to better
+scalability, maintainability and portability. This is truly a portable
+methodology, it's not specific to Heroku, even though it's derived
+from what we learned on our platform it applies to any kind of
+deployment. The 12 factor App achieves flu immutability, of
+femmerrality, it will be restarted and disposed of at some point in
+time (Ephemerality) check collar ration and automated as much as
+possible. How do you do this with JRuby to make a 12 factor App. So
+without further adieu here are the twelve factors, memorize them
+there'll be a final exam and you will be quizzed I'll go over these
+one by one. They kind of come in groups in my mind, so I'm going to
+stop and do a demo in the middle. The first factor is code based, this
+is a principle that states you should use version control.  I know
+what you're thinking (Laughing) but bear with me, you're going to
+learn things in this talk, but there are some things I have to say
+because there are people that do not use version control. Even if
+you're already using version control you should be using it in the
+right way that is one version control Repository per application then
+you deploy that application to multiple environments. You should not,
+of course, manual fork the Repository for different environments that
+would be undermining the version control system. You should also not
+use a single Repository for multiple applications. The reason this is
+a problem is that you start to comingle the commit history for these
+two applications that are residing in the same project. You lose the
+ability to do isolated roll backs and lose track of the coupling,
+where the coupling parts are between the two application. This isn't
+common with pure Ruby applications that's because the deployment tool,
+the build and packaging tool for Ruby kind of trend toward a single
+App per Repository. But with may haven and Gradle I see sub modules
+and multiple application within the same Repository. The advantage of
+doing that is you get to manipulate or automate these multiple
+projects with a single may haven command. If you need to do it, get
+sub modules ‑‑ get sub modules and your standard tooling to automate
+the processes. One of the other advantages of using Maven and Gradle
+to manage multiple projects is you can manage dependency was out
+creating our own Mavin Repository which is a pain. The next factor,
+dependencies. In the 12 factor App dependencies are explicitly
+declared and isolated and you should never reply on the implicit
+existence of systemwide packages. What I'm really saying is don't
+check jar‑files go Git that one's a dud too, most people working on a
+job application have done this at one point .  it has been
+particularly problematic with JRuby because the dependency manager for
+Ruby, bundler has no concept of jar‑files, so many times warming does
+this too, you check a jar‑file in your Repository because that's the
+only way to manage it. But, there's a great tool called J bundler,
+which Christian's in here somewhere, yeah, we can thank Christian for
+that. This is a great solution to this problem. Gradle, that you saw
+this morning is a great solution. Bundlinger D bundler does not
+replace bundler, it sits alongside, and uses a jar‑file for
+configuration. Just like you have a gem file, in addition to your gem
+file, you define in your jar‑file, the Maven jars you depend on. Then
+you install J bundler gel and install ‑‑ allows J bundle console, ‑‑
+with the jar‑files on your class path. Once you have that set up
+somewhere in your application you require J bundler and then you can
+Java inport the class. And keeping the jar‑files managed in the proper
+way. And of course you can vendor the dependencies too, you can see it
+puts the jar‑files there under vendor jars similar to what we saw this
+morning opening up under buildlibs. They ‑‑ they're not the type of
+configuration that the 12 factor App talks about. Anything that
+changes between employment environments, so things like resource
+handles to the database, memcached, credentials for Amazon, Twitter,
+and per deploy values such as host name. Does not include config or
+routes.rb, things that stay the same through different
+environments. This type of configuration should be strictly separated
+from your code, it should not be checked into your Repository, don't
+check passwords into Git. That's another Duh, but this is the most
+commonly violated principle of the 12 factor App. I'm sure you
+wouldn't check your own password but probably checked into a database
+or Twitter key and Amazon key. That's a problem for security reason,
+it's also a problem for portability. Because when you define that type
+of configuration within the code base it means that deploying to a new
+environment requires a change to your code. You have to actually make
+a commit to set up this new environment, it makes your App less
+portable. So good litmus test for this factor is can you Open Source
+your application at any moment without compromising the credentials to
+any of your systems if you can you satisfy this principle. So we need
+a place to put this configuration still, and place to put that is, in
+the environment. Specifically stored as environment variables, that's
+what they're for. So what we're trying to do at Herrick cue is get
+people away from using a database to store all these different
+credentials and extend extracting those credentials, that resource
+handle from the environment variable N this way you can stand up a new
+production environment with it's own database without changing any of
+your code. So the database ‑‑ your database is a type of backing
+service. That brings us to the next factor. Backing service is things
+like readies, memecached in the 12 factor App it should be treated as
+detachable resources, detachable via some kind of URL store in the the
+environment. This idea of using a database is the same idea you should
+attach a memecach this allows you to swap these different resources in
+and out if you're doing back ups and restores without disrupting your
+code base. It allows you to easily switch between environments, so,
+again, increasing portability. All right, the next factor, and last
+before I do a little demo is build release and run. This is a
+principle that states your deployment should execute in three discreet
+steps, build, in which you compile any code, maybe prepare some
+JavaScript assects and create some artifacts ready for
+deployment. Release you then combine the build artifacts for a
+configuration for a particular environment, it should be separated
+from your code and create some kind of release image or release
+artifact that represents that release of your application, finally you
+give that release off to your deployment environment, which then knows
+how to run it. So ideally these three steps are automated, regardless
+there should bed these three discreet parts to it. So some
+examples. Build might be a JRubyc, a rake asset precompile, you might
+build your war file, might run Gradle. You're creating those
+deployment artifacts. Release really depends on the environment you're
+deploying to. If you're deploying a warm deploy jar. If you're using
+the Mavin plug‑in it's Heroku deploy, if dock, it might be Docker
+push. It depends on the environment, but still a single step. Running
+depends on your application, if you're running an executable jar‑file
+it's jar have a‑jar command, if it's using Ruby server it's a Puma
+command. It should not be, what I used to advocate starting TomCat in
+the background and dropping a war file into it. Starting it as a
+service, yes, it should not be starting Torque box and dropping a war
+file into it. Something I sort of advocatetion ad for in the past, but
+what we're starting to see with torque box, mutant, the torque box for
+closure. And wild fly and wild fly swarm even J boss is going to the
+inverted approach to deployment, creating executable jar‑files. If you
+can automate all these into a single step, if you're going through
+hero koa it's a get ‑‑ ‑‑ to get all of those. I don't do live code
+because I make a lot of mistakes, you're welcome.  I have here a very
+simple JRuby application. It's a JRuby Netty application I'll explain
+in a moment. It has a gem file, with some gem dependency, it's JRuby
+9,000 along the gem file there's a jar‑file, definds my netty
+dependency. A high performance Java library for creating HDP and HTCP
+client and severs used extensively by Twitter.  I also proposalv a
+probing file, tells Heroku how to roup my application. It's a single
+command, to run the server RB, and S very RB contains a bunch of Java
+imimportants made possible by J bundler, and creates a netty DP
+handler. The code for that is kind of complicated that is because
+netty is more Akin to rack than to simpler gnat that and Rails ‑‑
+Sinatra and Rails.  ‑‑ built on top ‑‑ we don't have it for Ruby,
+somebody build it, we need it.  I think it would be a great
+project. It's a much lower level tool. Okay, so I have this
+application.  I can prepare it by running J bundle install, which
+downloads my netty dependency, puts it into my local Mavin Repository.
+I can run my application. Which requires J bundler and sets up my
+dependencies, it's running on port 8080. Yeah, very complicated
+application. So now I have this thing working I can deploy to the
+Cloud first by creating a Heroku App, if you have the Heroku tool belt
+you can run create. You can then push your code using get push master.
+I suspect most of you are familiar are Heroku, it's downloading my
+dependencies, running J bundler, creating a slug, which is a release
+image for Heroku that my App is then run from. So I can use Heroku PS
+to check on the status of my process, there's one instance of it and
+it's up.  I can use Herrick cue open to view the App running in the
+Cloud. I can use Herrick cue logs to check on the status of it. So
+when I pushed Heroku it's first executing the build phase, isn't
+really much to do for a Ruby application then it creates the release
+image, which I mention is a slug file. Each time I deploy I get a new
+slug image, and I can see the history of those with Heroku
+releases. If I deploy changes or cause my App to fail for some reason,
+I can roll back to a previous drug and debug in a separate thread. All
+right, one last thing I can use Heroku town start a one‑off process
+ton Heroku server, I can start a JRP session, I should of run J
+bundler console. Then import java classes and do things if there I'll
+talk more about that in a little bit. Okay. All right, so the next
+factor, and actually the rest of these factors relateless to the
+process of deployment and more to the deployment architecture, how you
+structure your application for deployment. The first factor is
+processes. And 12 factor App your processes should be stateless. Don't
+use sticky sessions. So don't keep session information within your
+process that needs to be there. If that process shuts down, it should
+not take anything with it. That's not too common of a problem in Ruby
+applications. But port binding is much more important. So this is a
+principle that states your application, a 12 factor App should be
+completely self contained, should export HTTP as a service by binding
+to a port. It should not depend on any piece of infrastructure and
+curery requests for it. I'm referring to the old model of JVM
+deployment dropping a war file into a container and handling request
+process for us. Our application should know how to do that. Either by
+embedding TomCat or Jed I did or by using netty as I showed on my
+example. The application itself should be completely self
+contained. And this is ‑‑ what we're seeing with JRuby, but it's also
+what we're seeing with the rest of the Java ecosystem. Spring boot,
+plan, finagle, Dropwizard, these are all tools that are gaining market
+share in the Java ecosystem and they're all containerless. They're
+using this modern deployment style. All right, the next factor is
+concern simpler. You're probably thinking, I got this one. JRuby is
+great at scaling up, but you also need to be able to scale out. And
+you do that by diversifying your workloads. Decomposing your
+application into different parts that do different kinds of jobs
+allowing you, to if you need to handle more web request, you can scale
+the part of your application for the web request without scaling the
+part doing background work. This is different from what I used to
+advocate, application servers that can do all these things for you,
+but, it turns out that scaling with an application sever is much more
+difficult. This workload diversity could be interpreted as me
+advocating Microservices, if you take it that way, then great. But
+whether you embrace Microservices or not, there are still principles
+from the Microservices methodology, architecture that you should
+embrace regardless of whether you claim to embrace that or
+not. Another one of those principles from Microservices is that ‑‑
+that you should embrace is disposability this is a principle that
+states your application should be quick to start up, resilient to
+failure. It should start up in less than a minute, ideally under 30
+seconds as you saw with my netty application it started quickly, it
+should be greaseful to shut down. Receive a termination sigh ‑‑ within
+ten seconds of the termination signal it should shut down cleanly. And
+resilient to failure, which falls out from the other two. If your
+application crashes or you need to scale it down you should be able to
+replace those instances very quickly. So this really gets back to how
+we used to think of our applications, how we think of our severs. We
+used to treat our servers as pets when they were sick we take them to
+the doctor, we want them to get better, we wanted them to live
+forever. These are the pieces of metal, the application servers I was
+talking about. They were very near and dear to us. To today we should
+think of them as cattle. If they're sick you kill them, if you need
+more servers you go to the market and buy them if you have too many
+you get rid of them. This is possibly now because the Cloud is cheap,
+virtuallization is good, we can do this. So, yeah, treat your servers
+as a commodity not as a precious. So that said application servers are
+not disposable, but Microservices are disposable. I'm explicitly
+advocating Microservices, I guess. It's not about Microservices as
+much as the principles that back up the methodology, they're easy to
+replace, modify and decoupled from external infrastructure. So this is
+something we're seeing embraced by places like Netflix, Twitter and
+Guilt Netflix is using all kinds of JVM languages, Twitter and guilt
+are both using Sc ala all embracing Microservices, save Open Sourced a
+lot of the applications they use at Twitter and guilt they're built on
+netty. Okay, the next factor is deaf prod parity this is a
+prescription million that states your development environment should
+be identical to you production environment and every place in between.
+I see it violated at the database. If you're using post greeses in
+de ‑‑ if you're using puma in production, you should be using puma in
+development. The idea is to get that parity between environments. This
+is ‑‑ we desire this for a number of reasons. But it's often mistaken
+as a development nicety. More easily debug and prevent new bugs by
+having a system that's exactly like your production environment. But,
+that's true, but it also makes it easier to get to on board new
+employees because if you can stand up your environment, because it's
+identical to all the other environments you can get started more
+quickly. It makes your application more reproducible. Allows you new
+test environments, staging environments and production environments,
+if you can stand them up quickly you can also dispose of them this
+deaf Prod parity is a key step to disposability. These factors are
+very much tried together. All right, I'm going to skip over logs, it's
+a very interesting factor, a little orthogonal to the others. Add
+miniprocess. Jobs like database pry graces (Admi?  ) should be flan
+isolated processes. You should not be logging into a production server
+to run your database migration or one off tasks, it steels resources
+from an existing process and create it is process for accidentally
+bring that server disown or bringing that existing process down. When
+you run those one off jobs you should run them in isolated containers,
+that was what was happening when I did the Heroku run command. I was
+getting a new isolated environment for my container. Same when I scale
+it up, when I create more web instances, except with the admin
+instances I'm just not starting that process. Getting another
+identical environment for my application. Okay, so to recap code base,
+you should use version control, but www.version control or Repository
+per application. Dependency should be explicitly managed, do not check
+jar‑file into Git use J bundler, config should be separate from your
+code, of not in your Repository. Back end services should be
+attachable via some URL store in the the environment. Your build
+process, your deployment process should happen in three discreet
+steps, build, release and run. Processes should be stateless, port
+binding by ‑‑ not be an external piece of infrastructure. Concurrency
+up as well as out. It should be disposable. Quick to start up,
+greaseful to shut down and resilient to failure. And deaf/Prod
+parity. And admin processes should be run in isolated containers. You
+can learn more about the twelve factor App on twelve factor.net. It's
+a manifesto for the 12 factor App. It's a language agnostic
+methodology so it's ‑‑ there's some things specific to Ruby but
+nothing specific to JRuby in the manifesto. On my Blog I very often
+write about specific characteristics like the one I talked about
+today. So what next, you know the 12 factor App,
+coronationlations. What do you do about it?  This is a list of things
+I would like you to do after leaving this talk today. If you have a
+JRuby application try runnable warble executable war it'll produce an
+executable jar‑file I talked about. Alternative you could try JRuby
+cradle, just take your application, see if you can do
+that. Infrastructures ‑‑ stall J bundler, even if you don't have any
+jar dependency, install it, create jar‑file see if you can get it
+working, remove all passwords from your code base. Find a police to
+put them in the environment. And deploy your application to Heroku or
+some other Cloud platform, if you deploy to Heroku you can deploy in
+one step, I think that's the goal, wherever you're deploying try to et
+it down to a single command. All right, again, time Joe Kutner, these
+slides are on the web, before we do the mandatory applause.  I have
+some games here today (Yes !) I'm looking for some people to play
+them. Also if anyone knows how to get into the great refractor
+telescope at the Leibniz institute, I would appreciate it. ( applause)

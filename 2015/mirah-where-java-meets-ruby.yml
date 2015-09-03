@@ -1,0 +1,225 @@
+Yes, so, we're nearing lunch break. Buff before that we're going to have one last
+short talk we have PJ on stage here who I heard is a Harku
+master. Sorry, was I not supposed to expose you?  I think there
+might even be some Ruby Karol Ruby stuff going on sometime this
+weekend. Yeah. And he'll talk to us about Mirah. Yeah, I'll just
+let you give the introduction to this thank you.  ( applause so, hi
+I'm PJ, so what is Mirah?  You're familiar with JRuby, Mirah is
+kind along the same thing. When you hear the idea about it's kind
+of a more palatable lessen terrorize way of getting involved in
+Java if you know Ruby. Mirah, I've been told, had a goal at one
+point of replacing Java, I doubt that's going to happen. There's
+still a lot of work to be done before it's even competitive. Java
+is everywhere. It's in all the code you've seen at some point in
+time in your life you've touched Java, oh rings many people have
+literally done Java ‑‑ yeah, we all know what it is. So, in short,
+Mirah is an attempt to create blazingly fast Ruby‑like language
+that can be come biled with Java. So what is Mirah. It's not
+Ruby. You can say Mirah is Ruby with static types but the fact is
+that Mirah is Ruby‑like and not actually Ruby. It doesn't share
+Ruby's type system, classes, standard libraries. Really any or most
+of the things that we think makes up Ruby and the Ruby
+ecosystem. It's more like a Ruby syntax browser. It takes the Ruby
+syntax brings it into the JVM tool chain and compiles for maximum
+performance (I know I'm going fast but I have ten minutes and I had
+a lot of club Mate and I'm holding you back from lunch. The main
+difference here is the approach, mara is super lightweight no
+Runtime library, that maximizes performance. When it comes to
+performance, kind of Mirah wins. If you do performance test on Itaú
+BBA seems like it's really fast ‑‑ it also has limited capabilities
+on what it can do thus far. The idea was it was built for
+performance. That said, JRuby is so much more mature than
+Mirah. It's why ‑‑ there's a huge community, there's a lot of
+support for it. Mirah is kind of a fledgling language. It's been
+around for a while, but it still, you know, just getting off and
+starting to run with itself. So where did it come from. So there is
+some dude ... I don't know, I guess he's from like Minnesota or
+something, he made this thing called Duby, which is a strange name,
+not sure where that came from. Around 2009 Charley wanted to do a
+Ruby like language, subset of Ruby syntax that can compile ‑‑ the
+word Mirah,which came along later is actually a Javanese word so
+the people who live in Java they word for the gem stone Ruby is
+Mirah, that's how the name switched from Duby ‑‑ which again is a
+questionable word, I think we see what they did there. Today it's
+maintained by nick Howard as a lot of people know as Baroquebobkat
+people are using it to test out ideas to see how far they can push
+and go. Like many projects it's looking for people to use it, fix
+issues and contribute. And, let me just add, like the wonderous
+feelings you get when you contribute to an Open Source project like
+Mirah. It's good to take something that, I can maybe use this in
+small project and maybe build it into a larger project and lodge
+larrize some things you start to deal wit, I see this little
+problem you do this, you take the pain point and bring it to where
+you need to fix it that makes the language better together. So Open
+Source, cent. I'm going to say that about 80 times (Contribute) so
+if you ‑‑ I've been having a few keynote issues. Because Mirah is
+essentially a Compiler, it ships with no standard library. The idea
+is that users will chose what libraries they want, kind of Al will
+cart, they'll write the Plug‑Ins to support what they need. The
+Compiler will take care of the rest. And that was an explicit
+design, that was the whole idea, why build lots of things, think
+Rails for a second, why build lots of things you maybe need when
+you can build a few things and take the pieces that you need if you
+have to.  ‑‑ back end target ‑‑ developer provertizes and
+provides. On the JVM type system is mostly Java, so type
+declarations refer to JVM classes. So, why Ruby and Java. So, as
+you know, as a Rubyist Ruby was developed to bring joy to
+developers, no one has ever said that about Java (Laughing)
+ever. But it's super powerful. And it allows you to do things that
+make you feel fulfilled, maybe not happy, but fulfilled. You're
+solving problems, getting jobs done. If we take the thing that make
+coders feel happy and what makes them feel fulfilled we get a
+hybrid that is the best of both worlds you're now fulfilled and
+happy. It's like the peanut butter cusp of the coding world. If
+you're alleging to peanuts, it's out there, I can't take it back,
+I'm sorry. At this point it's important to know where Mirah is
+at. At this point, Mirah is on version, when I left home
+06.0.14. Still in the beginning stages of development. Start in the
+2009. Yes, it's 2015, in's a dip, they did some JRuby something,
+something, kind of got put by the wayside, but, you know, it's
+still something that's active people are getting more
+involved. Part of the reason I got into Mirah I work at engine yard
+and I'm on the community team we look at a lot of Open Source
+projects to sponsor and what have you. We were running low on Blog
+posts boss said, here's what you're going to do Ruby guy, find out
+what the most contributed Repository is this week. It was like,
+Mirah, Mirah, Mirah. And I was like, oh, this is interesting
+because I've never heard of this thing before, I dove in, wrote a
+Blog post, generated more interest, and it was really cool the see
+something that could have easily died out, but is actually a great
+piece of code, great way to program that, you know, luckily started
+to see the light of day again. So let's talk about some guiding
+principles, going really fast, wow! So according to the Mirah site,
+Mirah.org. It's based on a few guiding principles, no Runtime
+library, this means no jar‑files, dependencies can be decided by
+the developer per project, the way bundlerrer keeps Ruby gems
+siloed. It helps you handle that. Kind of the way RVM helps you
+keeping ‑‑ strictly for per project. It has a clean and simple
+syntax. Syntax similar to JVM system but borrowing heavily from
+Ruby. There's meta‑programming and macros so built in tools so at
+compile time you get the feel of a Dynamic Language while still in
+a compiled language. No performance penalty. "because Mirah
+directly targets the JVM types system and ‑‑ koa it performs
+exactly as well as Java" quoted directly from the site. Take that
+for what it's worth. It's neither a positive or negative
+attribution, just one of the guiding principles in dedevelopping
+the language. There's also design principles, platform agnostic,
+meaning that it roughly, roughly similar scripts could conceivably
+compiles ‑‑ Runtimes it's a rough coupling of the Ruby‑like syntax
+with a plugble compilation pipeline. Mirah has no run time
+dependency other than directly from the Mirah code. It will depend
+exactly on what you build into it. it's theliale cart idea. No
+current JVM language addresses towards the aesthetic goals without
+producing a Runtime library which can be prohibitive based on
+size. So some general rules. Compiler chain Plug‑Ins will be
+written in Ruby. That's kind of moving forward, looking toward it
+is future. There's no specific reason that they couldn't be written
+directly in Mirah for Mirah at later date once it matures a little
+bit. The syntax is largely Ruby inspired. See that in a few minutes
+when I show examples. And to that extent like the current mara
+application starts with AST application from JRuby AST. There's a
+lot of bow rowing going on ‑‑ borrowing going on. Type system is
+purely symbolic: Compiler mapping to appropriate
+representations. All right. So primary elements what goes into
+Mirah. The parser is based on the JRuby parser that produces a Ruby
+abstract syntax tree or AST then it goes to the transformer and the
+transformer job is to take the Ruby AST and convert it to a Mirah
+specific AST, then the type inferrer decorates with the appropriate
+typing information for the target back end which you set up, the
+back end code generator compiles the code. So sounds pretty
+simple. How do we start?  This is always, by the way, something
+that I noticed in a lot of talks people skip, let's get started
+look at code, let's install something, because you have to get
+there first. So of getting any language the biggest hurdle is
+getting started. With Mirah the author and the maintainers have
+given the opportunity to find our own way by offering a few
+methods, there's a lot of methods, which is great. Outlined on
+Mirah dolt organize and the GitHub project. Regardless of what
+method you use you're go need to have JRuby 1.7 or higher.  I think
+prior to 0.0.12 you could havelesser version, you now need 1.7 or
+higher or it's not going to happen. Once you have everything in
+place, I did it using the general method that I use doing every
+Ruby project.  I use RVM, for those of you that know me for a
+while, I was the RVM patient zero, I worked with again Sagwin, he
+installed RVM on my computer while I was in the bathroom and broke
+everything (Laughing) which was great. Yeah. Sorry. I'm having a
+flash back. So, yeah, RVM install JRuby, then grab the latest
+version of JRuby, of course RVM used JRuby. That's installed, if
+you leer looking for JRuby 9,000 it wasn't available when I
+prepared this talk. It is now. After JRuby rube is installed, then
+you just simply install Mirah as a gem. If you're more familiar
+with Ruby than JRuby or Java that is the easiest way to do I ten
+fifteen minutes tops, you can barely get your coffee and it's
+done. Then you're ready to roll. We say hello world, because that's
+what do we with every project. My daughter says it's super, you're
+saying hello to yourself, hello to yourself and world is
+dumb. She's 13 she gets angry about programming. You type Mirah ‑‑
+E put hello world. Boom everything's working. Let's take look at
+something more complicated. When I was writing the Blog I notice
+there had was this huge file called examples Rosetta code. What
+this is, people that wanted to get into Mirah is good way to write
+some code, they did simple things that other people look and say
+this is simple, ten, fifteen lines, now have I understand a little
+bit better how it works. So I wrote a little thing. It's simple,
+put sign ask me to enter my name, just like Ruby. Following that
+read line to bring in whatever input comes from that, for
+verification we spit the name that was entered back with a sentence
+so people know count the characters including blank spaces, not
+super useful, not something you really need to do, but a lot of fun
+and it was a great way, to of kick the tires and say, cool, I kind
+of get what they're doing here and I kind of enjoy using it. Take a
+look at the output.  I entered my name, which I notice this
+conference has completely deleted my last name, that's what it
+is. You ‑‑ ‑‑ including space, awesome, really simple, it's ‑‑
+simple, to the point, there's lots of example, different string
+manipulation, arithmetic, things like that all in the examples of
+the row set that code folder. If you want to get into Mirah check
+it out. What else do people do with Mirah. No one's getting a
+hundred thousand dollars a year to count people's name. One of the
+big things that's come out of it, people are using it for Andriod
+development. There's a lot of open projects using Mirah for Andriod
+development. There's a lot of people building Plug‑Ins also awesome
+and we're getting towards more tools and frameworks. Potential uses
+for Mirah is limited by what the language currently holds, the more
+we contribute the more probabilities can grow. It's really, in my
+mind it's really cool because up until a couple years ago if you
+wanted to do Andriod development and you were a Ruby developer you
+were basically screwed. Then RubyMotion finally came out, it was
+kind of cantankerous and chunky, now you don't have to pay for it,
+here's an Open Source language you can build Andriod apps using
+native language that is very lightweight. Framework and tools come
+up. Dubious is the big player as far as frameworks, runs on Google
+App engines, the way that Rails and Sinatra does for Ruby desk, I
+guess I should say vanilla Ruby desk. In initiallization costs like
+with JRuby. Has a simple adepartmenter for data that uses a data
+map like syntax, not exactly the same but similar. It's important
+to note like mara dubious is in the early stage, so it's
+growing. If you're using like Rails one or Rails two back in the
+day, great, this kind of works good enough, I have a job,
+yeah. There's also Pindah. It's really cool, tool set specifically
+for building Andriod apps, does require the Andriod SDK and all of
+the examples using RVM if you refer that for your version manager,
+you're ready to go, if you don't, that's cool too. Mirah Nbm ‑‑ if
+you're looking for a specific ID to develop Mirah in, that's
+awesome. If you don't care about your ID that's awesome too. So
+what's next is ‑‑ the most important thing is that it's an Open
+Source project. It's still a baby. It's a great chance for you to
+get in on the ground floor. If you always feel like I really miss
+the train on JRuby I can't get involved in in Open Source project
+because it's been going too long and you feel left out, here's your
+chance. 0.0.4, ground floor start coding. You should get involved
+in Open Source, great, what can I do, write documentation, write
+tests, try to build a library. Any little thing you can do, talk
+about it that's what I'm doing, I submitted code example, when they
+accepted my pull request every time pull request is accepted I do a
+happy dance. Anything you can do to get people interested and get
+them involved makes the language better. Again, there's a lot of
+potential here to bring the awesome worlds of Java Andrew by
+together to make that peanut butter club, allergies excepted brings
+it to a place where you can get more people and give more peanut
+butter cubs. There's still a lot of road that we have to travel
+before we get to 1.0, there are people who are using it for
+production especially with Andriod apps.  I went a little over my
+time. If you have questions, my name's PG, ask for pins thank you
+(Applause) Thank you, we don't have time for questions. Sorry, but
+you can ask him in the lunch break, which is right now.

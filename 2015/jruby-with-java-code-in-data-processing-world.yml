@@ -1,0 +1,141 @@
+We're honored that this is the conference he decided to go to Europe
+for. Satoshi Tagomoti, or Amori for short, as we were chatting for the
+speaker dinner. Will be talking about using JRuby for data processing
+testing, and he'll have two Open Source software products how they use
+JRuby and another really exciting thing you'll be, I think talking a
+bit about the ‑‑ in Japan, yeah, so I think that's pretty interesting,
+looking forward to hearing more about this. So, yeah, thank you, and
+I'll happened it the floor to you (Applause)
+
+Thanks for a great introduction. And described an abstract form ‑‑
+so, now let's get started.  I am Satoshi Tagomoti and I came if
+Tokyo Japan. And I understand ‑‑ some software like ‑‑ the project
+and the research project. And now I am mentor of message back Ruby
+project. Message back Ruby gem is now Ruby and implementation in
+one gem. And recent ‑‑ my most recent contribution is Docker
+logging driver, which ‑‑ transfer Docker into the ‑‑ process. And
+it will be ‑‑ in Docker version 1.8. My day job is ‑‑ working for
+treasure data Inc, which is a data process software company for
+data processing service. And. And I'm working at the ‑‑
+branch. Our.  ‑‑ okay. Data processing world. In data processing
+world it's dominated by him. Actually ‑‑ Java also . This is also
+software like hive, pig, drill, they have all have very curious
+characters. All most all of these are written in Java and some
+other languages and ‑‑ like Scala ‑‑ or in C plus plus. But (C + +)
+the why these softwares in Java is this software requires have many
+courses and large ‑‑ CP cores and lodge memory. The high data
+processing for ‑‑ JVM has many good features and improvements. And
+we also must provide the transparency for ‑‑ HDFS APIs that is
+very, that is required for by almost all data processing users and
+system programmers. That is why we must use Java JVM languages and
+for data processing software. So, now, I will talk about two OSS
+software using Java and JRuby. Norika originally written by me and
+Embulk is originally written by ‑‑ who is also message back. And
+the chief architect of treasure leader. Now Norikra is an Open
+Source software between JRuby and JVM and process under GPL V
+2. It's also distributed on Ruby gem. And you can ‑‑ Norika ‑‑ if
+you are using JRuby. What is Norika?  It provides feature to
+process Sql like this, but this has very little extension to
+express the data window. Data window size by win and underscore
+batch 10. This SQL proprocesses this SQL for each data like
+this. If you put fast data and ‑‑ status by ‑‑ pass on ‑‑ bytes. If
+this data has status equal ‑‑ another data line and this data has
+different path from ‑‑ so this SQL updates ‑‑ by other ‑‑ with
+other record. And then this the sum data in status 404, so this ‑‑
+just ignore this data. And Da, Da, Da, Da, so test data. When test
+data arrives ‑‑ this internal status into out data, by the three
+records ordered by sum of bytes. So, this is an almost all Norika
+tagsings. Very simple, but very powerful (Task) because if we
+want ‑‑ if you want to process in the streaming data, data and ‑‑
+stream and now we must write the Storm application or any other
+customized application, but we can write the process by SQL. So,
+any way. And Norika is written in JRuby using the Java library
+using Esper, and why ‑‑ why I love Norikra ‑‑ the most important
+point is productivity because ‑‑ not so much time for when I
+require the subsystem, so I use JRuby not Java ‑‑ and Esper is a
+Java library and provides complex event processing. And the feature
+for Esper ‑‑ SQL parser and executer. This is Open Source software,
+and this is ‑‑ that is the reason why ‑‑ license for GPL V 2. So
+any way the primary feature ‑‑ Ruby gems. Packaged and released as
+Ruby gem and ‑‑ system is for UDF ‑‑ with Norika we can have user
+defined functions, and user ‑‑ any of the function whatever you
+want and add it into the ‑‑ we can install in that gem, the UDF, we
+can publish the gem into Ruby gem or ‑‑ by gem ... UDF will be
+loaded into the Java library Esper ‑‑ and we can write in these UDF
+call in Java or JRuby and JRuby code is compiled in Java ‑‑ it will
+be written in JRuby. Also ‑‑ it is also can be installed by ...
+Okay, Embulk is an Open Source data ‑‑ power updater ‑‑ and Open
+Sourced software ‑‑ Apache license 2, distributed as a boss to jar
+organize or Ruby gems. Plug‑Ins are I did tributed on Ruby
+gems.org. (Distributed) almost input and out put are described ‑‑
+written in ‑‑ and many other features are provided by Plug‑Ins, but
+'em bulk provides very powerful feature like power execution or
+data validation, error recovery, or Idempotet retrying ‑‑ implement
+or ensure by Plug‑Ins that is really why Embulk has these core
+features. We can add any other Plug‑Ins for input and out put. And
+the filters ‑‑ if you want to ‑‑ if we want to add other data
+source or data submission to our Embulk system, you can have one
+plug‑in to add support for software or distributed systems or
+services whatever you want. This also features are provided by
+Plug‑Ins, and input plug‑in and out put plug infrastructures ‑‑ and
+the encoder for ‑‑ or any other ‑‑ compression ‑‑ the encoder is
+for compression or description or any others. Plug‑in is for ‑‑ CSV
+or JSON or many other formats. And filter Plug‑Ins if we want to ‑‑
+if you add a filter plug‑in ‑‑ and you can ‑‑ the
+Plug‑Ins. Executor plug‑in is very highly connected to Emburk if
+you want ‑‑ there's ‑‑ only executor plug‑in to execute this ‑‑
+executes these whole process on distributed systems. Okay, and
+Embulk and Java. Emburk is written in Java. Original author is kind
+of ‑‑ freak, I cannot say anything against him so he says that I
+will write! Embulk in Java! And I can only say Ah, okay,
+understood. And that's all. Embalk plug‑in is loaded over API based
+on JRuby. And Plug‑Ins at first almost Embalk plug‑ ins are written
+in JRuby. Now some kind of Plug‑Ins features were updated and these
+are supposed to ‑‑ these supposed to write Plug‑Ins in Java. And
+you can, you can chose which ‑‑ which language you write the
+plug‑in. This is input plug‑in in JRuby. And this is very short and
+simple. If you want to add new data source or designation you
+should write just this code and very special and simple code. Any
+way. Plug‑in management ‑‑ Embulk and Norika. Esper is written in
+Java ‑‑ ‑‑ plug‑in management written within JRuby all of these
+parts are written in JRuby ‑‑ UDF writing in both Java and
+JRuby. And Embulk is almost is written in Java but plug‑in
+management system layer is written in Java and JRuby. And all the
+plug‑ ins ‑‑ using JRuby. The plug‑insystems which many users, many
+users, and many plug‑in author want to write Plug‑Ins which many
+plug‑in author and users want to write ask to write in
+JRuby. Plug‑in filler, ‑‑ the encoder is highly ‑‑ not so many
+users want to write such Plug‑Ins because there are not so many
+compression algorithms or encryption methods with out ‑‑ open S SR
+... so it is only supported ‑‑ it is ‑‑ the Plug‑Ins are supported
+only Java. And ‑‑ any way. The plugble systems on JVM and Java, of
+course we have options to write like Java, Scala or Clojure and
+including, of course, JRuby. We want to have well designed
+system. The jar, the solve dependency of jar‑file and Java packages
+is real nightmare. Maybe ‑‑ Maven central is not so goodies tribute
+especially for plug‑in author. Registering is a bit hard rather
+than registering into the Ruby gem.org. So that is the reason why
+we are choosing JRuby on Java software and to make well designed
+plug‑insystem. And plug‑in ‑‑ systems. And plug‑in loader we can
+use a class loader using JRuby. The class loader, using class
+loader is also discussed and ‑‑ for me, for me and normal
+programmer. And we are using just required to write new Ruby Code
+and Java code wrapped by JRuby code. It's very simple and
+understandable for almost all of pug inauthor, including me ‑‑
+plug‑in author including me. JRuby in Japan. There's not so many
+users. The country for ‑‑ Japan is a country which the mass
+living ‑‑ CR Ruby is super major software in Japan.  I have our
+JRuby co‑worker in tremendous sure data, so there is ‑‑ the
+treasure is very good environment to write JRuby, but, in fact,
+tremendous sure data hub are too ‑‑ ‑‑ so that is the thing and
+where ‑‑ this is the thing and I can see everywhere in Japan. And
+many programmers, Open Source software used Java but they transport
+to write Ruby ‑‑ but now they are liking Scala or Golang.  I
+don't ‑‑ these are not so bad.  I don't write in these languages,
+this is not so bad. JRuby is not so major in Japan. Some developers
+in Ruby community are starting to use JRuby and so I am expecting
+that JRuby will get more use ‑‑ this is the conclusion. So please
+make your software plugble and ‑‑ by making your software plugble
+makes every system and community around that Open Source
+software ‑‑ I think JRuby is the best solution to do that. Thank
+you very much. (Applause) Thanks so much, Satoshi Satoshi.
