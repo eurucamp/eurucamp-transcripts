@@ -1,0 +1,358 @@
+Next up is Kylie, she's a software engineer at big nerd ranch. She
+taught herself visual basic before moving on to Ruby on Rails. She
+will present today a talk if sort of a story book style and with that
+Kylie Stradley, please get started. (Applause)
+
+
+Kylie Stradley .  . Hi, hello, okay. Can everyone hear me well?  Just
+before I get too far in. Okay, perfect. This talk is called Amelia
+Bedelia learns to code. My name is Kylie Stradley, I'm a developer, I
+live in at that, Georgia, in the United States, not the country
+Georgia, that would be cool.  I love making and eating pizza so much
+this is my work photo, if you go to my company's web site, that's my
+photo, this is my Twitter handle if for any reason you want to reach
+me or tweet at me. I'm very excited to be here because this conference
+comes very highly recommended and I have had such a good time here so
+far in every single talk that I've been to has been such an
+overwhelmingly enjoyable positive experience. So that's been really
+great. I'm not here to tell you about me though, and how much I love
+Ruby camp. I'm here to talk about a character from my childhood. Her
+name is Amelia Bedelia. She is a children's story book character. But
+before I get too for ahead of myself, could I get a show of hands ‑‑
+anyone here currently or at any time in the past ever been a child?
+(laughing) okay, some of you are laughing, but not everyone raised
+their hand. So I just wanted to gauge that number in the spirit of
+inclusiveness to find out what the demographic is here today. So,
+yeah, like said, let's meet Amelia Bedelia. In make this character is
+used to teach young, grade school age children about idioms and
+figures of speech. And the children really identify with the mistakes
+and mix ups that she makes because like a child she doesn't realize
+like until she's told that the phrases have more meaning than the such
+of their parts, she takes them literally.  I might said it I don't
+mean a lot, makes be sure we're on the same page an Idiom is a phrase
+who's meaning is more than the sum of it's parts in America someone
+might say take a hike and that does not literally mean the sum of
+those words, do not take a hike, although you're more than welcome
+to. The whole phrase is more Akin to something like go away or get out
+than it is to literally to take a hike. And we have a lot of phrases
+in programming that summing their parents seem to mean one thing, but
+really it actually mean very different thing that you might not guess
+if you don't have all the context. Amelia like a new programmer is
+very eager to please so when she isn't sure what a phrase called a
+date cake is she does the best job that she can with the information
+that she has.  I guess she can't find the fruit dates, which are a bit
+like raisins, I think, and maybe she doesn't know what they are,
+instead she cuts of acal even dare and uses those dates and mixes them
+into the cake batter.  I assume the time of writing this book that
+would be an acceptable cake substitute, all the people are smiling
+while they're eating the cake.  I don't claim to be an expert on that,
+but it does seem like she does her best and she saves the day. Does
+this sound familiar to anyone?  I think so. Someone is using the
+language that they're new to, they don't understand all of the phrases
+that they hear, but some of them sound very familiar. Unfortunately
+those phrases have completely different meanings than the meanings
+that they know. Amelia is eager to do a good job and she is a hard
+worker and tries really really hard even though she doesn't understand
+all the phrases in the language she's using. That is why I think
+Amelia Bedelia is a great lens to look at the kind of mistakes that
+beginning programmers make. This is why I'm here, I know after lunch
+spot is not usually a popular one with speakers, but I am very glad
+that eurucamp has given me the after lunch spot.  I think the best way
+to talk to you about this, about learning Idioms and phrases and the
+kind of mistakes they cause for beginning programmers is to read you a
+book as you might at a library summer camp. If you don't mind I'm
+going to sit here and I'm going to read to you. (Applause) you haven't
+heard it yet, so it might not be ‑‑ you may want to take that back,
+I'll allow you, if you chose to. The name of the book is Amelia
+Bedelia learns to code write by strad strad, illustrated by San Smith,
+and inspired by the works of Peggy and Hermann parish. Amelid is
+speaking with her employer's the Roger's family, it's time for an
+annual review, Mr. Roger says, Amelia you've always done good work,
+once we've managed to get on the same page, we deaf lit appreciate
+your unique approach to problem solving, you're so litter Al, you
+drive me insane, it's like talking to a robot or a computer. Talking
+to a computer, now that sounds like fun. Hey, where are you going?
+Group want know what your raise will be shouts Mr. Rogers?  Amelia
+doesn't hear him all she can think about is how much fun it will be to
+talk to computers. Amelia reads to talk to a computer you have to
+speak their language, but it looks like there's quite a few languages
+to talk to them. Amelia's new friends, some Rails Girls mention she
+might enjoy a language called Ruby, Amelia thinks that sounds nice
+enough, but why Ruby specifically?  Why Ruby?  Why not Ruby?  Shout
+two strange foxes who have mysteriously appeared. Ruby has elegant
+syntax it's natural to read and easy to write. If you like Ruby,
+you'll love Ruby on Rails. It's a web framework optimized for
+developer enjoyment. Rails letses you write beautiful code favoring
+convention over configuration.
+
+
+Yeah, what he said. An easy way to talk to a computer designed with
+developer happiness in mind. If being a developer is what it takes to
+talk to computers, I certainly want to be happy while I do. Ruby it
+is, Amelia says to no one in particular as the same foxes disappear in
+the the same mysterious way they lived. I'm really glad Jason
+mentioned why ... earlier. These are Why's foxes from why's poignant
+guide to Ruby. If you like weird Ruby stuff, you should read. This
+Ruby on Rails stuff is easy, Amelia thinks. It's got HTML CSS I know
+how to use those. There's a data business, I work with databases
+before too. Amelia's working her way through a beginner Rails project
+when she realize she needs to add a table to her database, looks like
+her scheme is the central source for the database ‑‑ I forgot to
+mention this, sometimes when you do group readings, there's an
+audience participation part, and so there's an audience participation
+part coming up, I think it's not going to be a problem. So we'll just
+try it. So then maybe this would be good time for you to jump in. All
+of you. Yes. So what does Amelia do?! That's exactly it. The next one
+will go much smoother. She edit the Schema of course, she has another
+table in her database without involving the strange randomly numbered
+migrations. Oh, no, Amelia, I can't read this at all exclaims Amelia's
+computers. You can edit the database Schema to Mike changes but in
+Rails it's just a rep evennation of the data business state. The
+migration seem to be randomly numbered, but those numbers at the
+beginning of the file is the date time the migration was created. What
+a silly mistake, I won't do something like that again I'll remember to
+to write migration when I want to update the database and run them
+using brake so they'll update my Schema file. Amelia is cheerfully
+working on a brand new application totally independent of tutorials
+and guides, she's not exactly sure what all this application needs,
+but she knows she can cover most things using the Rails generelator to
+scaffold new models views and controllers quickly.
+
+
+So what does Amelia do?
+
+
+She uses the scaffold for everything, of course I'll just use the rail
+scaffold to create my new model that's just as easy as writing the
+files by hand myself, in fact it's' veneers now I have the controls
+and views pre‑made if I need them later, I can delete them then if I
+decide I won't need them.
+
+
+Amelia, do we really need all of this ask Amelia's computer?  The rail
+scaffold is handy but you don't have to United States use it to create
+everything, you can generate a model view or controller, you can even
+create new files without using the generator and convention over
+configuration design make sure things match up as they should. But
+it's so mouchoirs this way. Says Amelia. Easier for you, maybe,
+replies Amelia's computer, I still have to load all of the assets
+created by the scaffold plus do we need all these JavaScript files.
+
+
+I thought you just needed a mod.
+
+
+You're right, we don't need all of this stuff, I didn't realize it
+added a lot of work for you, I'll be sure when I use the scaffold to
+only use the parts I really need.
+
+
+And this is what happens when you use the scaffold she just needs from
+her blueprint a very small dog house, but she used the scaffold so he
+got had dog mansion instead. (Laughing)
+
+
+Okay, so I don't need to use the Rails generator to make everything, I
+can just create the files myself. Amelia remembers what the foxes told
+her, that Rails is designed with convention over configuration.  I
+want to write the best code that I can I'll follow the fame work
+convention and write good code the Rails way.
+
+
+So what does Amelia do?
+
+
+In each of her new files (Laughing) in each of her new files she
+mimics the code and style generate by the scaffold, if this is how DHH
+would write Rails, this is how I'll do it too. If you don't know DHH
+the framework designer also races formula one cars, I have to assume
+that this is how he reviews pull requests to the Rails projects. Oh,
+no, Amelia, exclaims the computer. Convention over configuration
+doesn't mean you is to use Rails only within the frameworks convention
+it just means you don't have to configure the connections between
+models controllers and views. When you include all that code you
+doctor accidentally include different features leaving the two respond
+with block in the controller allow you to inadverted thanly expose
+aJson point gnar ‑‑ I don't want to expose any API in that
+application, just because I can do something with Rails doesn't mean I
+should.  I should only include them when I need them, not hold on to
+them for later.
+
+
+You got it Amelia. Amelia's having a lot of fun at her first hack a
+ton, the team she's working with request a ton of features directed to
+all different routes, Amelia's teammates are excited to get new web
+views for their App.
+
+
+So what does Amelia do?  Of
+
+
+She activates each of the routes by raking them before committing and
+pushing the code with each new route she writes a new HTML file adds
+the route to router B file and rakes the route, rake is short hand for
+Ruby make.  I rake each new route so it's available in any web views,
+I'm not going to make the same mistakes with my migrations expecting
+them to be there any ways.
+
+
+Oh, no, Amelia you adopt have to rake the routes to activate them for
+your application, rake just show you a preview of what it will look
+like in an URL. Why not, I have to rake the migrations it makes sense
+that I need to rake the routes too. Amelia's computer explains. It is
+a little confusing that rake creates database migrations but you don't
+need it to create routes, rake is just a tool that runs tasks, the
+routes are created when you add them to the route R V, there's no harm
+in raking the routes, but it's not needed either.
+
+
+Oh, okay, I think I'm getting it a little bit now, rake is a tool, and
+it can run a lot of different tasks, unlike the Schema they're not
+generated, I write them myself so they exist as soon as I write
+them. You're really starting to get this stuff. Amelia's writing an
+application with her out of town friends, Fred and Kerry, Fred and
+Kerry have been developers for a while and always hip to the latest
+trends Andrew by gems, ‑‑ gems are great, they're just libraries of
+code. Why write it yourself when you can just put a gem on it. You can
+find a gem for anything, it's like you never have to write code
+yourself. Amelia thinks these gems are petty handy. It seems like I
+can just drop them wherever and have access to a ton of code written
+by another person. So what does Amelia do?
+
+
+Amelia adds all of her favorite gems to each new project she starts
+I'll save myself some time and some code. Carry and Fred say, put a
+gem on it. (Laughing) you know what this App is missing, gems, let's
+spruce it up, make it pretty with a draper gem, what a sad little
+application, you know I'll put the Rails admin gem on it, did you see
+this App before?  I didn't. Not so fast says Amelia's computer. Gems
+can be very useful but they're not the answer to every problem. Every
+gem you add to the gem file might have dependencies on other gems and
+those might have dependencies on other gems and those might have more
+deopinion densies too. All those dependencies can cause complications
+and eventually page t harder to upgrade your project. Oh, no, I don't
+want that, I heard Rails 5 is coming out soon, I want to upgrade and
+use tour bow links cried Amelia.  I guess I should make sure the gems
+I'm including are the ones I'll really need. Amelia's working as an
+intern at a software development company. The client she works with
+business conversation Inc requests of that new programmers be added
+for customer addresses. Parameters, Amelia thinks, I know exactly what
+to do with par rams in a Rails App.
+
+
+So what does Amelia do?
+
+
+She does exactly what think ask for adds them to the Params hear
+hash. She'll be so excited. This is a bit culture but I already
+printed the book, hash is like a potato salad in America, she's adding
+them to this par rams hash which is potatoes kind that base
+columns. Ooops says Amelia's computer, a client can say parameters
+which seems like a general term, but that word has more meaning in a
+Rails project, what the client really needs is just a new table column
+to save records to. Well at least my workplace has code abuse so the
+mistake was caught and corrected before deployed. Hey, don't be so
+hard on yourself Amelia, this is a great opportunity for you to push
+back on the client request in the future that I know seem off to you
+and you're able to teach a semi technical client a little bit about
+Rails architecture in the process.
+
+
+Yeah, I guess you're right .  nothing bad happened and I learned
+something.  I suppose I am getting the hang of this. Amelia is serving
+as a coach for the first time at a Rails workshop. She finally knows
+enough to feel comfortable coaching and helping others learn to
+code. She overhears a group talking about scheduling task for add on
+for a space project, they want to use a time field but everything
+falls apart when they try to schedule dates very, very far in the
+future. Amelia's worked with future dates before and made the same
+mistake before too. So what does Amelia do?
+
+
+She heads right over and explains, hey, I've had that problem too,
+it's an easy mistake to makes if you use date time instead you won't
+have that problem that's why I always use date time when ever I need
+dates.  ‑‑ that's a very good joke, back to the beginning, if you're
+at the beginning, that one is funny.
+
+
+That's not even the silliest mistake I've made yet, I'm still making
+mistakes every day, and this' okay because making mistakes mean that
+I'm learning, even if it feels like I'm learning things the hard way I
+learn how things work the way they do sometimes my mistakes help
+someone else learn too.  maybe they try to edit the data business
+Schema because they worked with access and I can help them learn by
+pointing out the analogous parts of active record in a Rails
+application.  I think though, that's what software development is
+about, making a lot of mistakes and learning from them. (Applause) so
+that's a pretty nice story, right, and we tide up all the looseneds
+and it's over and Amelia is now a professional developer. And I think
+it's really easy to frame our struggles this way as you worked really
+hard on something it was difficult, and now you're don working hard on
+it because you're there, you've got whatever it was you were striving
+for. And this' not realistic. And I think it's not great that we tell
+that kind of story to people who are brand new to programming, so it's
+not this, you know, ends with a ‑‑ and it's done, it's more like this,
+you never really stop making mistakes, and this is a cute fun talk,
+but I wrote it because I want everyone to talk about how you keep
+making mistakes, you never stop, I certainly haven't stopped making
+mistakes. Very recently ‑‑ not very recently, somewhat recently I made
+a pretty big mistake I thought ‑‑ I was working with a colleague at
+work we thought that we found a bug in the Ruby programming language
+and we thought that we smarter than core contributors of Ruby and
+found this amazing bug and we told everyone on our development team
+about the bug that we found and we were just very in the weeds writing
+a test and we were trying toes for equality on two separate instances
+of time.now and obviously this was returning false because they are
+instance seeuated at different times all we could see is time.now
+equal time.now it was returning false, it looks exactly the same. And,
+obviously when we told our teammates, yes, of course that's how that
+class works. And we made a huge mistake, and embarrassed ourselves in
+front of a lot of people thinking we had found this bug in Ruby. But
+that's the thing though no one gives a hard time about it, it's fine,
+these things happen. They happen to everyone, they happen to senior
+developers that you look up to too. What people don't think about is
+that beginners make a lot of mistakes and when you are a beginner it
+seems like you're the only one making all these mistakes, maybe in the
+book some mistakes I mentioned you did make.  I gathered all those
+mistakes from my own experiences and working with Rails Girls in
+Atlanta. And these are common mistakes for beginner, when you're more
+senior maybe you forget. And beginner developers, you know, when ever
+you have the beginner developers on your team you say havef you have
+any questions just ask me. And maybe you would say, oh, of you know,
+if they wanted to know if I made any mistakes they would of asked me
+about it. But we don't ‑‑ beginner developers don't ask advanced
+developers if they've made any mistakes, and I think that's okay that
+beginner developers don't ask. Because advance developers make a lot
+of mistakes to beginners they don't look like mistakes you're typing
+so fast that no one catches your mistake or they're just not thinking
+at the same level yet so they don't see the mistake. And that's okay
+too that advance developers make mistakes, and that's okay because
+making mistakes means that you're learning. And you're realizing like
+the things that you did before don't always work still. But what's
+really important ‑‑ ‑‑ what's really important is that we share our
+mistakes. beginning developers think they're the only one makes these
+mistakes but nor advance developers share with them and let them know,
+hey, you never really stop making mistakes, becoming a senior
+developer working in programming a long time suddenly seems a lot more
+attainable. Everyone talks about they want to have a great engineering
+culture thinned want their company to be awesome and you want to hire
+minorities and diverse candidates but I encourage you to put your
+money where your mouth is and talk about your mistakes because like
+truly, a great company culture like somewhere that people can learn is
+a place that's safe the make mistakes. So make it safe to make
+mistakes where you work and you're going to make the place where you
+work safe for people to learn. And that is the end of the
+talk. (Applause)
+
+
+It's really done this time. Any questions like where to order the book
+(Laughing) anyone?  Where to order the book.
+
+
+I'll be sued nowhere, just memorize it and write it down and then keep
+it ‑‑ it's an oral history, I'll be sued though, so there's nowhere to
+bite.
+
+
+Anyone else?  All right. Then we're going to the next talk.

@@ -1,0 +1,321 @@
+Comes to us from parse low that ‑‑ been in Berlin for the past few
+years, Berlin Ruby community, as well as the Berlin ...
+
+
+He'll be giving a talk about the power of small abstractions, he's
+also an organizer of what used to be called Baruco and futures JS in
+bars low, that two great conferences, actually gotten merged with one
+this year called Fulsat ‑‑ the you want to see the line up, it's an
+amazing conference, I've been there the last three years, it's all
+great. Many of amazing speakers will be there. So check it out if you
+can, the tickets are already completely gone, you can still get one
+for future JS ‑‑ any way, without further adieu TXUS. (Applause)
+
+
+TXUS: Of so well, welcome, um ... I'm Txus, this is how you pronounce
+my name, for those of you that can read phonetics, I can't, and this
+is me, but with some hair, that I don't have anymore.  I work at
+Codegram, we ordinary care nice ‑‑ FEST, M ‑‑ and do some other cool
+stuff. But you're here to hear about abstraction. Abstraction is a
+loaded term. It's controversial, that's why I picked it.  I love
+abstraction and you've probably heard many times this code is too
+abstract. Or even maybe you've said it as well. However, I want to
+make the case that when judging abstraction, we're incredibly
+biased. Look at these two pictures. What are they?  A machine would
+have a bit of a problem.  I mean, maybe not today's machines, but, my
+programs, I couldn't possibly write a program that tells me what there
+is in this pictures. But you already know, it's both just
+dogs. Although they're seen from different perspective, they're
+different breeds even, similar control color, but within has a collar,
+the other one not. It's different, but you know it's dogs, your brain
+just sees this. And then you know a lot of stuff about dogs, so you
+just pull that out of your of secure cell map tick knowledge in your
+brain about dogs, so you know that dogs go for walks, and you know how
+the feed a dog. So that's kind of useful. You've never seen these two
+dogs before, but you know they are dogs. Now my favorite writer is
+Joorge Borhes an Argentinian writer, amazing writer, just go buy all
+of his books, he wrote a book called Fumas Memoris, one of my favorite
+stories N this story he talks about a young man who fell off a horse,
+and from that moment on his memory became perfect. He could no longer
+forget anything. So everything he sensed, it was permanently there in
+his brain. And, of course, he became a bit of an excentric and started
+taking on bizarre projects like he would try and reconstruct right
+down an entire day of his life with full detail and of course that
+would take him at least one entire day, but, ‑‑ and then he also, he
+got a bit weirder and started thinking ‑‑ he told Borjes, who is a
+character in the story, look I started working on a numeric system, I
+invent add numeric system, and Borjes tell me about it. Well Funes
+said I assign to every number a name, so the number 7 is Cher, and the
+number 200,000 five hundred thirty one is dog. And so on, and he would
+just write down all these names for over number. And Borjes said isn't
+that the opposite of a numerical system. You cannot reason about
+numbers this way if every single number has a name. But Funes wasn't
+interested in his arguments he kept on designing the system, he really
+liked it. Borjes went on and said, look, Jon Locke the philosopher
+once envisioned an impossible idiom where everything had it's own
+unique name, every instance of every branch of every tree had a unique
+name. Of course he discarded the idea because he thought this is
+stupid idea, you cannot think about anything if everything has it's
+own unique name, you cannot talk about anything with anyone because
+you cannot communicate a generic concept to some other person who has
+never seen it. But Funes he was, he was bored by this system. He
+thought this system was too general because toFunes not only
+everything deserve it's own name, but every ‑‑ like if he saw a dog at
+3:00 p.m. from the side that dog doesn'tster of the same name from the
+same dog seen from the front one minute later. It's a different
+thing. It looks completely different and you sense it in a completely
+different way. So it needs it's own name. So Funes couldn't abstract
+over time of the we abstract over time all the time, we have this
+notion of identity. We look at a thing and a second later we know that
+it's the same thing or we think it's the same thing, and we talk about
+it as if it was the same thing. But to Funes that's just losing
+detail. It's funny because of course you all think that Funes seems
+like quite a brilliant individual, a weird guy, but quite brilliant,
+but Borjes suspected that Funes wasn't really capable of thinking. He
+said the thing is to forget differences, to generalize, to
+abstract. And Funes could not do that, wasn't interested at all in
+generalizing. So ... of course we've talked about Dogs and this'
+unfair, even if two dogs are dogs, they are different, they are
+different in an infinity of ways. So let's go to a more basic
+domain. For example addition, addition is something we can grabs much
+Bert than what a dog is. We know how to add numbers. We've beening it
+since forever. And we as programmers have this special power of adding
+strings as well because to us it's basically the same thing. You just
+connect two strings. We could go further and say we can also add lists
+together. Of so we could say that we take one thing and add it to
+another thing you get another thing back of the same kind. You don't
+get the same thing, but you get something of the same kind. Another
+property of addition is associativity. So it doesn't matter where we
+put the parens it always gives the same result. Same applies for
+strings, and the same applies for lists. So we other seeing a pattern
+here. For anything you take, no matter the parens where they are, it
+always gives the same result. Now addition gets more interesting with
+a special element that it's only been around for a few hundred
+years. And this' zero. It's a magical number. If you add one to zero,
+you get one. It's as if it didn't do anything of. We also have the
+same for strings, it's the empty string. And the same for lists. So
+you're seeing a pattern here. If you take a thing and you add it to a
+thing that's special that we call it the neutral thing you get a thing
+back of the same kind. Actually in this instance you get the same
+thing back. So we have these two properties that we've seen of
+addition no matter if it's about integers or strings or
+lists. Associativity and a neutral element. That's interesting to
+know, but how useful is it?  Well one instance where it is useful is
+if knowing something about something ‑‑ you can fold over list of
+things. So in this case you fold over list of integers, which in Ruby
+it's reduce or inject. And because it's associative it doesn't really
+matter if you fold left or fold right. That's kind of a knew answer,
+but you can use either. And you get the number back. The same for
+strings if you have a list of strings, you can fold, starting from the
+empty string. And the same for lists. So we can say that if we know we
+have a neutral element and something that adds associatively we can
+fold over a list of it, and we adopt care what it is. Now ‑‑ and we
+don't care what it is. Of course numbers, strings lists, these are
+primitive things, it's a coincidence that it works this way. Of course
+that's not useful in my program where I use complex objects and
+structures and that doesn't apply to my day‑to‑day. But I dare you to
+think of a data type more opaque and weird than functions. Functions
+are kind of a collection of code to be run later. Can we do the same
+with functions?  Let's see. We can add functions together if we
+understand add as composing functions. So we can compose F and G and
+apply it to X and it's the same as applying first G and then F to the
+result of that. Do they add associatively?  Well, as it turns out,
+they do. But what about the neutral element?  Do we have a zero for
+functions?  Is there a function that does nothing?  Well the identity
+function does nothing it returns its argument fair enough. Let's see,
+oh, that holds, you can compos F with the identity function and you
+get F back. So if everything I've said is true, you could fold a over
+list of functions and get the composition of all of them. So we've
+seen just by knowing these two things about functions, about a thing,
+we can fold over list of those things and we can do much more stuff
+but folding is just an example. Now it's not only about function
+number strings and lists. You should go through your own code base at
+work and look for things that look like this, that add associatively
+and have a neutral element. And you need to think abstractly to
+recognize this pattern. Now that you've seen it, you'll probably see a
+lot of things that look like that. Maybe validation errors, you can
+add them together, they just become a bigger report. And you have a
+neutral element which maybe is a lack of errors, a success, a value
+that represents no errors. Think for yourself in your code basis and
+you'll find a lot of examples that behave like that. So because it's a
+bit Clunky to aassociative division and neutral element people don't
+talk like that, someone gave it a name Monoids. Now let's talk about
+things in pleur. We use arrays lists and sets in our day‑to‑day, all
+the time but we're not interested in the knew answers of each of these
+types so we'll just talk about collections. Collections of
+things. Doesn't matter if it's an array or something else. Collection
+is something that has a notion of zero or more things. And what can we
+do with collections?  Well, in Ruby we're pretty used to map, we map
+over collection, we do something for each element, right. That's
+actually more interesting than it looks what if the collection is
+empty, we know that map doesn't do anything, it just returns an empty
+collection. So this is how it works, the code is stupid code, don't
+look at it, don't take it seriously. It's not closure or anything like
+that. So we see that it works for a list of things and for an empty
+list. Now there's a special kind of list, a list of one element, if
+you will, which Macon train either one element or non. And in some
+languages they call that optional or maybe. It's literally just a
+special kind of list, right. Either zero or one element, but not more
+than one. So if it's so similar to a list, could we map over it?  If
+we map over it, then it just applies a function to the only element
+that there is or in's none then it just returns none, just like an
+empty list. Okay, now there's something a bit different. A future. How
+many of you have used futures in your day‑to‑day?  Okay. A future
+encapsulates the notion of eventually something. So not now,it doesn't
+exist right now, but at some point in time there will be something. Or
+not, maybe there's an error, so it also encapsulates the notion of an
+error. Futures, you can map over as well. You're telling them, apply
+this function to a value eventually when it exists, and if it doesn't
+then just don't do it, just give me back the error wrapped in a
+future. So you're probably seeing the pattern that futures optionals
+and lists can be mapped over. And they are very different things, but
+and mapping has different semantics. But maybe not so different. If we
+look at these things as boxes, just kind of boxes containers of
+things. Let's call them boxes, instead of collections futures and
+optionals we'll just talk about boxes. If we look at it just more
+abstractly as a box what would be the semantics of map?  Mapping a
+function over box applies F to whatever's inside the box and the way
+the box sees fit. If it's a future it will do it later, if it's a list
+it'll do it for each element and returns the same kind of box, be it a
+list, future or option.  I cannot stress enough, it will apply it in
+the way it sees fit. So a future has it's own way, a list has it's own
+way, an option has it's own way, however many times it wants, exactly
+when it wants, if at all. That's a lot of power. We just give it the
+function and magic happens. You probably thinking that sounds an awful
+liken capsulation, I'm used to that, it's like an object, Jo us tell
+it something, do this in whatever way you want, maybe. And of course
+it's not good reach into objects, and it's not good reach into boxes
+either. If you try and get the first element of a list, and it's
+empty, what do you get?  Nil an error?  Dependinges on your language,
+that's not a good thing. If you try to unwrap an optional and nothing
+is there, what do you get?  Nil or an error?  That's scary. You should
+be scared ofnil. If you try to unrap a future, basically need to wait
+until it exists right, that blocks the thread, that's not a good
+thing. So you're better off telling the box, look, do this when ever
+you want in which ever way you want, let the box decide. These boxes,
+abortion is kind of a stupid name, so other people gave it a smart
+name Functors. But you can keep calling it boxes, it's better. Now
+it's fine, but this kind of ‑‑ can Jo us use map for everything?  Can
+you just map over things?  Sometimes our functions are not that
+simple. There's a kind of function that are very hard to compose with
+these boxes. If you have a box of a type T, a box of integers and then
+a function from T to box of U be it something else. This kind of shape
+it's hard to ‑‑ you cannot use map with that, you end up with nested
+things, let's get to the more concrete things. If we have a collection
+of string and a function of string to collection of string then if we
+keep mapping over the collection we just get nested and nested collect
+collection of strings and that's maybe not what we want, probably. For
+an example, if we start off this string and we split by comma we get
+three elements. If we want to split by dot to each element we end up
+with a nested collection. What's wrong with that?  Well, if we wanted
+to keep on processing the elements of the list, we need to know the
+depth at which they are. And that's a knowledge that we don't want
+because that doesn't compos. If we pass this to something else it
+needs to know the depth of the data structure. And that's a lot of
+informs that it doesn't need. So there's, of course, another function
+called Flatmap, you also have it in Ruby which just applies the
+function to every element in the collection and then concord Nate the
+results into a flattened collection. So Flatmap does exactly what we
+want. Again ignore the code. So we get a platenned collection. The
+same problem arises when we have an optional and a function that
+yields further optional that's a lot of uncertainty, from a user you
+get an address, maybe, maybe it's not there, maybe a you user does
+vice‑president an address, maybe the address has a street number maybe
+not. We end up with the same nested structure that we don't want plat
+map works for options. That's not surprising. Plat map seems to work
+as well. We end up with a nice flattened optional. If any of the
+intermediate steps yields none then we just get none. Now with futures
+that's even more common you make an API call, grab a resource, depends
+on the result of the resource you need call some other APIs and get
+more things, if we were like calling the GitHub API and we get a
+repand come back we need to get the follower of the the repo. You
+would start off with a user, we get the followers with map you get a
+nested future not what you want. With Flatmap you get a single
+flattened future. So for all boxes, all kinds of boxes, plat map does
+the same like map but then it platens the result into a single flat
+box of the same kind. So when ever you see this you have a box of T U
+V, a nor mall value to a box and you need to keep composing them plat
+map is what you want this gives us a lot of power. If you see map was
+kind of stupid in the sense that if something depended on the result
+of a previous competition you couldn't do anything. But in this case
+you can have functions that do something depending on the value of
+some other box value. And when you see this, and you want to use
+Flatmap you can actually say that you're using Monads that's what
+Monads are. These boxes that you can use Flatmap with these kind of
+functions. so as a recap we know that by knowing two things of
+something we can fold over list of them and do many more things that
+are out of scope for this talk. We can use map to go from a box to the
+same kind of box doing something in between. We can use Flatmap when
+our shape is like that, when you have a nested box. So now that you've
+seen these and you have names for them be it the smart names or the
+normal understandable names now you're going to look at your code and
+you're going to see these things. And then you'll have very powerful
+and general ways of dealing with this, namely flat and Flatmap. Just
+two functions to do everything. Not everything. But most of the
+things. So I dare you to go on Monday to your code bases and try to
+look for these patterns because now that you've seen them and you can
+name them, you can think about them. I'd like to give a special thanks
+to Jessica Kerr, who helped me a lot with the structure ‑‑ the way to
+approach the teaching.  I know it's a hard topic to teach. So I hope,
+hopefully you got a better insight into the world of this really
+powerful structures and functions. Thank you (Applause)
+
+
+Is there ... can you hear me?  There we go. Questions?  We have a few
+minutes you all get a fox ... if you want a fox ...
+
+
+Hi
+
+
+Thank cru for your talk it was brilliant. I have a more personal
+question.  I mean I've been using some concepts of ‑‑ and I've seen
+some colleagues that they have some difficult ‑‑ to submit ideas to
+their bosses, they say, oh we don't need this. So what are some
+suggestions to people make more frequent use of this?
+
+
+So, yeah, that's a good point, but then I'm of the opinion that you
+don't need to sell this to your boss in the same we you don't need
+sell the strategy pattern to your bosses, you don't go asking, can I
+use the strategy pattern is it fine?  You just do it, it's your
+choice, you're a programmer, you just use the tools you know and try
+to learn new and better tools. So I would say you just go with it. And
+I mean, it's better to ask for forgiveness. If anyone ever says what
+is this code, that happened to me actually. But if it makes the code
+clean E. and it usually does, people will thank you. And your bosses
+don't need to know. (Laughing)
+
+
+Great. Anymore questions?  Of get a fox.
+
+
+Hey, thank you for your talk. So yeah, thinking about this is really
+rewarding in a way it's like it caters to your human instinct to like
+abstracting things and thinking about higher level abstractions
+rite. But it still ‑‑ let's say sometimes it's actually hard for
+people who are not used to these kind of things and you were saying
+before that we are heavily biased towards abstractions, well, I assume
+you think that most people ‑‑ well, biased I assume you think most
+people have problems with ‑‑ judge them not necessary, so what do you
+think is the best argument for convincing that actually it's not that
+hard to make the step to thinking in these terms and actually make
+good use of them.
+
+
+In the same way that you probably, at some point, someone sees a
+visitor pattern and they're like what, what is this and they need to
+learn it and it's natural to them and they see it everywhere.  I think
+it's no different from this kind of abstractions, but there seems to
+be something different about them, right. They're scary, everyone is
+scared about them, that's only because people suck at teaching
+them. Myself included. It just ‑‑ there seems to be even a hidden
+interest to never teach that to anyone, like just use opaque words so
+that people never actually learn these powerful constructs, I think
+it's just removing all the mystery about that, and just teaching them
+is just normal things. And not making them scary. But that's easier
+said than done, of course.  I think a lot of people are trying to do
+that. And I think it's good, we've done a lot of progress .
+
+
+Great, another round of applause for Txus. ( applause)

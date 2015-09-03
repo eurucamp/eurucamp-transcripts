@@ -1,0 +1,354 @@
+Okay, great our next speaker will be Terence Lee, he comes all the way
+from Austin, Texas to speak with us today. He's one of the organizers
+of keep Ruby weird which is an Austin based weird Ruby conference. And
+yeah, does Ruby care owe I can and things like ‑‑ Karoki and things
+like this, this talk I'm looking forward to, I think, I wouldn't say
+originated but last year at Rubyconf Portugal we were having a talk
+about Ruby start up time and how for something like Rails okays maybe
+that doesn't matter so much, if it takes a few seconds to start up a
+server, an interactive command line interface or something like that,
+yeah, it's actually Ruby start up time is a big downside and you start
+seeing people looking into languages like Go or maybe Crystal as an
+alternative do that. Which is great, Crystal is very cool. Terns has
+this thought what if you could still use Ruby just make it faster with
+something like M Ruby, I guess that's what this talk is going to be
+about, warm welcome to Terrence. Tell us about M Ruby.
+
+
+Thanks for the microphone and for the introduction. I'm here to talk
+about M Ruby like Eric was saying, but of course, if you've seen me
+talk before I'm a big Friday hug Evan Jacob list, and I know it's
+Saturday, but we just had a long break, I thought it would be great if
+we could capture a picture, I know we got one from JRuby, but eurucamp
+is it's own separate conference, I would like to have a picture of all
+of you hugging 2 the camera if we could all stand up. M
+
+
+Oh, sorry messed up. Hold on. Yeah. Happy Friday Saturday thing. Oh,
+wow! Whatever. Thanks guys. (Applause) I know we're headed back to
+Berlin tomorrow for the party after eurucamp, so if you find PJ and I
+at that party, I think we're going to try to lead a group to go and do
+some Karaoke. So look forward to that. Like they were saying I'm
+Terence Lee, I go by Hon 02 on Twitter. We have amazing Tacos, if
+you're ever in town or passing through, reach out to me I'll be happy
+to take you out for awesome Tacos. We have keep Ruby weird on October
+the 3 this year. Davy helped me organize it this year along with the
+original crew from last year. Looking forward to seeing some you there
+this year. In lovely Austin Texas.  I work at Heroku. If you ever
+pushed a Ruby App to the platform that's code that I've written and if
+that has messed up for you then that is my fault. So you should come
+and talk to me about that (Laughing) so let's get on with the rest of
+the talk. So packaging in Ruby. Like Eric was saying, I think we've
+had a strong culture in building CLIs in Ruby there's been Thor,
+commander and a bunch of other stuff just as strong Ruby ecosystem for
+building command line application there. And I think if we go through
+kind of the Hero command line tool the story of where it started to
+today you can see the problems that I've run into as well as other
+people using Ruby to do this. So, to start it off way back in the day
+when we first released this it was actually just a Ruby gem. So one of
+the benefits of doing this was that we didn't have to build our own
+packaging system we could leverage Ruby, most of our time you could
+only run Ruby apps on the platform. It seemed to make sense,
+circumvented problems we had, problems we needed to solve but didn't
+have to by using Ruby gems, people updated and it worked out pretty
+okay, but then we realized that it actually required everyone to have
+Ruby on their laptops. And the other thing was that we couldn't
+actually guarantee or what version of Ruby are people running so all
+the versions of our stacks had for a long time, or even modern ones
+oncing Ruby 1.87. As Ruby moved forward our gem still had to support
+1.87 because a lot of our users were Mac users and still running
+system Ruby to execute this gem and if we ever updated it, it would
+break and they wouldn't be able to use Heroku which isn't good for
+business. Then we moved, if you go to the tool belt her row cue.com
+you'll see a page like this. Moved over to packaging the Ruby Runtime
+into the packaging making basically offering specific packages, if you
+came to the page for window you would get a windows specific
+installer, if you came with Mac you get Mac. Then we realized
+packaging was a pain, every time you wanted to update because of
+security vulnerability or even just do a release it required like a
+special set up, we actually had like a Mac mini for a while in the
+office, the only job was to package the tool belt for Mac then we had
+a similar set up with VMs for windows, it was a pain in the butt to do
+each release. And I think doing ‑‑ updating Ruby gems is easy, we did
+more releases when it was just Heroku, the gem then when we firsted
+switched over. A few years ago a former employee Blake started working
+on this project called HK, it was an implementation of the Heroku
+clients, one of the main motivators when you Heroku ‑‑ return the
+virgin string of the constant in memory of what it was .  it took
+almost two seconds according to the benchmark and the go
+implementation that he did took about 16 milliseconds, you're talking
+about two orders of magnitude faster. This is not doing network calls,
+this is the baseline boot up time performance. And a huge part of that
+was because requiring Ruby, if you aren't familiar is actually pretty
+slow, so we, the CLI has gotten pretty come collated, support a lot of
+feature, in order to have any sustainability to development you had to
+refactor the code and flit stuff into separate files, it's grown over
+time and you kind of want to keep that clean refactorying and just
+develop it. But that didn't work in our favor for performance that
+meant it was harder to develop ‑‑ it was hard to boot up the App
+imbrues had to do a bunch of stuff. The owner at the time has done a
+ton of work to make it faster. Hopefully that's not something you is
+to do when building CLIs, you shouldn't have to work against the
+system to get clean code. You can compile binaries, and you can also
+cross compile on a single machine. When you're building HK we could
+build an OS version from Linux and windows without having special
+machines you could do it on your own host machine. That was a really
+powerful thing to be able to distribute it. So that was really
+cool. But there are some options if you want to stay with Ruby, like
+traveling Ruby, it handles kind of the packaging of the Runtime and
+native gems that you're dealing with, and packages into a single tar
+ball, you have the caveats, you're forced to deal with the Runtimes
+that they provide as well as the native extensions, so those are
+pretty big sticking points there. And in short, like I feel like MRI,
+Ruby doesn't have a great packaging story to be able to distribute
+CLIs even though it's actually easy and quick to build CLI from
+it. Which is a little unfortunate. If you're familiar with the gay
+grant project they went through the ‑‑ Vagrant project, if you go on
+Rubiment prompt ‑‑ it used to be distributed as a gem, if you go to
+GitHub pages it's just a go project. Like Eric was mentioning we met
+in Portugal I talked to him about this, he was talking about exploring
+Crystal and building CLIs in Crystal, in a way like all those things
+made me a little sad because I think Crystal and go are both great
+language wigs and bring a lot to the table, but there's something
+about this community, like the Ruby community and trying to build
+things in Ruby that makes me love like, you know, going to work every
+day and working on this stuff, so I want to build CLIs in Ruby and not
+in Crystal or go and see if it's possible. So basically I want to kind
+of solve this packaging problem and over the last two months for this
+talk I've been working on this project for Zachay Scot who has been
+helping me, it's called mruby‑CL to try to solve this problem. So
+here's the link to the GitHub page there's a readme with information
+and you can download it. So we had basically four goals for designing
+this application, or for this project . First of all we should be
+writing all same Ruby.  I talk about building stuff in Ruby, that
+means I want to continue writing stuff in Ruby, I don't want to write
+C or other things, inside of mruby CRR there's a Mrblib project you
+can stick as many files as you want and it will get compiled into the
+library.  ‑‑ as you can tell it has a handful of Ruby files that's
+basically the core code of what the CLI is. And the second thing is
+performance is a feature. And like Eric was saying it's boot time
+performance that we care about for CLIs, because you're running it,
+it's quick lived and you care about getting that information fast or
+making that network call and returning as fast as possible soft to
+kind of get baseline performance of what you can expect in MRI on Ruby
+22 on my laptop, if we have the hello world App and time Itaú BBA
+takes about 40 milliseconds to run it. That's not insanely slow, but
+over time as you add requires it will get much shower. And using mruby
+CLI is the example of mruby it takes 3 milliseconds, that's like the
+order of magnitude performance difference. So that's within the
+ballpark of like what you can reasonably expect which seems good
+enough for me. The other thing that's really great about mruby is
+there's no require so you're not going to pay that penalty of having a
+bunch of files like that they get come biled down into the binary and
+get loaded. You won't see a huge degradation. The third thing I wanted
+I wanted a single binary for every major platform, like go, I want a
+single host that can compile all this stuff and not have a special set
+up. And that was, that's really important to me. When you run the
+compile task in mruby CLI it builds a binary for each host you have
+set up, so we have the host here, 65 bit Linux, it builds the buy mare
+hello. A single file you can pass around and excuse we have it for OX,
+so building a single binary is important for us. If you're packaging a
+whole Ruby in there the OSX binary only comes up to 421 K for hello
+world.  I think that's a pretty reasonable size for a binary that does
+not have any indeopinion densies. We don't want you to set up all
+these Compilers to get up and running, it's important for people the
+adopt the project since it's new easily get up and running and write
+and not spend all this time to try to get all the stuff set up. You
+want to write Ruby that's why you've come here. So we're leveraging
+Docker. The reason for this is I only want to solve basically the one
+path of going from one X to compiling binaries and compiling OSX
+windows and Linux and not cross compiling tool chains for all the
+operating systems. So we have a Docker container that has all the
+tools for the cross compile that you need. So all you have ‑‑ all you
+need is Docker plus a text editor to actually build mruby application,
+which I think is pretty cool. So to walk through a simple hello world
+of how you would use this and set it up you just ‑‑ you download the
+mruby binary put in your path run mruby CLI, takes the set up flag and
+you're passing the application name, in this case hello, it will
+generate hello folder with a bunch of files in it. We can run this
+compile task which is a Docker composed task and then it will build
+all the binaries for you. 32 and 64 bit for all the major operating
+system. With Docker Shell we can run a container inside of Linux, then
+we execute the Linux binary we actually get hello world back. You can
+do this today like we have shipped a project that you can actually do
+this on right now. And so I think to actually understand what is
+actually going on behind the scenes we have to look at all the files
+bee being generated during set up.  ‑‑ make up the set up that we
+talked before not going to cover those in more detail. If you don't
+understand the Docker stuff I'll answer them outside of the talk or
+talk to a lot of people here who have done Docker stuff. Let's step
+back and talk about mruby.  I found a rush pass log in covered a bunch
+of stuff with the CLI project. M ruby a lightweight implementation of
+the Ruby language that's targeted for being embedded in other
+languages. So if you're familiar with Lua, that's probably the closest
+like, I would say competitor in that space or something the most
+similar to it. So you can embed mruby and C and many other
+languages. But just because it's relatively new it doesn't mean it's a
+toy project like it is with sponsored by the Japanese government and
+this is the GitHub project to seem R&D lab in ‑‑ Ximenzi in Beijing,
+they have the mruby bits running and put this on firmware so that's
+pretty cool.  I's being used seriously, it's not just a toy
+project. Here are some pictures of some contributors, I'm sure you've
+heard of this Matz guy, he was the creator and question signer of this
+language.  I think he's a great language designer. I was excited to
+dive into this mruby stuff. What are the difference between MRI, what
+am I doing to actually use this other, basically subset or something
+lighter version of Ruby?  So one of the things that since it's meant
+to be embedded and targeted for other architectures and platforms
+there's no operating specific libraries built into the core, you don't
+have file, you don't have socket or any IO, that doesn't mean you
+can't get access, it's just built into the core part of mruby. That
+means it's not thread safe because the parent languages are supposed
+to handle that. There's no thread, no fork. But what you do get is a
+subset of Ruby 2.1 syntax, you get a lot of the things you come to
+love and familiar with. That means you have Procs, blocks, freedom
+patching, literals things like that, a lot of things that make Ruby
+feel like Ruby. And so once you've actually written an mruby script
+how do you execute any of this code?  So like Ruby there's
+interpreter, binary of that is built when you compile it and you can
+pass any Ruby script and run it. So you get that same write and run
+flow. One of the things that made Ruby feel great to me was that
+rubble. There's also an IRB rebel that you can get that really fast
+feedback loop. Where it starts getting interesting is when you start
+talking about the mruby byte code Compiler, this allows you to pass in
+a Ruby script and then when you run it through you get an M R B file
+which is the bite code rep evennation of the script you put in that
+means you don't have to did it during Runtime if you run it through
+Ruby interpreter pass the already B you get that bite coat. You can
+now embed this stuff in other languages, you can actually make a C
+representation of it. Doesn't matter what the C code is, you get some
+C code you can call in a wrapper C program that will allow you to
+compile et to a single binary. So inside of mruby CLI we actually have
+a C wrapper that we generate for you that you don't have to touch at
+all that gets generated for the project so you can just not worry
+about C and just write Ruby. So, the only caveat is that we need a way
+to hook into your Ruby Code so we basically call this underscore
+underscore main function underscore underscore. We pass this any of
+the arguments that are passed into the C code. So you get access to
+all that stuff. And then you can basically do whatever you want
+here. And then you can lay as many files as you want mruby Lib the
+only restriction is it doesn't support directories currently. You can
+basically just write Ruby and worry about the Ruby stuff. And the
+entire build system for mruby is mruby so it uses rake, all the
+compile tasks, if you pop on mruby project you can see how mruby
+actually compiles and does all this stuff, which is really cool. One
+of the things, since this is a compiled language there's a build
+config file that allows you to con fight your the different builds,
+you can specify the different tools you want the use, it has a bunch
+of pre‑existing one GCC is a common Compiler you would use. This build
+sets up the host build. In our case it's the Linux Docker container so
+these what we're using as the host. And for gem config I'll come back
+to that later. And as well as we're allowed to set up basically cross
+builds for OSX we can set up like stuff for chain Clang and you can
+set up the tools that go to that. When you compile it you get the
+binaries for that inside of M Jew by recommend rake, it's basically
+Ruby gems and MRI you have the meta data, the only thing important in
+the top meta data is probably the bins, determines the binaries that
+will be come biled this should match the C wrapper. We autoer generate
+that when you run the CLI command .  where it starts getting
+interesting, if where you do dependency management and mruby. It takes
+the name of what you're doing and basically where you get it. Two
+arguments. For core it actually mean the core libraries and what that
+is inside of mruby there's an M R B gems directory and a set of core
+libraries that are a part of it are no IO built in but you need mruby
+print to get the puts method that does just standard IO and that's
+part of the core library. So by default none of that stuff is compiled
+in you can keep the binary as small as possible and only require the
+things that you actually run your CLI. The next thing is M gem,
+there's an M gem listing on GitHub, it's a list of known third party
+mruby gems you pull from. You can just gem install Rails and it knows
+where to find it. And it's the same thing, locations of other M gems
+out there, M or B gems, and the third thing if you ever want to build
+your own fork you can pull straight for get up, you can put up a
+project, fork a project and link to the GitHub and they have a short
+hand that's how you do dependencies, it's simple to add stuff. And
+then so I'm coming back to this gem config thing, so as part of it you
+need to actually include your own gem that you're building for the CLI
+so it actually compiles the Mrb Lib stuff,but the second line I have
+here, if there's ever a conflict, like say you depend on, like mruby M
+L but you want to use your fork or two different sources it's going
+from, build config allows you to override it you can say I actually
+want this version that way it only uses that and it's always using the
+one you actually want for compile. So that's nice. Because that's
+something in bundler we get a request a lot. How can I override the
+bundler to use my specific fork of something and not have to go
+rewrite the parent gem that depends on it. And of course since we're
+Rubyist like testing is an important thing. So we have built in unit
+testing, there's an mruby gem for it. It allows you to do kind of mini
+test style test. And what idoneity is all the stuff gets compiled down
+into a separate binary, it's not include in the the actual CLI that
+you ship to your users, it's step rate binary that gets run. And then
+there's bin tasks, as you can see there's require here. This code is
+actually written MRI, these tests get basically run around the binary
+that you've built, you can run tests against it to make sure that it's
+doing the things that you expect it to. So there's a sample of that so
+some Gotchas, one of the things that sucks you can't leverage the huge
+CLI ecosystem that are in Ruby gems. It's not always the easiest thing
+to port an a Ruby gem over to mruby a lot of gems assume that you have
+all these standard library libs that may or nay not exist in mruby and
+some of the mruby libraries a trim down to be smaller. So that's kind
+of a down side. And the other thing is if you're using any C
+extensions you have the make sure they cross compile cleanly on all
+three operating systems I've done a ton of work ‑‑ but there's a ton
+of only gem Ruby gems that work fine out of the box. The road map for
+this project, I would love to add a lease tasks that goes and builds
+tar balls of each specific architecture that you're building for so
+you don't have to look around in the build fold to find them. They
+come in a nice thing and you can just ship them immediately from
+there. Maybe we'll support Rpm Lynn you can specific thing Dmg package
+or a windows installer, I think having that baked in would make it
+super easy to ship all this stuff. Next thing is upgrading, as we add
+features it would be nice to have a command to upgrade and have
+features in place and not have to monkey patch or pull in stuff on
+your own as we add features to mruby CLI. Being able to compile for a
+single architecture we'd love to did, that's coming in the
+pipeline. As we build out a set of MRB gems that makes sense to build
+M ruby ‑‑ it would be nice to have a cure rated set to get up and
+running as soon as possible. Similar to like a Rails gem file that has
+default gem in there. We want up to stream as much of the stuff as we
+can do the mruby project so other people can take advantage of the
+work we've done.  I think this might be a separate MRB gem but some
+kind of documentation like R or R dock or man pages and have that
+built into part of the project you can easily document the CLI
+itself. And so for the last session, what can you do with mruby CLI,
+how do you proceed from here today?  So the community is real
+young. Zach and I shipped the first release this last Monday and this'
+when I started working on slides for this talk. So it's a pretty young
+ecosystem and I would love help in building out the MRB gems and
+things that people would want to use to build CLIs. There's a handful
+of stuff out there, but for option parsing I'm using like getops which
+is not my favorite option parser out there.  I would love help
+building something better there as well as other things. Like I sad we
+shipped a release, if you go to the GitHub page you can go to
+release's page and there's a binary for your operating system, you can
+download that and run it. If you don't have Docker, Docker compos,
+there's links in the readme to get the tools to get it up and running
+you can run Ruby CLI, generate a hello world compile it and keep
+compiling on it. If anyone actually building anything that's really
+cool or it doesn't even have to be amazing, like if you're using it
+and building something I'd love to hear about I. So, yeah, thank
+you. (Applause) I also have these blue hat stickers if anyone would
+like one. Say hi and I'm happy to hand them out.
+
+
+Great, we have time for a couple questions and we're sharing the
+microphone, if you have one, if you would come down to the front of
+the steps please. Do we have one on this side, nope, good fake out,
+nice move. Okay, any questions?
+
+
+Thank you for the talk. Have you run it against benchmark toes have an
+idea how it compress with other languages?
+
+
+Besides, I didn't really benchmark beyond the boot up time, to me that
+was the most important thing.  I think hampering Ruby as a CLI.  I
+think the performance in general is similar to MRI itself, so if
+you're okay with that performance that's around like once it's booted
+up that's around the performance you'll see, there's some special
+stuff they've done with floating point numbers, if you're doing
+floating point math it's faster than mruby.
+
+
+Any other questions?  Going once ... going twice
+... gone. Okay. Thanks Terrence. ((Applause))

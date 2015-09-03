@@ -1,0 +1,294 @@
+Our first speaker is Ivan, he's going to teach us how to teach coding
+ability to students, so students who have never actually had to
+maintain a code base. It's very difficult to imagine, so he will teach
+us a thing or two about this. Ivan, please join us. (Applause)
+
+
+Ivan Zarea: Can you hear me guys?
+
+
+No.
+
+
+Oh, okay.
+
+
+Thank you. There's a problem, I'm used to teaching classrooms, so I'm
+used so shouting a lot, we in Moldova don't really have equipment like
+this. So I'm shouting just do this. (Laughing) it works for my
+students. So hi everyone, welcome today one of eurucamp, I have the
+honor of breaking this. My name's Ivan, I work at the technical
+University of Moldova out of all places. And I teach things like
+design buttons and ‑‑ design patterns and such. Before I start talking
+about some of the experiments we had in the university, I would like
+to provide you with some context about where I come from. And this is
+Moldova. The IT industry in Moldova is primarily based on
+outsourcing. Which is a bit different from what you have in innovation
+based industries or product based industries, right. Because for our
+country, it's very good because it creates a lot of good salaries. A
+lot of job positions. Right, where people are paid very well.  ‑‑ did
+I break something again?  (Laughing) of we're ‑‑ okay, good,. It
+creates a lot of good salaries, right, it also ‑‑ because of of these
+jobs are usually accessible to everyone, they also have a very low
+barrier to entry. So you can basically write a bit of PHP you're good
+to go, you're good to have a job. For us as an educational system, it
+can be a problem because it also has a bit of a darker side to it. A
+lot of our students who come to the university are studying for the
+wrong purpose, they only need to have a degree and not to have all the
+knowledge necessary for the degree, right ‑‑
+
+
+Okay (Laughing)
+
+
+You're moving too much
+
+
+Ohh Oooo.
+
+
+Can I have this?
+
+
+I had tape on my back.
+
+
+Okay, this is better.  I broke it for everyone else, Yeah. Getting
+back to the out sourcing industry and how it works for our country and
+for our university is that unfortunately a lot of students are getting
+into university for the wrong things, they want to get a degree so
+they can apply to their jobs, right. And moreover, because the barrier
+of entry is so low a lot of students already work while they are
+studying. So they don't come to classes. And this is a very bad thing
+for us as a university, right. And of course this is a systemic
+issue. We need to address it as systemic issue. However, as a small
+team, at the university, we try to switch the focus a little. Instead
+of pun ishing the bad performers, we thought of why wouldn't we
+provide more value of to of ‑‑ to incentivize people to come to our
+classes. Why wouldn't we give something that would be immediately
+applicable, so if you work, right now at a Trouple shop and you come
+to the design patterns course, you need to have something to apply
+today. And for us, as course designers, it means that we need to
+synchronize very well with the industry, and identify what is
+important for the industry so we can incorporate that into our
+curricula. Cool. So let's find somethings we can teach. Of course the
+first thing is the actual subjects. But for me design patterns have
+been the same for quite a while. So what else can we give?  Well, this
+talk will focus on two things. Skills, and values. So skills that we
+want to have as an industry and values that we want to believe in. Of
+course, while teaching skills and values, we also have to page it fun
+and engaging for our students, but always keep focusing on the fact
+that the skills and the values we pass need to be relevant to the
+industry. So let's start with skills. What skills are relevant to the
+industry that we can incorporate in our courses?  And this is a pretty
+tricky question because it demands an objective answer.  I would
+rather twist this question and pose a different one. What skills ‑‑
+instead of trying to identify what skills are important for the
+industry, why not identify what skills are important for me. Or rather
+what skills I would like my next teammate to have, my future teammate,
+right, because we've all been frustrated with the fact that someone
+comes along and they don't ‑‑ they don't know how to Google things or
+something else. Right?  So what are the skills that you consider
+important for your future teammate?  I tried to identify a couple. For
+me it's reading the source code. Or not being afraid to dive into the
+source code. Another skill, I believe is debugging. Right, people, I
+think we need to debug, and we need to teach debugging. And we need to
+put people in positions where they have to chose tools. This is a
+skill that can be trained. So going over them one by one I'd I'd like
+to discuss come of the examples we implemented as course designers in
+order to facilitate these skills. So reading source code. The most
+important thing about reading source code is not being afraid to go to
+the source as an authorititive source, right. This means that we have
+to do some live code in classes. And the live code experience, while
+we're teaching right, and we're writing code, live, actually
+eliminates some of the barriers that students have because they see
+the Typos we make, they see the fact that I write pretty bad C + +
+code. And they're not ashamed of it. They also are engaged, everybody
+is because they can write the simple class. They can tell me how to
+write. Another way we can train reading source code is by giving
+assignments with source code. And not with a couple lines of it, but
+with a couple of files. Then we can jump a bit further and show actual
+code to illustrate a concept. For instant while I teach design
+patterns, I found a little gem on GitHub, this is called
+YouTube.dl. It's a program, not too small too thing, it's a Python
+thing that downloads video from YouTube and a couple of other
+places. During this course we took this thing, we had to read the
+documentation to go look at the source and see how to extend this
+App. And this was exactly what was the strategy pattern. So it wasn't
+a textbook example, but a live, real, example. The second skill is
+debugging, by debugging I don't mean attaching the debugger or setting
+break points.  I mean digging, digging into hard problems that are not
+at the surface. This I believe, is something that is missing from a
+lot of engineers these days or any days. And here's an example we use
+in the class during de‑bugging. Right, this is of how the high scores
+leader board for Flappy Bird. It was one year ago, it was a
+thing. This is the highest score. You can imagine that it's a couple
+of universe's old. And this is an interesting debugging
+question. Because when we came to the students and when we asked
+ourselves how did they get this?  Right, this is a software issue,
+this incentivizes students to dig a little. And to find out how could
+they actually get this. And while digging, they develop a couple of
+other skills as well. So to teach debugging as a skill, we need to
+provide a good context, an engaging context for students. We need to
+teach debugging as a whole. And that way we will have a couple of
+other skills developed along the way. For instance Googling, Googling
+is an important thing, right. And moreover in this very example you're
+not always thinking about Googling how to convert 64 bit into
+something, something, right?  So that's debugging. Good. Tool
+choice. We have a lot of pressure in our work because there's a lot of
+tools wailble and we need to chose them. And especially when we chose
+the wrong tools we face pretty dire cop sequences for our projects,
+right?  Sometimes. So what if we could help the students chose a tool
+and eliminate the risk and the consequence?  That's encouraging
+students to be pragmatic and reasonable in their choice, right. This
+will actually provide them with an experience of choosing tools
+without the risk itself. And then let's have a discussion about why
+did we chose a particular tool?  For instance in our class, we had to
+chose a Ruby HTP library and there are 27 projects listed on Ruby tool
+box. This is something you need to go through a couple of times and
+then it will help you do that in real life. So getting back to the
+skills, we have three skills with their respective examples. We have
+to read the source code, we have to develop debugging skills and
+Googling skills. And we have go through an experience of choosing
+tools. Values. Remember with skills right we had to identify what
+skills are important for the industry. Same thing applies for the
+values. What values are important for the industry?  And we can of
+course apply the same approach to asking what values do I want my
+future teammate to have?  For me here's a couple.  I want them to
+appreciate constant progress over larger jumps slow and incremental
+things. I want them to think in concepts and not in particular
+implementations or in code.  I would like my next teammate to be able
+to own their code to claim ownership of the things they built. And
+this needs to be somehow integrated into the curriculum. So let's
+start, constant progress. The main thing about constant progress is
+that when we try to teach test driven development, we focus on the
+test parts. And a lot of the times this, especially to students or to
+people who already work and who have already seen tests, this
+highlights a different value of test driven development, that it helps
+us get rid of bugs. Whereas, the whole why do we write test first
+thing is that we set small milestones and we get there, right. We take
+the bigger problem, we split it into mauler chunks and we take them
+one by one. So how can we encourage that in our students?  We can give
+them a program with existing code and tests. They're not familiar with
+tests yet. But we can tell them, hey, if you run this in your IDE or
+if you run this script you'll get a grade, right. The more green you
+see, the better your grade is, which is good, right, we condition
+that. Then we can give a program without code, but with test and you
+need to write the test, and you can use the tests as a guiding tool
+for your design. Then rewriting can give you a program to write ‑‑
+then we can give you a program to write. And some students were so
+comfortable with the approach of incremental building that they had to
+write their own tests. And without highlighting the value of hey, it
+gets rid of bug, we could insen divides students to write tests.  ‑‑
+incentivize students to write test. They had to build the builder
+pattern in SmallTalk, they had to see a will the of green. If you make
+all of these green you get the highest mark. Which is okay. Next value
+concept over code. A lot of times when we speak about concepts and not
+code we try to make this, this is a single talk in Java look like
+this, this is a singleton in Ruby. We try to give the information for
+the singleton and hey, this is pretty much what it looks like, try to
+distill what you need from it.  I tried that, it didn't work very
+well. What worked better was having a discussion. And and trying to
+come up with metaphors and being frank about the fact that hey it's
+hard to take the singleton pattern and apply it to your JavaScript job
+because you need to know lots of other stuff. It's hard because we
+cannot introduce the same concepts of module pattern or things like
+that to someone who writes Java or Andriod, write. Or sometimes we can
+even pair them and help them identify the concept from the code. So if
+you have someone who writes Andriod pair them with someone who writes
+Python for a living and make ‑‑ help them identify the pattern from
+the code. And the last value, I think is important for us as an
+industry is owning code. A lot of the times when we teach these or
+when we have these best practices right, patterns or things like that,
+they're because our industry as an engineering practice is slightly
+different than other industries, the product of our creation as posed
+to this very building changes, radically changes over time. And this
+is why we develop these practices that helps us design things for
+change. Now the important thing here is that when we teach the
+patterns themselves we don't incorporate change. We don't build bigger
+things, so let's try and build bigger things during the course and
+incorporate change. Try to change the requirements as a market
+would. And then you'll get a different kind of reward as a
+student. You'll get ease of maintenance and you can get features done
+quickly. This is the reward. And otherwise, if you cannot get the
+features done quickly, you will feel the pain of poorly designed
+software without having to actually risk your business for it. As an
+example last system we had to write a markdown parser, so students got
+a subset of markdown, a bit of custom markdown. And they knew that
+there will be changes. So they had to up load their code receive the
+changes to the format, so, something was different, and they had to
+implement those changes. As quickly as they could. So back to the
+values, we had appreciation of constant progress. We had concepts over
+code. And code ownership. Of course, these things coupled with skills
+give a lot of our students some of the things they node to apply
+today. However, it's boring right. It has a lot of bullet points, it's
+boring so we need to make it fun. And this is Alexi the chinchilla, he
+is my ultimate tool of making things fun. It doesn't work very well,
+but, oh well, for example I tried to add a bit of silliness in the
+assignments by integrating the chinchilla: For example Alexi is a bit
+older now, so he needs to make a family so he wrote himself a dating
+App that downloads pictures of chinchillas from all over the
+internet. And since he has a 2G connection, he ‑‑ you have to optimize
+the App, basically, but he wrote some tests too, so he's good at
+that. So while you're building this App, right, while you're solving
+this assignment, you have to look at a lot of chinchillas, and you're
+sitting there at night, writing the assignment for course and then you
+see this, and then you need to figure out what this is and even
+later ‑‑ right, when the sun is almost up you see something like
+this. And get to class you submit your assignment, you're very tired
+and touch and then you have a thank you not from Alexi the chinchilla
+because you helped him. (Laughing) this makes it a bit more fun. So
+these are skills and values that are important for the industry. And
+we have to wrap it them into a bit of fun. However, I think there's
+something missing here.  I think there's something missing that
+defines us, us the people who are here at eurucamp that have something
+special than other communities do. And this is the spirit we have. The
+spirit that is better defined as the hacker spirit, right. The ‑‑ hour
+ways of taking things apart, putting them together seeing if they
+work, right. Changing things even if they work properly, displaying
+curiosity towards new languages, I mean, look at the talks here. it's
+new stuff. Continuous exploration and when you encounter something
+that doesn't really work for you ‑‑ you just hack it. Right, you just
+change it. So, it would solve your particular problem. And you can
+hack anything, basically. In our example our teaching curriculum
+didn't really work for us. Our way of teaching didn't work for us. So
+what we did is we took the hacking philosophy and we applied it to the
+thing we knew, which was teaching. And as a matter of fact this was a
+very vivid example for our students because we're very open about
+t. This was a very vivid example of hacking itself because we were
+open and we said, hey, we're not sure this is the way it should work,
+but let's give it a try. And it actually taught a bit of hacking while
+we were hacking teaching. Thank you. (Applause)
+
+
+Great we have a few minutes for questions, we only have one microphone
+basically F you have a question, if you don't mind coming down to the
+front of the steps on either side and just cueing up there. And you
+can ask a question. Questions?  That was great talk. Questions there
+must be a couple. Yeah?  You're not following the instructions at all
+(Laughing)
+
+
+Do you have any tips how to convince our teachers at our university to
+make something more applicable?
+
+
+This is a very good question. Can we make our teachers, or help our
+teachers at our universities make something better?  Is that
+correct. I believe we can, we can by inviting teachers here at
+eurucamp, by sharing the experience and being absolutely frank about
+the fact that the industry is moving at a much faster, quicker pace
+than the academia, mostly. But also it's very neat that some of these
+techniques and some of these skills and values are applicable to other
+ways of teaching like Rails Girls or hack days or things like
+that. And I believe we, as a community, can focus on trying to
+incorporate these techniques or other techniques that we consider
+important in a newer format. Something that maybe is not in
+academia. Is that okay?  Any other questions?  I have two minutes
+left, so I can dance (Laughing)
+
+
+Dance! Oh, come on (Applause)
+
+
+Thank you.

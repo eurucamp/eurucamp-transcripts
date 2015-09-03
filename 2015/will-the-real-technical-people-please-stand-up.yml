@@ -1,0 +1,1041 @@
+So just a few more announcements. So immediately after this we'll be
+walking over, it's a short walk, fifteen twenty minutes from here to
+the eurucamp after party. And it's at nice beer garden. Everyone
+that's here gets one beer ticket and hamburger, or anything a soda,
+water, Orange juice (They have Vegan, Veggie burgers to eat. So we'll
+be walking over there, make sure you get a ticket as you exit the room
+or two tickets I should say, one for drink and one for some food. So
+talks tomorrow start at 9:00 a.m. that's why we're only giving you one
+drink ticket. And please be here on time. You might have noticed if
+you came here late after the keynote started was that this front door
+was locked. So if you come, these front doors will be locked at 9:00
+when ever and when ever the talks start and that doesn't mean you
+can't enter, if you want to enter, you enter through the back, go up
+the stairs or you can take the elevator as well. Yeah, there's an
+elevator that lets you go all the way back. You can come in from the
+back. If you need to leave in the middle of a talk as well that you
+exit through the back as well so as not to distract people. So please
+be here on time, if you're not, go around to the back.  I think that's
+all we've got. Thank you everyone for a great first opening night of
+eurucamp and we'll see you at the after party (Applause)
+
+
+
+
+You can record anything or ask you question using this e‑mail address
+or this telephone number. Then there is a quick schedule, I think
+there's schedules in all of your bags, I'm not entirely sure if
+they're completely up to date, I'm looking at Nico?  Or is it better
+to just check the web site . We have WiFi codes, if you need any WiFi
+you have to go to the registration desk and get yours, that way you
+can keep track of the schedule.
+
+
+Yeah, so one thing you'll notice on the schedule is there's a really
+nice long break after lunch. So, the ... that time is not right, that
+should say 12:30 instead of 9:00. But where it says 9:00 registration
+and coffee it should say 12:30 lunch and Siesta this is one of the
+things that make eurucamp really special there's a four and half hour
+break in the middle of the day 's a bunch of activities you can do
+during the break. We encourage you do that, today is going to be a
+really beautiful day. Not too hot. Just a beautiful day. There was an
+activity this morning, actually, you missed it. But it was
+spectacular, some of us biked to eurucamp (Applause) after having a
+couple beers at the after party. Went home to Berlin and woke up at
+6:00 a.m. with five other brave souls who biked from Berlin to Potsdam
+this morning. That was fun, I am energized I've had my exercise for
+the day, I'm feeling good. There'll be lots of other activities during
+that break from 12:30 to 5. If you would like to create afternoon
+activity, there's still time do that. The web site to do that is
+Rubyweek.org. You can see activities that other people have planned,
+if there's space you can join. And if there's some activity that you
+wand to lead or create you can do that on that web site. So be sure to
+check that out. There also will be lightening talks.  I should
+mention, later in the day. And you can start signing up for those
+after the first break. So if you have an idea for a lightening talk
+that you would like to give, then please, please do that.  I think
+there's 8 slots, start thinking about your ideas now, you'll be able
+to sign up after the first set of talks. This is another one of the
+activities, it's a great sneak preview screening of a movie that
+hasn't been released yet called "Code" it's about the gender gap in
+technology, our industry, trying to figure out why that exists and how
+to fix it . You'll have a unique opportunity to see this film this
+evening starting at 83:40, it's at theater close to here, you can
+walk. There's about a hundred spots left to sign up for that. If
+you're interested, go sign up now, I'll be there, it should be really
+great. Ruby week.org activities/9, so you know it's a Rails App,
+right. (Chuckles) yeah, and I think that's the main business. The
+other announcement I wanted to make was these doors will be shutting,
+the front door will be shutting as soon as the talks start. As soon as
+the first speaker or each speaker starts to speak. And so out of
+respect to the speakers, if you need to leave in the middle of the
+talk, please exit through the back door, up the stairs to the
+back. And if you need to enter, say you're late and this door is
+closed, you're not locked out, you can still see the talk, just go up
+the stairs or take the elevator in the back all the way down this
+hall, up the elevator up the stairs and into the back door. Please do
+that as acuter simpler to our speakers, not to interrupt them. Without
+any further adieu. Floor will introduce our first speaker of the day
+kicking off eurucamp day 2.
+
+
+Our first speaker is Ivan, he's going to teach us how to teach coding
+ability to students, so students who have never actually had to
+maintain a code base. It's very difficult to imagine, so he will teach
+us a thing or two about this. Ivan, please join us. (Applause)
+
+
+Ivan Zarea: Can you hear me guys?
+
+
+No.
+
+
+Oh, okay.
+
+
+Thank you. There's a problem, I'm used to teaching classrooms, so I'm
+used so shouting a lot, we in Moldova don't really have equipment like
+this. So I'm shouting just do this. (Laughing) it works for my
+students. So hi everyone, welcome today one of eurucamp, I have the
+honor of breaking this. My name's Ivan, I work at the technical
+University of Moldova out of all places. And I teach things like
+design buttons and ‑‑ design patterns and such. Before I start talking
+about some of the experiments we had in the university, I would like
+to provide you with some context about where I come from. And this is
+Moldova. The IT industry in Moldova is primarily based on
+outsourcing. Which is a bit different from what you have in innovation
+based industries or product based industries, right. Because for our
+country, it's very good because it creates a lot of good salaries. A
+lot of job positions. Right, where people are paid very well.  ‑‑ did
+I break something again?  (Laughing) of we're ‑‑ okay, good,. It
+creates a lot of good salaries, right, it also ‑‑ because of of these
+jobs are usually accessible to everyone, they also have a very low
+barrier to entry. So you can basically write a bit of PHP you're good
+to go, you're good to have a job. For us as an educational system, it
+can be a problem because it also has a bit of a darker side to it. A
+lot of our students who come to the university are studying for the
+wrong purpose, they only need to have a degree and not to have all the
+knowledge necessary for the degree, right ‑‑
+
+
+Okay (Laughing)
+
+
+You're moving too much
+
+
+Ohh Oooo.
+
+
+Can I have this?
+
+
+I had tape on my back.
+
+
+Okay, this is better.  I broke it for everyone else, Yeah. Getting
+back to the out sourcing industry and how it works for our country and
+for our university is that unfortunately a lot of students are getting
+into university for the wrong things, they want to get a degree so
+they can apply to their jobs, right. And moreover, because the barrier
+of entry is so low a lot of students already work while they are
+studying. So they don't come to classes. And this is a very bad thing
+for us as a university, right. And of course this is a systemic
+issue. We need to address it as systemic issue. However, as a small
+team, at the university, we try to switch the focus a little. Instead
+of pun ishing the bad performers, we thought of why wouldn't we
+provide more value of to of ‑‑ to incentivize people to come to our
+classes. Why wouldn't we give something that would be immediately
+applicable, so if you work, right now at a Trouple shop and you come
+to the design patterns course, you need to have something to apply
+today. And for us, as course designers, it means that we need to
+synchronize very well with the industry, and identify what is
+important for the industry so we can incorporate that into our
+curricula. Cool. So let's find somethings we can teach. Of course the
+first thing is the actual subjects. But for me design patterns have
+been the same for quite a while. So what else can we give?  Well, this
+talk will focus on two things. Skills, and values. So skills that we
+want to have as an industry and values that we want to believe in. Of
+course, while teaching skills and values, we also have to page it fun
+and engaging for our students, but always keep focusing on the fact
+that the skills and the values we pass need to be relevant to the
+industry. So let's start with skills. What skills are relevant to the
+industry that we can incorporate in our courses?  And this is a pretty
+tricky question because it demands an objective answer.  I would
+rather twist this question and pose a different one. What skills ‑‑
+instead of trying to identify what skills are important for the
+industry, why not identify what skills are important for me. Or rather
+what skills I would like my next teammate to have, my future teammate,
+right, because we've all been frustrated with the fact that someone
+comes along and they don't ‑‑ they don't know how to Google things or
+something else. Right?  So what are the skills that you consider
+important for your future teammate?  I tried to identify a couple. For
+me it's reading the source code. Or not being afraid to dive into the
+source code. Another skill, I believe is debugging. Right, people, I
+think we need to debug, and we need to teach debugging. And we need to
+put people in positions where they have to chose tools. This is a
+skill that can be trained. So going over them one by one I'd I'd like
+to discuss come of the examples we implemented as course designers in
+order to facilitate these skills. So reading source code. The most
+important thing about reading source code is not being afraid to go to
+the source as an authorititive source, right. This means that we have
+to do some live code in classes. And the live code experience, while
+we're teaching right, and we're writing code, live, actually
+eliminates some of the barriers that students have because they see
+the Typos we make, they see the fact that I write pretty bad C + +
+code. And they're not ashamed of it. They also are engaged, everybody
+is because they can write the simple class. They can tell me how to
+write. Another way we can train reading source code is by giving
+assignments with source code. And not with a couple lines of it, but
+with a couple of files. Then we can jump a bit further and show actual
+code to illustrate a concept. For instant while I teach design
+patterns, I found a little gem on GitHub, this is called
+YouTube.dl. It's a program, not too small too thing, it's a Python
+thing that downloads video from YouTube and a couple of other
+places. During this course we took this thing, we had to read the
+documentation to go look at the source and see how to extend this
+App. And this was exactly what was the strategy pattern. So it wasn't
+a textbook example, but a live, real, example. The second skill is
+debugging, by debugging I don't mean attaching the debugger or setting
+break points.  I mean digging, digging into hard problems that are not
+at the surface. This I believe, is something that is missing from a
+lot of engineers these days or any days. And here's an example we use
+in the class during de‑bugging. Right, this is of how the high scores
+leader board for Flappy Bird. It was one year ago, it was a
+thing. This is the highest score. You can imagine that it's a couple
+of universe's old. And this is an interesting debugging
+question. Because when we came to the students and when we asked
+ourselves how did they get this?  Right, this is a software issue,
+this incentivizes students to dig a little. And to find out how could
+they actually get this. And while digging, they develop a couple of
+other skills as well. So to teach debugging as a skill, we need to
+provide a good context, an engaging context for students. We need to
+teach debugging as a whole. And that way we will have a couple of
+other skills developed along the way. For instance Googling, Googling
+is an important thing, right. And moreover in this very example you're
+not always thinking about Googling how to convert 64 bit into
+something, something, right?  So that's debugging. Good. Tool
+choice. We have a lot of pressure in our work because there's a lot of
+tools wailble and we need to chose them. And especially when we chose
+the wrong tools we face pretty dire cop sequences for our projects,
+right?  Sometimes. So what if we could help the students chose a tool
+and eliminate the risk and the consequence?  That's encouraging
+students to be pragmatic and reasonable in their choice, right. This
+will actually provide them with an experience of choosing tools
+without the risk itself. And then let's have a discussion about why
+did we chose a particular tool?  For instance in our class, we had to
+chose a Ruby HTP library and there are 27 projects listed on Ruby tool
+box. This is something you need to go through a couple of times and
+then it will help you do that in real life. So getting back to the
+skills, we have three skills with their respective examples. We have
+to read the source code, we have to develop debugging skills and
+Googling skills. And we have go through an experience of choosing
+tools. Values. Remember with skills right we had to identify what
+skills are important for the industry. Same thing applies for the
+values. What values are important for the industry?  And we can of
+course apply the same approach to asking what values do I want my
+future teammate to have?  For me here's a couple.  I want them to
+appreciate constant progress over larger jumps slow and incremental
+things. I want them to think in concepts and not in particular
+implementations or in code.  I would like my next teammate to be able
+to own their code to claim ownership of the things they built. And
+this needs to be somehow integrated into the curriculum. So let's
+start, constant progress. The main thing about constant progress is
+that when we try to teach test driven development, we focus on the
+test parts. And a lot of the times this, especially to students or to
+people who already work and who have already seen tests, this
+highlights a different value of test driven development, that it helps
+us get rid of bugs. Whereas, the whole why do we write test first
+thing is that we set small milestones and we get there, right. We take
+the bigger problem, we split it into mauler chunks and we take them
+one by one. So how can we encourage that in our students?  We can give
+them a program with existing code and tests. They're not familiar with
+tests yet. But we can tell them, hey, if you run this in your IDE or
+if you run this script you'll get a grade, right. The more green you
+see, the better your grade is, which is good, right, we condition
+that. Then we can give a program without code, but with test and you
+need to write the test, and you can use the tests as a guiding tool
+for your design. Then rewriting can give you a program to write ‑‑
+then we can give you a program to write. And some students were so
+comfortable with the approach of incremental building that they had to
+write their own tests. And without highlighting the value of hey, it
+gets rid of bug, we could insen divides students to write tests.  ‑‑
+incentivize students to write test. They had to build the builder
+pattern in SmallTalk, they had to see a will the of green. If you make
+all of these green you get the highest mark. Which is okay. Next value
+concept over code. A lot of times when we speak about concepts and not
+code we try to make this, this is a single talk in Java look like
+this, this is a singleton in Ruby. We try to give the information for
+the singleton and hey, this is pretty much what it looks like, try to
+distill what you need from it.  I tried that, it didn't work very
+well. What worked better was having a discussion. And and trying to
+come up with metaphors and being frank about the fact that hey it's
+hard to take the singleton pattern and apply it to your JavaScript job
+because you need to know lots of other stuff. It's hard because we
+cannot introduce the same concepts of module pattern or things like
+that to someone who writes Java or Andriod, write. Or sometimes we can
+even pair them and help them identify the concept from the code. So if
+you have someone who writes Andriod pair them with someone who writes
+Python for a living and make ‑‑ help them identify the pattern from
+the code. And the last value, I think is important for us as an
+industry is owning code. A lot of the times when we teach these or
+when we have these best practices right, patterns or things like that,
+they're because our industry as an engineering practice is slightly
+different than other industries, the product of our creation as posed
+to this very building changes, radically changes over time. And this
+is why we develop these practices that helps us design things for
+change. Now the important thing here is that when we teach the
+patterns themselves we don't incorporate change. We don't build bigger
+things, so let's try and build bigger things during the course and
+incorporate change. Try to change the requirements as a market
+would. And then you'll get a different kind of reward as a
+student. You'll get ease of maintenance and you can get features done
+quickly. This is the reward. And otherwise, if you cannot get the
+features done quickly, you will feel the pain of poorly designed
+software without having to actually risk your business for it. As an
+example last system we had to write a markdown parser, so students got
+a subset of markdown, a bit of custom markdown. And they knew that
+there will be changes. So they had to up load their code receive the
+changes to the format, so, something was different, and they had to
+implement those changes. As quickly as they could. So back to the
+values, we had appreciation of constant progress. We had concepts over
+code. And code ownership. Of course, these things coupled with skills
+give a lot of our students some of the things they node to apply
+today. However, it's boring right. It has a lot of bullet points, it's
+boring so we need to make it fun. And this is Alexi the chinchilla, he
+is my ultimate tool of making things fun. It doesn't work very well,
+but, oh well, for example I tried to add a bit of silliness in the
+assignments by integrating the chinchilla: For example Alexi is a bit
+older now, so he needs to make a family so he wrote himself a dating
+App that downloads pictures of chinchillas from all over the
+internet. And since he has a 2G connection, he ‑‑ you have to optimize
+the App, basically, but he wrote some tests too, so he's good at
+that. So while you're building this App, right, while you're solving
+this assignment, you have to look at a lot of chinchillas, and you're
+sitting there at night, writing the assignment for course and then you
+see this, and then you need to figure out what this is and even
+later ‑‑ right, when the sun is almost up you see something like
+this. And get to class you submit your assignment, you're very tired
+and touch and then you have a thank you not from Alexi the chinchilla
+because you helped him. (Laughing) this makes it a bit more fun. So
+these are skills and values that are important for the industry. And
+we have to wrap it them into a bit of fun. However, I think there's
+something missing here.  I think there's something missing that
+defines us, us the people who are here at eurucamp that have something
+special than other communities do. And this is the spirit we have. The
+spirit that is better defined as the hacker spirit, right. The ‑‑ hour
+ways of taking things apart, putting them together seeing if they
+work, right. Changing things even if they work properly, displaying
+curiosity towards new languages, I mean, look at the talks here. it's
+new stuff. Continuous exploration and when you encounter something
+that doesn't really work for you ‑‑ you just hack it. Right, you just
+change it. So, it would solve your particular problem. And you can
+hack anything, basically. In our example our teaching curriculum
+didn't really work for us. Our way of teaching didn't work for us. So
+what we did is we took the hacking philosophy and we applied it to the
+thing we knew, which was teaching. And as a matter of fact this was a
+very vivid example for our students because we're very open about
+t. This was a very vivid example of hacking itself because we were
+open and we said, hey, we're not sure this is the way it should work,
+but let's give it a try. And it actually taught a bit of hacking while
+we were hacking teaching. Thank you. (Applause)
+
+
+Great we have a few minutes for questions, we only have one microphone
+basically F you have a question, if you don't mind coming down to the
+front of the steps on either side and just cueing up there. And you
+can ask a question. Questions?  That was great talk. Questions there
+must be a couple. Yeah?  You're not following the instructions at all
+(Laughing)
+
+
+Do you have any tips how to convince our teachers at our university to
+make something more applicable?
+
+
+This is a very good question. Can we make our teachers, or help our
+teachers at our universities make something better?  Is that
+correct. I believe we can, we can by inviting teachers here at
+eurucamp, by sharing the experience and being absolutely frank about
+the fact that the industry is moving at a much faster, quicker pace
+than the academia, mostly. But also it's very neat that some of these
+techniques and some of these skills and values are applicable to other
+ways of teaching like Rails Girls or hack days or things like
+that. And I believe we, as a community, can focus on trying to
+incorporate these techniques or other techniques that we consider
+important in a newer format. Something that maybe is not in
+academia. Is that okay?  Any other questions?  I have two minutes
+left, so I can dance (Laughing)
+
+
+Dance! Oh, come on (Applause)
+
+
+Thank you.
+
+
+Okay, so our next speaker coming up is Luis Ferreira. We first met in
+Braga in the north of Portugal about a year ago for the first Ruby Con
+in Portugal. It's coming up when?  Fourteen and 15 of September. It's
+a great conference, I'd encourage everyone to attend. If you're from a
+company you should sponsor it. It was a first time conference but it
+really ran incredibly smoothly. And Luis is one of the organizers of
+that, and we got to know each other there. And he's here to talk about
+Crystal which is a topic that interests me a lot. A new programming
+language with that is sort of friendly for Rubyists. And he'll tell
+you more about it. Hopefully as soon as he finishes setting up.
+
+
+Ready to go ?  yep, I think so.
+
+
+Luis, round of applause for Lis.
+
+
+Thanks. (Applause)
+
+
+Of
+
+
+So, hi everyone, hope you're having a good time, ‑‑ we're here to talk
+a bit about Crystal, it's a pretty new language, but it's also
+fun. Before we get into Crystal a bit more about me, really fast, this
+is my, my handle@zamith. This is a company I work for called sub
+visual in Braga, they were kind enough to get me here, thanks to them,
+Rubyconf Portugal is happening in a month. We're having a pretty good
+line up ‑‑ PJ that spoke yesterday is going to be the MC, so the venue
+is fabulous, you should definitely think about going. Also we're
+having a raffle, sometime today it should be announced. And we are
+giving away a free ticket for someone here so please be excited about
+that. Now, Crystal. What is Crystal ‑‑
+
+
+Don't touch it.
+
+
+Okay.
+
+
+So Crystal an efficient Ruby‑like language. Really fast, syntax
+similar to Ruby, you'll see more about it in a while. One of the
+different things about Crystal is that it is compiled and it is more
+strongly typed than Ruby, it also has static checks which brings some
+more safety than Ruby does. It also has very simple C bindings which
+is nice for a lot of reasons that we might discuss in a while as
+well. Another very cool thing about Crystal is that it's a hundred
+percent self hosted, that means that it's all Crystal is Crystal, so
+if you understand the syntax, which is, again, should be familiar if
+you know Ruby, it's very easy to just dig into the parser, lexer into
+the core of the language and just contribute. Which is also very
+nice. As I said, Crystal is a type language. But it does have a very
+good type infer remembers. So you kind of all the time it feels like
+you're writing Ruby and not worrying too much about types, if you
+don't want to. But you'll probably will want to if you start writing
+type code. But that means that you can set your availables just as you
+would in Ruby. You have a number that's 42, so it's an integer or a
+fixed number that would be the equivalent in Ruby, in Crystal it's
+called Int 32, it works just as you would expect to in Ruby. You can
+do the same thing with arrays. You have an array of number, you can
+append to it, same syntax as Ruby. But, now the first small difference
+between Crystal Andrew by if you check the class, it's not just array,
+it's an array of Int, so an array of integers. This is a bit different
+and this is going to be important in a while. So here if this was Ruby
+you would expect it to work, right . So you have an array, you append
+an array of integer, you append an integer and you append a string and
+you get a class, what could possibly go wrong. Well, in Crystal it
+does not work. This is the error it's going to give you at compile
+time so this happens the program will not even run. What it's telling
+you is that you cannot append a string to an array of
+integers. Okay. This is what this is telling you. In Crystal, the type
+of ‑‑ the type infer remembers system works when osseterring the
+variable. You set an array of integers you cannot then say oh, I want
+string as well that is not safe, Crystal will not let you do
+that. This is pretty easy to fix, one of the ways would be to create
+an array that has integers and a string then Crystal will know, okay,
+so you can see the type is not an array of Ints anymore, it's an array
+of strange things, which is union type which is very important in
+Crystal the array can either have strings or integers, okay, and you
+can have more types as well. Of course this is not always the best way
+of initializing the array. Want to have elements with all the types
+you need in the array, so you can also do this. Okay, you can say
+that's an ray of strings or Ints, and it will work just fine as
+well. Now that we know a bit more about how types work in Crystal and
+the most important part here, remember is the union type, okay, that's
+the most different thing. And ‑‑ but there's a lot that Crystal can do
+for you at compile time now. For instance let's look at this Ruby
+example. Very simple method called stripping size, it takes a string
+and brings the length of the string. If you try to call it in two
+different places, if you run this code you'll get 16, that's the
+length of that string. And then, Boom, okay, so you have an error, if
+you've be coding Ruby for a while you've probably seen similar errors,
+and this is the problem here is not the actual error, I think, the
+problem is that it happens in Runtime, okay. So you might only find
+out when you're already running ‑‑ already have deployed this code or
+if you have a very strong test suit you might catch it early, but you
+never really know. In Crystal if we take like the exact same code, it
+doesn't have the prints there, but you imagine it does. You get a very
+similar error saying that leg is not defined for Nil, we expect
+that. However this error happens at compile time, not Runtime,
+okay. So the program won't even run, it will tell you there's a Nil,
+an undefined method for Nil before it even runs, so that problem is
+solved. Let's take a look at a bit more complex example. Saming the
+same model from before, the array of strings and Ints, and let's go
+over what it's doing here. So we have an array of Ints.  ‑‑ sorry an
+array of strings or Ints and we append an Int and then a string. We
+take the array and we get the last ‑‑ of the array and then we ask for
+the size of that element. If you don't know it, size is only available
+for strings not for Ints. But this should work in Ruby, right, because
+the last element is a string, it has the size method, the typing and
+everything it should work. In Crystal it doesn't. Okay. We get
+undefined method size for Int, this is because Crystal makes sure that
+any method you call on an element of the array must be valid for all
+the types in the union type of array. So it's really safe that way. It
+cannot really make sure that you're not messing it up along the way,
+if you're doing something that can potentially introduce a bug, it
+will not let you run the program. C bindings. As I said, Crystal has a
+very good integration with C, this is because Crystal is compiles to
+LLVM byte code, so it's really easy to integrate with C, going to be
+very similar. But if you ever try to do it ‑‑ have tried to do it in
+Ruby you might have noticed that is not that easy, not very easy to
+get started any way. You probably will need to write some C and worse
+than that you need to learn like Ruby syntax or Ruby C implementation
+like the RB Ints and all that, basically it a ESARIS a bit of a pain.
+I think Fiddle is something that's happening and looks nice.  I think
+we have a talk tomorrow.  I haven't given it a close look. But it
+looks better, I think. But in Crystal it's already very simple to
+integrate with C. Say you want to have the A to I function from the
+standard library. Standard C library. That's it, say you want to use L
+LibC and declare the header of the function and you can use it around
+the LibC name space. This is a bit cheating because LibC is already in
+the core, so you can just use it. Over, if we want like random C
+library we needed to use it would be a bit trickier like one line
+extra. You have to call that link on top, for instance if we need to
+red line it is an example of using the readline C library. You need to
+link it, declare header again, then we have a code using
+readline. This would prompt for a name, you can give it a name and it
+will print it as a string. The small like difference you have to note
+here is the string.new that's because if you also notice under the
+header we're say that the return value, that's what's coming after the
+colon there, so the pointer UInt, we get the pointer back, and we have
+to cast it to a string so we can use it as a regular string. Other
+than that it's very, very simple to use, and most of the core of
+Crystal actually uses this for a lot of reasons. Some ‑‑ some parts of
+the code they didn't have time to rewrite, so you can just leverage a
+lot of what the C community has done, which is a much bigger community
+than what Crystal is right now. Another important part of Crystal of
+are something called generics that we don't really have in Ruby. They
+are in other languages. The idea is let's take this Ruby Code this is
+a Foo class, very simple class, you have an Attr reader with value and
+an initializer that takes value. Very simple class. We create anen
+stance of the class with an integer and we get the absolute value for
+that integer. We get one. Fine. Then we create another instance with a
+shard and we get the ASCII code for that. Fine, it works well, no
+problem there, everything in Ruby just works. However, if you try the
+same exact thing in Crystal, minus the slight differences in the
+syntax, which we don't have the at reader, it's called better, you
+have the setter and property for the access sore, but it's very
+similar, and we have the coffee scripts like like, initializer, we
+don't have to set the value and like repeat yourself three times, you
+can just do it once. But then if we try the same exact code freeuate a
+Foo for Int and a Foo for shard, and create different methods and
+instances it won't work, we get a similar error, we have an undefined
+method Absf Char. This is because how it works in Crystal. Crystal
+needs to find a type for that value, you're not saying what the type
+of the value is, the way Crystal does it is it goes through every
+place where you initialize this class and it sees the type, so here's
+an integer here's a Char, what's the type of value, it's a union of
+Ints and Chars this won't work because it's not available for Char
+this is a Compiler report so it won't even run. You can fix it easily
+by having something called generic, you can simpler this is a Foo of
+T, like a generic type, you say that T is going to be defined by the
+type of the value. What this is telling Crystal each instance of Foo
+can have a different type, a type T that is defined when we initialize
+it and defined by the value. This instance of Foo will be a Foo of Int
+and this instance of Foo will be of Chars. And then it will just work
+again like it works in Ruby. So this is how arrays are
+implemented. This is how hashes are implemented, so each instance of
+an array can have it's own type, it can be a union type, we saw arrays
+that had integers and strings. So those are arrays of union
+types. However we do not have an array with all the types that we ‑‑
+using all rays that would be a mess. Another of difference between
+Crystal Andrew by that I find really interesting, is that you have
+method overloading. If you're not familiar with method overloading
+paceically it says ‑‑ it means that you can define the same method
+over and over again but with a different number of our arguments, so
+the RT, ‑‑ if you have a different number of arguments the different
+methods, if you have different types even with same number of
+arguments it's a different method and what in Crystal we called that
+the yieldness of a method, so if a method yields to a block, then it's
+different even though it might have the same number of arguments and
+the same types if it yields and another method doesn't, they're
+different. What this means is that you can do something like this,
+okay, so of course this is the bias towards Crystal, you can see the
+same thing written in Ruby and Crystal. You have sum method that can
+take different number of arguments, it can take different types of
+arguments, you can pass it in strings or integers, it will just work,
+in Crystal it's just easy, one line per method and you do everything
+under the header of the method definition. In Ruby you have to get
+everything and then do it inside of the method. This is, I think an
+interesting thing and would be nice to have in Ruby. Last part of my
+talk is starting and it's about shards, so what are shards?  Shards is
+the name we have for gems, if you build a library in Crystal, for now,
+at least, it's called shard. And how does dependency management work?
+For now, and again Crystal is a very new language that's evolving a
+lot so the project, the dependency system is not great, yet, but the
+way it works right now is that you need to have a file calmed project
+file. Similar to the gem file, has it's own DSL, and then you see
+there you can get a library from GitHub. As long as the library is
+well built. The thing about Crystal, though, and then you can just use
+it, you can require it and use it. The thing about the dependency
+system as it is right now. And probably how it will be, it only works
+on GitHub and bit bucket and all that, but the idea is that it's a
+decentralized system, so there's no Ruby gems, there's no place where
+you have all the meta information.  I don't know if this is going to
+be like that forever, but right now it is. There's a lot of ‑‑ there's
+a side project called shards going on that's trying to build a better
+dependency management system. And ‑‑ which are hard, if you have tried
+to do one. And then so not really set in stone how this work but the
+idea of the creators of the language to make it decentralized. So you
+have a report on GitHub and bit bucket you just use it, there's no
+central place where everything is. This is all fun and nice, but it
+makes disCommonwealth of Virginiaability really hard you can use Ruby
+gems and search for a gem, you cannot do it in Crystal, there's no
+central place, you could search in GitHub, but that's more painful so
+there's a web site called Crystalshards. You can look at shards in
+different orders. You can see the ones that have more shards, the more
+popular shards, the ones more recently updated, you can see a lot of
+stuff here, and this works for now, at least, just because there are
+not that many. You can see like 180 shards, so that's not a lot. But
+it's growing, like many maybe two months or three months you go from
+60 to 180, a community that's thriving right now, so very, very good
+time to come to the community and I like to stress that, there's a lot
+of opportunities if you like to contribute to Open Source or you want
+to start contributing to Open Source. There's a lot of stuff that is
+not done in Crystal. Von in the language, the core of the language you
+can contribute to that. There's a lot of stuff to do that, if you want
+to build libraries, to do stuff. For instance maybe six months there
+was no post Res so someone started building that there's my
+Msyyl. There's a lot of stuff.
+
+
+Okay, I'm going do a really quick demo and try not to blow too many
+things. Is the font good enough?  Can you see it?  So I have here a
+sequence generator ‑‑ very simple recuresive one. It's very simple and
+written in Ruby. And it just, it's printing the element number of the
+sequence. It generates the sequence and gets the 40th element and it
+brings it. Very simple code. It should work just fine. If if we do it
+in Ruby. You have to wait a while .  not too much, hopefully. About
+... sometime ... okay, it work, I forgot to put the time here, let's
+do it again. It should be about 8 seconds. Or it might be taking
+longer because I'm not plugged in. Okay, 9 seconds. So this is the
+Ruby implementation. Okay, and if you notice it's the 40th if you try
+to do 45th you might grab a share and wait because it's going to take
+a while. In Crystal we can try it. We can pass in, in this particular
+instance because it's such a simple program that the code is the exact
+same in Crystal you can just pass it in the Ruby file and it will just
+work. Okay, it took one second. However what we are doing here is that
+we're compiling the program and then running it. So we can compile it
+first. So you can do Crystal build, that will compile your file and
+you also have a release flag that makes it even faster. So we compile
+it and then we can time it. Boom, 0.2 seconds. And it does the same
+thing like generates ‑‑ it's here, and took the same code. So it's
+very, very fast. Especially for CPU bound programs, you can almost
+write Ruby and make it like super fast. So please try some
+Crystal. And hopefully you can get ‑‑ we can get some of you to the
+community. That would be great. Another thing that I can mention that
+is super fast in Crystal is Json parson, if you have a lot of that,
+Crystal is super, super fast doing that. It has some small DSL that
+lets you define the structure of your Json, so it's a very good use
+case to start using Crystal if you have that problem. Okay, that's
+it. Thank you. (Applause)
+
+
+So, I'll be doing the question moderation. There's someone standing,
+great
+
+
+Luis. Thank you, personally I had the impression that the type system
+looked like the one used by the ML language. Where does Crystal draw
+it's inspiration for the type?
+
+
+Do I have to repeat the question?  So where does the type language or
+the type system come from in Crystal?  To be honest, I'm in the really
+sure. It takes a lot of inspiration from a lot of languages, I know it
+takes inspiration from Ruby from if you have if I script, some
+inspiration, from Elixer some inspiration maybe from there it got a
+bit of the type system. The creators of languages are going around to
+conferences and talking to people about new ways to do languages. It
+also a thing I didn't mention Crystal has a macro system so it can
+‑‑ ‑‑ you can do some fancy stuff at compile time and it takes that
+from some other languages. Obviously it's a new language it takes a
+lot from other languages, I don't know for sure what comes from which
+language.
+
+
+Any other questions?
+
+
+One in the back there?
+
+
+Come here I'll meet you halfway.
+
+
+Thanks just a short question. Looks really great. Do you have a
+community code of conduct for your developers. And do you have a core
+team and what's the gender distribution.
+
+
+Sorry I didn't understand the question, sorry could you repeat?
+
+
+Do you have a community code of conduct and do you have a core team
+and how does the gender distribution. Thanks.
+
+
+
+I'm not on the core team, but I do help.  I don't think there's a code
+of conduct, actually, if there is it's pretty recent. As far as
+distribution goes, it's pretty bad. As far as diversity, it's pretty
+bad. It's mostly ‑‑ can you hear me, it's mostly guys. So, but please,
+join we'll ‑‑ I think if we want more diversity for sure. So if you ‑‑
+there's a lot of women here, so, please join. The community is very ‑‑
+is very friendly, I think to everyone and very welcomingsh it's just a
+small community and just happened to be that way.  I don't think
+there's any bias towards any gender in particular.
+
+
+It's a very young language and there needs to be a lot of work, and
+this is one of them.
+
+
+You mentioned it's a young language, do the creators consider it
+production ready?
+
+
+Sorry.
+
+
+Is it considered production ready?
+
+
+Oh, production ready. That's a good question, so it's not 1.0 yet, so
+it's not a hundred percent stable, but I think it is ready, like for
+small things like I was saying if you want to parse Json, you have
+like a Microservices that parses Json, ready for that, to build a
+whole App in Crystal, probably not a good idea yet. Also because we
+don't have a lot of frame ‑‑ you have some frameworks now that are
+starting to be built, but very early stage. Everything is very early
+stage. To do smalls and to do a small subset of things,
+awesome. Actually like Crystal shards is built on Crystal hand has
+been running for a couple of months, so it does work. But I wouldn't
+advise to build your business on top of it yet. Please don't do that
+yet.
+
+
+Good point. One more question.
+
+
+Are there some known limitations in meta‑programming, things where you
+can say from the beginning this will never work in Crystal compared to
+Ruby just because of its concept?
+
+
+There's like Eval, stuff like that. Some of them, it's in the all,
+some of the meta‑programming you can do in Ruby because Crystal needs
+to ‑‑ can only take information that you have at compile
+time. Anything you need Runtime informs to be able to do it won't
+work. Like for instance there is a method missing in Crystal but it is
+limited compared to the Ruby mechanism, you cannot do everything that
+Ruby memberrism does, so meta‑programming is not as powerful as Ruby
+is.  I think that's the main thing.
+
+
+Thank you, Luis (Applause)
+
+
+So, setting up next is Leslie, there's a lot of people in the audience
+today or in general that might not fit into the traditionallologist
+category. But what does that even mean, right?  What makes someone
+technical or not technical?  Leslie is going to teach us how we can
+better figure out what of our capabilities are, what can do so we can
+build better products, better teams and better companies. She should
+know she initiated a project to help get pre‑university students into
+Open Source development. As soon as Leslie is ready, we can start this
+off. I'm very excited about this talk, are you?  (Applause) I'm
+especially excited because there's usually someone sitting next to me
+at conferences like this, explaining to me like ‑‑ like I don't
+understand it, it's cute, but I might know.
+
+
+Anyone else have this experience?  Oh there's other people that have
+this experience as well.
+
+
+This might be the right, you want a microphone rather.
+
+
+Leslie Hawthorn: Good morning wonderful people of eurucamp, I'm honor
+to be here with you today. I'm here to talk to you about a phrase that
+I find just as problematic as my appreciation for the angry white dude
+who's music actually inspired the talk title I'm going to have today,
+will the real technical people please stand up?! How often throughout
+this career have you heard this phrase so and so is not technical?
+How often have you found yourself saying this particular phrase?
+There's so few hands, I knew I came to right place, terrific I've been
+hearing this phrase for about the past fifteen years quite regularly,
+which is coincidentally the exact amount of time I have been working
+in the technology industry. And frequently I hear it applied to
+myself, which doesn't really resonate with me.  I was privileged to
+have access to a computer almost from birth and we'll learn a little
+bit more about that in the next slide. And I was also immensely
+privileged in that I went to school in Silicon Valley and we happened
+to have a computer lab filled with Apple II E computers allowing me to
+write my very first program almost ‑‑ wow more than 20 years ago. I'm
+getting old. And even before that I spent a lot of time abusing VI dog
+ASCII art illustration lyrics from the sound of music because I was a
+weird kid, I'm still weird. Even more strange to me is not when people
+apply this phrase to me, I can understand since I've chosen not to be
+a ‑‑ I have chosen to a slipping microphone I've chosen not to be a
+developer, I've chose ton be a community manager and practitioner of
+developer relations. Maybe you feel like that's not technical. What I
+feel very strange, as part of this career, I go to a number of
+conferences every year, giving talks like this one or just hanging out
+in a trade show booth. And the number of people who will walk up at a
+conference like OSCON or what's another great one. The Open Source
+developers conference, or Linux KonfEU, who will reach out to shake
+your hand and the next phrase out of their mouth is, I'm not
+technical, but ... so I don't usually think of non‑technical people as
+the kind of folks that attend OSCON, just a thought. When I think
+about people who are not technical someone immediately springs to
+mind. My mom. My mom the UNIX programmer. My mom the person who
+exercised great patients all the years of her life dealing with my
+dad. My dad the tech knowphobe. My ‑‑ Technobe, who's Nokia candy bar
+phone is never charged because he refuses to use it. My dad I had to
+teach how to use an ATM when I was 14 years old because he had never
+with drawn cache from the bank without talking to a live human
+being. This was an ‑‑ this was a very interesting experience which
+will tell you about over delicious beverage, it did not go well. And
+when I think, again, about the people in my life who I would think of
+as not technical, I think of these women, some of my dearst friends in
+the US. And these are the same folks that are consistently handing me
+their smartphone and performing software updates for them, introducing
+them to the mystical powers toughie ho mail App which they did not
+know existed (Yahoo mail App) they refer to as the techie genius of
+the family. Think about the veterinarian who required more years of
+medical school training than a doctor who works with human beings and
+who's patients cannot actually speak to her to tell her what is wrong.
+I think of my friend, the high school teacher in south Florida who
+teaches children English who have just arrived as refugees from
+countries like Haiti and who is able to navigate a grossly under
+funded public school system in order to teach them a brand new
+language and also able to navigate the cultural knew answers that
+she's not familiar with and I am going to switch Mike mics because
+this is not working, hold on one second this is not working ...
+
+
+Hey, look now I have a mic. My friend the school teacher who can
+navigate all the cultural knew answers which she's completely
+unfamiliar. Or my friend the office manager who I have watched do so
+many bizarre work arounds for the ‑‑ for their office software that
+does management of dental records. And if any of you in the audience
+hate, I mean hate filing expense reports, try using software to manage
+dental records that has to be compliant with about 15 different
+insurance company's back ends and that has to do voice recognition
+because you would rather use Oracle financials, immediately. So,
+again, when I think of these folks in my life, I think, you know, I
+don't think they're not technical.  I just think they're not my flavor
+of technical. So I find the phrase person is not technical to be
+incredibly problematic. And I think one of the biggest reasons I find
+it to be problematic is I can't even tell you what this means. I don't
+know what so and so is not technical actually means. It seems to have
+different definitions. It seems to be applied completely at random and
+even if we, let's dive in and analyze it what does it mean?  So, maybe
+it's someone who doesn't have a computer science degree. Except, we're
+all very happy to tell stories of very famous developers, very famous
+business people who dropped out of college or never went to college at
+all. Is it somebody who doesn't write code?  Well I've written code, I
+don't do it for a living .  and what about all of those people who
+worked, I don't know, civil engineers, civic planner, people that
+design our roadways and build our bridges, they don't write software,
+do you want the person who build your bridge to be not technical?
+Because I do not. Anyone who would like to indulge in that I suggest
+you let me know what city you live in, will not visit you you can hang
+out with me in Amsterdam any time, not a problem. Are we also to say
+that only things that are technical are things that involve software
+what about the hardware engineers out there. When was the last time
+you sodders something, I see a few hands (Solder) these people are
+technical too. Also I have some thermal compound I would like to share
+with you, nothing better than putting together a board and I haven't
+done nit a long time, we should do this. This phrase is difficult
+because when you hear the words so and so person is not technical,
+this implies some kind of immutable binary. Which is simply
+false. There's not a single one of us who is born keyboard in hand
+knowing how to program. That would be deeply uncomfortable for our
+mothers and also logistically impossible. So, when we use this phrase,
+this is the phrase that shapes our thought. We need to think about
+what thoughts we're thinking and what information we're projecting out
+into the universe when we use these words. And I'm going to say that I
+firmly believe that this phrase is utterly and completely toxic.  I
+think it's code for: I don't have to think about what you really know
+and what you really don't know.  I don't have to spend time to teach
+you things you don't know because you are not technical.  I have no
+responsibility to do so and there is no value in doing so.  I think
+that this phrase is often code for this person is not enough like me
+for me to believe in their skills and abilities. And if you think that
+perhaps that's not true, I challenge you to count the number of women
+or other folks who are in under represented groups in the technology
+industry who have started a conversation with you with the phrase, I
+am not technical. People don't start that conversation with you
+because that's what they're thinking, it's because that's what they've
+been told over and over again. And that's the message they have
+absorbed and they carry with them into the world. And this phrase is
+awful. It stops us from all sorts of things from achieving pay equity,
+to really having effective collaboration in our organizations. Because
+we are not valuing the contributions that everyone brings to our
+projects, to our companies, to our teams. We are deciding that people
+are other. We are deciding that what they do is not good enough. And
+this is only going to harm us as an industry and as a community. So I
+would urge everyone to simply edit this phrase out of your
+vocabulary. When you say so and so is not technical, perhaps you what
+you mean is this person does not know how to program, yet. Or this
+person does not understand the TDF IDF algorithm, which I can tell you
+right now I do not understand, if you want text plain it to me later,
+I welcome your education. Just don't use it. Just like I had to teach
+myself not to say this code is lame. We can teach ourselves to not say
+this person is not technical.  I'd like to conclude with some
+extremely wise words from a woman named Cara Sols. Has anyone had the
+opportunity to meet Kara. She is the bee's knees. She's a community
+unit at Puppet labs when she saw me tweeting I would be at eurucamp,
+she was really excited and she wanted to chat about the talks, I
+Satoshi down with her and shared some notes, Kara's extremely wise
+words stuck with me and she said, I don't understand why I would stay
+in an industry that defines me solely by what I cannot do instead of
+all the things 245 I am capable of doing. And as we here consistently
+that we have a pipeline problem. Or more accurately that we have a lea
+I can pipeline problem and we're not able to effectively (Leaky) that
+we are not able to retain talent. How can we continue to use
+phraseology and thinking that undervalues so many of the activities
+that are the first step towards people becoming developers. Be that
+writing documentation, program management. Or any number of
+sophisticated tasks that simply don't involve creating software so, my
+friends, I ask you will the real technical people please stand up, and
+this is all of you here today.
+
+
+You guys are awesome. I'm so excited to be here. This is my favorite
+this is question finger guy, does anybody have any awesome questions
+or experience that they would like to share?  I know I'm between you
+and coffee, which is terrible.
+
+
+Hi. Thanks for your talk.  I myself ‑‑ I must be technical, I just
+stood up and I'm sitting here and I'm also studying this field. But I
+would also consider myself not as being too technical, but I would see
+it more as a compliment because I think there's so much more you
+should know when you program, and ... yeah, I don't ‑‑ there's so much
+more you should have empathy and you ‑‑ I mean technique is just for
+the people and you should know about their feelings about technical
+and their needs of technique. So I think being not totally technical
+is just a plus, in my opinion. (Applause)
+
+
+I agree with you completely.
+
+
+Sorry Id that read,i'm losing my hearing in my old age. Yes,I
+agree. Yeah! Applause) besides how many of you have friends literally
+only spend time with their keyboard.  I have some of them, I love them
+deerly, occasionally I would like to talk to you not on IRC.  I don't
+know, seems like it could be fun.
+
+
+More questions.
+
+
+I feel like people have a deep need for caffeine, which I respect.
+
+
+Nice human ...
+
+
+Hi, thank you for sharing your points, I agree with most of the things
+that you said. But, the only thing that I would like to add is I think
+tech ‑‑ a technical can mean different things in different regions,
+I'm from Brazil, we have a special kind of course which we call
+technical course. So when you ask someone like are you technical, you
+can ask this for anyone and you just want to know if the person has a
+batch low degree or this kind of technical degree. In this case, I
+think it's not harmful they just want to know what kind of degree the
+person has in order to select kind of salary or something. But I
+totally agree this may cause like a division if you're in America or
+in Europe or if you near Brazil, would you have some suggestions on
+how to deal with this, in Brazil you don't have an alternative
+question ...
+
+
+So, thank you for your question. This is not a part of my
+experience. So it is always great to learn about how folks around the
+world actually experience life I've not spent enough time in Brazil,
+clearly.  I don't have a suggestion, right at the moment, but I would
+like to think about that and get back to you, if that's okay. Cool
+beans. Okay.
+
+
+Other nice human.
+
+
+So you're talking to a group of people, for instance at this
+conference and someone says about someone else that they are not
+technical, how can you respond?
+
+
+Well, excellent question, thank you. It depends on the kind of
+interaction I'm having where someone. If someone says I'm not
+technical, then usually I say, oh, okay, great, what brought you here
+today?  Then I typically hear something along the line I'm a program
+manager and I overvie the design of the software package. Or, I'm a
+user experience designer and I'm working on this project. Or etc.,
+etc., etc.. And then I say, wow wow, that sounds pretty technical to
+me I've also had a lot of conversations with partners at conferences
+and sometimes gentleman are the plus one, just so everyone knows, I
+think this crowd is not the crowd I need to explain that too, and when
+they tell me that they are, I'm not technical but ... the number of
+them who will have had indepth conversations with their wives or
+husbands about the topics that they encounter every day is
+non‑trivial. Then I just smile and say, I think you're a lot more
+technical than you give yourself credit for, just so you know. Usually
+people take that pretty well and it encourages them to think better of
+themselves.
+
+
+Cool, thank you. Anyone else.
+
+
+Coffee, coffee, coffee.
+
+
+Oh, wow, there's more.
+
+
+You guys are dedicated, I want coffee. (Laughing)
+
+
+Thanks for this talk.  I think it's very important to remind that what
+we say will frame the world. And I just want to comment with
+something, you know the comment about gender division ‑‑ that girl is
+for literature, and math and science for boys, I think it's very
+horrible and it's important that there is just knowledges and means to
+achieve something and whatever it is, it's as you said what you do
+that frame you, not what you know and not what you have studies .
+thanks a lot.
+
+
+Awesome plus one.
+
+
+Let us go and have a deliciouses beverage of your choice, thank you
+for having me. (Applause)

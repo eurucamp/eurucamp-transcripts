@@ -1,0 +1,238 @@
+Welcome back, children tend to ask a lot of questions and sometimes
+those questions are very, very challenging, Ramon should know she's
+been teaching children to code for quite some time now. He lives in
+Vienna and organized ‑‑ he's been organizing Ruby habits which is a
+study group for Rubyist, obviously. Here to tell you more about how to
+learn kids how to program and what you learn from doing that, Ramon
+(Applause)
+
+
+
+Ramon:
+
+
+Thank you. Hi everyone, hope you're having a good time. I'm Giddy. I
+have I'm so giddy to tell you my little story. It's a topic that's
+really close to my heart and in order to do so, I'm going to tell you
+a tiny little bit about me, and in order to do so we're going to have
+go back in time, three years into the past. This is Ramon. Say to
+hello Ramon of the past.
+
+
+Hello.
+
+
+He's a little shy you'll have to forgive him. Despite being shy Ramon
+is very happy, he's been making Mac software for a couple years now,
+he's a freelance E. using Ruby in his tool chain having a wonderful
+time doing so. Over that time he started to develop an itch, he's been
+hearing about Ruby gems, and conferences and meet ups, he's been
+hearing about Rails Girls, and he's starting to get really excited
+about all this, he wants to contribute, he wants to help, but he
+doesn't feel he's good enough yet. So he thought he'd start small. He
+went to a local Mac developer meet up in his hometown of Vienna
+Austria. And he went in and as he within through the door and listened
+to a heated, almost violent argument aboutfect editors he quickly
+turned around and went back to his Hobbit Hole. His night was
+ruined. So he wasn't feeling very confident many his ability to be
+able to contribute. So he thought, how about instead if I ‑‑ how about
+before Iism prove the world of programming, how about I introduce
+other people to the world of programming. And so me and my girlfriend
+opened an after school activity in the vein that international school
+called computer game programming.  I think this is our fourth or fifth
+year ‑‑ right, three, I can't do math (Laughing) we've been doing it
+for a couple of years, it's been wonderful T VIS has been absolutely
+generous to lend us their kids to experiment on and the kids are
+wonderful. They're a diverse group of kids, last year, actually we had
+more girls than boys which was just delightful to see, the interest
+was just coming all over the place, I loved it. And my goal in
+computer game programming has always been to tell the kids, kids I
+want you to go home and feel like hackers. And I say, not that, I
+don't mean the businessmen in a see mask, I mean ‑‑ why is it always
+the businessman in Schemassing.  I mean the clever person who solves
+problems and feels good about it and learns and contributes. And so
+this watch school activetive was once a week and for most of the time
+we were using and are still using the ghoster gem in Ruby which is you
+probably heard about it last year at eurucamp and there's been as you
+saw in the last couple of talks lots of cool alternatives, but at the
+time I thought this was best (Gosu) when you start teaching kids
+you're often told you should do some research, you should talk to
+people who know about this.  I did none of that.  I went in head first
+and I faced a lot of challenges, but challenges I'm grateful I faced.
+I think the two biggest, the first one of those is that it's an after
+school activity, it's you know, it's afternoon, it's late and the kids
+are often tired. I'm trying to compete with English and math and
+French and German and so much more, but, you know, there's still
+interested, just tired. The other thing is that since one hour every
+week. Sometimes some of the knowledge doesn't carry over from one week
+to the next. Now, you're thinking maybe give them homework. Are you
+kidding me if give them homework to a kids in an after school
+activity, they'd laugh in my face. (Laughing) the second challenge,
+which is a little more personal is that, you know, between semesters
+they get the option to stay with us or move on to another activity or
+just vague up quit. And when they did, no matter the reason it killed
+me on the inside. Like I thought that maybe I had failed them or my
+teaching method just weren't good enough. But you know, over the years
+I've come to terms with the fact that there's a number of factors that
+could affect their decision. Maybe you know, maybe nay want to do
+sports during the summer semester, maybe they want to ‑‑ a mine craft
+club just opened and they want go play mine craft all afternoon, fair
+enough, it's a fun game. But I've also come to terms with the fact
+that maybe not now, maybe I've planted a seed that will blossom into
+an interest in programming that they can use in their career, turn it
+into a career. Or just use it at work and become the heros of the
+office. You never know. Let's look at some of the things I've learned
+when I've been teaching kids. The first being the most important,
+because if there's one group of people out there that's not afraid to
+just brake things, it's kids. And in our first example we've been
+going over, we've been making a space adventure where you have your
+little spaceship at the bottom and the asteroids are coming down and
+you have to dodge them left and right, when the kids got the ability
+to set the speed at which the asteroids would move it was blinding,
+and then they wonder why isn't this working. And I told them, well,
+you set the speed too high. Or another time we had a little game where
+you could place ‑‑ where we had learned to place the monitors on the
+screen they asked me Ramn what's a good amount for a fun game, I think
+four or five is good, I figured they would go nuts and put
+ten. No. It's closer to 50,000. You'd be surprised how much you can
+hit number 9 (Laughing) or when making ‑‑ we were making a jump and
+run game, a little platform. They'd ask me what's a good strength,
+well, you get the idea. And at the beginning this would annoy me, I
+was like come on, let's make something fun, I was not only teaching
+coding but game design, why not make a game that's fun to play as well
+as opposed to just chaos. But I gave it some thought and I came to
+terms with the fact that maybe not for the player, but they're having
+a blast. You know, they're going over and showing the kids, the other
+kids are saying check out what I did, look at this, this is a
+mess. (Laughing) not only that, but when they'd ask me, Ramon why
+doesn't this work I could turn it around and say well, why doesn't it
+work, what do you think if and they'd answer, quite on point, and they
+learned, they learned that I can't put this 50,000 enemies on the
+screen. As a developer it reminded me that I got to go out there and
+more fun, I have to play with my things in order to understand what
+I'm doing I really should be a little more playful. And I also have to
+take more things ‑‑ I have to also appreciate that which I have,
+because often when I'm developing I don't know about you I often find
+myself just in a hurry to get stuff done, right. And so I don't take a
+step back. And often things that I take for granted you know when
+teaching someone, you forget to mention those things I'll show you an
+example.  I showed this code to the kids and I say, all right,
+everybody, what's this going to do?  And they all correctly quip back,
+prints out Ana. Fantastic. Turn around. What does this code do and
+they tell me prints out Ana ‑‑ we know it's a name error. So what did
+I do wrong?  I didn't mention to them that code goes from one line to
+the next and I was really baffled by this, I thought, and explained to
+them when you read book you go from start to finish, one line to next
+your story has a beginner againing middle and end. One of the kids
+interrupts have you ever read a chose your own adventure book?  You
+jump between pages, have you ever read a complicated story before,
+Ramon?  (Laughing) yeah, they were right. Now we were ‑‑ we were
+making lots of text adventures toward the beginning 206 year that
+might sound boring but kids love it. They get to write their own silly
+fun story, it's just I really recommend it. But then comes a big day
+and I tell them, all right, gang, let's make some graphics happen. And
+I explain to them how coordinates work, I tell them your X is your
+position along the horizontal line of the screen and the Y is the
+vertical position on the screen when both are zero you're at the top
+left of your window. And a kid interrupts me, hold up why isn't the
+bottom left like in graph, why are you programmers do this in a
+complicated way?  I never thought of that.  I went and looked it up, I
+found out something I found interetc.king, old CRT monitors used to
+print outline by line from left to right, top to bottom, line, line,
+line, that's pretty cool, I understand a little bit more now about
+what I'm doing. Let's talk about practicing. I'm getting to grips with
+the idea of practicing as a developer. Toward the beginning of
+teaching kids I tell them, all right, new concept, an array, a list,
+you can control several enemies on the screen at once. This is how it
+works here's how you make a new one, here's how you delete one, here's
+how you have them interact and reiterate over list. Go use it have
+fun, wow me.  I don't understand, what do you mean?  We took a step
+back and we started making tiny exercises. Here's ‑‑ why don't you try
+doing this with an array. Have one with fifty enemies take one away
+put one in iterate over them, kill every single one of them.  I used
+to open every session with this, they didn't like that at
+first. They're like come on, I want to did shiny graphics download
+them off Google, it's going to be fun, but as we kept doing this it
+became a contest, they wanted to beat the teacher, I know I know I
+know. And it just became a challenge that actually became their
+favorite part because then they really understood it. And it reminded
+me of how, when I stink at something I just got to keep doing a little
+bit every day and then I'll get good at it.  I still can't draw
+though.
+
+
+Yes you can! Let's talk about simplicity. Now when we were doing our
+graphic space games I tell them, all right, everyone, this is how you
+make your character move five picks els to the right per update. You
+take your X coordinant of your character and increase it by five. It
+kind of looks like math. It's simple. And ‑‑ all right, now I'm going
+to knock their socks off, bam, does that look cool or what I ask them?
+Kids say, hold up, I like the top one. And I figured that's a fluke,
+what does the rest think?  They agreed. Oh ... what?  But it's so nice
+that other way. It turns out that when you have something that, you
+know, this is ‑‑ I like this line of code, this is a line of code to
+make the character either move five mix els to the left or stick it to
+the left side of the screen. But sometimes verbosity can be really
+good. Maybe it's a little more pen Dan tick but when you show your
+cold to people that haven't worked with language before or haven't
+worked a lot with code before it kind of works better in some context.
+I think this is something I need to remember, and you might need to
+too. Finally, let's talk about showing and reading code. Now, let's
+goat the mind set, one hour a week, the clock is ticking and problems
+are coming up, Typos everywhere Ramon I don't know how to do this, how
+do I fix this, they're getting freaked out, come on fix it. Surely you
+remember how an array works right.  I don't know, so I get really
+freaked out, I'll do it this one time. So what happened?  A bad
+dynamic was created and every time one of them would have a problem
+they'd just go it's broken. Come fix it. And the moment that happened
+my heart sank, I thought oh, no, I'm creating Lazy people (Laughing)
+so I thought of something really fun, I thought, okay, in's an issue,
+like here, you might see an issue here, the code doesn't work.  I
+thought call over one of your buddies, see what happens. And the buddy
+having not looked at that code a lot found it instantly, missing
+end. Next thing I know pair programming happened. (Laughing) I'd never
+done pair programming before and the kids are using it before I
+was. Wow! (Applause) of as a result not only was I now reading lots of
+different code because different people come up with ideas differently
+for solving problems right. Not only am I now reading lots of code,
+I've witnessed firsthand the benefit of pair programming. That's
+pretty awesome. And this, amongst other lessons I've learned the
+underlying aspect that bubbled out of me was confidence. So three
+years on what happened?  Well, I picked up my bag, I kicked back the
+tears and I went to my first Vienna RB session, developer group
+session. Next thing I know I'm coaching at a Rails Girl workshop, if
+you told me that two ‑‑ sorry that if you told me three years ago I
+wouldn't have believed you. Next thing I know I'm going to conferences
+I went to eurucamp last year, it was a delight, now I'm speaking here,
+what?! (Applause) thank you, and I'm centing to Open Source. This is
+team Tesi from the Rails Girls Summer of Code, we're having a blast
+together what I want to give back is to just maybe if you haven't yet
+give teaching a try. It's amazing. And it doesn't just have to be
+kids, try Rails Girls workshops, they're a ton of fun and I'm sure a
+lot of other institutions that do stuff like this that I really
+recommend checking out. So ... I think I've overstepped my time, yeah,
+so I'm just going to thank my wonderful girlfriend Birgit and my
+sister Pilar from team Tesi for making the wonderful illustrations
+that you just saw.  I want to thank everyone here for being so lovely
+and giving me the time ( applause)
+
+
+Oooohhh I understand. . Good. Thank you.  I should of expected
+that. Okay. Incrediblien spur rational talk. Any quick questions for
+Ramon?
+
+
+Hi, I'd like to start a coding group for kids at my place, do you have
+some resources that you can help me get started.
+
+
+Yeah, there's a ton. Definitely check out the Gosu GitHub page their
+documentation is pretty top notch. There's I think Hakety Hack has a
+lot of good tutorials. The name escapes me Ruby ‑‑ kids Ruby is a
+great utility and resource. Repository. And I'm sure there's tons that
+I am just panicking and not remembering.
+
+
+That's the one where they have small bits everywhere in the
+world. Yeah, that's pretty great. Great, okay. Another round of
+applause for Ramon. (Applause)

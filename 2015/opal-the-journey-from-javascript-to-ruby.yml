@@ -1,0 +1,349 @@
+Our first speaker today is Bozhidar Batsov. If you're not a
+particularly a fan of JavaScript or coffee script or any of the front
+kind script, open open might be the thing for you if you want to code
+both your back end and front end in Ruby. Just before we start, I want
+to know who brushed their teeth just after waking up?  Very
+good. You're very good students. Cool. Give it up for Bozhidar
+Batsov. (Applause)
+
+
+Bozhidar Batsov. . Okay, so last evening we concluded our first day of
+talks on a very positive note, literally a positive note and I'm
+pretty sure that I won't be able to deliver as exciting performance as
+Joseph did, but, I'll do my best, thank you for joining me and let's
+get this party started. So my name is Bozhidar Batsov, you probably
+cannot pronounce this, but do not be alarmed, do not be afraid.  I
+come from Sofia Bulgaria, I work at Toptal and I'm very thankful they
+made it possible for me to come here and you can call me Bug just as
+my friends do, and I know what you're thinking, but I have been known
+as Bug for 20 years way before I became a software engineer, so
+presumably this has nothing to do with the quality of my code
+(Laughing) before we get to the gist of the talk, I'd like to set the
+proper scenery. So you can get an idea of where everything started. So
+a few things about me. The most important thing I'm very fond of bears
+and I hear that everyone in Berlin is, so that's cool. I'm an Emacs
+fanatic, I'm generally open to everything in life, but nobody in this
+world can convince me there is an editor better than Emacs, you saw
+the gips of the power of Emacs, if I no we were going do live coding I
+would have done a totally different talk. The tool that Joseph was
+using to do the live coding was written by me, I didn't hope somebody
+could use it in this way, this was mind blowing for me. So this is how
+I see myself, you probably don't see me like this. Any way I do a bit
+of Open Source work, mostly related Ruby closure and Tmax, if you're
+into these sort of things you can check out my GitHub profile. Most
+importantly for you perhaps, I love Ruby very, very much, and I'm not
+very fond of JavaScript, I could talk all day about myism imagine of
+JavaScript, I won't, I'll just show you an image. Clearly there are
+issues with JavaScript. If if that doesn't convince you can check out
+this web site, which has all the arguments in the world so no need for
+me to reiterate them. So why am I here?  The first two things that I
+said are part of the reason, my love for JavaScript ... my lack of
+love for JavaScript and my love of Ruby. But the other thing that
+actually drove me to come here was this survey about the recent state
+of the Ruby community. According to it 96 percent of all Rubyists are
+doing only web development in Ruby. And of them 90 percent are using
+Ruby on Rails. It's kind of sad, but absolutely everyone seems to be
+using Ruby only to do Rails web development. And this is kind of worry
+some because it seems that our beloved community has a bust factor of
+one if something were to happen to Rails if there's another cool
+framework in another language, Ruby seems to be dead in the water. And
+even more troubling for me Rails is so omni present in our community
+that it is actually driving the development of the Ruby language,
+which is kind of insane, this is the charge work for Ruby 2.2 the
+latest release, let us count how many times the word Rails appears in
+it, one, two, three, four, four, five.  I don't know about you, but I
+have yet to see another language which is so dominated by a single web
+framework. This is pretty worry some, my good friend Jan Uzi, his
+suitcase is worried and I'm worried, because it is worry some. And
+what is even more disappointing is the amazing members of our
+community have been working for years on tools like JRuby Andrew by
+motion which allows you to do so much more than web development in
+Ruby, you can right RUS, desktop applications, you can be doing
+machine learning, but no, we are rail, rail, Rails, we are so attached
+to Rails. And we love to make fun of JavaScript, we love to emphasize
+how much better Ruby is and the Ruby community but let us have a look
+at all the things that the JavaScript people are doing with it. So we
+see that they are doing client side applications, they're doing server
+side applications, they're doing native iOS and android applications,
+windows phone applications and they're doing a ton of desktop pub
+application. Imagine in ten years back. Something is going right in
+the JavaScript community and right now possibilities of JavaScript are
+truly infinite is just one tiny bit of an issue, nobody really loves
+JavaScript, nobody ever said that JavaScript made them happy,
+right. And there has been this U.S. to step into the shoes of
+JavaScript and bring balance to the JavaScript programming
+world. You're all familiar with one of those attempts, most of you are
+familiar with coffee script. Other worthy challenges would be pure
+script and Dart more recent. lm.  I encourage you to check it out
+because I do feel that Elm is pretty legit. And perhaps more
+importantly for this particular talk there has been attempts to port
+established languages that normally do not run in JavaScript
+environments like Scala and closure ... closure is super legit, you
+should definitely check it out to JavaScript. And why would somebody
+be doing something like this?  Nobody put it better than famous
+creator of Clojure when asked about importing in JavaScript, because
+Clojure rocks and JavaScript reaches. And this is so, so true. And you
+know what I can think of at least one more language that kind of
+rocks, Andrewmore has it that it is also better than JavaScript. And I
+have the numbers to prove it, I Googled for Ruby sucks, 1.7 million
+results then I Googled for JavaScript sucks and you know I have an
+education in statistics, so I know this is scientifically
+correct. But, on a more serious note there are plenty of advantages
+of ‑‑ that Ruby has overJavaScript, some of them are we don't have
+this, so we do not have any of these related issues, we have the same
+Boolen semantics, there hasn't been a need for the book Ruby the good
+parts yet, though I do have a talk Ruby the bad parts, it's not only
+rain boys and unicorns in Ruby land either there, is no WTFruby.com
+yet. We have a solid core library, which makes the existence of
+library underscore Js a nonissue for the Ruby community. We have an
+extensive standard library which adds a ton of power to the Ruby
+language. And do you really need more?  You should be convinced that
+ruby a better programming language and I guess I've been preaching to
+choir so far, so let's get down to business .  without any further
+adieu, I present the hero of this presentation OPAL.rb, replaces
+JavaScript with Ruby where you norly would use JavaScript I'll start
+with a brief history of OPAL. Most people haven't heard about OPAL so
+far, but it's not a young project, it's an ‑‑ it's release was over
+five years ago, there have been applications in production for at
+least three years now. OPAL's popularity recently spiked when the
+vote ‑‑ web framework was introduced in at the end of the previous
+year. Truly imaginecal piece of software ‑‑ Volt ‑‑ it allows you to
+share the same model view controller code on the server side and on
+the client side, people were so impressed by its capabilities, but
+they didn't think very hard about where this power comes from and it
+comes from OPAL.rb which is at the core of the framework. The
+development of OPAL is very active. It's team is pretty energic. And
+the latest release landed just a few weeks ago, so, cool things are
+happening there. The value proption of OPAL is pretty simple. You
+don't have to write JavaScript anymore you can replace every single
+usage of JavaScript with the beautiful Ruby Code that you know and
+love. How do we achieve this?  Well, OPAL is at its heart a Ruby to
+JavaScript source to source Compiler AKA a trance piler, and this
+means that you feed it Ruby Code and it produces the equivalent
+JavaScript code. There is no new VM is no new byte code are no
+translation layers. You just running JavaScript code on a JavaScript
+virtual machine and, you know, you didn't introduce much additional
+complexity in the process. OPAL throw in the mix an implementation of
+Ruby's core library and a partial implementation of the standard
+library and I really feel that this is of a very, very strong value
+proposition.  I know that some of you right now are thinking, but we
+already have coffee script DHH has blessed it. So it has to be the
+true way, the true successor of JavaScript, but, let me quickly of
+walk through some issues that I have with coffee script myself, so
+first of all, it doesn't have a different core library. It has the
+same basic rather spartanly briar that JavaScript has so this really
+limits you to what you can do out of the box with it. There is no
+equivalent of Ruby's extensive standard library. And let's face it, no
+way we sugar coat it coffee script is Ruby, only Ruby is Ruby. This is
+deep, profound and simple and we have to come to gripts with it. So
+here's a very basic example of what OPAL program looks like. It's
+Ruby. No need to explain what is going on here. This beautiful Ruby
+Code gets compiles to this pretty ugly JavaScript code, don't try to
+read it, it's not worth your while. The important part of this code is
+here, let me zoom this for you. If you make the effort to read it you
+see that although it's a bit ugly it is actually pretty
+readable. Unfortunately I have a ton of ground to cover so I'll be
+skimming over the implementation details just trust me that this code
+is comprehensible. Although initially it doesn't look like this. So
+the magic in OPAL happens in the OPAL compile, you feed it a Ruby
+string and it produces an ugly JavaScript string. But we can pretty
+this up so it looks like a real program right now. And the essence of
+this program is just a small portion of it which is really really easy
+to understand. It is easy to understand because Ruby and JavaScript
+are not a million miles apart and mapping the concepts of Ruby to
+concepts in JavaScript is not the hardest endeavor in the
+world. Usually OPAL maps self to this. It maps Ruby methods Andrew by
+blocks to JS functions. It maps Ruby strings to JS strings, etc.,
+etc.. And if this isn't enough for you, you can always drop down to
+the bare metal and invoke native JavaScript code if you feel the need
+to do so. Perhaps you want to interact with a third party library
+which doesn't have a native OPAL wrapper right now this is super easy
+to do. OPAL have basically acquired the syntax use in the Ruby to
+Shell out to external programs for JavaScript interrupt. In hindsight
+this was a rather bad solution because originally OPAL was envisioned
+as something that would be used only in the browser, now you can use
+OPAL with no GS, IO G S, etc., so this will probably be change in the
+the future, for now it's a reasonable compromise. This is how you can
+use this in practice this is an actual snit et, the imimplementation
+of array length. Simply delegate to the length implementation of the
+backing JavaScript RE, pretty simple, more importantly pretty
+fast. You can do more complex interrupt, you can have multilines of
+JavaScript code, you can interpolate Ruby Code into the string which
+will be evaluated on the JavaScript side and this will work as
+expected. If you want to play more with a particular JavaScript object
+it is a good idea to wrap it in a native OPAL object, which allows you
+to retrieve properties like the members of Ruby ‑‑ like the element of
+Ruby hash or you can invoke metals in a let simple straightforward
+manner on this subject. And in OPAL 0.9 we have a very exciting
+development coming along a brand new JavaScript interrupt, which makes
+it even more simpler to invoke JavaScript methods on Ruby objects. It
+makes it pretty simple to use ‑‑ in method innovations, you can use
+rather some advance things like passing a block in place of JavaScript
+function argument. You can quickly interact with properties and
+indexes. You can quickly invoke JavaScript operators. And even global
+functions are wrapped in a pretty uniform and pretty from ‑‑ Ruby
+API. To top this off you can actually code Ruby Code generated by OPAL
+from JavaScript so if we have this very simple bar method in the full
+class calling kit from JavaScript program is a simple as this. You
+exteniate an object and call the bar method on it. Every Ruby method
+is ‑‑ every Ruby met's name is prefixed with a door sign in the
+JavaScript code. So the question that is really important is not how
+OPAL works because it really works more or less like Ruby. The
+question is: Whether it is any good?  And this boils down to a simpler
+question is the program written in OPAL simpler than the equivalent
+written in JavaScript. Assuming that the complexity of a typical
+JavaScript program looks something like this, what would be the
+complexity of the OPAL program?  Most people believe it would be
+this. The performance would be parabematic, the file size of OPAL
+would be problematic, debugging will be crazy complex. The Ruby
+compatibility would be ‑‑ so, so, and you know you have to deal with
+the issues of the host language itself. And if you compare those it
+seems that you're not actually gaining anything. If the real
+comparison is something like this, probably you should be sticking
+with JavaScript, right. But let me alleviate some of your
+concerns. First of all OPAL is fast, I do not have time for fancy
+benchmarks, trust me it is blazingly fast is some issue with
+performance for instance we cannot map to native JavaScript operator,
+so there is some performance issues there, there is no native
+JavaScript ‑‑ type, but over all the performance differences are
+negligible. The file size, not a concern. So OPAL minute and J G is
+just under 50 kilobyte, you get the power of the core library, a
+portion of the standard library, this is a pretty sweet deal,
+debugging, well, at the very worst case you have to deal with
+JavaScript. You saw that the generated JavaScript code is not the
+uglyist JavaScript code in the world, trust me, I've seen worse
+written by humans. So if you're familiar with JavaScript, most of the
+time you'll be able to do the mental mapping of JavaScript to Ruby
+script in your heads. If you're not familiar with JavaScript we have
+your back, we have source maps, and when you're using the source maps
+you'll be getting Ruby stack traces in your browsers, you'll be able
+to click on the lines of those stack traces and you'll get into the
+Ruby Code straight into your browser. It doesn't get much better than
+this, right. So, sure, there is some overhead to debugging, but it is
+not what most people would expect it to be. Andst as far as
+compatibility goes there has been a tone of efforts to ensure the best
+possible compatibility. Right now OPAL is Ruby 2.0 compatible, it is
+tested against the same Ruby Spec that MRI and JRuby are tested
+against. Let's be honest a lot more tests are failing for OPAL and
+that for MRI and JRuby. But we'll get there eventually. We implement
+most of the core library, which is pretty neat. We haven't implemented
+much of the standard library, but, you know, there is plenty of room
+for contribution from you, right. And there are some notable
+differences that everybody should be aware of so true and false are
+translated to JavaScript Boolean type. All numbers in OPAL get mapped
+to JavaScript floats. Strings are immutable, symbols are
+strings. Etc., etc.. Most of those are pretty small and there aren't a
+huge issue in practice when porting code from Ruby to OPAL, generally
+people have to just remove the usages of my stating string
+operations. And to some extent you can argue then immutable strings
+are actually an improvement. All of those compromises were done in the
+name of performance. Everything could have been wrapped in a more
+Ruby‑friendly way, but this would have come at a terrible performance
+cost. So for performances sake there are some compatibility
+hurdles. But in the end of the day, allow me to speculate that OPAL's
+actual complexity looks something like this. And if you put it in to
+perspective it seems that there is some benefit to using OPAL over
+JavaScript.  I know that my friend Juan is very impressed, his
+suitcase is impressed and hope that some of you would be interested
+enough to explore OPAL further. So let me give you a few pointers for
+your journey towards OPAL mastery. If you want to get sense of the
+power that OPAL gives you in the browser, you check out the OPAL‑irb
+project. It is something like Irb that runs in a browser, a web
+council in a way, pretty sweet. If you're a Rails lover and not a big
+cough free script love just drop this gem into your Rails application
+and you can replace every single usage of coffee script with OPAL and
+it is going to work, trust me about this. It's pretty sweet. It hooks
+into the aside pipeline and does Mac edge. We have a pretty cool
+gem ‑‑ wraps entire set of APIs into a Ruby API and allows you to
+write code like this. Which is allegedly better than JavaScript
+code. And if you still want to use JK ‑‑ you don't have do this, we
+have your back as well. There is an OPAL Jquery gem, this is how using
+Juery looks like, pretty sweet, right. And we have wrappers for react,
+react native and for a ton of other popular JavaScript libraries. And
+because our beloved community leader DHH feels that no Ruby
+implementation is worth his time until it has an active support
+implementation we have this as well. (Laughing) so let me close by
+sharing a few thoughts about the future of the project. Where are we
+heading or at least where should we be heading. So first of all, we
+should implement all the missing things, I'd really love us to get a
+bigger feature parity with MRI and the other popular Ruby
+implementations. And this is going to happen, but we need your
+help. We need much better documentation. Getting started with OPAL is
+kind of hard, mostly because the documentation is pretty scarce. So
+this is one really good way to get involved into the project. There
+are rumors that a book on OPAL is in the works, I really hope that the
+rue mores are true because this will be so, so sweet. But one can only
+hope. We need more OPAL wrappers of popular JavaScript libraries
+because it is easier to use an idiomatic Ruby API than to drop down to
+native JavaScript code. And there is this brand new web assembly
+project which was announced recently. Assembly language for JavaScript
+virtual machines and if we were to eventually target it OPAL and
+JavaScript will be on the very same footing as far as the JavaScript
+virtual machine is concerned.  I don't know if you can comprehend it,
+but this is ground breaking, this means that JavaScript will no longer
+be the dominating language in the web. So I hope this is going to
+happen, but it is at least five years away into the future. And in the
+meantime, just contribute to OPAL in any way that you'd like. There is
+really a ton of work, a ton of simple beginner friendly tasks and a
+ton of challenging tasks, there's something for everyone, you can
+visit the official GitHub organization, pick an issue and start
+hacking, the project is pretty inviting and I think that many of the
+issues that have to be resolved are pretty interesting. And I'm going
+to conclude with basic slide of just a few resources to get you
+started. It was an honor for me to be here, thanks for your attention,
+thanks for having me. (Applause)
+
+
+Okay, we have time for two or three questions, who's got one?  Raise
+it high.
+
+
+Hi, great presentation, is it all right to use gems with OPAL?
+
+
+Can you repeat this louder?
+
+
+Can you use gems with OPAL, Ruby gems?
+
+
+Yes, you can use Ruby gems with OPAL, but the problem is that the Ruby
+gems have code which is compliant with OPAL, and most of the gems
+don't do it so ‑‑ the only way to do it right now is to have
+conditional code in the gem. If you're on OPAL don't do something
+which will break OPAL, so this is totally viable and simple gems will
+run out of the box, they'll just be compile to JavaScript code that
+works, as far as you're not doing something which is not supported on
+OPAL, so this is also pretty sweet.
+
+
+More questions?
+
+
+Thanks a lot, that was great. Which JavaScript standard is OPAL
+targeting now what are the plans to keep up with upcoming standards?
+
+
+So it is targeting JavaScript 3, I think, so the generated code is
+compatible with browsers as old as internet explorer six. Which is a
+feet of its own. And I'm guessing that we won't have to support this
+for the foreseeable future, but this is the current state of
+affairs. The JavaScript code compiled, generated by OPAL will run on
+pretty old browsers.
+
+
+Okay, we have time for one more, maybe ...
+
+
+Hi, thanks for your talk.  I actually heard about an incident this
+year at OPAL ‑‑ at the GitHub Repository, so do you have a code of
+conduct right now?  Or do you develop one?
+
+
+Yes, the project has a code of conduct, the incident is unfortunate,
+but it is behind us.  I do believe that both parties involved share
+some of the blame for how this was handled. Trust me, the project is
+welcoming ‑‑ this was really unfortunate incident.
+
+
+Great, thanks again, Bozhidar Batsov (Applause)

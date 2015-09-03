@@ -1,0 +1,307 @@
+Hope you had a nice break. Okay. Let's get started with our second
+group of talks. Leading off we have Christof, who I met in India who
+gave this talk about Rubyconf India, Christoph is a founder of poor
+view, they do code review. He's also an organizer of Arrgh camp, pie
+rate and also Ruby conference, which should be great, that's beginning
+of October.
+
+
+Yeah, October ‑‑
+
+
+First and second or something.
+
+
+Perfect in Belgium. In Ghent. And Christoph comes to us today from
+Brussels, we were talking about earlier a great protip for tomorrow
+morning, you doctor try this. The advice is the best time to brush
+your teeth is first thing in the morning right after you wake up. And
+the reason for this is because the bacteria, in your mouth, that have
+been growing there over night are really hungry. And if you eat
+breakfast before you brush your teeth then you're sort of feeding them
+and they explode all over the place, they start multiplying, if you
+brush your teeth right after you get up, it's clean and then you can
+have breakfast, we can all try it tomorrow morning (Laughing) thank
+Christoph knowing that we all have clean mouth and clean breath. So,
+without further adieu, Christoph talking about deep dive (Applause).
+
+
+Thanks, Eric for the introduction, hopefully I have a fresh
+breath. So, hi everybody, I'm Christoph, I'm the founder of code
+review, ‑‑ pull review as was said. Also organize Ruby things in
+Belgium, like R camp, ‑‑ so what I propose today is to dive
+together. So because code has to be written, we forget that we read
+far more code than we write. Reading and understanding the code is by
+far the most common development activities. Still, we picture ourself
+while types on the keyboard when if you pose one minute and pay
+attention you don't write code, you're reading it. It could be the one
+you just typed or the one you typed two months ago or a colleague had
+or it's the code of a gem that you need to use. So, yes, we dream of
+us capable of continuous typing (laughing) of when most of the time it
+looks like that. Us looking at code trying to understand it, thinking
+about what we could write, but how much do we read?  So we can, at
+least, state the following, for each line that we have written, it has
+to be read at least once. We can do a quick estimation based on the
+number of changes we did on the code base, so, just take one example
+of mine, it's a project I spent 300 days on it to get about 15,000
+lines.  I did change 600,000 lines, so it means that for every final
+line I changed 43 times more. So ‑‑ and I don't even count all the
+changes that I didn't commit neither the time I spent to understand,
+again, and again the code I've written before. Still it's a good
+estimation of the ratio between writing and reading. And indeed, we
+can accept that bottom line which is 85 percent of the development
+activities consist in reading. And if you discover a new project, it's
+even more, something like 95 percent of your time. So, if you consider
+a work day of 8 hour, you have barely 30 minutes to actually achieve
+something. So, if you want to write something in that time you need be
+quick, you need to find quickly what you need. So, you need to learn
+to dive deep into the project to find quickly the tremendous sure
+you're looking for. And use it in order to fix a bug or implement a
+feature, whatever. So, I like this analogy with scuba diving because
+in scuba diving when you dive on a wreck for instance, you cannot dive
+without any planning, without preparing your dive because it's the
+best way to get lost. To have a problem or even worse, to die. So from
+the easiest to the more complex dive you will prepare what you will
+do. It's the same when you code. Wondering with ‑‑ wandering without
+any goal or any plan is the best way to waste your time. It's the best
+way to not achieve something on day one. You don't need read the whole
+code base in order to achieve something, you can do it step‑by‑step,
+and at the same time write something. Achieve something like fixing a
+bug. Because it's what's really available, not reading just for
+reading the code base. So for me it's really like a journey and it
+needs to be planned. So, what I would like to do, today is really
+present the approach I use each time I need to discover a project to
+dive into it, and it's really about how to discover the project the
+important part you need to read and write some code at the same
+time. So, the plan consists in defining a goal, getting a map, using
+the right equipment and dive, I mean write code and do it again. So
+the first thing you need is really to get a reasonable goal, something
+that motivates you, that drives you. Something that you can plan
+for. That could be fix a bug, implement a feature or even add some
+documentation or just use it. So will illustrate the following with an
+example of mine. Two years ago I was processing stack overflow and I
+found that question about upon your array module. Normally when you
+pass force or ‑‑ to do option proxy the open meter should in your HTT
+proxy environment viable. As I did already use that option before, for
+me I was surprised that it didn't work anymore in Ruby .0. So the
+first thing I tried is to reproduce a problem, so I where a very small
+script that you see here. So very complicated. And I got that error
+tag, it was using the proxy variable environment when it shouldn't use
+it. So for me, fixing that if code was the first goal, I had a goal
+but a goal in itself is not enough. What you need is a map, I mean, to
+know where you need ogo because if you don't have a map you don't know
+how to reach a goal. So it's about of where is the project, where is
+the code, where is the documentation with all the basic information
+about the project, so for instance the read me file that explains how
+to install it, how to use it, write, communicate with other
+contributors and developers, and so on. So in my case this was let
+simple, something where on GitHub the tracker is still on read line
+... this is it. It's great to have a map but you still need to read it
+to understand that map, so you need a Legend, a great one. (laughing)
+so the first you can look for the is contributing guideline, there you
+find plenty of information about how to contribute to the project like
+how to report a bug, how to submit a bug, which code convention you
+need to follow, which test you need to write, is there a CI and so
+on. Another less technical one is the code of conduct it will remind
+you how to behave with others. Both are important, not following them
+is rude. But don't be afraid, if you're not sure you do it correctly
+just ask and people will help you. So, in my case I found quickly the
+contributing guideline and it contains two links one two tracker and
+another to the Wiki of the MRI, so by reading those pages I learned
+how to build a patch, how to use it, how to test it and so on. Then
+the other thing you need to understand is the hierarchy of the
+directories because it's really about where you can find what in the
+code base. Where are the tests, where are the resources, where are the
+documentations and of course, where are the code source. You don't
+need to be exhaustive, just find what you need, if you just look for
+one file just look for that file and you will understand the role of
+the directory where the file is. So for instance many my case ‑‑ do
+you hear me.
+
+
+So in my case I was looking for the file containing the open URI
+module so I just go for it. And then I found where all the other files
+of that module was stored. And also I looked for the documentation to
+check that what is officially expected for that module. So sometime
+it's hard to find the information. Then to to the people that know it
+they will give a quick overview of the project, whale help you and I
+think that's the easiest way to know about the code base. For Open
+Source software you will find them usually on the issue tracker, on
+the IRC or the mailing list. And for a job there are your colleagues
+just ask them during your coffee break or lunch of or send an e‑mail
+to ask. So in the case of MRI, all that information is in the readme
+file. So this probably p apply less for Open Source software, except
+maybe for bigger projects, but for job it's rally common to have a
+development meeting, and it's a great moment to listen and to learn
+how ‑‑ what are the current problems. How people work to kind ‑‑ the
+kind of work flow they follow, to ask questions if you do not
+understand something or to discuss what you can do if you don't have
+yet a goal. I think if you ‑‑ if you are blocked you need to ask
+someone to help you because if you ‑‑ you don't stay blocked the whole
+day you will waste your time, Open Source or not, people are ready to
+help because eventually you will do the same by contributing. So p
+apes you need to realize the importance of all the
+information. Someone has taken time to write them down, so it's nice
+to have the habit of doing so in return. So if you create a new
+project try to write and contribute to read me files and so on. So now
+you know where to go, you know more about the place, it's time to get
+the right equipment to dive into the project. So of course to read and
+edit code you need an editor.  I don't waste your time with that. Or
+maybe you have too much time for that. (Laughing) then you need to
+prepare your environment to check your requirements like do you need a
+database or data storage what are the dependencies. It will give you a
+better idea of the whole architecture of the project. If you have a
+gem file use bundle Viz. It will give you the graph of all the
+dependencies, for instance this is the deopinion densies for getlab,
+to just ‑‑ Git ofLab, this is a part of all the gems that GitLab is
+using. Running the test, I think the best way to check that you have
+all the minimum needed to develop. Also, check if the project user
+particular CI or do they run some tools like row bow cop and of course
+don't forget to sign up to the tracker (robocop) so I found that
+running the application is a great way to have a better feeling about
+the application, what it does. But sometimes it's very complicated to
+set up the whole environment, so more and more project provide virtual
+machine or container ready to run the App. So if there is one, it's
+very convenient, go for it. So in my case it was just ‑‑ it consists
+just into running ‑‑ in running that script. So the idea is that you
+just need to run what you need. You don't need to test every feature
+as possible in the project. So just use what makes sense according to
+your goal. So you have all this information still you ‑‑ we don't have
+dive into the project, so I mean we didn't read anything so, I think
+that's the right time to do I so thanks to all this information you
+know where to look for, but you don't know what to read. So if you
+look at the open‑URI module, which is a small module you can see there
+are a lot of things to read. You have two options, one is to read the
+whole code base, the second one is to just read what you need.  I
+prefer second option. And for that, the first thing you need ask
+yourself is what's your goal. In my case it was to understand where is
+the proxy management implemented?  To understand how does it interact
+with other part of the code. And also by doing so spotting the bug. So
+for me the best way to discover code base, to read it is to get the
+whole graph of the case, so for that I use trace point API, so the
+idea is to track every call that comes from your case and the scope of
+that code. So you can see there on the even line and call. The line
+will give you the scope of your call and the call will give you the
+location of the implementation of the of Mater ‑‑ so just apply that
+on my case and I get a very long list of all the possible codes that
+come from that case. So the first one is simply the call of the open
+meta. Then we can read that there's some part two parse string to make
+it a URI instance, then you have the creation of the URI instance
+itself. Then you have the management of all possible options that you
+can pass to the open metered. And then this is interesting because you
+have the call to open HTTP, we know that we will open an HTTP
+resource.  I know where the look, where to start my reading. Then you
+have several calls not very interesting, about requires, again and
+then we find something very interesting because they are related the
+management of proxy. So in blue you see the creation of the HTTP
+client then you have the test if there's a proxy. So with that have
+the location where to look to understand the different parts without
+opening any file. So I use that sequence, of course, to read my code,
+to follow the execution and thanks to that I can find important line
+where the bug is. So, that line consists in creating the HTTP client
+and normally when you create that instance you can pass an option to
+enable or disable the proxy. And in that case it wasn't disabled
+because by default it's enabled. So by tracing the calls you got a lot
+of information and like the location of the different calls. And you
+can, of course, use this information to search for some specific
+information. So you can use doctor good night for that. Like to look
+for ‑‑ Grep for that, like all the codes of Http or the definition of
+the meta. Or the definition of the con instructor of HTTP class. And
+so on. So it doesn't apply in that case, but if you have a gem file
+it's very easy to open the source of a particular gem by using a
+bundle open. So it's a very quick way to open the source of a gem. If
+you don't have a specific case I found what trace is really a nice
+context to start from. So just take get the call graph from a
+particular test. It will give you context to understand what you're
+reading. So it's a test of Gitlab, I just put my tracing of call graph
+on a particular test, and then I will get all those code graph and I
+can read the code in the context of this particular test and
+understand what I'm reading. So, I've read a lot, now it's time to
+edit the code and fix the bug. So the bug is in one like, the fix is
+in one line, and again I think I've read one hundred lines which is
+less than the whole module, but, still, it's a lot. So you have done
+everything, it's ‑‑ report what you did, support the bug, submit the
+patch I's about communicating what you plan for and what you have
+done. So ... in my case, I get that ‑‑ my first bug report in MRI, it
+took me two hours to learn how to contribute to MRI, to learn about
+the structure of the project, to find a bug, to fix it. Even if I
+didn't know about the MRI code base before and report a bug, submit
+the patch and answer the question so the problem was simple in a way,
+it helps me to discover the MRI code base and project and, in fact,
+it's an approach I use every time I need to dive into a project.  I
+found it very useful whatever language it is, using that approach it
+is for me, an efficient way to do. So, again, if you are stuck, just
+ask someone. Don't freeze, interact. So when you do it once, you can
+do it twice and I think it's a good moment to discuss what is a good
+goal to drive you to discover a code base. So the first question is
+how long does it take?  A good period is about a half a day. So it
+keeps you motivated because if it's too long it's difficult to stay
+motivated. If you don't know what to do you can just check the
+tracker, usually they list some bugs, some features you can do, also
+into the contributor guideline, usually contributors can list the kind
+of contribution you can do. You can run the static analysis tool, like
+relook up and check if there are any issues that you can check. It's a
+grate to navigate through the code vase, by doing something. So you
+are active, when you are active you learn more about a code base. So
+this is it, there are plenty of options to discover a code base, just
+keep it simple. You know how to plan it, you're free to discover what
+you want and just by doing and by writing code. And by respecting your
+limits. Again, if you Blog, just ask, people are always ready to help
+you. So as a recap, if you want to dive, just get a good goal,
+something that motivates you, like fixing a bug. Get a map in order to
+know where you can find the things you need, get the right equipment
+so you can ‑‑ efficiently read your code base, to efficiently write
+what you need to write, and just do it again and explain your
+reason. Thanks a lot for your attention. (Applause)
+
+
+Okay, questions?  Anyone?  No questions?  There is a question. There
+you go.
+
+
+Hi, I was wondering, you have this call graph technique, which I find
+very interesting, but how do you deal with understanding what these
+calls do when you haven't read the code yet ‑‑
+
+
+Excuse me ‑‑ how do you deal with understanding the call graph when
+you haven't actually started reading the code yet. How does that work?
+
+
+That's why it's important to have a context. Because you have a
+context specific use case or test you know what the code should
+do. And you can then infer things by reading the sequence of
+calls. When you start to read without any clue what it's about you
+need to read a lot before to figure out what is exactly about. So, I
+think the first starting point, a very important starting point is to
+have a clear context, a functionality, something that the code
+does. Of
+
+
+Does that answer your question?  Good. Someone else?
+
+
+Hi, this is the second time I've heard a metaphor about diving and the
+first time was a writer of children's fiction explaining how he came
+up with plots in his story. And the types of challenges he had. How
+did you come up with this metaphor?
+
+
+So I just started a few months ago to do scuba diving and I like when
+I explain something technical to have something concrete I can relate
+to to have a story. And by learning how to dive correctly I found
+there were a lot of parallels between that practice and by the fact to
+dive into a code base. And diving is a lot of about process. To create
+habit and discipline and to ‑‑ so you don't have to wonder what you
+need to do in order to correctly do the thing, test the thing, that's
+why preparation is important, that's why to have that process is
+important. And I think it's not because we are smart that we can not
+follow some good practices. I understood, I realized that I used some
+processes to read code base so I frame it ‑‑ I didn't really change
+the thing I just put the process I used into the right case, the right
+box and it fit quite well so, for me it was a great way to present it.
+I hope you enjoy it. (Chuckles) thanks.
+
+
+One more quick question: Only very long questions?  Okay, then, Eric?
+(Applause)

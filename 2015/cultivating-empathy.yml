@@ -1,0 +1,574 @@
+Next we have a dynamic due owe. We talk a lot about pair programming,
+this will be a pair speaking it's on a topic on cull straiting
+empathy, a ‑‑ cultivating empathy. And Dajanna one of the original
+organizers of eurucamp as well ((Applause))
+
+
+I told you we could just stand up here and you could just say squid
+over and over and they would still love you. It's true. Good afternoon
+in thank you for being with us today. Before Diane and I get started
+we want to thank the amazing grouch that brought this year's eurucamp
+together and brought us all here together this weekend ‑‑ we really
+appreciate everything you've done this has been a fee nominal
+event. Thank you. (Applause)
+
+
+So tonight we want to talk to you about cultivating empathy about
+building bridges like the bridge you can see over here because as
+Leslie as well as me though separately but we had the same
+experience ‑‑ experiences unfortunately in companies and communities
+where empathy was not a high priority. And that usually leads to miss
+communication, holding grudges, and in the worst place even to
+contributors burning out and just leaving the whole project.
+
+
+So we're hope that our remarks here today serve as useful tools for
+everyone in the audience to understand the value of empathy, to
+cultivate it within themselves and organizations with the final goal
+to being making our projects, companies and ourselves better and
+stronger.
+
+
+Yes. That's us. ‑‑
+
+
+Oh, it's ‑‑ oh, no let's reopen it. No worries, we can deal with that.
+
+
+I can sing.
+
+
+Dance your flame please.
+
+
+Of the gray fortress waterfall. (Laughing) we're on again Who! Of
+(Applause).  I love her exactly for that. So this wonderful human
+being is Leslie Hawthorn you saw her yesterday in another talk. She
+has been doing Open Source ‑‑ working in the Open Source community for
+over decade, you don't see it but yeah. And in her past projects where
+amongst others the Google Summer of Code and she was the creator of
+Google code‑in, right now she's living a happy life as aen expat in
+Amsterdam, of course she loves Berlin even better.
+
+
+That's completely true and I hope to be moving join all of you very
+soon. Obvious gliffen the round of applause Diana needs no
+introduction whatsoever but to recap she's a past organizer for
+eurucamp, a past organizer of the Rails Girls per Lynn workshop, and
+she's also a member of the board of Ruby Berlin so this year for the
+conference she decided to take a break and to "just" give a
+talk. Which is probably just a little bit scarier.
+
+
+Not at all. No not at all.
+
+
+So why empathy matters ... first of all it is important that we
+actually definem pathy. Empathy is the process of actually being able
+to feel internally what another person is feeling. And this is just
+distinguish empathy from sympathy whereas sympathy is the able to feel
+something on another person's behalf like I regret that your laptop
+broke. But it's not the same as feeling that same moment of terror
+when you realize that the keynote as just decided to bar of while
+giving the closing talk of the conference. Empathy is vital to us
+because it help us to be much more effective in everything we
+do. Empathy helps to build better products because we can understand
+our user's needs and they will do with software that we may have
+created for ourselves. It helps us to work for effectively in our
+teams because it helps us to understand everyone's motivations and
+what they need to get out of our interactions in order to be
+successful. And basically everything is a question of empathizing
+effectively because it is through empathy that we are able to create
+harmony. Yes, so you're feeling into the other person, but it's also
+about you too, right. You have to know your feelings, how do you react
+in different situations, and how do you understand and act differently
+while you are amongst the peers. You probably react differently here
+at this conference then you would do ‑‑ or I would did at a board
+meeting or talking to a customer, right. So empathy helps you to
+enlighten yourself and to learn natural self interest. And I think
+that the other important point that we'd also like to make too that
+we're going to talk a lot in this talk about the value of exercising
+empathy in terms of how it's received by other people. But it's also
+very much about you, the individual. By practicing empathy you're
+going to be a better negotiator, you're going to be able to get things
+done more effectively because people like work with people who know
+have their best interest at heart, much more than they like to work
+with people who maybe not so much with that. So getting started in our
+empathy process ‑‑ empathy is actually a choice. And the two studies
+that I'll reference on this slide are document in the a New York times
+article from July 10th 2015 called believe it or not "empathy is
+actual lay choice" so it's very easy to find. So two of the studies
+that stood out in this article to me was one, individuals will
+frequently chose to avoid situations in which they think they they
+will be forced to have an 'em pathetic reaction.  ‑‑ empathy
+reaction. So choosing not to visit a country as a tourist where you
+know you will encounter high rates of poverty because this will cause
+you to feel bad and uncomfortable. So that's a little bit of a bummer,
+but, again it demonstrates to us that empathy is a choice. It is
+something that we can chose to do. And when we understand that empathy
+is a choice and the value of it we're much more likely therefore to
+exercise empathy. Another study found that folks who were primed with
+the idea that empathy was a choice, that it was something that they
+could cultivate, that it was accessible to them were much more
+effectively able to feel empathy and often sought out the opportunity
+to do so. In the specific case the researchers were determining if
+people who were taught that empathy was a learned skill would be more
+willing to think about and empathize with the experience of folks who
+were raised with others than their own. Empathy is a choice and it is
+your choice. And hopefully today we will convince you that is a choice
+that you want the make. Yeah. You were talking about empathy as a
+choice, so as surprising as it is it is nothing that you're born
+with. You're born with maybe a bit of empathy but it comes through
+socialization. Through your parents, through interacting with other
+people. And for that, you have to be reflective. How do ‑‑ how could I
+be reflective what is that?  It's actually thinking about how you
+react ‑‑ what I sad earlier how do I react. So take your time every
+day and take care of yourself of your mental health of your health
+itself and for being a better empathizer to increase your empathy take
+the time write down different situations that you were in and write
+down how did I react there?  What did I feel?  How did the other
+person react?  What did I do?  And over time of days, weeks, months
+you will find a certain pattern of yourself who you are and how you
+react in certain situations, you can improve yourself when you are in
+other situations that is similar to one that you were two weeks before
+and you wrote down I should have done this and that differently.  I
+should have done this and that like this. Then you can just think, oh,
+I had this two weeks ago and now I try something different. And let's
+see how the outcome is then there. Right. And ask questions. Learn how
+other people see things. Widen, bauden your own world, your own bubble
+that you're in.  ‑‑ broaden your own world, your own bubble that
+you're in. Empathy is often built out through adversity, if you're
+trying very hard to learn, to understand why something is very hard to
+learn that seems to be like this for somebody else. Right.  I have
+a ‑‑ I have a little bit of an example last year we had a speaker here
+Austin, he is blind since birth ‑‑ and he found this App for his
+iPhone that can show him the colors, or that can tell him the colors
+of things, he was so excited about it. He downloaded the App, opened
+the App and he tried it out, and all it says was black. Black, black,
+and he was like that cannot be right, something is ‑‑ something is not
+right. And then he was trying to step out of the box and think out of
+his bubble and think how seeing people might solve this problem. And
+at one point he thought, oh, wait, colors maybe only seen with
+light. So he went and switched on the light and used the App and
+suddenly it was yellow, purple, pink, blue. There we go. Step out of
+your comfort zone, step out of your box, out of your bubble, however
+you want to say to that and there you go you will eventually find a
+different answer. So getting into our skills building portion of this
+presentation, one of the ways that you can begin to cultivate empathy
+is through the practice of active listening. So active listening is
+the process of engaging in dialogue with another individual or with a
+group and when someone has spoken to take the opportunity before
+replying to first mirror what they have intake to them so summarize it
+in your own words and then add your commentary at the end. So for
+example wow! I'm really nervous. I'm not great at public speaking so
+I'm really excited that we're giving the closing talk at eurucamp
+today but I'm a little freaked out.
+
+
+Well Leslie I can imagine that you're really really excited about
+being here and that you're a bit nervous about being here but ‑‑ about
+giving the talk, I'm a bit ... but that's no problem at all, I know
+that you're great, I saw a lot of talks and, well, if you're nervous
+now that means that you're prepared, you're thinking everything
+through, so you will be awesome.
+
+
+Thank you for this wonderful demo. So the practice of active listening
+is a key component in non‑violent communication. And the reason for
+the creation of the practice of non‑violent communication is to assist
+us to overcome all the way in which we are socialized or cull hurlly
+taught to just step over compassion for other people. (Culturally) it
+is a natural human tendency to practice selective hearing, to only
+hear what we want to hear or to quote one of my favorite movies, to
+just stand there not listening waiting for our turn to talk. So
+instead of doing that, if we actually slow ourselves down and take the
+time to mirror what the other person has said to us, we not only are
+able to absorb what they're saying to internalize it, to feel it,
+we're also giving them the opportunity to correct us, maybe we didn't
+really understand what they had to say. And then they can give us the
+opportunity to come to better understanding by saying, actually that's
+not what I meant at all here is what I meant. Skill building exercise
+number two because this one's Funsie's read fiction. This is one of my
+favorite exercises to do regardless of empathy. So a recent journal
+published in the Plas journal, I should know how to expand that
+acronym, it's in the footnotes, it's a journal of open science. A
+bunch of researchers discovered the act of reading fiction helps to
+create empathy within the reader. And it is through process called
+emotional transportation. The idea that you are able to put yourself
+into the position of the characters within the story. To feel what it
+is of that they feel through the process of reading and imagining the
+story taking place. And for those of you who may feel like it's a
+little weird to go through thought exercises thinking like, what would
+Diana feel in this situation?  How would she react?  Admittedly it's a
+little weird she's my friend, I don't want to be like hey, can I get
+into your brain it's nice in going through the process of emotion mall
+transportation is the first step of doing thought exercises. It's a
+comfortable, familiar way to exercise empathy with the characters from
+the page and we can apply that to the process of real life.
+
+
+I'm a bit curious right now how many of you do read fiction?  All
+right, keep your hands up, how many of you have been very, very sad
+when the bookend?  All right, almost all the hands stayed up. Yeah,
+I've got the same because you're absorbed in a new world with new
+characters with new people with new, I don't know aliens whatever
+unicorns, love it. And then suddenly the world is just poof away.
+
+
+And it's that sad thans tells us that we have experienced the act of
+emotional transportation otherwise it would not be impactful to us
+emotionally that the story has concluded.
+
+
+Speaking of curious embrace your inner child. Be curious. Ask
+questions. By asking questions that also implies a void
+assumptions. Again, a talk from last year.  I don't remember
+everything off the top, but I remember a especially one slide when I
+was ‑‑ I had to restrain myself not to jump up and say hell yeah!
+Because it said assumptions are evil.
+
+
+Thank you Laura.
+
+
+Thank you Laura. Laura is over there, thank you Laura for
+that. (Applause) and I well give you a little example of that. For
+example I'm standing here minding my own business and I can see a
+person over there or over there, I don't know doesn't matter. Looking
+like this all the time ... in my direction ... and I'm confused
+because the person looks at me like ‑‑ I'm getting nervous and I now
+can assume oh my God I did something wrong maybe I have the wrong
+clothes maybe the person doesn't like black, I don't know. And I could
+go go in my head and I can build a whole castle of assumptions and
+they will build and build and build, what I also could do is just like
+walking over, sorry.  I reask nice that you're looking a bit worried
+or angry at me, did I do something wrong or am I under the wrong
+impression?  I'm a bit confused right now.
+
+
+Oh, my God, no, I'm so soreiry, I was deep in thought I have ‑‑ I'm so
+sorry I'm thought with a problem, I didn't really look it was just
+that my head was in this direction. Right. Ask questions. Questions
+are our friends. And our best friends ever are open questions. Whom of
+you do know the difference between open and closed questions?
+Good. Very good. For those who didn't raise their arm open questions
+are "W" questions, open questions are questions that open the
+people. Where, when, what, why. Where do you go to holiday?  Oh the
+bahamas ‑‑ I read this magazine what will you do there?  Oh I wasn't
+thinking blah, blah, blah blah whether so these are the open questions
+.  then there are the closed questions when you near a hurry. Do you
+want pizza for dinner ?  yes. Do you like spinach?  No ‑‑ so open
+questions are mainly questions that can be answered with yes, no or
+Aaaaaee. So closed questions are this. And so just to recap open
+questions are our friends.
+
+
+So now we're going to shift into talking more about how we can have
+effective organizations that help us to cultivate empathy. Obviously
+organizations are made up of individuals, but in the way we create the
+culture of our organizations, our teams and our projects, we can
+encourage the cultivation of empathy. So I think first and foremost
+very important is to be explicit about our values and to be inclusive
+in creating those values.  I had another example but I through it away
+moodily when I saw the signs on the bathroom doors here which are so
+cool I think I might steel one and send it to a friend of mine I know
+needs it. So the signs that say if you are concerned about the gender
+of a person who is entering the bathroom, take these steps, don't
+worry about it, they know better than you. That is phenomenal, it is
+explicit, trance phobia is not okay here and it is inclusive. Trans
+phobia is not okay here, that is phenomenal. And it's extremely
+important to be explicit about your values because otherwise people
+make assumptions about what is important to the organization, to the
+group, to the team. You need to be very clear what your values
+are. And I know this is going to sound corny because let's Faye it
+most of the time mission statements are crap (Let's face it most time
+mission statements are crap) this is not a mission statement saying we
+will make the best chocolate chip cookies by using the only freshest
+ingreedn'ts .  that means nothing. A good and useful example if folks
+look at thought work's web site they have a page where they talk about
+the pillars of their company, the things that the company values one
+of these is social justice, they talk about how one of the objectives
+of their organization, the pillars around which they build their
+company will be to do work that creates more justice in the world for
+those who are underrepresented or those who have fewer resources,
+those who have ‑‑ are less able to help themselves. And by making this
+an explicit statement what they're doing is they're not only telling
+the entire world, this is what is important to us, they're also giving
+their employees, right, the knowledge that this is one of the way in
+which we will conduct ourself. This is how we will conduct business,
+this is an expectation for each of us as we go throughout our daily
+affairs at work that we are to do work that is trans formative in the
+world and makes the world a better place for
+everyone. (Transformative) and another point to that is can be seen
+especially in the tech seen is globalization. Globalization means that
+people come into a company from very, very different backgrounds. They
+grew up in very different countries under very different political
+backgrounds and stuff like this and things that are totally normal for
+you in your daily life or for you or for you might not be normal for
+the new person that comes into your company, into your team, into your
+project. And this comes to assumptions.
+
+
+Right?
+
+
+Absolutely another thing that is useful to understand as well when
+creating organization, creating culture for those organizations, this
+is where leaders come in and play a very important ‑‑ an impactful
+role, leading by example. One great instance of this is my friend era
+joy backer who has been Bloging frequently about diversity in the
+technology industry. She wrote an article called the other side of
+diversity, about her consideration of ending her employment with
+Google, which is where I met her. And she realized that she needed to
+move on, but she wanted to go to a workplace where the work she did
+mattered and she knew the people that she worked with valued the same
+things that she did. And she talked about reading Twitter and seeing
+all of the various news about the protests going on in Ferguson,
+Missouri after the murder of a young blackman by officers. And she
+noted a deafening silence from most of the people that she knew who
+work in the the technology industry. She noticed a deafening silence
+from leaders in the technology industry. No one seemed to care, this
+was not their problem, this took place far away by people of a
+different socioeconomic class and a different race. Not my issue, I
+don't care. But by contrast the CEO of Slack a brand new "unicorn"
+start up. With a valuation of over billion dollars ‑‑ you all don't
+have "B" ‑‑ thank you. Valued at over billion dollars was tweeting his
+concern for the protesters and that he hoped that they would be safe
+in their pursuit of social justice. And by reading this she realized
+that this was the company that she wanted to work for. That this was
+the place that she should bring her talents to bear she's now one of
+their release engineers, having worked becider capabilities any
+company is very lucky to have her. Be explicit about your value,
+inclusive and make sure everyone is on the same page about what is
+important for all of you to be successful. Oh, my God we have hippies.
+
+
+They're cute (Hppos)
+
+
+So Hippos are cute but these ones are grumpy they are letting you know
+to discourage Hipponig ‑‑ highest paid person's opinion is the only
+one that matters. (Laughing) yes, so only the one on the level that
+begins with a C matters. C E O, C T O, C‑whatever so make sure that
+every voice is heard in your company, in your project, in wherever you
+are, wherever you gather people that have to decide something. I tell
+you a little story because that makes it more clear. In any day‑to‑day
+life I organize IT conferences.  I organize them with a team that is
+very good, like when we communicate it's like a circle of
+communication so we're circling around all the ideas that we have and
+we are playing with them, we do brainstorming sessions and stuff like
+that. And for one conference that came a new person in and this new
+person got grumpier and grumpier all the time with every e‑mail and I
+was a little bit like what's going on there. And at one point I was, I
+don't understand your e‑mails anymore, they don't seem very
+constructive, what's going on there?  And this person was just like,
+you're not a good manager. You cannot even make simple decisions. You
+cannot ‑‑ you cannot decide if we want this speaker or not why do we
+always ‑‑ why do you always have to ask us?  I was like, Who that is
+interesting. Then I thought okay this person came from a big company
+where the managers said you have do this, you have to did this, you
+have do this, you have to be finished with this by the end of the week
+and stuff like this. Right. And I said, okay, we're working here
+differently, we're working as a team, yes, I am the manager of this
+project so I have to make sure that everyone is on track and that we
+are at the point where we have to be finished that we are finished and
+everything is said, but on the road everybody has a voice.  I don't
+know everything, I'm not going to all the conferences in the world.  I
+don't know every speaker in the world. But you might know him, or you
+might know him.  ‑‑ at one point I read an abstract that was so
+perfect and I thought oh, my God, I want to have this person at a
+conference because this just looks perfect for this or that or
+that. And then I brought this in this abstract in and say look at this
+abstract it's amazing it would fit there and then there were three
+voices, three that said nope, nope, nope. You know what they saw this
+speaker at another conference, actually at two other conferences. He
+was mean, he was racists, and he was very very not nice. So I said, oh
+my God I'm so happy that I asked you. We will not have this speaker at
+our conferences, definitely not. So if you are the I pippo, if you
+are ‑‑ Hippo, if you are the C level, make sure to be inclusive. To
+let everybody have a word. At the end it is your decision, of course,
+but you don't know everything, I know ‑‑ sometimes we think ‑‑ we tend
+to think that we know everything, but, to be honest, no we don't. And
+that's why asking questions and talking to people is very important.
+
+
+So, again important for all individuals within an organization, but a
+cultural value to promote, do not flip the Bozo bit. For people who
+are not familiar with the phrase don't flip the Bozo bit, this is
+actually from a book written in 1995 by a gentleman named Jim McCarthy
+called dynamics of software development. The idea of flipping the Bozo
+bit is that once someone says something or does something that you
+think is stupid every statement that that person makes from then on is
+wrong. Everything they say is put on/ignore and you have no value to
+provide to me, to the company, I just don't have to listen to a word
+you say. Mind just one time. One time they did wrong. So flipping the
+Bozo bit is not useful for a wide variety of reasons, but let's start
+with the basics, if there is someone in your organization and you have
+decided they're never going to say anything useful you have also
+decided they're never going to be successful. At that point you bet
+eroff not having them there, they should go someplace where they can
+be successful and contribute to the success of the organization and
+you can have another human being there doing work that you will
+actually appreciate.  I suggest that the problem with you, mind, not
+with this individual, in this scenario. There's also the point ‑‑ it's
+silly, right this is ridiculous, we're all human beings, we all make
+mistakes, there is no reason to decide that one silly mistake defines
+a person forever, right. And if you make the decision to flip the Bozo
+bit you are cutting yourself off from the opportunity to ever learn
+something from that person again. Right. That is not wise. And
+finally, organizations where this is common practice are encouraging a
+lack of innovation and stagnation and a will be of creativity. Because
+if people are afraid that if they say the wrong thing that they will
+be judged, that they will no longer be respected, what will they do?
+They will close to say something. They will chose to not
+contribute.  ‑‑ they will chose to say nothing, chose not to
+contribute, they will chose to not engage because they are afraid.
+
+
+So being inclusive also means make a truly okay to fail. At the end,
+yes, we are all human. Humans make mistakes. Surprise. And through
+mistakes, mistakes are actually good because through mistakes we
+learn. We learn that something is not good. It's not good to leave
+your trash ton floor because another person might trip. So you can
+actually rewind what you did and do something else instead. And also
+do not oh press people for making mistakes. It happens all the
+time. And when you find out that a person made a mistake or the person
+comes to you and says, I'm sorry, I made a mistake, talk to them
+immediately because otherwise it will probably ‑‑ it's like the
+assumption, the assumption thing that goes in your head and it's
+building up, building up, that is the same with problems when you have
+a problem and you're not talking about Itaú BBA will probably grow
+bigger and bigger and bigger. And at one point this whole Vulcon of
+problem and you will explode and you will sometimes say things that
+are not nice, that are not inclusive and might burn the brings that we
+are trying to build up.
+
+
+So, my friends our talk is at an end to just quickly recap what we
+discussed today. Empathy is a choice and a learnable skill. And we can
+cultivate it through active listening, reading fiction, how's that for
+homework, something you want to do any way. Getting to know yourself
+and being more self aware, practicing curiosity, and avoiding
+assumptions. And within our organizations we can be explicit and
+inclusive in our value systems, avoid Hippoing they belong in the wile
+not the office not flipping the Bozo bit and ensure that it is truly
+okay to fail.
+
+
+And to quote or to conclude our talk with a quote from Romey always be
+kind for everyone is fighting a hard battle that you will not see
+(Rumi) thank you very much. (Applause)
+
+
+We think you all are lovely too.
+
+
+What a fitting closing talk to this conference, that was amazing. And
+it really shows that of a very innovative format as well, the whole is
+greater than the sum of the parts, two speakers together are better
+than individual (Oooohh) so yeah we can take a few questions, if there
+any.
+
+
+I don't know, is there a girl equivalent to Bromance ‑‑ sorry, we have
+the questions. That's us. Any way, question.
+
+
+Not really a question but I'd like to add to that because I absolutely
+agree with what you have said. Thank you for everything you've
+said. But whether you follow this advice or not may well decide about
+the future of your project or company.  I spent a couple of months in
+a company where the C‑person did quite the opposite. And bullied
+people never fore gave or forgot the slightest mistake and a lot of
+really good knowledgeable people left. Left the company.
+
+
+Yes. That's what happens. That's what hatches people are leaving
+unhealthy environments.
+
+
+I've actually talked on this topic a few times ‑‑ oh, it's for
+video.  ‑‑ I've actually talked on this topic a few times so what can
+you do to change an organization where people are bullying or Hippoing
+or generally not being 'em pathetic and I have wracked my brain for
+the last year and the answer is always the same. Prepare your CV and
+tell your friends that you're leaving.
+
+
+Questions? ‑‑ there's also ice cream ‑‑ oh, no we're out of ice cream.
+
+
+What do you think, for you personally, has been the most challenging
+or exciting thing that you have shared with us here?
+
+
+Oh, wow! Okay, I have something about the learning to be empathy
+thing, it's a process. Do not expect you to wake up tomorrow like ‑‑
+today I will be 'em 'em pa thinkic. We are all ‑‑ Empathetic. We're
+all human, we all have bad days. At some point, I tried so hard and so
+hard and at one point I just flipped out because somebody is pushing
+my button and I'm just like oh, my God I told you this like ten times!
+Probably not the best answer.
+
+
+I think for me the most profound thing I have learned is the process
+of active listening because I speak really really fast.  I have a
+tendency to interrupt, which is not awesome, and I'm constantly
+working on it. And I also think I know what people are talking about
+because I'm super smart, and the answer to that question is no, no,
+no, no. So actually getting trained in active listening and being able
+to go through that process ‑‑ because first it sounds silly, yeah,
+yeah, you're listening, why are you summarizing stuff, this is
+annoying, but realizing how much closer it brings you to someone
+because human communication is flawed and difficult and we think it's
+easy because we can talk so ... clearly communication is easy, there
+are words coming out of my mouth right now. And it's not, right. And
+active listening teaches us that it's not easy and that it is a skill
+that we acquire and something that we have to work on every day to be
+effective.
+
+
+If you never practice it or the first few times that you will practice
+Itaú BBA will feel totally silly.
+
+
+You will feel like an idiot, and it's okay, just push through. It will
+all get better.
+
+
+More?  ...
+
+
+Anyone else?
+
+
+I'm just really interested because I hear these concepts in Buddhism a
+lot as well ‑‑ ...
+
+
+Oh, yeah ‑‑
+
+
+Is that an area that you look for inspiration or what are the main or
+other areas that you look at.
+
+
+I thought this was about our religious failuation I was about to say
+... ‑‑ affiliation ‑‑ dirt worshiping tree hugging pagan. So let's
+see, I take inspiration from literature written ‑‑ from folks in
+various walks of faith.  I read a lot of psychology journals, I read a
+lot of fiction and I don't know, I think I just have learned partially
+to be a more 'em pathetic person because sometimes things were really
+tough for me, when itches younger I was bullied in school, it taught
+me to not want anyone to feel as bad as I feel right now. It helped me
+to be a more 'em pathetic person, to value bringing joy and love to
+someone's life instead of pain and not ever wanting to be the person
+who was the source of pain for another person because I knew how bad
+it feels myself.
+
+
+What she said.
+
+
+We were separated at birth, don't tell anyone. Okay, thank you. Thank
+you very much (Applause)

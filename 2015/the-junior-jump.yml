@@ -1,0 +1,328 @@
+So all silliness aside, next talk by Rebecca, she's going to tell us
+how to better on board new engineers, how to craft better mentorship
+programs for that. She recently joined the Jango girls team, what
+better way to board new engineers. She is part of the kick starter
+team and yeah ‑‑ I'll hand it over to you right awhat you go
+(Applause)
+
+
+Hi. I'm Rebecca and this is the injuryon jump and we're going to talk
+about mentoring junior engineering talent. And can we start by raising
+a couple of hands how many of you all wrote Ruby at your first job? ‑‑
+cool, quite a few people.
+
+
+As a developer. Absolutely your first programming job. And how many of
+you have interviewed someone for what would become their first
+technical job?  Cool. Is anybody looking for for their first
+programming job right now?  Awesome would you have like a ‑‑ we have a
+couple of hands, so you all find those people. But, this conversation
+is particularly relevant for us to have as Rubyists because over the
+past several years we've become the welcome gait to programming
+community for a lot of people, including myself. And the Ruby
+community is really good at getting people excited about
+programming. We have rails Girls and try Ruby and all of these
+resources that have done what is really an unprecedented job of
+convincing people who never thought writing code could be for them,
+that they should give it a shot. And that's a lot of responsibility
+for us because not only are we training the engineers that we have to
+work with, but it's very likely that we're on boarding engineers who
+will probably train future engineers. And if you didn't raise your
+hand at the beginning of the talk. These are a few of the reasons your
+team might consider investing in engineers at the very beginning of
+their career. It can be really scary, but really rewarding. We get
+excited about the 20 percent of the work that's so boring that the
+rest of the team doesn't really want to do it. This is true. And it's
+because we're smart ambition people who like to be able to do things
+on our own. And when you're get into a large code base for the first
+time, that's not necessarily a lot of things, and that's in the
+necessarily the stuff that people with even three to five years
+experience find even fun. We're a little bit easier to find. This is
+true, particularly for diverse engineers. Diverse engineers can be
+really difficult to hire laterally. If you're looking to diversify
+your engineering leadership, you might find the best way to do that is
+hiring a diverse person and growing them into the engineering leader
+that you need over several years. And teaching grows both teachers and
+learners, the best learns ask mart questions and and have the team
+reconsider old opinion and try new things. However, June your Dev is
+not a Chia pet, you have to help them grow. I want to talk
+specifically about preparing to bring a June juror developer on to
+your team because I started thinking about this talk about a year ago
+when I was interviewing for my first tech job, everyone was asking me
+the same question, which was what kind of resources do you need to
+succeed here?  And that question is really scary. Don't ask it. What
+you're basically saying to the candidate is we think you're super cool
+and all, but the work we do here is really hard, how are you going to
+pull this off?  Nobody can answer that not at their first job. You're
+the person who has experience coding in a production environment. You
+know what kind of resources are practical for your company. When you
+ask candidates this question you're kind of asking them to have
+psychic abilities. They don't have access to that information. What
+they do have access to is the self awareness of how they learn
+best. And that's totally a valid question to ask. Because when you're
+hiring at the junior level you're not just hiring for coding ability,
+you're hiring for how enjoyable that person will be to teach. It's
+really hard when you're first starting out to know what resources are
+appropriate to ask for. These are some things that I came up with in
+my own experience in some of the interviews I did while preparing for
+this talk. Books, books can be great. Buying a Jr. developer a book ‑‑
+conferences send your Jr. developers here put them in a community that
+makes them feel really glad that they made this professional
+choice. Meet ups are great as well. And if you are perhaps in the
+position where you have a really great space and a very senior team
+hosting meet ups can surround your junior engineers with a little bit
+of a peer group they might not be getting on the day‑to‑day. Face
+time, which can often be pairing if you have a pairing culture. I was
+lucky enough to join my team at a time when we were just barely small
+enough that I got to set aside 30 minutes with every single person on
+my team for them to just talk about whatever they thought it was
+important for me to know. And you learn a lot about the values of your
+team members in conversations like that. You can also ask to pair and
+you can also make yourself available to pair. And explicit time to
+learn, I was a bartender before itches a program in Manhattan at a
+very, very busy bar. And so if you weren't physically selling a drink
+you weren't doing your job and you weren't making any money. It was ‑‑
+it took me like quite a while to figure out that learning was part of
+my job now.  I got really into design patterns. When I'd been working
+for like two or three months and I Satoshi down with my manager and
+was like is it okay if I take like, an hour a week to just read about
+the stuff that I really like?  And he actually laughed in my face and
+told me to take an hour a day instead. And the last things is
+transcripts.  I was really, really lucky to come on to a team that did
+transcriptions and they weren't there for me, they were there for
+someone else but they're extraordinarily useful. When you don't have a
+lot of context you can really only listen to your iOS engineer talking
+about functional swift for so long before it starts to go over your
+head a little bit but you can learn so much by going back and looking
+at documents like that. before you're hiring a junior engineer you
+need to get your documentation game on point. Ask the guy who wrote it
+is not on point. You should generate a lot of paper when preparing for
+new engineers and then after they get a little bit of experience they
+should generate that paper. This is important for not only all the
+very good reasons that having well documented code is important for
+everyone, but social reasons as well. When you're transitioning into a
+production environment written documentation gives you something to do
+while you're waiting to be told what to do. And it gives you hope that
+the answer is somewhere out there. Good documentation allows your
+junior developer to become more self sufficient and less reliant on
+the mentorship of more senior members of your team. The second part of
+preparing for a new engineer might be the most technically difficult
+and that's planning an appropriate first project. Have you all ever
+heard of a round Tuit as when to when are you going to document that
+process?  I'll get around to it. It's really cheesy but my high school
+English teacher had one of these on her wall.  I think it's helpful
+when it comes to thinking about how to assign work to new
+engineers. Assuming you have the resource to mentor the new engineer
+for the first 30 days, the first project shouldn't necessarily be the
+easiest work. You're assigning work to a pair, a pair which hopefully
+includes one of your more seen your engineers, that senior engineer is
+a around to it. Give them the work that you meant to give to them but
+isn't mission critical that it has to be done on really quick turn
+around. What you're trying to do is balance exciting work that has to
+be done with supervision that makes you excited to show up every day
+and just boring stuff that fosters independence. Don't feel guilty
+about assigne signing boring stuff as long as it's not the only thing
+your junior is doing. Not only do you get to out source the work that
+doesn't thrill you, even if it is objectively really dull,
+productivity and the ability to contribute independently is incredibly
+empowering. It's particularly useful if these kind of tasks involve
+interacting with broad section of your product because then they can
+serve provide overview and context. And when we're talking about
+projects it's important to talk about admin tools. And how your admin
+tools can be a great resource for finding work for new engineers. I
+eve noticed just anecdotally from talking to people and reading
+industry Blogs that teams that tend to role their own and build things
+internally also tend to be really committed to growing talent. And I
+don't think those two things are unrelated. Internal facing tools are
+a great place to look for property projects for junior Devs.  ‑‑ when
+you build a lot of internal tools you really creating a sand box for
+both the mentoring of new engineers and for more established Devs to
+experiment.  I built that is easier to explain to your grandfather
+than a string extraction. It's important to give your juniors a story
+to tell when people ask what did you do today at your new job. Visible
+work is important. And that brings us to mentorship, which is probably
+the most difficult part of integrating a new person into an
+engineering team. The most available thing that a mentor can do is to
+lower the cost of asking questions. Most people who care about being
+good at something feel like they're failing at that thing almost all
+of the time. Communicating with people who know more than you is
+really the only way to get rid of that feeling. Even if your
+organization is just you and the person you're hiring, write it in to
+your on boarding guy that every new engineer will be assigned a mentor
+to meet with once a week .  some people will taken have a of that
+resource more than others, but the ones that need it the most are the
+ones that would be least likely to ask for it. Making it explicit and
+default alleviates a lot of pressure for new engineers. Of when you're
+ready to make an offer to a new engineer your team needs to ask these
+three questions: What kind of resources can we give this person?  How
+can we best help them?  And how can they help us help them?  And the
+answer to those second two questions should be made explicit in your
+teams' documentation. How many people here did not have a mentor in
+their first engineering job?  This is actually pretty good. Usually
+like it's a pretty scary number of people. But that's ‑‑ it's a pretty
+common situation. Israelly lucky in that my first job was at a pretty
+established company that could prioritize mentoring me. But some
+organizations might not be in that position when they decide to invest
+in junior talent. And that's okay too. If the only resource you can
+really offer a candidate is time to get up to speed, our community is
+full of really independent self motivated lerpers that might be great
+for ‑‑ learns that might be great for. Make investment of that time
+explicit. Clarify those expectations. And also don't discount the
+value of peer and early stage mentorship. Really effective model that
+I seen work in small start‑ups is hiring two junior engineers that
+pair with each other all the time. It's hard to on board a junior
+engineer. It's actually not that much harder to on board two of
+them. Supply your junior Dev with peers can be just as meaningful as
+giving them role models. As your junior Devs get ready to take on more
+responsibility within our organization one of the concrete ways you
+can demonstrate that growth is by giving them an intern to mentor. But
+if you're in the other situation and you have an embarsment of
+mentorship riches you might want to look at U 2 we can debate their
+musiccal merit all you want but their public persona is a pretty great
+metaphor for a team you need a Bono, this is the explicit mentor you
+assigned your new engineer, much like Bono is the interface with the
+public, thisment is the new engineer's interface with all of the group
+need them to acquire. Mentoring your gnaw Dev is part of this person's
+job. It's important that they concept to be evaluated on that. This
+person meets with your new Dev regularly in the early days on the
+job. A big part of Bono's job is to answer the question how do I
+internet with passing too much judgment?  One of the most difficult
+parts of being a new developer is that you haven't developed the level
+of discernment to know which parts of your code base are specific to
+your company and like what you can actually get out of Google. It's
+this mentor's job to help the junior Dev cultivate that ability. The
+second person on the mentorship team is the edge, still really
+important, but not quite as public. You might not get all the face
+time with this person during the day‑to‑day. The supervisor or maybe
+yore mentors mentor might fill the role. People that are really great
+at filling this role are available to the new developer as an
+alternative perspective and happy to provide help in the vent that
+you've driven your primary mentor just a little bit insane. And then
+the last person on your team is a Larry Mullen. No one knows who Larry
+Mullen is.  I mean, I do because I Google pictured of him, but I'm not
+going to tell you which one of these guy s is Larry Mullen, being the
+Larry Mullen of a mentorship team is a thankless and incredibly
+important job. When you're a Mullen you do not get mentioned at the
+developer ship at the academy awards, he's simply a colleague that
+doesn't roll her eyes when a junior Dev asks questions .  these roles
+don't have to be articulated they don't have to be the same person
+every day, Larry Mullen might have something in common with the junior
+Dev, a project, gender a mutual fondness for rock climbing, it's not a
+prerequisite you you're never too experienced to be Larry Mullen,
+everyone in the room has the pow tore be Larry Mullen. The people on
+your mentorship team is an explicit mentor you meet every day, an
+additional mentor that provides support to that mentor and a team of
+engineers that understands that developing talent is just as important
+as writing clean code. So just to recap really quick. Planning work
+with your new engineer to develop your on boarding plan. It is awesome
+to be ready to invest in helping someone launch a career in
+programming, work with them to support that investment. Projects look
+at assigning work to your new engineers as an opportunity, they're
+around to it .  give them projects with visible impact. Balance
+exciting work with boring independent work. Lower the cost of asking
+questions, and empower yourself to be everybody's Larry Mullen. Thanks
+all, you've been great (Applause)
+
+
+Yet, great talk. Questions?
+
+
+You mentioned that transcripts were really helpful. It impsn't year if
+you meant transcripts of conferences ‑‑ it wasn't clear if you meant
+transcripts of conferences or within your team there were transcripts
+made ‑‑
+
+
+I have a death colleague so we have transcripts at all of our
+engineering meeting and product Dev talks and some of our larger
+meetings, an then when we're in small groups we tend to transcript
+ourselves in Google Docs. Yeah.
+
+
+Okay. Thank you.
+
+
+So cool to watch that question be transcribed in real‑time by
+Kimberly.
+
+
+More questions for Rebecca?  Anyone?
+
+
+Yeah, so this is actually advice for I guess HR people and whoever
+will be hiring the junior Devs. Do you actually have any advice for
+the junior developers who have been hired and for example have not
+been assigned a mentor?  Sort of ‑‑ yeah ... how to ... get them to
+... or how to get HR people to ...
+
+
+I feel like the junior Devs I know who have been happiest in their
+positions and have, like, found a lot of mentorship available to them
+made contacts with their company through the engineering
+department. It's hard because a lot of it is like very much about that
+personal connection. Yeah ... how ... I mean sometimes I do think that
+you have to seek that influence outside of your company, if you're in
+a city like New York or Berlin where there are a lot of user groups
+and you can find that mentorship elsewhere. Also slack can be
+great. There's like a lot of communities kind of coming up there where
+you might be able to get mentorship from people that, you know, derive
+drives many, many miles from you. That's a really difficult question.
+
+
+Thank you.
+
+
+More questions?
+
+
+Yeah, I was wondering if you could say something about how mentors can
+get feedback from junior developers or trainees or something because
+when you ask someone who's really inexperienced am I doing a good job
+at teaching you, I don't think you get a very useful answer out of
+that and I'm usually wondering I'm actually good at mentoring someone
+and I can't really tell.
+
+
+Totally because we're so grateful to being mentored so it's like
+anyone who is taking the time out of their day to invest in someone at
+the junior level, like usually you're so excited about that that it's
+very difficult to be like well this could be better in this way and
+also when we're talking about people very early in their career they
+don't have a lot to compare that to. This is something that we're kind
+of working on now at my company ‑‑ like I'm mentoring a summer intern
+with more senior developer and there's several of us. We've kind of
+had to talk about the difference between ourself, the different ways
+we mentor and what our expectations are of each other. And then you
+can present, like, that kind of template to your junior as things that
+might be realistic expectations of them. That's kind of the best way
+that we've ‑‑ like having more conversations like this and like
+discussing different mentorship models, I think is kind of the best
+way to deal with that.
+
+
+Question on this side.
+
+
+A lot of this stuff that we do as engineers ‑‑ the technology debuts
+are ultimately solutions to problems that are very contextual so how
+to strike the right balance between explaining the solution to problem
+and on the other hand letting people experience problems on their own
+because it's very hard to understand a solution if you don't know the
+problem itself. It's actually hard for me to strike this balance, do
+you a suggestion?
+
+
+Yeah, yeah, so we're talking about of striking a ambulance between
+being like perhaps a little bit too helpful because a lot of ‑‑ a lot
+of cultivating good engineering practice is coming up with the ability
+to answer those questions on your own.  I actually got a really
+awesome ancedote about this from my boyfriend last night who kind of
+helped teach me to code and many other people, he was liking at ‑‑ oh
+I walked around too much.  ‑‑ the slide on documentation and he said
+that when he's mentored junior engineers that he will ‑‑ and they're
+stuck on something that isn't well documented ‑‑ he will be like give
+me a minute then go and write the documentation and then tell them to
+look in the documentation. And I thought that was pretty great.
+
+
+Thank you, another round of applause for Rebecca (Applause)

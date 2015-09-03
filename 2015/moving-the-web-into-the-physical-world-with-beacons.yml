@@ -1,0 +1,243 @@
+Another rounds of applause for Meike.
+
+
+Hello everyone, so, I have been working as a Ruby developer, and last
+year I decided to quit and move to northern Sweden to study human
+computer interaction. And during my studies I have got to play around
+with a technology called Beacons, and I thought that would be
+interesting to share today. So let's imagine we are at a large ‑‑ a
+much larger multitrack conference and I can think of a couple of
+questions I would be asking myself during the day. Like for example I
+would be wondering, is the next talk in the room I'm currently sitting
+in interesting for me or not. And I might decide I want to go
+somewhere else and look at another talk but then I need to find
+another room. Soive need some sort of map, navigation system. Or, as
+an organizer I might have some schedule changes and I want to inform
+everybody that is currently at the conference. It also might be that I
+want to make my talk a little bit more interactive and do some sort of
+group voting with the people in the room. All of this is, of course,
+possible today but it's a hassle to navigate through the webpage to
+find the information that is currently important for me. So Beacons
+can help improve these scenarios. And what are Beacons and how do they
+work?  I have some Beacons here. Little tiny devices, battery powered,
+and what they do is they constantly send out a signal and that is just
+like a lighthouse. So it pretty much works the same so that Beacon
+constantly sends out a signal and if you walk past it as soon as
+you're within range you can see the signal and then decide if you want
+to interact with it or not. If you don't want to interact with it, you
+can just walk past it and nothing happens, but if you do need local
+information you can look on your smartphone and then find whatever
+information is available there. So you might wonder location based
+services we already have GPS, but if you have it switched on your
+smartphone all the time it drains your battery and also it doesn't
+work indoors and it is also, for some cases, not precise enough so if
+you have a bus stop timetable prototype that I will show later it
+might be important to know on which side of the street is the person
+currently standing on. Okay, but what about QR codes, QR codes are a
+nice way to like ‑‑ that you don't have to type URL into your
+smartphone, but also it's quite a hassle to scan the QR code, you have
+to be really close and also you have to focus the camera and also I
+have never met anyone who likes QR code yet (Laughing) so technical
+facts. Beacons are based on blue tooth standard, more precisely on
+blue tooth low energy, so what that means is that it has a lower range
+than classical blue tooth and also lower throughput, so it's not for
+sending data back and forth, but it's just good for triggering
+notifications. And a Beacon costs around 10‑15‑dollars and the range
+is 10‑30 depending on what kind of Beacon you have, up to
+50‑meters. And it doesn't drain your smartphone battery if you have it
+switched on all the time. So there are current of currently two major
+players on the market, the I Beacon standard has been around since
+2013. It's controlled by Apple and targets iOS devices. And the
+Eddystone standard which has been released only 3 weeks ago is from
+Google. It's Open Source code and it targets all operating
+systems. And when we look at the Beacon payload, what kind of signal
+the Beacon sends out then it's I Beacon from a broader perspective,
+it's a UUID that's been sent out and the Eddystone sends out UUID URL
+and Telemetry, if you want to check the status of your Beacon like how
+much battery power is left ‑‑ Telemetry. What ESARIS does that mean?
+I'll show on this slide. If you have an I Beacon it will broadcast
+UURID that is programmed to open up an App on your smartphone. So as
+soon as you're within range of an I Beacon it opens up an App that's
+been programmed for and there is some sort of interaction that is
+meant to happen then. And if you have an Eddystone Beacon it will also
+be ‑‑ it is also possible to wake up an App on iOS devices, but also
+on Andriod. And ‑‑ that I have been working with and that has been
+available earlier, not just three weeks ago is that Beacon's broadcast
+URL, so basically any smartphone can receive a URL and then it just
+opens up in your browser. That's the vision for now and you is to have
+an App installed that scans the environment for Beacon signal, but
+it's meant to be built into a browser. So how does that look like?  In
+my studies I built a bus stop prototype so it's pretty simple
+scenario.  ‑‑ just imagine you're standing at a bus stop where there's
+no digital information displays. In's information displays where you
+see how many minutes the next bus leaves, but it's not there at every
+bus stop, so I had a Beacon like this, you can push a button on it and
+then you can save a URL with your smartphone on it and then it
+offed ‑‑ and then you ‑‑ as soon as you are within range of the bus
+stop you can switch an your smartphone screen and then you will see
+the notification like this one saying departures from the bus top that
+you are currently at. And this is the physical Webapp or some sort of
+other App that is scanning the environment and that now shows up the
+notification. But it's a silent notification, you don't see it unless
+you switch on your screen. And then you click on it. And then you end
+up within the App that just shows the URL again, in the future it's
+supposed to open up directly in the browser. And then you just see a
+very simple Webapp that's just normal Webapp like any other App like
+Sinatra that pulls information from a public API about when the next
+bus will leave. Make use of the current time and the current place I'm
+at and show the information that could be important at that moment, at
+that place. Okay so bus stop seems to be a good case to use Beacons
+for. What else is there?  So first retail is of course interested in
+it, they want to send you discounts as soon as you enter their
+store. Also museums, you can make some sort of game like indoor
+navigation thing to make the whole museum experience much more
+fun. And also make information more accessible, of course. Airports, I
+built another prototype that as soon as you enter an airport you see a
+list of all the departing flights and then you can lick on it and then
+you can subscribe to updates on your flight. So you get a push
+notification as soon as the status of your flight changes. Then
+restaurants, so, you could walk into restaurant and then have the menu
+on your smartphone immediately, you click on it, order your food, get
+a notification as soon as it's ready instead of having these physical
+buzzers. Also of ‑‑ guiding, walking up to a walking trail and have
+the map available for the trail you want the hike on. And also bike or
+Karen tall, for example when you're in a foreign city you could just
+walk up to a car to go or bike, subscribe to the service and after you
+go. So for my master thesis, I did some user experience evaluation
+with these prototypes. And so what I did was I had the two prototypes
+that I talked about, the bus stop and the airport. And I also had
+another video of someone that was buying a snack from a vending
+machine by the same technology, clicking on the phone, ordering a
+snack. So what my participants did they compared it to other things
+that are already available, like for example bus App or timetable
+brochure or airport information displays. And what they came up with
+is they described the prototypes as very up to date, personal working
+instantly and easy to use. But they also noticed, of course, then they
+were highly dependent on their devices and the energy and they were
+also quite skeptical when payment was involved. So ... is this all
+relevant today?  Or what's the status of it?  So it's pretty much
+prototyping, status I would say. And I found some numbers 30,000
+Beacons at the end of 2014 and 4.5 million by the end of 2018, but if
+that's going to happen, nobody knows. And what I can say is that the
+of Eddystone standard is only available for three weeks now, now it's
+possible to target all operating systems and not just iOS devices, and
+also the Chrome team has sneaked their way into iOS, so if you have
+the Chrome today widget you can activate it. It scans for Beacons,
+it's one step towards not having an App installed and making it
+available for everybody everyone. So that has been released a week
+ago. So there's a lot of movement in it and I'm excited to see what's
+going to happen in the future. So, 15 minutes are not much, so if you
+have anymore questions, you're welcome to ask me.  I also carry some
+Beacons with me, so if you want to, you can install an App and find
+out what's there. Thank you (Applause)
+
+
+Questions?  All the way in the back, oh my Gosh.
+
+
+I'm so sorry for making you walk all the way. Do you think that
+Beacons are really a web technology or not?
+
+
+Well it depends. You can have Beacons to open up apps, then it is just
+not web development, obviously, but the Eddystone Beacons just send
+out the URL, so what you build with it is just web technology.  I
+think that's the more exciting thing about Beacons because that's
+going to work with everything and you don't need to have an App
+installed. And like you don't have to ‑‑ you probably don't have an
+App installed of your airport or something and you still might want to
+use some services like get updates on your flight.
+
+
+Yeah, I understand the one thing that I've been wondering about is
+Beacons are really good like personally instant, but the load time of
+like a mobile webpage is anywhere between 5 seconds and 8 seconds. So
+do you feel like the future of Beacons is like the worldwide web or
+more integrating them into apps?
+
+
+Well, I can't say which direction if it's going to be more popular in
+combination with apps or with the web, I don't really know so
+... we'll see what's going to happen I suppose.
+
+
+Okay, cool, thank you.
+
+
+Thank you all ‑‑ next one. Okay. You're funny. I'm wearing the wrong
+dress for this.
+
+
+Hi, I have the impression that we will have a similar problem to
+fishing males with Beacons, if there's an official vending machine or
+bus stop Beacon and I put my rogue Beacon close to it I can make
+people believe that they're talking to the bus company. Have you
+looked into that?
+
+
+No, not yet.
+
+
+Short and simple answer. (Laughing)
+
+
+I'm wondering if Beacons take off and they're very popular and you're
+at a shopping mall and there's like 200 Beacons within 50‑meters, how
+does that work from an HCI standpoint?
+
+
+I haven't tried it out yet so ... it would be interesting to
+study. And for like if everybody installs his or her own App then ‑‑
+Google has some sort of sorting already so it sorts out the thing that
+is most close puts it on top, so you have some sort of ‑‑ yeah,
+sorting already. Yeah ... that's all I can say for that.
+
+
+So for the ones that interact with apps you actually have to install
+an App before you phone will contact a Beacon, right?  Because I was
+wondering how does it work when you have the URL thing ‑‑ do you
+actually have to allow it to contact your phone and open a web site or
+something or will it just do it on it's own?
+
+
+Well, for now you have to have an App installed or the chrome today
+widget on iOS, and also you have to actively click on it. So if you
+have the App installed it scans the environment, but it doesn't notify
+you actively. It just shows that there is some information and if you
+decide not to click on it, you don't do it. And it also made secure,
+at least the Eddystone from what I have read it doesn't track you, so
+... did I answer the question.
+
+
+Do you already know or have you tried it?  If it contacts you a URL
+how does that work?  Is it just gone and give you a notification I
+would like to open this web site or does it just open the browser or
+...?  Do you just need this Google today?
+
+
+You have to click on it to actively open it in the browser. And it is
+meant to be that it is built in to comb so that if you have home
+installed it would start showing this notification (Chrome) I'm sure
+you would be able to switch it off. On the chrome today widget you
+have to confirm you want to have this physical web thing activated. So
+you have to actively say, yes, I want my phone to scan the
+environment.
+
+
+Okay, thank you.
+
+
+One more question while Davy sets up.
+
+
+So what's the payload that can go into the URL, the whole logic of
+the ‑‑ how large can the URL be?
+
+
+For now the URL needs to be really short. And so what I did was I had
+pretty long U RL and then I also had the parameter which said at what
+location I'm currently at, then I just put it into a URL shortener and
+saved it on the Beacon, so it is limited.
+
+
+Thank you, thank you Meike. (Applause)

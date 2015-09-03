@@ -1,0 +1,200 @@
+On to the new stuff, Joanne you're almost up. She did a talk in your
+cap 2013 that I absolutely love about reprocessing, there you go I
+loved it. We're very much looking forward to this year's talk. Joann
+talked to me about what she's doing for a living right now, I really
+like making charts and maps. So that's ... today she's going to talk
+about how you ‑‑ how we need make tech a little bit more positive
+apparently we're getting all negative. So get more positive and one of
+the ways to do that is combining one of your passions with one of the
+other passions that we have, which is programming. So Joanne
+(Applause)
+
+
+
+Joanne Cheng:
+
+
+Hello ‑‑ oh, that's loud. Okay. So my name is Joanne Cheng, I am a
+software developer at Ken I O and this is my third time at eurucamp,
+I'm very happy to be here kicking things off. I'm also very jet lag
+right now, so I'm just in a really weird mood and this will be
+interesting. But tonight I want to talk about Awe. Awe is that feeling
+you get when you experience something amazing that makes you feel a
+prickly sen stationetion on your skin, some people say it makes them
+feel breathless. And generally when you feel Awe it's a mix of wonder
+amazement maybe a bit of fear and confusion we realize the world is
+much bigger than we think and there's all these amazing things that
+exist outside of our own heads one of the things that makes me feel
+Awe are the mountains you see here out where live in Colorado.  I love
+hiking and being out in nature. And people become motivated when they
+feel Awe. These mountains that you see here have inspired countless
+beautiful works of art, inspired music and poems to be written about
+them. These works of art cause Awe that I know hear them or see
+them. The affects of Awe are contagious for many programmers here I
+know there's technology out there that Sparkes the same feeling. That
+feeling of Awe is what drives our passion for working in an
+industry. Perhaps it's using ‑‑ a ‑‑ for the first time or ‑‑ or our
+first learning how to program. These are all possibilities that code
+can bring. Maybe for some of themore advanced people it's about
+reading a new ‑‑ reading about a new well designed language. Thinking
+about code as programmers or watching a co‑worker solve a problem. And
+for me it was that all the complex work that we do on the computers
+was down to a few simple operations. But as I continue to work as a
+developer I often forget how to feel Awe, I get jaded and then kind of
+fall into these cycles where I don't enjoy programming. Have any you
+heard this phrase spoken at your job. Maybe not about computers or but
+maybe about Alain language, a framework. Because I do.  I definitely
+do. And you know this topic is supposed to be about positivity and Awe
+there's a lot of technology that is very, very broken. So remember
+this every time ‑‑ because of a poor security system or a simple ‑‑
+potential caching a plane and making it fall out of the sky. Or when I
+come across, my job when I come across a poorly documented library or
+a poorly written library there's a lot of code out there that's broken
+over poor decision and lacy development, that's kind of a fact. But
+thinking ‑‑ our technology and our tools are broken it's not a
+positive ‑‑ it's not beneficial for our working environment. Sometimes
+these mistakes ‑‑ sometimes these mistakes that we encounter are
+caused by things, by minor mistakes or things ‑‑ or just things that
+we disagree with. And this attitude ‑‑ sorry ‑‑ this attitude spreads
+to others we work with too.  ‑‑ some might call it burn out but I
+didn't quite enjoy programming, I wasn't fascinating with some of the
+amazing projects being developed right now ‑‑ librarieses and
+documentation I was working with couple with a lock of positive
+community and support. Tonight I want to talk about my own adventures
+in building myself up again. With programming and other things that
+bring me Awe. I'm really hoping this will resonate with some of
+you. So, I've always had weird fascinating of combining things that
+aren't traditional combination.  I think there are interesting
+problems to solve when you intersect two fields that aren't typically
+seen together. One of my recent hobbies is dance. I'm now saying this
+out loud and I'm kind of ‑‑ it's kind of weird to admit that. I'm kind
+of an awkward person and I'm not very good with movement and but I've
+been taking pretty much any type of dance class available in my city
+of Denver for the past year and a half and I've always watched ‑‑ I
+went to a music school and I always watched dancers and envied them
+for being able to express themselves through their bodies. And I've
+also been too scared because I thought it was too late but ‑‑ and so
+the more I started dancing ‑‑ this is pretty close to I was and I'm
+still not that great at dance but it's a very challenging hobby for
+me, something I feel really strongly about because it's just such a
+mental challenge and such a fun thing for me to do. And so one day
+after dance class I had a conversation with a friend who suggested
+that I try to think of ways to visualize dance. So I should mention
+that I I do charts and maps for a living and I worked a while to get
+to that point. So ‑‑ and ‑‑ combining my visualizing of the idea with
+something that I wasn't any way related to my job was a new challenge
+for me. A lot of sketches a few experiments based on visualizing
+motion. And also two years ago itches talking about a way to draw
+shapes with code and last year I gave a workshop on DJAS here which is
+ato draw shapes in a browser. So naturally this year I'm going to show
+shapes on a screen so ... I'm just going to set up a little bit. So my
+lovely volunteer will demonstrate some of the things I've been doing,
+and I'm going to talk ( applause) when I was thinking about capturing
+motion one of the easiest ways to capture motion ‑‑ there we go. One
+of the easiest ways to capture motion ‑‑ so basically what Kinet does
+is takes an infrared scan of the room ‑‑ the camera over there. And um
+so we have all these day the points of the scan ‑‑ (Laughing) continue
+please.  ‑‑ you have infrared scan on all points in think dimensions
+and you copass that information to open ‑‑ to basically a computer
+library that looks for a person. At least that's what the code I'm
+doing. And once it finds the person it's going to look for the joints
+on that person. The head, neck, shoulders. There we go. Right hand ‑‑
+is this the left hand?  (Laughing)
+
+
+Yes, left hand, and all the joints, and so that was my first step in
+trying to visualize movement. So after of I had it track the joints I
+started thinking about ways to make this pretty and which makes it
+kind of artistic so ... ‑‑ it's magnifying all your actions. There we
+go. There we go. That's a good reaction. So I just had this idea of I
+was basically drawing a bunch of stuff on the screen just following
+the right hand which you should be moving, the right hand. Okay, yeah,
+soy had a bunch of points and I was able to freeze it but then I
+thought of this idea of how to use graceful bubbles just follow around
+all over the place.
+
+
+It's pretty fun actually.
+
+
+Good. See the bubbles just kind of float around and if you're
+actually ‑‑ ‑‑ there's a ‑‑ explains how to create physics and mess
+around with physics to create shapes and things that move around like
+this. So once I of the got this, tracking the joints and able to draw
+with it. I was happy with this idea and how cool it was. Kind of
+pushed this idea a little further. So I had this idea of being like a
+dancer being able to ‑‑ movement ‑‑ you can dance. (Laughing) that's
+
+
+It's almost like that. So I had this idea of a dancer being able to
+follow the movement so this is what I built. (Laughing) all right,
+there we go. Ooooh merging sound with movement ‑‑ so basically I had
+in idea of like this harp that kind of was it's own game like
+something that kind of flowed like the ocean a little bit. It was it's
+own thing, not static just go up and play. And then so what it's doing
+is tracking Andy's left hand. And it's just playing the strings of a
+harp in sort of this, I call this space art. Because it kind of sounds
+like a space thing. all right.  I thank you (Applause) so these were
+two just kind of pet projects that I worked on for the past year and
+this is a more ‑‑ this is from a really beautiful dancing technology
+piece by an artist named Navi.  I completely forgot the name of this
+piece. It's absolutely ‑‑ combining passions they just kind of help me
+in love with technology and keep me sane.  I really love working on
+these projects even though the whole demo disability take too long to
+show you what I did.  I never presented these thing in public, the
+space art was an office demo that we did as an interactive thing for
+people to play with. But these experiments also let me learn about
+amazing technologies that I've never been exposed to before.  I didn't
+know about computer vision before learning about this, just something
+I Googled because I thought, yeah, sure I should try to combine
+programming with dance, totally should work. And I realized it's such
+a hard field and something that people are constantly studying and
+there's so many papers written about it, with math I can't understand,
+but it's just ‑‑ there's just so much out there. Learning and exposure
+to really thoughtful technology is why I love working as a
+programmer. And why I feel motivated at my job. So recently I spent a
+bit of time reading about history of Bell labs I became fascinated
+with this man up here this is Paul Jen, mathematician, father engineer
+all around genius. He withouts an employee of Bell labs. He also did
+cryptography work for US during World War II. And his work on
+information theory was the basis for technology behind the modern
+micro processor. One of the first people to support the idea of
+artificial intelligence. Really blown away by how long and how amazing
+this man's resume is. But in all the stories I read about him, the
+answers that I read mentioned howdies ‑‑ he had a ton of hobbies. Pole
+sticking strucker juggling uniany cycle playing music, gambling chess
+board games, he owned turtles, but with all these things that I named
+he had engineering project related to all of them. He built mechanical
+turtle, built electronic board games. He built a juggling machine. He
+built a chess machine that became some sort of ‑‑ there was a very
+long paper written on it. He also built a small portable computer,
+technically the first wearable that could ‑‑ that would observe a ball
+this a roulette game and could kind of predict where it would land and
+sort of increase the odds of winning. So unusual, totally. But his
+collection of strange projects really resonated with me because it
+shows that the work that he did was driven by Awe and curiosity not by
+negative Ity. The Bell lab didn't enjoy his project, they did
+influence his serious research and he did quite a lot of that
+too. They lost a genius to a university because one of his projects
+was so important to him and his career. So going back to Awe. Studies
+that prove that Aou help us to be more 'em pathetic and makes us
+better people. There's research study done in UC Berkley recently in
+Berkeley, California there's really beautiful trees that are very tall
+and are on the campus so these researchers brought two separate groups
+of people to the campus. One group of people they brought to the
+Euclaptus trees and let them stair for a minute and the other people
+they just showed them the university building. So as they were walking
+back to the lab someone by the lab would drop all their pens just a
+minor accident. The people that looked at the trees were more likely
+to help the person who dropped all their pens versus the people who
+were looking at just the building. So this sort of empathy and sort of
+altruism this does derive from Awe. And there's other studies, I'll
+mention this New York times article why do we experience Awe. It's
+really a good article if you're curious about this. And I loved
+eurucamp and JRuby Conf because the speakers have prepared great
+presentations for all of you. You'll meet developers who amazing
+things, you're going to have time the beautiful Potsdam or ask someone
+about the amazing work they've done with Open Source. So I hope you
+all experience Awe this weekend. (Applause) of
+
+Are we taking questions?  Applause

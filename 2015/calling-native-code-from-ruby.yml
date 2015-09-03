@@ -1,0 +1,178 @@
+So Boris is active in iOS Open Source initiatives, today he DELETE 'll
+talk about fiddle, which is a lesser known feature, but apparently
+already available since MRI 1.9. So there we go, Boris.
+
+
+Boris Bugling: Yeah, hi before I start with the talk let's just give a
+quick applause for the really good speaker selection at this
+conference. (Applause) in fact I was just tweeting earlier that I feel
+a little bit bad about giving just an old boring technical talk. But,
+a friend said yeah, you've been picked for diversity (Laughing) I like
+that so you have to listen one talk boring white male talk today. Any
+way so calling native code from Ruby, why would you even want to do
+that?  So if you want to use some native library or system
+functionality you might have to call into C code. But we don't really
+want to use a C extension for this because nobody's got time to deal
+with user Compiler problems. So one thing we have as part of the cocoa
+pods project is a Xcod project, which deals with X code which is I D
+for developing I R S and Mac apps and we need to deal with this to
+integrate dependencies which is what cocoa pods does, it used to
+include a C extension for quite some time .  and there were sooooo
+many issues with that. For example, in some versions of OS 10 building
+C extension was completely broken and added weird Compiler
+arguments. There's the problem of it is not very transparent if a C
+extension fails to build. You sometimes just C failed to build gem
+extension you have to look at some log file and many users are not
+really familiar with especially for our users there are sometimes not
+familiar with Ruby and even less with C extension so it's even hard
+for them to know what happens. And you can also have things like this
+... so ... you don't really what happens. And it's not only us that
+have problems with C extensions if you look at a really problem lar
+gem Nokogiri you see there's over two hundred issues. It's C extension
+and it's not because they are doing a slop I pi job it's just that
+it's real ‑‑ Sloy job it's just hard to get stuff to compile on rand
+come user computers. But there's a solution fiddle. It exists in Ruby
+since 1.9 X but really you want 2‑pointx bus there ease some Nigglie
+details that don't work well on 1.9 X it was a problem for us in the
+beginning because OSX shipped with OS 87 for a long time, but now we
+don't have that problem anymore. And it's a FFI for calling C if
+Ruby. It use Dlopen and Dlsym dealing with dynamic shared
+libraries. And it can also be used to call objective C, which I'll be
+showing later. This is how it looks like in the very simple way so you
+require the fiddle gem and you can Dlopen a shared library which is
+installed on the system or user installed some other way. You have a
+function object, when you Abs eniate it you give it the function you
+want to have exposed you give it the parameter types which is an array
+of constants, basically, I well show them on the next slide. And the
+return time. And what you get back is a function object and that you
+can simply call. You give it the parameters the function needs and you
+get a result. So fiddle has a couple of constants for the different
+types in C Int, Char, floating types also for pointers which is the
+type V O I D P and it's also possible if you want to use something
+from the standard C library which is an exposed via the Ruby standard
+library. You can also just create basically an empty handle with
+fiddle handle.new and you can reference your own binary, which
+includes of course the C library. And let's look a bit at how we
+actually used it inside the Xcodeproj gem. The first part ‑‑ so
+basically we had two steps in our process of integrating I the first
+thing we wanted to ‑‑ the first thing we wanted to do was use core
+foundation which on Mac OSX it's the lowest level of functionality
+that is Mac OS specific, you could say under that is a C library which
+is easily like a Posx thing so it's portable, the core foundation
+provides Mac specific stuff. Among them reading and writing P lists
+that is what we need so property lists. They're used for many tools
+that Apple writes, among them Xcode, so we needed to call into core
+foundation to deal with Plists. And as you saw earlier you need like
+four lines of code or so to call one function and also you have this
+function object which is a little bit different from a regular
+function so what we wanted to do is to have a way to expose all the
+functions we needed as Ruby functions without writing too much
+code. So for that we created this little function here and the first
+thing we do is ... so we have a Cache of functions which includes the
+symbol name. And that allows us to basically save the function object
+so not every time we call a function we have to create all the
+things. And then the next thing, which is down here we define actually
+dynamically a method, which creates this function object with the
+symbol we need with the par respecter type and return type as we saw
+earlier ‑‑ parameter type ‑‑ we also save that function, which is
+basically our cache. And then finally, we have recall net function and
+return this so this is our dynamic function, basically this part is
+the dynamic function we create and returns, of course, the result of
+the function call. And we have one final nitty‑gritty detail of our
+core foundation, which is you have to do manual memory management. And
+there is though a way to do kind of automatic management which is
+called auto release and the convention is if a function is called
+create something, so that's why we have up here we look for the create
+in the name of the function. If it's in the function we have to call
+this auto release that allows us ‑‑ if we create an object it gets
+released automatically. So using that function we created ‑‑ so what
+we needed was also the path to the library. That's up here. Here we do
+the Dlopen of it. And then we basically have another convenient
+function which just takes this and calls the extra image function we
+just saw. And what that allows us to do we can just very simply
+call ‑‑ create these functions with just one call for this external
+method the name of the function, the parameter type and return type
+and then we can just call this here as a nor mall ‑‑ like a nor Al
+Ruby function so we don't have to care anymore if it is a function
+that comes from C or not. And that allows us to really keep the usage
+of fiddle contain in the one module and the rest of the code base
+doesn't care. And with that we can, for example, do this, which is
+converting a string a CF string to Ruby string, that's something you
+have to do a lot when you call into C libraries you is to convert Ruby
+types to the C types because for example a Ruby array is in the a C
+array a Ruby string is not the CF string, so you really have to
+actually deal with these details of what ‑‑ how to convert types. And
+especially for us it was especially true because we needed to deal
+with this core foundation library. So the details of the function
+don't matter that much it just shows that we can just call things like
+the CF data .  ‑‑ get ‑‑ pointer like a regular Ruby function, we
+don't have to care anymore that it's a C function, actually. So the
+next step we need to take or we wanted to take so it used to be that
+we just wrote this Plist using core foundation unfortunately this is
+not actually a hundred percent the format that Xcode writes so our
+next step was call into functionality like private functionality of X
+code to write t as exactly as we wanted. And for this we actually had
+to call Objective‑C. And we can also do this with fiddle because
+objective C is still having C calling conventions and that means it is
+in the end calling C functions. And most importantly there's one C
+function, which is called objective C message sent which basically
+happens every time you make a method call in objective C. So we,
+again, wanted to wrap this a bit so we created this objective C
+message function which takes arguments and return type and basically
+the only difference between the calling just a regular function and a
+method an objective C method itself needs two additional parameters,
+two pointers, the first pointer is the object. And the second pointer
+is called a selector, which is more or less just the name of the
+method we want to call. So by creating this objective C message in
+function we could create Ruby classes which are wrappers around on
+objective C class. They take in their initializer they get object,
+which you obtain from somewhere else and then we can call methods on
+them. For example we have this Plist description ‑‑ "U" opinion method
+rather, we have the selector, which as you see is basically just
+string. We can call function called response to selector which tells
+us if this selector is implemented on the object, it's just a safety
+measure to make sure so we can ‑‑ into the initializer we can pass
+anything so we can make sure that it actual implements this method
+otherwise we get Runtime cache crashes which is the property calling
+into C we can get crashes. Then we call this objective C message sent
+which gives us back a function object and then we can just regularly
+call by giving it the object and via this we get from the string the
+selector object which is just another kind of string. And this allowed
+us to call objective C from Ruby. With out having a C extension, which
+was our goal. And to recap so C extensions have a real bad UX as you
+saw many projects struggle with it. We struggled with it even though
+we only support one platform. So cocoa pods only runs on OSX so it was
+even more it was eveners for us, it's much more difficult if you
+actually have a project that runs on multiple platforms and fiddle
+provides a way to use native code dynamically which eliminates the
+compilation hassle. It's not that difficult, if you have ‑‑ wanted to
+write C instead, it's not that much different. And we can even call
+Objective‑C if we want. Thanks. (Applause)
+
+
+Thank you, questions?  We do have time.
+
+
+Why do you think it's used so little or why is it so unknown?  The
+Fiddle?
+
+
+Sorry, I department get it ‑‑ well, the thing is as you saw if you
+don't, it creates some boilerplate ... but ... really I don't know, I
+guess it's use sod little because people don't know about it so
+much. We sure didn't know about it before we used it. And, yeah,
+that's part of the reason why Ig this talk so people know about it,
+and I think the other problem is sometimes C extensions are used for
+performance reasons so you implement something in C so it's faster and
+with that fiddle can't help. The goal of the use of fiddle is if you
+need the call an existing library because if you just implement your
+stuff in Ruby it's probably even more slower because as you saw you to
+do this type conversions even more than when you would just write a C
+extension and then you have just a type conversion once with using
+fiddle it can happen even more. So for ‑‑ if you have C extension for
+performance reasons it's in the a good idea to use Fiddle then you
+still need the C extension.
+
+
+Another question?  No more?  Then one more round of applause
+(Applause)

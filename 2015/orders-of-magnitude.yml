@@ -1,0 +1,316 @@
+So, next up Davy Stevenson will be giving a get talk on orders of
+magnitude. We met for the first time was it at true north in
+Stockholm, which is a great conference, it's over now. The last one
+happened when we were there a couple years ago .  We were talking
+about benchmarking, I said there's this cool tool for benchmarking
+called benchmark IPS, yeah, I know I forked it I'm working on
+improving it and this orders of magnitude thing, maybe I'll give a
+talk about ‑‑
+
+
+No that's not that talk, I gave that talk about Rubyconf, this is a
+similar but different talk about orders of magty Tuesday. Warm well I
+come for Davy Stevenson. (Applause).
+
+
+So yes, if you want to know details about the benchmark to go gem, I
+gave that to be at Rubyconf, it's on the internet somewhere I'll be
+talking about numbers. Bignum pers and small numbers and a bunch of
+numbers in between and more importantly how our brain deals with those
+numbers. So first I'm going to talk a bit about something called
+number sense, that's an idea that certain animals have an innate
+understanding of numbers built into their brains. It might not be
+surprising know that animals such as elephants dolphins ant great
+happens have been shone to have number sense ‑‑ great Aps. It's been
+proven for birds, crows are one examples and even insects have been
+shone to have innate number sense such as honey bees and ants. It's
+been shown that these animals that have an innate ability to
+distinguish different numbers such as one verse two three verse
+four. Tends to break down at about five or six. Though there is some
+ability to distinguish numbers with a larger difference such as the
+difference between 8 and 12. And of course humans have number sense as
+well, this is not surprising, what you might be surprised to find out
+is that ours is not measure my better than that of most other animals,
+human groups that have not yet develop finger counting have a hard
+time distinguishing quantities above 4 so this comes to the very first
+lie that we think about ourselves that our brains inherently
+understand numbers. In fact it's very limited in scope. We basically
+can handle one three and four and above that we must learn how to
+count. So counting is something that human have had for a very long
+time, finger counting is the primary first step towards counting, but
+we have other ways of counting as well, such as using stacks of
+pebbles, notches on sticks or notes on a rope, this is a way for us to
+distinguish numbers larger than four before we have words to describe
+these numbers, so we can use pebbles to keep track of our heard of
+sheep without actually knowing the exact word for the number of sheep
+that we have. Next, of course, it does seem to be very useful to have
+names for the numbers themselves. So this' kind of the next step in
+human evolution in counting. However the very first way that humans
+developed names was very limited and we started out by just having
+names for numbers one, two and then many. And this still exists today
+in tribes such as the sand people of Mabia, various Aboriginal tribes
+in Australia and the Paraha tribe in Amazon. From there many humans
+tribes began having different names for different number words. So the
+Thimsian languagee wig from a tribe in British Columbia has different
+sets of names if for the number depending on the thing that you are
+counting. Before we spend much time thinking how silly this sounds
+notice that the English language bears the memory of a similar history
+from our past. So that brings us to our second lie that counting
+things is easy. Abstract number counting was in fact a very difficult
+thing for humans to discover and counting takes a lot of mental
+energy. Now that we have learned how to count and we have words to
+describe the various numbers we can begin to create NUMERAL systems to
+help us count larger and larger numbers. First numeral system we're
+going to talk about is the Roman numerals, so this is basically an
+improved tallying system. The characters that represent the different
+numbers I for one, V for five, X for ten L for 50, C for 100 and M for
+a thousand. These are positioned by values so we can see all of the
+I's are to the right and then they grow larger in value as we move to
+the left. They did add a little twist on there with subtractive
+notation so that means C that happens after the M really means to
+subtract one hundred from the one thousand. But this number system has
+it's draw backs which is ‑‑ can anyone say what number this is?  It's
+going to be hard. You still have to do a lot of math in your mind in
+order to try and figure out what number is being represented. So the
+next numeral system the Arabic numeral system was a much more
+successful ‑‑ in this numeral system each value in the base number,
+which in this case is base ten gets a rep evennational character. And
+on top of that we developed positional notation which means that the
+sequence of dints creates the number and the position of that number
+within the broader group indicates the positional increase in the
+order of magnitude. Once we have positional notation the concept of
+expo anyone seuation quickly follows ( ‑‑ now that numbers have a
+place we can now count that place, numbers such as one hundred
+thousand forty five can be represents one times ten to the fifth, four
+times ten to the one plus five times ten to the zero. Another way to
+represent this with the E notation, which I'm going to continue using
+for the rest of this talk because it's shorter and doesn't require me
+to make super script which is really irritating in keynote. So now we
+have our exponents. And clearly these exponents themselves need some
+names. So we have generated different ways to name these exponents
+here's just a couple of examples of ways that we have generated a way
+the name these numbers. These number systems allow us to community
+bigger and smaller numbers much manufacture easily and be able to
+share those numbers with others very quickly with the fewest amount of
+words we don't have to notch one million notches into a stick and try
+to share that with our friend. We can just say one million. It's much
+easier that way. But that comes to another lie that we tell ourselves
+which is that naming these numbers means that we actually understand
+the value that is represented by them, we can easily say one billion
+or one trillion, but internally do we have a good understanding of
+what does that number actually mean,and what does that number actually
+represent. For example did Uber just get an evaluation of
+50 billion‑dollars, does anyone understand how many billions of
+dollars that is, how much different is that from one million dollars?
+Don't really know. So now we have 3 truths, the first is that our
+number sense is limited to one, two, three and four. That counting is
+actually kind of hard and takes mental energy, and that just because
+we've named numbers does not mean that we understand them. So we can
+use this in our day‑to‑day lives as programmers. The first example I'm
+growing to give is in the user interface UX space. By limiting the way
+that we structure the display to our users to something that's much
+more easily accepted by our innate number sense dividing things into
+three sections, not five or seven. This allows people to better
+understand and better grasp the information that you're displaying to
+them. Similarly instead of displaying tables of numbers, so that you
+have to kind of parse and figure out what that means to the user,
+instead what's a much better way to do that is to actually analyze
+those values for yourself and to create representational displays via
+charts or graphs to more easily tell people what it actually means for
+these numbers that you're trying to display to people. It also help us
+understand some of the best practices that we talk about in
+programming, right. This urge to keep our methods short, right, to
+limit the number of lines of code within each method. This makes sense
+based on the fact that we're keying into our innate number sense and
+our being able to understand things at first glance rather than having
+to bring in our counting brain and trying to analyze things a little
+bit more deeply. And this also makes sense when we go into the testing
+arena why do we try and limit the number of insertions that we place
+in a particular test. It's the same sort of concept. However, you can
+also go too far into this direction and try to, you know, make each of
+method or each class too small.  I think there's a balance to play
+there, which is that if we're trying to track the business logic of a
+particular piece of code across a number of different classes we don't
+really want to be having to dig through fifteen different files or
+fifteen different classes to try and trace the logic being able to
+limit it to very particular spaces and being able to see it all in one
+screen helps us understand the code that we're writing. So in order to
+talk about what very big and very small numbers are, I'd first like to
+define a baseline for our shared human experience of numbers. And I'm
+going to do this for both distance and time. So the baseline for
+distance I'm going to claim is about one meter, this is the scale of
+our own human bodies and a scale for what we can gasp in the world
+around us. So that means 23 one meter is our baseline what is the very
+smallest thing that we can experience with our naked eye?  And this is
+about E to the negative four or the width of a human hair. The
+smallest thing that we can experience on a day‑to‑day scale. And what
+about the largest thing that we can see and touch and conceptualize?
+I'm going to claim that's something on the scale of a mountain, we can
+see a mountain in a distance we can also climb up a mountain and
+experience it and the size and scale for ourselves. And this is about
+E to the 4. For time I'm going to claim that ourebis line is about one
+hour of experience. We divide up our lives into one hour chunks,
+that's a good baseline for time. So what's the smallest amount of time
+that we can ourselves experience?  It's about a blink of an eye, which
+is about E to the negative four. And what's the longest thing that
+weepers, well that's going to be our own life span, so that's about E
+to the five. So that brings us to another lie that e with like to tell
+ourselves which is that we have direct experience with very small and
+very large numbers. In fact our experience is limited to the width of
+a hair or a mountain or a blink of an eye to a life span, and in the
+grand scheme of things this is in the scale of thousand dollarths to
+thousands. Those are not very big ... numbers. How did we go from
+living in the thousands to larger scale?  Humans for a long time have
+known that curved lenses and surfaces magnify objects, the Nimrud lens
+dates to 750 BC in Syria, there were similar lenses in Egypt, grease
+Greece and Babylon, they were not super useful to humanity. The
+problems there being that the mathematics to control how light is
+being bent and refracted was not yet discovered. Optic theory is the
+study of such things, and mainly about how mirrors and lenses bend and
+focus light. The law of refraction is required to compute the shapes
+of lenses and mirrors that will focus the light at a particular point
+on an axis. And really the law of optics and the study therefore, you
+know, picked up steam really around the 1500s and and this maps to
+approximately when mic scopes were invented about 1590 and telescopes
+shortly after at 1608. So only at this point in time was our world
+allowed to expand beyond what we can experience ourselves on a
+day‑to‑day basis. Due to these inventions and others, it is allowed
+humanity to drastically increase our knowledge about the world. So
+going back to our baseline of one meter now that we have science to
+help us what can we see now?  So we can see things that are
+smaller. We can see bacteria at E to negative 6, we can create micro
+processor memory cell, 14 Nan no neater resolution shorted shipping in
+2014, that's E to negative 8. We can produce gate length to five
+Nanometers, a 16 Nanometer processor, E to the negative nine, the size
+of Atoms themselves are not much smaller at E to the negative
+106‑78‑9153 Pico meters is the size of the radius of a silver Atom,
+this is insane, right. And we can even determine the width of an
+electron. Which is E to the negative 15, these are massively tiny
+numbers compared to the width of a human hair which is a negative E to
+the negative 4. We can see things that are even bigger. We can go and
+I believe vest gait the moon and E to the 6, the sun at E to the
+9. There are even stars bigger than sun such adds Rigel and Betelgeuse
+a read super giant in the con stilllation of Orion. We can see things
+such as the pillars of creation, this is a small subset of the picture
+of the eagle Nebula, these pillars are named because the gas and dust
+are busy creating brand new stars, the left most pillar in the picture
+is four light years in length which makes it E to 16, which makes it
+as big as compared to our one meter as an electron is small so what
+about time?  We can detect things that are even smaller than blink of
+an eye. Sin naps in our brain is about E to negative 7 that's one
+millisecond. The processor cycle of an 8186 or 8188 in 80s was five
+megahearts, E to the negative 10. Processor cycles E to the negative
+13. And so we can discover things that happened much longer in scale
+as well. What's the organism that lives the longest it's a Bristlecon
+pine tree that lives about five thousand years, humanity itself has
+been around 200,000 years. It's E to the 9. And die sours lived for
+over hundred million years, which is E to the 12. So that brings us to
+another lie which is we've been able to explore the world in great
+detail for a long time. Not true only in the last couple hundred years
+of our hundred thousand years of existence is going beyond the
+thousands two thousandths. So our brains are also really good at
+estimating things, estimating the odds. And what is important here is
+that our brains are able to determine risk. We need to know whether or
+not we're about to die so we can prevent that from happening, it's
+kind of a bad thing. So really our ability to do the math on analyzing
+risk is really based on immediate danger. That of course means that
+our brains have somes in determining the differences between immediate
+risk and long‑term risk. Right. We are much more scared of a shark
+attack or a snakebite even though while yes those are very dangerous
+things if they happen to us, but it happens very infrequently, as
+posed to the longer term risks of smoking cigarettes or driving around
+in car, while they have tiny Inc. have risks they happen so often in
+their day‑to‑day lives they can build up to be massive dangers to
+ourselves. So our brains with not good at calculating odds. It's a lie
+that we tell ourselves, we think of ourselves as rational beings, we
+think of ourselves as being able to do this math and try to determine
+what's more likely to happen than something else. In fact that's not
+very true. Especially when we're dealing with numbers that are both
+very small and very large, our brains have a hard time determining
+what is most likely to happen. So we might say things to ourselves
+such as there is no way that a user will do a particular thing. Or no
+way that two users are going to be clicking that button at the exact
+same time, right, that's never going to happen, ever. Or, no way,
+could these two lines of code be executing at the same time,
+right. There's hundreds of thousands of lines in this code base,
+which's the chances that those two are going to be executing at the
+same time, don't have to worry about that right?  Don't have to
+protect against that case?  No, that's your brain trying to tell you
+that the risk of something happening is not very high, when in fact
+when you're dealing with computers that can process at such high
+rates, things are happening so often that we can't even do that math
+in our brains anymore. The chances of these things occurring rise
+dramatically. So what we need to remind ourselves is that extremely
+large around small numbers are new experiences to our brains. And
+calculating odds of something occurring is actually really hard. So
+how many times do people see something like this, right?  So this
+fellow is a German fellow is ‑‑ was in the Guinness book of world
+records for having the verify my longest legal name up until they
+actually took this out of the again nurse book of world record. He has
+27 names, the first 26 start with each letter of the alphabet and then
+his last name is something like two thirds of this page. He goes by
+the name hubber Wolfstern. he he D. he's dead now.  Are other people
+that have similarly multitude of name and there are also people with
+single name, Cher legally has her name be Cher, no last name. And
+there's also the royal family of both Japan and Indonesia
+traditionally have a single name. And when you're build ago Webapp you
+don't want to piss off the 'em orer of Japan, if he want to sign up
+for your site you should let him. Then there are people with hyphen
+Nateed names, their names are told they're invalid. And non‑standard
+characters, a lot more here Europe. I'm looking for when Emoji of
+characters become more common names. I want my kid to have their
+middle name be an Emoji, are you going to be able to handle that
+input?  Probably not. E‑mail addresses similar problem, for those
+people who like to use the filtering or tagging mechanism of Gmail
+where you can add whatever you want after a plus sign it can be useful
+to sign up for mailing lists and ignore them if they decide to rogue
+spam you daily there's a lot of sites that won't let you do this, say
+you're an invalid e‑mail address, and the explosion of domain names
+how many old sites with particularly e‑mail rejectors that are trying
+to say that you can't have your fantastic fancy domain and it's
+totally not accurate. Those are just some examples. These are examples
+of valid e‑mail addresses as listed by Wikipedia. So do you think you
+can create a reject that will accept all of these, don't try, just
+send them an e‑mail, that's the way to do it, right, send them an
+e‑mail, make them click a link, then you know it's right or not, then
+it's good. That's just kind of the start, that's a lot of front face,
+user interfacing stuff. But validating input is one example, adding
+protections for the explicit expectations that educations will be hit
+is really important. Those are the case you need use the correct
+usetion of Newt Mutexex to make sure that what you're expecting to
+happen, happens you can protect against the case when the two users
+hit I want tougher of this ticket button at the exact same time, to
+ensure your financial business logic trying to make sure all the
+things are in a row for your financial flow happens, you don't get
+dangling shopping carts or people get charged five times for trying to
+buy something on your site. That will make them very unhappy. So in
+reality human experience has ‑‑ and the world view experience has
+increased drastically in 400 years. For the vast majority of human
+existence we've been thousandn'tth to two thousandn'tth range. Life
+span of a human, size of a mountain in the last couple hundred years
+we've moved to millionth, to billionth, and trillionth. And to write
+scalable code you must start by devalue ping developing for that
+millionth user, for the billionth request, and for the trillionth
+event. In this world the education is not the education, it's the
+certainty, assuming that these things are not going to happen because
+you think it's a rare event is follow, and that's going to be the
+that's going to cause you many sad nights later on in life. So, that
+is what I would like to share with you, keep in mind when you're
+trying to develop your code that you're brain is not as smart as it
+thinks it is and Bignum pers are very big and small numbers are very
+tiny. Thank you (Applause) and now we get to like have fun and stuff,
+exciting.
+
+
+Not to can that ballies the time we have for activities, we have time
+for two quick questions, so who's going to be first.
+
+
+Or we could just go eat the ice cream that's out there too.
+
+
+No questions whatsoever?  Then Eric, I need you.
+
+
+Okay, great, another round of applause for D aavy, that was great.  ‑‑
+Davy, that was great. (Applause).

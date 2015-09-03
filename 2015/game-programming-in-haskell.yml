@@ -1,0 +1,276 @@
+So eurucamp is a grumpy conference it's not Euro cam, that would be a
+conference about money, it's the European Ruby conference. But every
+year we try to have at least one often a couple technical talks that
+are not about Ruby, that would be boring if every tech talk was just
+about Ruby. And I think we should be humble in the Ruby community and
+admit that we actually have something to learn from other programming
+language communities. And in my mind, at least, when I think of Ruby,
+I think of a language that is very flexible, highly dynamic, it's not
+compiled, it's everything happens at Runtime. And it doesn't have a
+strong type system. You have open classes. And when I think of
+Haskell, it's basically the opposite of that, it's on the other end of
+the programming spectrum, very strict language and you have to have
+everything just right in advance to get your program to type check and
+compile. And so I think we actually have a lot to learn from the has
+kell community and the Ruby community, they think of things very
+differently, do things very differently and game programming is
+something that's ‑‑ yeah, we don't do a lot of in the Ruby community
+we mostly do web programming, so that's another difference. So Elise
+will give a talk, she's originally from Belgium but she's a Berliner
+she'll talk about game programming in has kill 4
+
+
+Thanks to the organizers if the amazing conference.  I love that the
+Ruby community is so open minded that they'd invite someone to talk
+about game has kell. Well, let's decompos this into its component. So,
+a game, more precisely we're talking about a video game. A video game
+electronic game that uses human interaction to generate feedback and
+visual feedback on video devices like TV monitor or console screen or
+whatever. So that's what we're doing here. Has anyone here developed
+any kind of game before?  A fair show of hands there, that's nice. So
+let's talk about Haskell. So Haskell is a programming Los Angeles with
+following components ‑‑ following properties, it's purely functional
+so it's all functions. It's statically typed so unlike Ruby every
+value you see has a type. Every function has a function ‑‑ has a type
+signature. And thirdly, Haskell is lacy that means that expressions
+don't get evaluated necessarily right away, they get evaluated when
+the result is needed by the program. So basically it's very different
+from Ruby. Anyone here have done Haskell before. Oh, still a number
+there. That's cool. But for the other ones, don't worry, I have
+included a fair amount of code in my presentation, but I've made sure
+it's fairly readable and if you don't understand certain details,
+don't worry, if you bet the general idea, it's fine. So let's
+start. So we need a number of building blocks, obviously to build a
+game. To start with we need some sort of interaction with the
+operating system. We need to ask for windows, window or an application
+rather to work in certain context. And then we also need to listen for
+the keyboard event or mouse events or whatever events you want to
+listen to. And I used the library cold GLFW, which is actually C, but
+Haskell has nice bindings to it. You can more or less see here create
+a window, and work within that context, poll vents, and then you make
+some convenient functions to detect whether a certain key has been
+pressed. So that's one building block we need. The next one is, I
+guess a graphical tool, so when I started with my first game in
+Haskell, I actually, I guess, made, I wouldn't say the mistake, but I
+started working with open GL bindings directly and that was fairly
+hard. Fortunately someone recommended Gloss to me a nice open
+framework on top of GL, it actually pushes all the nasty sort of open
+GL ciderfect well down the pipeline and all you have to worry about is
+defining a nice data structure so first one ‑‑ well, you can see right
+Polygon with certain coordinates, I want to have it violet and put up
+left on the screen. Second one I want to circle ‑‑ I want a
+circumstance that will is blue and put it on the right for
+instance. And you run all that through display picture function and it
+will run as expected and you have a shape to work with. Then we need
+more than just well here's a nice drawing with a circle and a
+square. We need a loop to make things move forward. So we know that
+the human eye will perceive 24 frames per second as more or less
+flowing movement. Nowadays we work more with 60, 70, 90 which is more
+the refresh rate of your usual screen. So basically what of our loop
+needs do is present you with a different image every 20 milliseconds
+or something and then you have something that seems to advance, like a
+video. Of loop looks like the for the game. Poll input events, react
+to input, then change the state, and then render a frame from the
+state. And then if you don't exit you start again. Loop, loop, loop
+like that. Then, obviously, in that loop you saw state. You need to
+keep track of where you are in your game. Obviously to get a coherent
+flow of events. The simplest way ‑‑ sorry ‑‑ to codify that in Haskell
+you'll use the types, the types are actually surprisingly expressive
+of at showing the structure, for instance, different states, here you
+see a very simple state data structure which is the player with
+certain position. Then here's the loop I was talking about with a
+little bit more code, you create your window then you loop with an
+initial state your player in the middle for instance, and then the
+thread delay is to get only 60 frames per second because if you let it
+run away it will just run, run, run, and off load geographical
+pipeline and crash. So you let it pause a little bit between each
+frame. You poll the events, you check the arrow keys and pass that
+into a function here, which is a pure function which will just say,
+well, I have the arrows there and the player here, then I need to make
+it move forward a little bit or whatever is need. And then you
+render. Render frame, and then you start again here unlike if Ruby you
+can do reduce, in Haskell it's still Recursion optimize, so no
+problem. So this is the move layer function, you'll notice another
+property of Haskell which is to be able to pattern match. You pattern
+match on the arrow keys, if your arrow ‑‑ your left arrow is depressed
+then we will move the player left a bit. And so on and so forth. And
+if none of the keys are depressed then player obviously stays in
+place. And so that's enough to start. We have a little demo with just
+a plaque square. With the building blocks we have so far, that's what
+we can do, which is something so a twist on this is that the simple
+sort of state handles that we had before is okay when you have a very
+simple state like we have here, but when it becomes more complicated,
+it's actually nice to use a different paradigm, functional reactive
+programming which allows you to decompos your states in different
+way. So with functional reactive programming we're going to work with
+streams of events through time or streams of values through time. So
+that's, again our player. But of we'll call this a player signal
+rather. And so we have a relationship between the arrows, the arrow
+signal and the player signal. And if your key is not depressed then
+your player stays in place, for instance if you need to go left then
+there's a relationship between those ‑‑ and so you work with a network
+of all those signals interacting together. So this is our loop
+slightly reworked. We capture our key signal in a sink and then we'll
+work with this which is a direction key signal and our player becomes
+a transfer between the direction key, with the directory ‑‑ because we
+express, sorry the dependency between player signal and the direction
+key here and we feed it initial states and everything just unloops the
+from there. And then the ‑‑ at the end of the met work we do the same,
+render frame function, but we unpack the signal to the current natural
+value. It's like the box Txus was talking about. We get the value of
+the signal box to render. And then the loop is like this, we feed the
+direction key sink with the out put and then we delay a little bit
+again and then we continue like this. it's more or less the same but
+it allows you to express your states with different components like if
+we have a tiny bit more complex game we have player signal, a monster
+signal a gum over signal. Then the external inputs are arrows and
+random generator, for instance. And our player is dependent on the
+direction key and game over. Our monster is dependent on player,
+random number and game over. And the very nice thing here is that what
+we worry about, the only thing we have to worry about is the function
+here, the red function here, which are pure functions. And so you
+don't have to wore worry about what's going on elsewhere you just say
+well if I feed my player this input then I should get this out put,
+which is very easy to test, obviously, you just need to test whether
+there that's coherent and your whole game should work. And then you
+render frame with unboxing the player and the monster signal here. So
+what we did with ‑‑ before was draw a little square or circle and
+visually we want a spaceship or a landscape or something like
+that. Soft we want to work with images rather than geometry. And
+fortunately gloss helps us again, we can just load a bit map like
+this. And we call that a texture. And then we use a texture in our
+render frame function here. So for instance render player, we will
+just take that texture we loaded and move it to wherever we need it to
+be. And already or things are looking up a little bit and our game
+starts looking like something we'd recognize a little bit more. So the
+player ‑‑ the night figure of my little game may or may not have been
+based on my daughter Alice on the left. We have this bet that we're
+going to insert a picture in every presentation. That was the
+picture. So if you see this ‑‑ unfortunately there's still something
+wrong with it the night is just basically shifting along and it's a
+little bit wooden, you need something else to have it a little bit
+more life like and that's where we need animations. So animations is a
+full time job. It's a specialty. It's not something you can just
+improvise, what I have been doing is traditional animation which is
+just simply using different pictures for every frame. But like if
+you're doing this professionally you're going to do interpolations
+you're going to do skeletal animation, you're going to do motion
+capture, you're going to use specialized software to generate all the
+frames, it's not something you can just do, especially when it becomes
+more complicated. So I've been drawing all my assets, as I said. To
+make the little guys walk a little bit better, I basically just made
+one foot lift the other foot lift and the arms move a little bit that
+already created slightly better illusion of movement. This means that
+suddenly you have a combination explosion of texture instead of one
+for every direction you have twelve just to make it walk and if you
+had cross bolts like I did a little bit later you have four times that
+it's a lot hof drawing. The thing is now your state change a little
+bit in effect Jo to not only keep track of the state of the game of
+where is your little man, but also which stage of the animation is it
+in. So in my very simple walking animation I defined a walk stage here
+which becomes part of the state, like this here. And then when I
+rendered a player, I have of four stages, so it cycles between those,
+it goes through that walking emotion every time. Then obviously we
+need some sounds, we need background music that will stick in our
+heads, we need little events to make it a little bit more
+attractive. And I used a library code ALUD which is binding to a C
+library. Which is ‑‑ which is doing it's job very well and not too
+hard to use. Our state changes again not only do we have graphical
+state we also have a sound state to manage and our render frame is now
+grouped within out put function ‑‑ out put function takes care of both
+frame and the sound. Obviously for sound you don't really need 60
+triggers a second. What you do is you trigger a sound and you let it
+play out, so originally I thought I would need to start a thread, next
+to the main loop to sort of have the sounds play, it turns out this is
+actually taken care of for you, like the graphical pipeline there is a
+sound pipeline you just make sure your sounds are played at the right
+moment and not just once not sixty times a second and then things just
+play out. And here you load the sounds. So where do the sounds come
+from?  I downloaded them from a site called free sound, you can buy
+sample packs, or if you're a musicians you can make them yourself,
+which is even better. And the play sounds looks like this. It's also
+relatively expressive when you use a few functions like this function
+changes the background music when there's danger. At the end of game,
+which means when the monster eats the little dudes, then you have you
+have a shriek. So a demo sheer. Normally the sound is not working ‑‑
+(Applause) so obviously that's not all you need, you also need a start
+screen, you need levels, and that's where it starts to get a little
+bit interesting with the functional reactive programming because you
+have signals all over. Actually have several levels going down, you
+have like, you keep the state of your game at the upper level ‑‑
+sorry, the general state at the upper level. You in the start screen
+or are you in the game and are there high scores, for instance. And
+then the next level is we are in the game so I started a network, a
+sub network sort of which keeps track of the level number we are
+at. And that again starts a sub network with lots of signals for the
+monster, the player and everything. And everything the rend state or
+the sound state just wounds back up to the upper network and here the
+rendering still happens. Don't worry I'm not going to show you that
+group, that will take more than one slide. So ‑‑ created this but
+... I wasn't saying it was a great game. Also of one fortunate thing
+with gloss is that the fonts support ‑‑ basically you have no ‑‑
+that's a poll request I'm working on personally.  I would like that to
+improve. So, okay, so what are the lessons I learned from the whole
+process of getting to this?  First let's talk about Haskell. It has
+lots of nice things going, the types allow you to really describe your
+state in a very nice readable way. Pattern matching is really great to
+describe transition from one stage to the other. The result is
+fast. It's compiled on to an executable that runs fast. Okay, the down
+sides well, first off the laciness is actually ‑‑ laze citiness is not
+suited for games, you want them executed right now so you need to take
+care in Haskell to force that, there are data structures allowing you
+to do that but you need to pay attention. Then it was insanely hard to
+get started because not many people have done this before and so I had
+to control the internet to find the tools that worked for me and that
+wasn't easy.  I still, I'm still working on the distribution aspect,
+I'm fairly sure that won't be too big a problem. I'm working on
+generating a mock up from the game and the next step will then be
+maybe a DBM package or a windows executable. That's still, there was a
+lot of stuff osolve. Basically. So I wrote a book about this
+documenting like I said, I feel like I had to really work through a
+lot of crap to get to this point. And so I'm hoping that people can
+push this further that basically with this people can sort of say,
+well that was very nice, now I want my animations to be like twelve
+times better than this, and I'm going to make work. So I'm hoping that
+having good explanations out there will sort of help that. Also one
+other reason I wrote this book I think it's a fun way to sort of get
+deeper into Haskell and to understand it better because most examples
+are not that much fun, to be honest. So having a game is I think, a
+nicer way to start so that's me. (Applause)
+
+
+Thank you so much, questions for Elise?
+
+
+Are these calls to the operating system non‑blocking how do you
+achieve these parallel computations this
+
+
+I'm sorry.
+
+
+How do you achieve parallel computations like sound and drawing at the
+same time?
+
+
+It would be easy to do that, but I didn't really need to do that here
+because like I said open GL sort of takes things away under the hood
+and open ALUD also makes things open under the hood so you don't
+really need to worry about multithreading at this point.
+
+
+More questions, we have a few minutes before the next break. This side
+of the room?  Any questions.
+
+
+Hello, I didn't quite get whether you were learning Haskell at the
+same time programming this game or did you have Haskell experience
+before that?
+
+
+I had been programming H Haskell for about a year and consulting
+professionally. Now I'm not an expert, so I still see the beginners
+point of view in this one.
+
+
+Thank you. Nothing more.
